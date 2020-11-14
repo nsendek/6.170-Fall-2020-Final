@@ -90,6 +90,7 @@
         </form>
       </div>
     </section>
+
     <section id="business-operations-container">
       <h2>Business Operations:</h2>
       <div class="scrollbox">
@@ -112,24 +113,16 @@
             <label for="password">Password:</label>
             <input name="password">
           </div>
-          <input type="submit" value="Create User">
+          <input type="submit" value="Create Business">
         </form>
 
         <form id="delete-business">
           <h3>Delete Business</h3>
-          <div>
-            <label for="id">Business ID:</label>
-            <input name="id">
-          </div>
-          <input type="submit" value="Delete User">
+          <input type="submit" value="Delete Business">
         </form>
 
         <form id="change-business-name">
           <h3>Change Business Name</h3>
-          <div>
-            <label for="id">Business ID:</label>
-            <input name="id">
-          </div>
           <div>
             <label for="name">New Name:</label>
             <input name="name">
@@ -140,12 +133,8 @@
         <form id="change-business-password">
           <h3>Change Password</h3>
           <div>
-            <label for="id">Business ID:</label>
-            <input name="id">
-          </div>
-          <div>
-            <label for="newPassword">New Password:</label>
-            <input name="newPassword">
+            <label for="password">New Password:</label>
+            <input name="password">
           </div>
           <input type="submit" value="Change Password">
         </form>
@@ -153,8 +142,8 @@
         <form id="sign-in-business">
           <h3>Sign In</h3>
           <div>
-            <label for="username">Username:</label>
-            <input name="username">
+            <label for="id">Business ID:</label>
+            <input name="id">
           </div>
           <div>
             <label for="password">Password:</label>
@@ -167,15 +156,11 @@
           <h3>Sign Out</h3>
           <input type="submit" value="Sign out">
         </form>
-
-        <form id="get-session">
-          <h3>Get Session (Business)</h3>
-          <input type="submit" value="Get Session">
-        </form>
       </div>
     </section>
-    <section id="freet-operations-container">
-      <h2>Business Operations:</h2>
+    
+    <!-- <section id="freet-operations-container">
+      <h2>Freet Operations:</h2>
       <div class="scrollbox">
         <form id="view-all-freets">
           <h3>View All Freets</h3>
@@ -261,8 +246,8 @@
       </form>
 
       </div>
-    </section>
-    <section>
+    </section> -->
+    <section> 
       <h2>Response:</h2>
       <div class="scrollbox">
         <pre id="response" class="teletype"></pre>

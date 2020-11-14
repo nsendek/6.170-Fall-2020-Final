@@ -104,9 +104,9 @@ class Businesses {
   }
 
     /**
-   * change username
-   * @param {string} oldName - old username
-   * @param {string} newName - new username
+   * change name
+   * @param {string} oldName - old name
+   * @param {string} newName - new name
    * @return {User | null} the altered User (minus password)
    */
   static async changeName(id, newName) {
@@ -115,9 +115,27 @@ class Businesses {
     let business = await Businesses.get(id);
 
     if (business) {
-        let res = await db.run(`UPDATE users SET username = ? WHERE id = ?`, [newName, id]); 
+        let res = await db.run(`UPDATE businesses SET name = ? WHERE id = ?`, [newName, id]); 
         out =  Boolean(res.changes) ? business : null;
         if (out) out.name = newName;
+    }
+    db.close();
+    return out;
+  }
+
+  /**
+   * change password
+   * @param {string} id - id of business
+   * @param {string} newPassword - new password
+   * @return {Business | null} the altered User (minus password)
+   */
+  static async changePassword(id, newPassword) {
+    let out = null;
+    let db = await database.getDB();
+    let business = await Businesses.get(id);
+    if (business) {
+        let res = await db.run(`UPDATE businesses SET password = ? WHERE id = ?`, [newPassword, id]); 
+        out = Boolean(res.changes) ? business : null;
     }
     db.close();
     return out;

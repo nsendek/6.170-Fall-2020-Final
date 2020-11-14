@@ -20,7 +20,7 @@ function createBusiness(fields) {
  * calls @name DELETE/api/business
  */
 function deleteBusiness(fields) {
-  axios.delete(`/api/business/${fields.id}`, fields)    
+  axios.delete(`/api/business`, fields)    
     .then(showResponse)
     .catch(showResponse); 
 }
@@ -29,11 +29,7 @@ function deleteBusiness(fields) {
  * calls @name PATCH/api/business with @param username
  */
 function changeBusinessName(fields) { 
-  let body = {
-    password : fields.password,
-    name : fields.name
-  };
-  axios.patch(`/api/business//${fields.id}`, body)
+  axios.patch(`/api/business`, fields)
     .then(showResponse) 
     .catch(showResponse);
 }
@@ -42,12 +38,7 @@ function changeBusinessName(fields) {
  * calls @name PATCH/api/business rwith @param password
  */
 function changeBusinessPassword(fields) {
-  let body = {
-    oldPassword : fields.oldPassword,
-    newPassword : fields.newPassword
-  };
-
-  axios.patch(`/api/business//${fields.id}`, body)
+  axios.patch(`/api/business`, fields)
     .then(showResponse) 
     .catch(showResponse); 
 }

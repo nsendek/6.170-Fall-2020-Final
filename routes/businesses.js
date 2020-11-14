@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Businesses = require('../models/Businesses');
 
-const { correctInput , isID , dataExists } = require('./validators');
+const { signedIn, correctInput , isID , dataExists } = require('./validators');
 
 /**
  * create business and store name and password. 
@@ -12,19 +12,23 @@ const { correctInput , isID , dataExists } = require('./validators');
  * @throws {400} - if business is already signed in 
  * @throws {409} - if name is taken
  */
-router.post('/:id?', async (req, res) => {
-  if (!correctInput(req, res,['name', 'address', 'password'],['id'])) return;
+router.post('/', async (req, res) => {
+  if (req.session.business) {
+    res.status(400).send({ error : `already signed in as ${req.session.business.name}` });
+  } else { 
+    if (!correctInput(req, res,['name', 'address', 'password'])) return;
 
-  try {
-    let business = await Businesses.create(req.body.name, req.body.address, req.body.password);
+    try {
+      let business = await Businesses.create(req.body.name, req.body.address, req.body.password);
 
-    if (business) {
-      res.status(201).send({ business, message : "business createn"});
-    } else {
-      res.status(409).json({ error: "address taken" }).end();
+      if (business) {
+        res.status(201).send({ business, message : "business createn"});
+      } else {
+        res.status(409).json({ error: "address taken" }).end();
+      }
+    } catch (error) {
+        res.status(503).json({ error: "could not create business" }).end();
     }
-  } catch (error) {
-      res.status(503).json({ error: "could not create business" }).end();
   }
 });
 
@@ -41,18 +45,14 @@ router.post('/:id?', async (req, res) => {
  * @throws {401} - if business is not signed in 
  * @throws {409} - if new name is taken
  */
-router.patch('/:id?', async (req, res) => { 
-  if (!correctInput(req, res,[],['id'])) return;
-  if (!(await dataExists(res, req.params.id, Businesses))) return;
-  if (!isID(res,req.params.id)) return;
-  
+router.patch('/', async (req, res) => { 
+  if (!signedIn(req, res, false)) return;
   if (req.body.name && req.body.name.length) { // changing name
-
+   
     try {
-      let changed = await Businesses.changeName(req.params.id, req.body.name);
-      if (changed) {
-        res.status(200).send(changed);
-      }
+      let changed = await Businesses.changeName(req.session.business.id, req.body.name);
+      if (changed) res.status(200).send(changed);
+      
     } catch (error) {
       res.status(503).json({ error: "could not change name" }).end();
     }
@@ -60,9 +60,10 @@ router.patch('/:id?', async (req, res) => {
   } else if (req.body.password && req.body.password.length) { // changing password
 
     try {
-      let changed = await Businesses.changePassword(req.params.id, req.body.password);
-      if (changed) res.status(200).json(changed).end();
+      let changed = await Businesses.changePassword(req.session.business.id, req.body.password);
+      if (changed) res.status(200).send(changed);
       else res.status(400).send({ error: 'invalid new password.' });
+
     } catch (error) {
       res.status(503).json({ error: "could not change password" }).end();
     }
@@ -81,17 +82,15 @@ router.patch('/:id?', async (req, res) => {
  * @throws {401} - if business is not signed in 
  * @throws {404} - if business doesn't exist
  */
-router.delete('/:id?', async (req, res) => {
-  if (!correctInput(req, res,[],['id'])) return;
-  if (!(await dataExists(res, req.params.id, Businesses))) return;
-  if (!isID(res,req.params.id)) return;
+router.delete('/', async (req, res) => {
+  if (!signedIn(req, res, false)
+    || !(await dataExists(res, req.session.business.id, Businesses))) return;
 
   try {
-    let deleted = await Businesses.delete(req.params.id);
-    console.log(deleted)
-    if (deleted) {
-      res.status(200).send(deleted);
-    }
+    let deleted = await Businesses.delete(req.session.business.id);
+    console.log(deleted);
+    if (deleted) res.status(200).send(deleted);
+    
   } catch (error) {
     res.status(503).json({ error: "could not delete business" }).end();
   }

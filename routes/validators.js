@@ -9,12 +9,20 @@ const Businesses = require("../models/Businesses");
  * @throws {401} user is not signed in and not allowed to run certain function.
  * @returns {boolean} determining whether the user is signed in or not. 
  */
-function signedIn(req, res) {
+function signedIn(req, res, user = true) {
+  if (user) { // user signin check
     if (!req.session.user) {
       res.status(401).send({ error: 'you are not signed in.' });
       return false;
     }
     return true;
+  } else {
+    if (!req.session.business) {
+      res.status(401).send({ error: 'you are not signed in.' });
+      return false;
+    }
+    return true;      
+  }
 }
 
 /**

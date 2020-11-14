@@ -4,6 +4,22 @@ const Users = require('../models/Users');
 
 const { signedIn, correctInput , dataExists} = require('./validators');
 
+
+/**
+ * if page refreshes, confirm if still signed in on refresh
+ * @name GET/api/session
+ */
+router.get('/', async (req, res) => {
+  try {
+    let business = req.session.business;
+    let user = req.session.user;
+    res.status(200).send({user, business});
+  } catch (error) {
+    res.status(503).json({ error: "could not check session" }).end();
+  }
+});
+
+
 /**
  * sign in and save user to session
  * @name POST/api/session
@@ -51,25 +67,6 @@ router.delete('/', async (req, res) => {
     res.status(503).json({ error: "could not sign out" }).end();
   }
 });
-
-// NEW A5 ROUTES ______________________________________________
-
-/**
- * if page refreshes, confirm if still signed in on refresh
- * @name GET/api/session/business
- */
-router.get('/business', async (req, res) => {
-  try {
-    if (req.session.business) {
-      res.status(200).send(req.session.business);
-    } else {
-      res.status(200).send(null);
-    }
-  } catch (error) {
-    res.status(503).json({ error: "could not check session" }).end();
-  }
-});
-
 
 /**
  * sign in and save business to session

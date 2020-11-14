@@ -128,7 +128,7 @@ class Users {
 
     /**
      * change password
-     * @param {string} username - username of user
+     * @param {string} id - id of user
      * @param {string} newPassword - new password
      * @return {User | null} the altered User (minus password)
      */
