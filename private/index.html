@@ -1,0 +1,274 @@
+<html>
+
+<head>
+  <title>Fritter</title>
+  <meta name="author" content="6.170 Staff">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- make sure handler files are placed before services.js, because service.js need variables from these  -->
+  <!-- <script src="/javascripts/handlers/freetHandlers.js"></script> -->
+  <script src="/javascripts/handlers/businessHandlers.js"></script>
+  <script src="/javascripts/handlers/userHandlers.js"></script>
+  <script src="/javascripts/handlers/sessionHandlers.js"></script>
+
+  <script src="/javascripts/services.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 id = "fritterHeader">Zelp</h1>
+  </header>
+
+  <main class="3-col">
+    <section id="user-operations-container">
+      <h2>User Operations:</h2>
+      <div class="scrollbox">
+        <form id="view-all-users">
+          <h3>View All Users</h3>
+          <input type="submit" value="View All Users">
+        </form>
+
+        <form id="create-user">
+          <h3>Create User</h3>
+          <div>
+            <label for="username">Username:</label>
+            <input  name="username">
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input name="password">
+          </div>
+          <input type="submit" value="Create User">
+        </form>
+
+        <form id="delete-user">
+          <h3>Delete User</h3>
+          <input type="submit" value="Delete User">
+        </form>
+
+        <form id="change-username">
+          <h3>Change Username</h3>
+          <div>
+            <label for="username">New Username:</label>
+            <input name="username">
+          </div>
+          <input type="submit" value="Change Username">
+        </form>
+
+        <form id="change-password">
+          <h3>Change Password</h3>
+          <div>
+            <label for="password">New Password:</label>
+            <input name="password">
+          </div>
+          <input type="submit" value="Change Password">
+        </form>
+
+        <form id="sign-in">
+          <h3>Sign In</h3>
+          <div>
+            <label for="username">Username:</label>
+            <input name="username">
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input name="password">
+          </div>
+          <input type="submit" value="Sign In">
+        </form>
+
+        <form id="sign-out">
+          <h3>Sign Out</h3>
+          <input type="submit" value="Sign out">
+        </form>
+
+        <form id="get-session">
+          <h3>Get Session (User)</h3>
+          <input type="submit" value="Get Session">
+        </form>
+      </div>
+    </section>
+    <section id="business-operations-container">
+      <h2>Business Operations:</h2>
+      <div class="scrollbox">
+        <form id="view-all-businesses">
+          <h3>View All Businesses</h3>
+          <input type="submit" value="View All Businesses">
+        </form>
+
+        <form id="create-business">
+          <h3>Create Business</h3>
+          <div>
+            <label for="name">Name:</label>
+            <input  name="name">
+          </div>
+          <div>
+            <label for="address">Address:</label>
+            <input name="address">
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input name="password">
+          </div>
+          <input type="submit" value="Create User">
+        </form>
+
+        <form id="delete-business">
+          <h3>Delete Business</h3>
+          <div>
+            <label for="id">Business ID:</label>
+            <input name="id">
+          </div>
+          <input type="submit" value="Delete User">
+        </form>
+
+        <form id="change-business-name">
+          <h3>Change Business Name</h3>
+          <div>
+            <label for="id">Business ID:</label>
+            <input name="id">
+          </div>
+          <div>
+            <label for="name">New Name:</label>
+            <input name="name">
+          </div>
+          <input type="submit" value="Change Business Name">
+        </form>
+
+        <form id="change-business-password">
+          <h3>Change Password</h3>
+          <div>
+            <label for="id">Business ID:</label>
+            <input name="id">
+          </div>
+          <div>
+            <label for="newPassword">New Password:</label>
+            <input name="newPassword">
+          </div>
+          <input type="submit" value="Change Password">
+        </form>
+
+        <form id="sign-in-business">
+          <h3>Sign In</h3>
+          <div>
+            <label for="username">Username:</label>
+            <input name="username">
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input name="password">
+          </div>
+          <input type="submit" value="Sign In">
+        </form>
+
+        <form id="sign-out-business">
+          <h3>Sign Out</h3>
+          <input type="submit" value="Sign out">
+        </form>
+
+        <form id="get-session">
+          <h3>Get Session (Business)</h3>
+          <input type="submit" value="Get Session">
+        </form>
+      </div>
+    </section>
+    <section id="freet-operations-container">
+      <h2>Business Operations:</h2>
+      <div class="scrollbox">
+        <form id="view-all-freets">
+          <h3>View All Freets</h3>
+          <input type="submit" value="View All Freets">
+        </form>
+
+      <form id="view-freets-by-author">
+        <h3>View Freets By Author</h3>
+        <div>
+          <label for="author">User ID:</label>
+          <input id="author" name="author">
+        </div>
+        <input type="submit" value="View Freets By Author">
+      </form>
+
+      <form id="create-freet">
+        <h3>Create Freet</h3>
+        <div>
+          <label for="content">Content:</label>
+          <textarea id="content" name="content"></textarea>
+        </div>
+        <input type="submit" value="Create Freet">
+      </form>
+
+      <form id="edit-freet">
+        <h3>Edit Freet</h3>
+        <div>
+          <label for="id">Freet ID:</label>
+          <input name="id">
+        </div>
+        <div>
+          <label for="content">Content:</label>
+          <textarea id="content" name="content"></textarea>
+        </div>
+        <input type="submit" value="Edit Freet">
+      </form>
+      
+      <form id="delete-freet">
+        <h3>Delete Freet</h3>
+        <div>
+          <label for="id">Freet ID:</label>
+          <input name="id">
+        </div>
+        <input type="submit" value="Delete Freet">
+      </form>
+
+      <form id="refreet">
+        <h3>Refreet Freet</h3>
+        <div>
+          <label for="id">Freet ID:</label>
+          <input name="id">
+        </div>
+        <div>
+          <label for="content">Additional Content (optional):</label>
+          <textarea id="content" name="content"></textarea>
+        </div>
+        <input type="submit" value="Refreet Freet">
+      </form>
+
+      <form id="toggle-likes">
+        <h3>Like/Unlike Freet</h3>
+        <div>
+          <label for="id">Freet ID:</label>
+          <input name="id">
+        </div>
+        <radio-group>
+          <input type = "radio" name="type" value="like">
+          <label for="like">Like</label>
+          <input type = "radio" name="type" value="unlike">
+          <label for="unlike">Unlike</label>
+        </radio-group>
+  
+        <input type="submit" value="Submit">
+      </form>
+
+      <form id="get-likes">
+        <h3>Get Likes</h3>
+        <div>
+          <label for="id">Freet ID:</label>
+          <input name="id">
+        </div>
+        <input type="submit" value="Get Likes">
+      </form>
+
+      </div>
+    </section>
+    <section>
+      <h2>Response:</h2>
+      <div class="scrollbox">
+        <pre id="response" class="teletype"></pre>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
