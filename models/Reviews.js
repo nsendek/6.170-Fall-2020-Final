@@ -5,7 +5,8 @@ const database = require('../db');
  * @prop {number} id - the generated id for the review
  * @prop {string} content - some string of characters
  * @prop {number} rating - in the domain of 1-5
- * @prop {User} creator - user 
+ * @prop {User} author - author of review 
+ * @prop {number} businessID -  business
  */
 
 /**
@@ -14,19 +15,20 @@ const database = require('../db');
  * @returns {Review} 
  */
 function mapReview(row) {
-    // try {
-    //   let freet = {
-    //     id : row.id, 
-    //     parentId :row.parentId, 
-    //     content :row.content,
-    //     timestamp : row.timestamp
-    // };
-    // //map entire row to Freet object with nested User object under 'creator' key
-    // freet.creator = { id : row.userId, username: row.username };
-    // return freet;
-    // } catch (err) {
-    //   return null;
-    // }
+    try {
+      let review = {
+        id : row.id, 
+        businessId : row.businessId,
+        rating : row.rating,
+        content :row.content,
+        timestamp : row.timestamp
+      };
+      //map entire row to Review object with nested User object under 'creator' key
+      review.author = { id : row.userId, username: row.username };
+      return review;
+    } catch (err) {
+      return null;
+    }
 }
 /**
  * @class Reviews
@@ -37,11 +39,11 @@ class Reviews {
     /**
      * confirms that userId is the owner of the reviewId.
      * @param {number} userId 
-     * @param {number} reviewId 
+     * @param {number} id - id of Review 
      */
-    static async authenticate ( userId, reviewId ) {
+    static async authenticate ( userId, id ) {
         let db = await database.getDB();
-        let review = await db.get(`SELECT * FROM reviews WHERE userId = ? AND id = ?`, [userId, reviewId]);
+        let review = await db.get(`SELECT * FROM reviews WHERE userId = ? AND id = ?`, [userId, id]);
         return Boolean(review);
     }
 
@@ -49,164 +51,162 @@ class Reviews {
         let db = await database.getDB();
         let review = await db.get(`SELECT * FROM reviews WHERE id = ?`, [id]);
         return (review) ? true : false;
-    } 
+    }
 
     /**
-     * Return an array of all of the Freets.
-     * @param {number} is - id of Freets
-     * @return {Freet[]} - found Freets
+     * Return an array of all of the Reviews.
+     * @param {number} is - id of Reviews
+     * @return {Review[]} - found Reviews
      */
     static async getAll() {
+      
         let db = await database.getDB();
         let data = await db.all(`
-            SELECT content, freets.id, parentId, freets.timestamp, users.username, userId
+            SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp
             FROM reviews
             JOIN users ON users.id=userId 
-            ORDER BY freets.timestamp DESC`);
+            ORDER BY reviews.timestamp DESC`).catch(err => console.log(err));
         return data.map(mapReview);
     }
 
     /**
-     * Return an array of all of the Freets.
-     * @return {Freet}
+     * Return an array of all of the Reviews.
+     * @return {Review}
      */
     static async get(id) {
         let db = await database.getDB();
         let data = await db.get(`
-            SELECT content, freets.id, parentId, freets.timestamp, users.username, userId
-            FROM freets
-            JOIN users ON users.id=userId  
-            WHERE freets.id = ?`,[id]);
+            SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp
+            FROM reviews
+            JOIN users ON users.id=userId
+            WHERE reviews.id = ?`,[id]);
         return mapReview(data);
     }
 
-    /**
-     * Get a Freetd by parentId.
-     * @param {number} is - id of Freets
-     * @return {Freet[]]} - found Freets
-     */
-    static async getByParent(id) { 
-      let db = await database.getDB();
-      let data =  await db.all(`
-          SELECT content, freets.id, parentId, freets.timestamp, users.username, userId
-          FROM freets 
-          JOIN users ON users.id=userId 
-          WHERE parentId = ? 
-          ORDER BY freets.timestamp DESC`,[id]);
-      return data.map(mapReview);
-    }
-
      /**
-     * Get a Freetd by userId.
-     * @param {number} userId - id of creator of Freets
-     * @return {Freet[]]} - found Freets
+     * Get a Reviewd by userId.
+     * @param {number} userId - id of creator of Reviews
+     * @return {Review[]]} - found Reviews
      */
-    static async getByUser(userId) { 
+    static async getByUser(userId) {
       let db = await database.getDB();
       let data =  await db.all(`
-          SELECT content, freets.id, parentId, freets.timestamp, users.username, userId
-          FROM freets 
+          SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp
+          FROM reviews 
           JOIN users ON users.id=userId
           WHERE userId = ? 
-          ORDER BY freets.timestamp DESC`,[userId]);
+          ORDER BY reviews.timestamp DESC`,[userId]);
       return data.map(mapReview);
     }
 
     /**
-     * Add a Freet if it contains <= 140 characters
-     * @param {number} userId - userId of Freet creator
-     * @param {string} content - content of the Freet
+     * Add a Review if it contains <= 140 characters
+     * @param {number} userId - id of Review creator
+     * @param {number} businessId - id of business reviewed
+     * @param {string} content - content of the Review
      * @param {number} parentId - id of parent freet. If !null, freet is a refreet. 
-     * @return {Freet | undefined} - created Freet if it contains <= 140 characters
+     * @return {Review | null} - created Review if it contains <= 140 characters
      *                               or Refreet if not already refreeted
      */
-    static async create(userId , content, parentId = null) {
-        if ((parentId || content.length) && content.length <= 140) {
-            const db = await database.getDB();
+    static async create(userId , businessId, rating, content) {
+      // console.log("GOT HERE");
+      const db = await database.getDB();
+      const res = await db.run(`
+          INSERT INTO reviews (rating, content, userId, businessId, timestamp) 
+          VALUES (?, ?, ?, ?, strftime("%s", "now"))`, [rating, content, userId, businessId])
+          .catch(err => console.log(err));
 
-            const res = await db.run(`
-                INSERT INTO freets (content, userId, parentId, timestamp) 
-                VALUES (?, ?, ?, strftime("%s", "now"))`, [content, userId, parentId])
-                .catch(() => null);;
-   
-            db.close();
-            return (res && res.changes) ? (this.get(res.lastID)) : null;
-        }
+      db.close();
+      return (res && res.changes) ? (await Reviews.get(res.lastID)) : null;
     }
 
     /**
-     * delete the specified Freet.
-     * @param {number} id - id of Freet to find
-     * @return {Freet | null} true if delete occured, false otherwise
+     * delete the specified Review.
+     * @param {number} id - id of Review to find
+     * @return {Review | null} true if delete occured, false otherwise
      */
     static async delete(id) {
         let db = await database.getDB();
-        let freet = await db.get(`SELECT * FROM freets WHERE id = ?`, [id]);
-        let res = await db.run('DELETE FROM freets WHERE id = ?', [id]);
+        let review = await Reviews.get(id);
+        // console.log("REVIEW", review)
+        let res = await db.run('DELETE FROM reviews WHERE id = ?', [id]);
         db.close();
-        return res.changes ? freet : null;
+        return res.changes ? review : null;
     }
 
     /**
-     * update the content of the specified Freet.
-     * @param {number} id - id of Freet to find
+     * update the content of the specified Review.
+     * @param {number} id - id of Review to find
      * @param {string} content - new version of content
-     * @return {boolean} true if update occured, false otherwise
+     * @return {Review} returns the updated Review
      */
-    static async update(id, content) {
-        let out = null;
+    static async update(id, rating, content) {
         let db = await database.getDB();
-        let freet = await db.get(`SELECT * FROM freets WHERE id = ?`, [id]);
+        let review = await Reviews.get(id);
 
-        if (freet) {
-            let res = await db.run(`UPDATE freets SET content = ? WHERE id = ?`, [content, id]);
+        console.log("GOT HERE");
+
+        if (review) {
+            let res = await db.run(`
+              UPDATE reviews 
+              SET rating = ?, content = ? 
+              WHERE id = ?`,
+              [rating, content, id]
+            );
             if (Boolean(res)) {
-                out =  await db.get(`SELECT content, id, userId, parentId FROM freets WHERE id = ?`, [id]);
+              review.rating = rating;
+              review.content = content;
             }
         }
         db.close();
-        return out;
+        return review;
     }
 
+// RATING TABLES FOR REVIEWS HAVEN'T BEEN IMPLEMENTED YET
+// -----------------------------------------------------------
+
     static async getLikes(id) {
-        let db = await database.getDB();
-        return await db.all(`
-            SELECT userId AS id, users.username 
-            FROM likes 
-            JOIN users ON users.id=userId
-            WHERE freetId = ?
-            ORDER BY id DESC`, [id]);
+        // let db = await database.getDB();
+        // return await db.all(`
+        //     SELECT userId AS id, users.username 
+        //     FROM likes 
+        //     JOIN users ON users.id=userId
+        //     WHERE freetId = ?
+        //     ORDER BY id DESC`, [id]);
     }
 
     static async like(userId, id) {
-        let db = await database.getDB();
-        let res = await db.run(`INSERT INTO likes (freetId,  userId) VALUES (?, ?)`, [id, userId])
-                    .catch(() => null);
-        db.close();
-        return Boolean(res);
+        // let db = await database.getDB();
+        // let res = await db.run(`INSERT INTO likes (freetId,  userId) VALUES (?, ?)`, [id, userId])
+        //             .catch(() => null);
+        // db.close();
+        // return Boolean(res);
     }
 
     static async unlike(userId, id) {
-        let db = await database.getDB();
-        let res = await db.run(`DELETE FROM likes WHERE freetId = ? AND userId = ?`, [id, userId]);
-        db.close();
-        return Boolean(res.changes);
+        // let db = await database.getDB();
+        // let res = await db.run(`DELETE FROM likes WHERE freetId = ? AND userId = ?`, [id, userId]);
+        // db.close();
+        // return Boolean(res.changes);
     }
 
+// -----------------------------------------------------------
+
+
     /**
-     * searches Freet database by a query
+     * searches Review database by a query
      * @param {string} query - search query
-     * @return {Freet[]} all users whose username matches query.
+     * @return {Review[]} all users whose username matches query.
      */
     static async search(query) {
       let db = await database.getDB();
       let data = await db.all(`
-          SELECT content, freets.id, parentId, freets.timestamp, users.username, userId 
-          FROM freets 
+          SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp 
+          FROM reviews 
           JOIN users ON users.id=userId
           WHERE content LIKE '%${query}%'
           OR users.username LIKE '%${query}%'
-          ORDER BY freets.timestamp DESC`);
+          ORDER BY reviews.timestamp DESC`);
       return data.map(mapReview);
     }
 }

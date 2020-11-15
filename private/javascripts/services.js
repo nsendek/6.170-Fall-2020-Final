@@ -20,6 +20,26 @@ function showResponse(axiosResponse) {
   showObject(abridgedResponse);
 }
 
+function updateOperations(label) {
+  console.log("CALLED", label);
+  if (label == "business") {
+    $("#opHeader").text("Business Operations");
+    $("#business-operations").show();
+    $("#user-operations").hide();
+    $("#review-operations").hide();
+  } else if (label == "user") {
+    $("#opHeader").text("User Operations");
+    $("#business-operations").hide();
+    $("#user-operations").show();
+    $("#review-operations").hide();
+  } else if (label = "review") {
+    $("#opHeader").text("Review Operations");
+    $("#business-operations").hide();
+    $("#user-operations").hide();
+    $("#review-operations").show();  
+  }
+}
+
 function signInChange(axiosResponse) {
   const fullResponse = axiosResponse.response === undefined
     ? axiosResponse
@@ -48,18 +68,16 @@ function signOutChange(axiosResponse) {
 
 
 const formsAndHandlers = {
-  // ...freetHandlers,
   ...businessHandlers,
   ...userHandlers,
-  ...sessionHandlers
-  
+  ...sessionHandlers,
+  ...reviewHandlers
 }
 
 // attach handlers to forms
 function init() {
   Object.entries(formsAndHandlers).forEach(([formID, handler]) => {
     const form = document.getElementById(formID);
-    // console.log(formID)
     if (form)
       form.onsubmit = (e) => {
         e.preventDefault();

@@ -51,7 +51,7 @@ class Users {
      */
     static async getAll() {
         let db = await database.getDB();
-        let users = await db.all(`SELECT username, id FROM users ORDER BY id DESC`);    
+        let users = await db.all(`SELECT username, id, timestamp FROM users ORDER BY id DESC`);    
         db.close();
         return users;
     }
@@ -152,7 +152,7 @@ class Users {
     static async search(query) {
       let db = await database.getDB();
       return await db.all(`
-        SELECT username, id
+        SELECT username, id, timestamp
         FROM users 
         WHERE username LIKE '%${query}%'
         ORDER BY id DESC`);

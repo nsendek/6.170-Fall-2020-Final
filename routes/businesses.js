@@ -14,14 +14,14 @@ const { signedIn, correctInput , isID , dataExists } = require('./validators');
  */
 router.post('/', async (req, res) => {
   if (req.session.business) {
-    res.status(400).send({ error : `already signed in as ${req.session.business.name}` });
+    res.status(400).send({ error : `already signed in as "${req.session.business.name}"` });
   } else { 
     if (!correctInput(req, res,['name', 'address', 'password'])) return;
 
     try {
       let business = await Businesses.create(req.body.name, req.body.address, req.body.password);
-
       if (business) {
+        req.session.business = business;
         res.status(201).send({ business, message : "business createn"});
       } else {
         res.status(409).json({ error: "address taken" }).end();
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
         res.status(503).json({ error: "could not create business" }).end();
     }
   }
-});
+}); 
 
 /**
  * edit information about the business. 
@@ -47,12 +47,15 @@ router.post('/', async (req, res) => {
  */
 router.patch('/', async (req, res) => { 
   if (!signedIn(req, res, false)) return;
+
   if (req.body.name && req.body.name.length) { // changing name
    
     try {
       let changed = await Businesses.changeName(req.session.business.id, req.body.name);
-      if (changed) res.status(200).send(changed);
-      
+      if (changed) {
+        res.status(200).send(changed);
+        req.session.business = changed;
+      }
     } catch (error) {
       res.status(503).json({ error: "could not change name" }).end();
     }
@@ -61,9 +64,12 @@ router.patch('/', async (req, res) => {
 
     try {
       let changed = await Businesses.changePassword(req.session.business.id, req.body.password);
-      if (changed) res.status(200).send(changed);
-      else res.status(400).send({ error: 'invalid new password.' });
-
+      if (changed) {
+        res.status(200).send(changed);
+        req.session.business = changed;
+      } else {
+        res.status(400).send({ error: 'invalid new password.' });
+      }
     } catch (error) {
       res.status(503).json({ error: "could not change password" }).end();
     }
@@ -89,7 +95,10 @@ router.delete('/', async (req, res) => {
   try {
     let deleted = await Businesses.delete(req.session.business.id);
     console.log(deleted);
-    if (deleted) res.status(200).send(deleted);
+    if (deleted) {
+      req.session.business = null;
+      res.status(200).send(deleted);
+    }
     
   } catch (error) {
     res.status(503).json({ error: "could not delete business" }).end();
@@ -103,10 +112,12 @@ router.delete('/', async (req, res) => {
 router.get('/:id?', async (req, res) => {
   try{
     if (req.params.id) {
-      if (!isID(res,req.params.id)) return;
+      if (!isID(res,req.params.id)
+      || !(await dataExists(res, req.session.business.id, Businesses))) return;
+
       let business = await Businesses.get(req.params.id);
       if (business) {
-        res.status(200).send(user);
+        res.status(200).send(business);
       } else {
         res.status(404).send({error: "business does not exist"});
       }
@@ -115,7 +126,7 @@ router.get('/:id?', async (req, res) => {
     }
 
   } catch (error) {
-    res.status(503).json({ error: "could not get users" }).end();
+    res.status(503).json({ error: "could not get businesses" }).end();
   }
 });
 

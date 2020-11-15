@@ -41,15 +41,24 @@ main > * {
   margin: 1%;
 }
 
+#opHeader {
+  text-align: center;
+}
+
 section {
   display: flex;
   flex-direction: column;
+  /* width: 100%; */
 }
 
 section .scrollbox {
   flex: 1 0 50vh;
 }
-
+button {
+  margin-bottom : 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 form {
   border: var(--light-border);
   padding: 0.5rem;

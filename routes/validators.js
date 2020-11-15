@@ -1,6 +1,6 @@
-const Freets = require("../models/Freets");
 const Users = require("../models/Users");
 const Businesses = require("../models/Businesses");
+const Reviews = require("../models/Businesses");
 
 /**
  * takes request and response variables and returns whether user is signed in.
@@ -48,12 +48,12 @@ function isID(res, id) {
  */
 async function dataExists(res, identifier, Model) {
     if (!(await Model.exists(identifier)))  {
-        if (Model == Freets) 
-            res.status(404).send({ error : "freet does not exist" });
-        else if (Model == Users) 
+        if (Model == Users) 
             res.status(404).send({ error : "user does not exist" });
         else if (Model == Businesses) 
             res.status(404).send({ error : "business does not exist" });
+        else if (Model == Reviews) 
+            res.status(404).send({ error : "review does not exist" });
 
         return false;
     }

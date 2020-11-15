@@ -7,7 +7,8 @@ const { correctInput } = require('./validators');
 
 /**
  * @typedef SearchResult
- * @prop {Freet[]} freets - list of freets whose content match search 
+ * @prop {Reviews[]} reviews - list of freets whose content match search 
+ * @prop {Businesses[]} user - list of users whose username or bio match search 
  * @prop {User[]} user - list of users whose username or bio match search 
  */
 
