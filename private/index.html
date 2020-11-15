@@ -30,10 +30,10 @@
           <button onclick="updateOperations('user')">User</button>
           <button onclick="updateOperations('business')">Business</button>
           <button onclick="updateOperations('review')">Review</button>
-          <!-- <button onclick="">Badge/Tag</button> -->
+          <button onclick="updateOperations('badge')">Badge/Tag</button>
       </div>
 
-      <div id="user-operations" class="scrollbox">
+      <div id="user" class="scrollbox operations">
         <form id="view-all-users">
           <h3>View All Users</h3>
           <input type="submit" value="View All Users">
@@ -99,7 +99,7 @@
         </form>
       </div>
 
-      <div id="business-operations" class="scrollbox">
+      <div id="business" class="scrollbox operations">
         <form id="view-all-businesses">
           <h3>View All Businesses</h3>
           <input type="submit" value="View All Businesses">
@@ -164,7 +164,7 @@
         </form>
       </div>
 
-      <div id="review-operations" class="scrollbox">
+      <div id="review" class="scrollbox operations">
         <form id="view-all-reviews">
           <h3>View All Reviews</h3>
           <input type="submit" value="View All Reviews">
@@ -253,8 +253,9 @@
     </section>
   </main>
   <script>
-      $("#business-operations").hide();
-      $("#review-operations").hide();
+      $("#business").hide();
+      $("#review").hide();
+      $("#badge").hide();
   </script>
 </body>
 

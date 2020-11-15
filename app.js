@@ -14,7 +14,6 @@ const sessionRouter = require('./routes/session');
 const userRouter = require('./routes/users');
 const businessRouter = require('./routes/businesses');
 const reviewRouter = require('./routes/reviews');
-
 const searchRouter = require('./routes/search');
 
 const app = express();
@@ -42,8 +41,9 @@ app.use('/', indexRouter);
 app.use('/api/user', userRouter);
 app.use('/api/business', businessRouter);
 app.use('/api/review', reviewRouter);
+
 app.use('/api/session', sessionRouter);
-// app.use('/api/search', searchRouter);
+app.use('/api/search', searchRouter);
 
 // no page handler
 app.use('*', (req, res) => res.redirect('/'));

@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
       let user = await Users.authenticate(req.body.username, req.body.password);
       if (user)  {
         req.session.user = user;
-        res.status(200).send({ user, message : "signed in"});
+        res.status(200).send({ user, message : "signed in to personal account"});
       } else {
         res.status(401).send({ error: 'invalid username or password' });
       }
@@ -61,7 +61,7 @@ router.delete('/', async (req, res) => {
 
   try {
     req.session.user = null;
-    res.status(200).send({ message: `signed out` });
+    res.status(200).send({ message: `signed out of personal account` });
 
   } catch (error) {
     res.status(503).json({ error: "could not sign out" }).end();
@@ -105,8 +105,7 @@ router.post('/business', async (req, res) => {
  * @throws {401} - if business is not signed in 
  */
 router.delete('/business', async (req, res) => {
-  // if (!signedIn(req, res)) return;
-  
+  if (!signedIn(req, res, false)) return;
   try {
     req.session.business = null;
     res.status(200).send({ message: `signed out of business account` });

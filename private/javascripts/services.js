@@ -21,23 +21,23 @@ function showResponse(axiosResponse) {
 }
 
 function updateOperations(label) {
-  console.log("CALLED", label);
-  if (label == "business") {
+  if (label == "business") 
     $("#opHeader").text("Business Operations");
-    $("#business-operations").show();
-    $("#user-operations").hide();
-    $("#review-operations").hide();
-  } else if (label == "user") {
+  else if (label == "user")
     $("#opHeader").text("User Operations");
-    $("#business-operations").hide();
-    $("#user-operations").show();
-    $("#review-operations").hide();
-  } else if (label = "review") {
+  else if (label == "review")
     $("#opHeader").text("Review Operations");
-    $("#business-operations").hide();
-    $("#user-operations").hide();
-    $("#review-operations").show();  
-  }
+  else if (label == "badge")
+    $("#opHeader").text("Badge Operations");
+  
+
+  $('.operations').each(function( i, val ) {
+    if ($( this ).attr( "id" ) == label) {
+      $( this ).show()
+    } else {
+      $( this ).hide()
+    }
+  });
 }
 
 function signInChange(axiosResponse) {
