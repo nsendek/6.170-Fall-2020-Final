@@ -9,6 +9,9 @@ export const eventBus = new Vue();
 
 Vue.config.productionTip = false
 
+// global state
+Vue.prototype.$state = Vue.observable({});
+
 new Vue({
   router,
   render: h => h(App)
