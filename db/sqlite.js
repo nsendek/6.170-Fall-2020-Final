@@ -31,7 +31,7 @@ async function createBusinessTable() {
   db.close();
 }
 
-async function createReviewsTable() {
+async function createReviewTables() {
   let db = await getDB();
 
   await db.run(`CREATE TABLE IF NOT EXISTS reviews (
@@ -48,6 +48,15 @@ async function createReviewsTable() {
       FOREIGN KEY(businessId) REFERENCES businesses(id) ON DELETE CASCADE
       )`);
 
+  await db.run(`CREATE TABLE IF NOT EXISTS review_likes (
+    userId INTEGER NOT NULL,
+    reviewId INTEGER NOT NULL,
+
+    UNIQUE (userId, reviewId)
+    FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
+    FOREIGN KEY(reviewId) REFERENCES reviews(id) ON DELETE CASCADE
+    )`);
+
   db.close();
 }
 
@@ -55,16 +64,15 @@ async function createBadgeTables() {
   let db = await getDB();
 
   await db.run(`CREATE TABLE IF NOT EXISTS badge_templates (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
       label TEXT NOT NULL UNIQUE,
-      description TEXT NOT NULL
+      description TEXT NOT NULL,
+      CHECK(label <> '')
     )`);
 
   await db.run(`CREATE TABLE IF NOT EXISTS badges (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       type TEXT NOT NULL,
       businessId INTEGER NOT NULL,
-
       UNIQUE (type, businessId)
       FOREIGN KEY(type) REFERENCES badge_templates(label) ON DELETE CASCADE
       FOREIGN KEY(businessId) REFERENCES businesses(id) ON DELETE CASCADE
@@ -84,30 +92,6 @@ async function createBadgeTables() {
   db.close();
 }
 
-// TODO
-async function createLikesTable() {
-  let db = await getDB();
-  await db.run(`CREATE TABLE IF NOT EXISTS review_likes (
-      userId INTEGER NOT NULL,
-      reviewId INTEGER NOT NULL,
-
-      UNIQUE (userId, reviewId)
-      FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
-      FOREIGN KEY(reviewId) REFERENCES reviews(id) ON DELETE CASCADE
-      )`);
-
-  db.close();
-}
-
-// async function createReactsTable() {
-//   let db = await getDB();
-
-//   db.close();
-// }
-
-// async function createReportsTable() {
-// }
-
 /**
  * Returns a connection to the SQL database with "foreign_keys=on"
  */
@@ -118,17 +102,28 @@ async function getDB() {
     return db;
 }
 
+/**
+ * turn sqlite err into a returned object.
+ * @param {Error} err 
+ */
+function parseError(err) {
+  return {
+    message : err.message,
+    code : err.errno,
+    error : err.code
+  }
+}
+
 async function initDB() {
     await createUsersTable();
     await createBusinessTable();
-    createReviewsTable();
 
-
+    createReviewTables();
     createBadgeTables();
-    createLikesTable();
 }
 
 module.exports = {
   getDB,
-  initDB
+  initDB,
+  parseError
 }

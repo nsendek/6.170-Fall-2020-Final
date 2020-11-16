@@ -23,7 +23,13 @@ async function initDB() {
   // create tables if not exists
 }
 
-// initDB();
+/**
+ * turn pstgres err into a returned object.
+ * @param {Error} err 
+ */
+function parseError(err) {
+ // TODO
+}
 
 module.exports = {
   getDB,
