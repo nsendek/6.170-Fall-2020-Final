@@ -19,8 +19,11 @@ async function createBusinessTable() {
   await db.run(`CREATE TABLE IF NOT EXISTS businesses (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
+
       address TEXT NOT NULL,
+      accountName TEXT UNIQUE,
       password TEXT NOT NULL,
+      
       lat INTEGER,
       lon INTEGER
       )`);
@@ -48,44 +51,62 @@ async function createReviewsTable() {
   db.close();
 }
 
-async function createTagsTable() {
+async function createBadgeTables() {
   let db = await getDB();
 
-  await db.run(`CREATE TABLE IF NOT EXISTS tag_names (
+  await db.run(`CREATE TABLE IF NOT EXISTS badge_templates (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL UNIQUE
+      label TEXT NOT NULL UNIQUE,
+      description TEXT NOT NULL
     )`);
-  await db.run(`CREATE TABLE IF NOT EXISTS tags (
-      label TEXT NOT NULL,
-      businessId INTEGER NOT NULL,
 
-      PRIMARY KEY (label, businessId)
-      FOREIGN KEY(label) REFERENCES tag_names(name) ON DELETE CASCADE
-      FOREIGN KEY(businessId) REFERENCES businesses(id) ON DELETE CASCADE
-      )`);
-
-  db.close();
-}
-
-async function createBadgesTable() {
-  let db = await getDB();
-
-  await db.run(`CREATE TABLE IF NOT EXISTS badge_names (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL UNIQUE
-    )`);
   await db.run(`CREATE TABLE IF NOT EXISTS badges (
-      label TEXT NOT NULL,
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      type TEXT NOT NULL,
       businessId INTEGER NOT NULL,
 
-      PRIMARY KEY (label, businessId)
-      FOREIGN KEY(label) REFERENCES badge_names(name) ON DELETE CASCADE
+      UNIQUE (type, businessId)
+      FOREIGN KEY(type) REFERENCES badge_templates(label) ON DELETE CASCADE
       FOREIGN KEY(businessId) REFERENCES businesses(id) ON DELETE CASCADE
+    )`);
+
+  await db.run(`CREATE TABLE IF NOT EXISTS badge_reacts (
+      userId INTEGER NOT NULL,
+      badgeId INTEGER NOT NULL,
+      value INTEGER,
+
+      UNIQUE (userId, badgeId)
+      CHECK (value=1 OR value=-1)
+      FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
+      FOREIGN KEY(badgeId) REFERENCES badges(id) ON DELETE CASCADE
+    )`);
+
+  db.close();
+}
+
+// TODO
+async function createLikesTable() {
+  let db = await getDB();
+  await db.run(`CREATE TABLE IF NOT EXISTS review_likes (
+      userId INTEGER NOT NULL,
+      reviewId INTEGER NOT NULL,
+
+      UNIQUE (userId, reviewId)
+      FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
+      FOREIGN KEY(reviewId) REFERENCES reviews(id) ON DELETE CASCADE
       )`);
 
   db.close();
 }
 
+// async function createReactsTable() {
+//   let db = await getDB();
+
+//   db.close();
+// }
+
+// async function createReportsTable() {
+// }
 
 /**
  * Returns a connection to the SQL database with "foreign_keys=on"
@@ -101,7 +122,10 @@ async function initDB() {
     await createUsersTable();
     await createBusinessTable();
     createReviewsTable();
-    createBadgesTable();
+
+
+    createBadgeTables();
+    createLikesTable();
 }
 
 module.exports = {
