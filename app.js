@@ -27,8 +27,9 @@ app.use(session({
 // allows us to make requests from POSTMAN
 if (!isProduction) app.use(cors());
 if (!isProduction) app.use(logger('dev'));
+
 // adding this so vue router can correctly go to /404 not found
-app.use(history());
+// app.use(history()); // prevents /debug for some reason
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,7 +37,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, isProduction ? 'dist' : 'private')));
 
 app.use('/', indexRouter);
-// app.use('/api/freets', freetRouter);
 
 app.use('/api/user', userRouter);
 app.use('/api/business', businessRouter);
@@ -44,6 +44,9 @@ app.use('/api/review', reviewRouter);
 
 app.use('/api/session', sessionRouter);
 app.use('/api/search', searchRouter);
+
+// debugging only
+app.use('/debug', require('./routes/debug'));
 
 // no page handler
 app.use('*', (req, res) => res.redirect('/'));
