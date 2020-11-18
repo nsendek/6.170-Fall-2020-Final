@@ -48,7 +48,7 @@ class Businesses {
    */
   static async getAll() {
     let db = await database.getDB();
-    let business = await db.all(`SELECT id,name FROM businesses ORDER BY id DESC`);    
+    let business = await db.all(`SELECT id,name,address FROM businesses ORDER BY id DESC`);    
     db.close();
     return business;
   }

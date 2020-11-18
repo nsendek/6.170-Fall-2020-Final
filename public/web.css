@@ -1,0 +1,16 @@
+.business-pane {
+    display: flex;
+    border: 2px solid black;
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+
+
+.business-container {
+    display: flex;
+    border: 2px solid black;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    justify-content: right;
+    flex-direction: column;
+  }

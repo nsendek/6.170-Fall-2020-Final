@@ -20,8 +20,11 @@ router.get('/:businessId', async (req, res) => {
         return;
     }
     let badges = await Badges.getBusinessBadges(req.params.businessId);
-    console.log("badges:", badges);
-    res.status(200).send(badges);
+    if (badges) {
+        let labels = []
+        badges.forEach((badgeObject)=> labels.push(badgeObject.label));
+        res.status(200).send(labels);
+    }
 
 });
 
