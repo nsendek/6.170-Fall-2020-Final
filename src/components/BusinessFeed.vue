@@ -10,7 +10,18 @@
         {{ error }}
     </div>
 
-    Filter By: {{allBadges}}
+    <div class= "filter-bar">
+        Filter By: 
+       <div v-for='(badge,index) in allBadges' v-bind:key="badge.id">
+            <input type="checkbox" v-bind:id="index" value="badge" v-on:click="toggleCheck(index)" >
+            <label for="badge"> {{badge.name}} </label>
+       </div>
+
+        <button v-on:click= "filterBusinessesByBadge" type="button" onclick>Apply Filters</button>
+        <button v-on:click= "loadBusinesses" type="button" onclick>Reset Filters</button>
+
+    </div>
+
 
     <div v-if='businesses.length'>
         <BusinessFeedItem
@@ -48,17 +59,61 @@ export default {
 
 
     methods: {
+        // Loads all businesses
         loadBusinesses: function() {
             axios.get("/api/business")
             .then((res) => {
                 this.businesses = res.data ? res.data : [];
             })
         },
+        // Loads all badge types
         loadBadges: function() {
             axios.get("/api/badge")
             .then((res) => {
+                // res = list of {id: , name: } badge objects
                 this.allBadges = res.data ? res.data : [];
+                this.allBadges.forEach((badgeObject) => badgeObject.checked = false)
+
             })
+        },
+
+        // Filters businesses by one or more badges
+        filterBusinessesByBadge: function() {
+            let badgeFilters = this.allBadges.filter((badgeObject) => badgeObject.checked)
+                                            .map((badgeObject) => badgeObject.name);
+            console.log("badge filters:", badgeFilters);
+            if (badgeFilters.length === 0) {
+                this.error = "Please choose one or more badges to filter by";
+                this.resetErrorMessage();
+            } else {
+                // apply each filter to business list
+                badgeFilters.forEach((filterLabel) => {
+                    axios.get(`api/badge/filter/${filterLabel}`)
+                    .then((res) => {
+                        this.businesses = res.data ? res.data : []
+                    })
+                    .catch((err) => {
+                        this.error = err;
+                        this.resetErrorMessage();
+                    })
+                })
+            }
+
+        },
+
+        toggleCheck: function(itemId) {
+          if (this.allBadges[itemId].checked) {
+            this.allBadges[itemId].checked = false;
+          } else {
+            this.allBadges[itemId].checked = true;
+
+          }
+        },
+
+        resetErrorMessage: function() {
+            setInterval(() => {
+                this.error = "";
+            }, 3000)
         }
 
 
