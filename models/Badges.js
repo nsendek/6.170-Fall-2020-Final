@@ -21,7 +21,9 @@ const Businesses = require('./Businesses');
      */
     static async getAllBadges() {
         let db = await database.getDB()
-        return;
+        let res = await db.all('SELECT name FROM badge_names');
+        db.close();
+        return res;
     }
 
     /** 
@@ -30,10 +32,8 @@ const Businesses = require('./Businesses');
      */
     static async getBusinessBadges(businessId) {
         let db = await database.getDB();
+        console.log(`SELECT label FROM badges WHERE businessId = ${businessId}`)
         let res = await db.all(`SELECT label FROM badges WHERE businessId = ${businessId}`);
-        console.log("res:", res);
-        // let res =  await db.get(`SELECT id, name, address FROM businesses WHERE id= ?`,[businessId])
-        // let res =  await await db.get(`SELECT * FROM users`);
         db.close()
         return res;
 

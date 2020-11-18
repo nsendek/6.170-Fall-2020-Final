@@ -9,21 +9,29 @@ const { signedIn, correctInput , isID , dataExists } = require('./validators');
 
 /**
  * Get all badges associated with a business
- * @name GET/api/badge/:businessId
+ * @name GET/api/badge/businessId
  * @param businessID - the id of the business being queried
  * 
  * @throws {200} - If business does exist and badges retrieved successfully
  * @throws {404} - if business does not exist
  */
-router.get('/:businessId', async (req, res) => {
-    if (!(dataExists(res, req.params.businessId, Businesses))) {
-        return;
-    }
-    let badges = await Badges.getBusinessBadges(req.params.businessId);
-    if (badges) {
-        let labels = []
-        badges.forEach((badgeObject)=> labels.push(badgeObject.label));
-        res.status(200).send(labels);
+router.get('/:businessId?', async (req, res) => {
+    if (req.params.businessId) {
+        if (!(dataExists(res, req.params.businessId, Businesses))) {
+            return;
+        }
+        let badges = await Badges.getBusinessBadges(req.params.businessId);
+        if (badges) {
+            let labels = []
+            badges.forEach((badgeObject)=> labels.push(badgeObject.label));
+            res.status(200).send(labels);
+        }
+    } else {
+        let badges = await Badges.getAllBadges();
+        if (badges) {
+            let labels = []
+            badges.forEach((badgeObject)=> labels.push(badgeObject.name));
+            res.status(200).send(labels);        }
     }
 
 });

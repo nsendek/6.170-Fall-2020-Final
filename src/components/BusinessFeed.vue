@@ -1,6 +1,6 @@
 <template>
 
-<div class="business-pane">
+<div>
     <h1>Businesses</h1>
     <div v-if='success' class="success-message">
         {{ success }}
@@ -9,6 +9,8 @@
     <div v-if='error' class="error-message">
         {{ error }}
     </div>
+
+    Filter By: {{allBadges}}
 
     <div v-if='businesses.length'>
         <BusinessFeedItem
@@ -33,12 +35,15 @@ export default {
         return {
             error:"",
             success:"",
-            businesses: []
+            businesses: [],
+            allBadges: [],
         }
+
     },
 
     mounted: function() {
         this.loadBusinesses();
+        this.loadBadges();
     },
 
 
@@ -46,7 +51,13 @@ export default {
         loadBusinesses: function() {
             axios.get("/api/business")
             .then((res) => {
-                this.businesses = res.data ? res.data : []
+                this.businesses = res.data ? res.data : [];
+            })
+        },
+        loadBadges: function() {
+            axios.get("/api/badge")
+            .then((res) => {
+                this.allBadges = res.data ? res.data : [];
             })
         }
 
