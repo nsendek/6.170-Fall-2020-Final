@@ -2,9 +2,9 @@ const database = require('../db');
 
 /**
  * @typedef Business
- * @prop {number} id - the generated id for the freet
- * @prop {string} name - some string of character shorter than 140
- * @prop {string} address - some string of character shorter than 140
+ * @prop {number} id - the generated id for the business
+ * @prop {string} name - the name of the business
+ * @prop {string} address - the address of the business
  */
 
 
@@ -140,7 +140,6 @@ class Businesses {
     db.close();
     return out;
   }
-
 }
 
 module.exports = Businesses;
