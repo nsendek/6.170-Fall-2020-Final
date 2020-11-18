@@ -1,18 +1,27 @@
 
 .full-container{
     display: flex;
-    justify-content: left;
+    justify-content: center;
   }
   
-.business-pane {
+.panes {
     display: flex;
-    border: 2px solid black;
     margin: 0.5rem;
     padding: 0.5rem;
     flex-direction: row;
-    justify-content: left;
-
+    justify-content: space-around;
   }
+
+.business-pane {
+  display: flex;
+  border: 2px solid black;
+}
+
+.map-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+}
 
 
 .business-container {
@@ -20,7 +29,7 @@
     border: 2px solid black;
     margin: 0.5rem;
     padding: 0.5rem;
-    justify-content: right;
+    align-items: center;
     flex-direction: column;
     flex-basis: auto;
   }
