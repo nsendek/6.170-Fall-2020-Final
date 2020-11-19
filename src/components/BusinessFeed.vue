@@ -81,7 +81,6 @@ export default {
         filterBusinessesByBadge: function() {
             let badgeFilters = this.allBadges.filter((badgeObject) => badgeObject.checked)
                                             .map((badgeObject) => badgeObject.name);
-            console.log("badge filters:", badgeFilters);
             if (badgeFilters.length === 0) {
                 this.error = "Please choose one or more badges to filter by";
                 this.resetErrorMessage();
@@ -90,7 +89,16 @@ export default {
                 badgeFilters.forEach((filterLabel) => {
                     axios.get(`api/badge/filter/${filterLabel}`)
                     .then((res) => {
-                        this.businesses = res.data ? res.data : []
+                        // need to apply filter to what is CURRENTLY in this.businesses
+                        // The route produces the filtered results on ALL businesses, 
+                        // and is unable to account for an already filtered business list
+                        let allResults = res.data.filter((result) => {
+                            return this.businesses
+                            .map((businessObject) => businessObject.id)
+                            .includes(result.id)
+                            });
+                        this.businesses = allResults ? allResults : [];
+
                     })
                     .catch((err) => {
                         this.error = err;

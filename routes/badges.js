@@ -13,7 +13,6 @@ const { signedIn, correctInput , isID , dataExists } = require('./validators');
  * @throws {404} - if business does not exist
  */
 router.get('/:businessId?', async (req, res) => {
-    console.log("coming in here!!!!!", req.params.businessId);
     try{
         if (req.params.businessId) {
             if (!(dataExists(res, req.params.businessId, Businesses))) {
@@ -45,8 +44,7 @@ router.get('/:businessId?', async (req, res) => {
  * @throws {404} - if the badge does not exist
  */
 router.get('/filter/:badgeName', async (req, res) => {
-    console.log("BADGE NAME:", req.params.badgeName);
-    // try{
+    try{
         if (req.params.badgeName) {
             let businessesWithBadge = await Badges.filterBusinessByBadge(req.params.badgeName)
             .catch((err) => {
@@ -56,10 +54,10 @@ router.get('/filter/:badgeName', async (req, res) => {
                 res.status(200).send(businessesWithBadge);
             }
         }  
-    // }
-    // catch (error) {
-    //     res.status(503).json({ error: "could not fetch businesses with this badge"}).end();    
-    // }
+    }
+    catch (error) {
+        res.status(503).json({ error: "could not fetch businesses with this badge"}).end();    
+    }
 });
 
 

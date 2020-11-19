@@ -44,17 +44,14 @@ const Businesses = require('./Businesses');
     */
     static async filterBusinessByBadge(badgeLabel) {
         let db = await database.getDB();
-        // console.log("SQL2:", `SELECT id,name,address FROM businesses WHERE id IN ${businessIds}`);
         let businessesWithBadge = await db.all(`SELECT businessId FROM badges WHERE label = '${badgeLabel}'`)
                                 .then((businessIds) => {
-                                    console.log("Businesses w/ tag!" , businessIds);
                                     let idList = businessIds.map((businessObject) => businessObject.businessId);
                                     return db.all(`SELECT id,name,address FROM businesses WHERE id IN (${idList.join(",")})`);
                                 })
                                 .catch((err) => {
                                     console.log(err);
                                 })
-        console.log("B:", businessesWithBadge);
         db.close();
         return (businessesWithBadge === undefined) ? [] : businessesWithBadge;
     }
