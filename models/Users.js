@@ -1,4 +1,4 @@
-const database = require('../db');
+const SQL = require('../db');
 
 /**
  * @typedef User
@@ -8,155 +8,145 @@ const database = require('../db');
  */
 
 /**
- * @typedef Network
- * @prop {User[]} followers - list of followers
- * @prop {User[]} following - list of following
- */
-
-/**
  * @class Users
  * Stores all Users in SQL database
  * users table (id, username, password)
  */
 class Users {
-    /**
-     * Confirm that the (username, password) pair given exists in the database.
-     * @param {string} username
-     * @param {string} password 
-     * @return {User | null} - the authenticated User (minus the password)
-     */    
-    static async authenticate ( username, password ) {
-        let db = await database.getDB();
-        let user = await db.get(`
-            SELECT username, id 
-            FROM users 
-            WHERE username = ? AND password = ?`, [username, password]);
-        return (user) ? user : null;
-    }
 
-    /**
-     * @param {String | Number} identifier - username or password
-     */
-    static async exists(identifier) {
-        let db = await database.getDB();
-        let user = await db.get(`
-          SELECT * FROM users WHERE id = ? OR username = ?`, 
-          [identifier, identifier]);
-        return (user) ? true : false;
-    }
+  static toString() {return "user";}
 
-    /**
-     * Return an array of all of the Users.
-     * @return {User[]}
-     */
-    static async getAll() {
-        let db = await database.getDB();
-        let users = await db.all(`SELECT username, id, timestamp FROM users ORDER BY id DESC`);    
-        db.close();
-        return users;
-    }
+  /**
+   * Confirm that the (username, password) pair given exists in the database.
+   * @param {string} username
+   * @param {string} password 
+   * @return {User | undefined} - the authenticated User (minus the password)
+   */    
+  static async authenticate ( username, password ) {
+      let db = await SQL.getDB();
+      let user = await db.get(`
+          SELECT username, id 
+          FROM users 
+          WHERE username = $1 AND password = $2`, [username, password]);
+      db.close();
+      return user;
+  }
 
-    /**
-     * return a specific User
-     * @return {User}
-     */
-    static async get(id) {
-        let db = await database.getDB();
-        return await db.get(`SELECT username, id, timestamp FROM users WHERE id = ?`,[id]);
-    }
+  /**
+   * @param {number} id - id of user
+   */
+  static async exists(id) {
+      return (Boolean(await Users.get(id)));
+  }
 
-    /**
-     * Add a user.
-     * @param {string} username - username
-     * @param {string} password - passowrd
-     * @return {User | null} - new User (minus the password)
-     */
-    static async create( username,  password) {
-        let db = await database.getDB();
-        let res = await db.run(`
-            INSERT INTO users (username, password, timestamp) 
-            VALUES (?, ?, strftime("%s", "now"))`
-            ,[ username, password])
-          .catch(err => {});
+  /**
+   * Return an array of all of the Users.
+   * @return {User[]}
+   */
+  static async getAll() {
+      let db = await SQL.getDB();
+      let users = await db.all(`SELECT username, id, timestamp FROM users ORDER BY id DESC`);    
+      db.close();
+      return users;
+  }
 
-        let newUser = Boolean(res && res.changes) 
-            ? await db.get(`SELECT username, id FROM users WHERE username = ?`, [username]) 
-            : null;
-        // close db connection once done
-        db.close();
-        return newUser;
-    }
+  /**
+   * return a specific User
+   * @return {User | undefined}
+   */
+  static async get(id) {
+      let db = await SQL.getDB();
+      let user = await db.get(`SELECT username, id, timestamp FROM users WHERE id = $1`,[id]);
+      db.close();
+      return user;
+  }
 
-    /**
-     * Removes an existing user.
-     * @param {number} id - user ID
-     * @return {User | null} - deleted User if user deleted else null
-     */
-    static async delete( id ) {
-        let db = await database.getDB();
-        let user = await Users.get(id);
+  /**
+   * Add a user.
+   * @param {string} username - username
+   * @param {string} password - passowrd
+   * @return {User | undefined} - new User (minus the password)
+   */
+  static async create( username,  password) {
+      let db = await SQL.getDB();
+      let res = await db.run(`
+          INSERT INTO users (username, password, timestamp) 
+          VALUES ($1, $2, ${SQL.UNIX()})`
+          ,[username, password])
+        .catch(SQL.parseError);
 
-        let res = await db.run('DELETE FROM users WHERE id = ?', [id]);
-    
-        db.close();
-        return Boolean(res.changes) ? user : null; 
-    }
+      db.close();
+      if (res.error) return undefined; 
+      else return Users.get(res.lastID);
+  }
 
-    /**
-     * change username
-     * @param {string} oldName - old username
-     * @param {string} newName - new username
-     * @return {User | null} the altered User (minus password)
-     */
-    static async changeName(id, newName) {
-        let out = null;
-        let db = await database.getDB();
-        let user = await Users.get(id);
+  /**
+   * Removes an existing user.
+   * @param {number} id - user ID
+   * @return {User | undefined} - deleted User if user deleted else undefined
+   */
+  static async delete( id ) {
+      let db = await SQL.getDB();
+      let user = await Users.get(id); // get before deleting
+      let res = await db.run('DELETE FROM users WHERE id = $1', [id]);
+      db.close();
+      return Boolean(res.changes) ? user : undefined;
+  }
 
-        if (user) {
-            let otherUser = await db.get(`SELECT id, username FROM users WHERE username = ?`, [newName]);
-            if (otherUser) out = null;
-            else {
-                let res = await db.run(`UPDATE users SET username = ? WHERE id = ?`, [newName, id]); 
-                out =  Boolean(res.changes) ? user : null;
-                if (out) out.username = newName;
-            }
-        }
-        db.close();
-        return out;
-    }
+  /**
+   * change username
+   * @param {string} oldName - old username
+   * @param {string} newName - new username
+   * @return {User | undefined} the altered User (minus password)
+   */
+  static async changeName(id, newName) {
+      let db = await SQL.getDB();
 
-    /**
-     * change password
-     * @param {string} id - id of user
-     * @param {string} newPassword - new password
-     * @return {User | null} the altered User (minus password)
-     */
-    static async changePassword(id, newPassword) {
-        let out = null;
-        let db = await database.getDB();
-        let user = await Users.get(id);
-        if (user) {
-            let res = await db.run(`UPDATE users SET password = ? WHERE id = ?`, [newPassword, id]); 
-            out = Boolean(res.changes) ? user : null;
-        }
-        db.close();
-        return out;
-    }
+      let res = await db.run(`
+        UPDATE users 
+        SET username = $1 
+        WHERE id = $2`, 
+        [newName, id])
+        .catch(SQL.parseError); 
 
-    /**
-     * searches User database by username
-     * @param {string} query - search query
-     * @return {User[]} all users whose username matches query.
-     */
-    static async search(query) {
-      let db = await database.getDB();
-      return await db.all(`
-        SELECT username, id, timestamp
-        FROM users 
-        WHERE username LIKE '%${query}%'
-        ORDER BY id DESC`);
-    }
+      db.close();
+
+      if (res.error) return undefined;
+      else return Users.get(id);
+  }
+
+  /**
+   * change password
+   * @param {string} id - id of user
+   * @param {string} newPassword - new password
+   * @return {User | undefined} the altered User (minus password)
+   */
+  static async changePassword(id, newPassword) {
+      let db = await SQL.getDB();
+
+      let res = await db.run(`
+          UPDATE users SET password = $1 WHERE id = $2`, 
+          [newPassword, id]); 
+
+      db.close();
+
+      if (res.error) return undefined;
+      else return Users.get(id);
+  }
+
+  /**
+   * searches User database by username
+   * @param {string} query - search query
+   * @return {User[]} all users whose username matches query.
+   */
+  static async search(query) {
+    let db = await SQL.getDB();
+    return await db.all(`
+      SELECT username, id, timestamp
+      FROM users 
+      WHERE username LIKE '%${query}%'
+      ORDER BY id DESC`);
+  }
 }
 
 module.exports = Users;

@@ -1,4 +1,4 @@
-const database = require('../db');
+const SQL = require('../db');
 
 /**
  * @typedef Business
@@ -15,31 +15,32 @@ const database = require('../db');
  */
 
 class Businesses {
+
+  static toString() {return "business";}
+
   /**
    * Confirm that the (is, password) pair given exists in the database.
    * @param {Number} id
    * @param {string} password 
-   * @return {Business | null} - the authenticated Business (minus the password)
+   * @return {Business | undefined} - the authenticated Business (minus the password)
    */    
   static async authenticate ( id, password ) {
-    let db = await database.getDB();
+    let db = await SQL.getDB();
     let business = await db.get(`
         SELECT id, name 
         FROM businesses 
-        WHERE id = ? AND password = ?`, [id, password]);
-    return (business) ? business : null;
+        WHERE id = $1 AND password = $2`, [id, password]);
+    db.close();
+    return business;
   }
 
   /**
    * Confirm that business exists in the database.
-   * @param {Number} id 
+   * @param {number} id 
+   * @returns {boolean} whether the business exists or not
    */
   static async exists(id) {
-    let db = await database.getDB();
-    let business = await db.get(`
-      SELECT * FROM businesses WHERE id = ?`, 
-      [id]);
-    return (business) ? true : false;
+    return Boolean(await Businesses.get(id));
   }
 
   /**
@@ -47,7 +48,7 @@ class Businesses {
    * @return {Business[]}
    */
   static async getAll() {
-    let db = await database.getDB();
+    let db = await SQL.getDB();
     let business = await db.all(`SELECT id,name FROM businesses ORDER BY id DESC`);    
     db.close();
     return business;
@@ -55,11 +56,13 @@ class Businesses {
 
   /**
    * return a specific Business
-   * @return {Business}
+   * @return {Business | undefined}
    */
   static async get(id) {
-    let db = await database.getDB();
-    return await db.get(`SELECT id, name, address FROM businesses WHERE id = ?`,[id]);
+    let db = await SQL.getDB();
+    let out = await db.get(`SELECT id, name, address FROM businesses WHERE id = $1`,[id]);
+    db.close();
+    return out;
   }
 
   /**
@@ -67,25 +70,19 @@ class Businesses {
    * @param {string} name 
    * @param {string} address
    * @param {string} password 
-   * @return {Business | null} - new Business (minus the password)
+   * @return {Business | undefined} - new Business (minus the password)
    */
   static async create(name, address,  password) {
-    let db = await database.getDB();
+    let db = await SQL.getDB();
     let res = await db.run(`
         INSERT INTO businesses (name, address, password) 
-        VALUES (?, ?, ?)`
+        VALUES ($1, $2, $3)`
         ,[name, address,  password])
-      .catch(err => {});
-
-    console.log("RES",res);
-
-    let newBusiness = Boolean(res && res.changes) 
-        ? await Businesses.get(res.lastID)
-        : null;
-
-    // close db connection once done
+      .catch(SQL.parseError);
     db.close();
-    return newBusiness;
+
+    if (res.error) return undefined;
+    else return Businesses.get(res.lastID)
   }
 
   /**
@@ -94,10 +91,10 @@ class Businesses {
    * @return {Business | null} - deleted Business if business deleted else null
    */
   static async delete( id ) {
-    let db = await database.getDB();
+    let db = await SQL.getDB();
     let business = await Businesses.get(id);
     
-    let res = await db.run('DELETE FROM businesses WHERE id = ?', [id]);
+    let res = await db.run('DELETE FROM businesses WHERE id = $1', [id]);
 
     db.close();
     return Boolean(res.changes) ? business : null; 
@@ -111,11 +108,11 @@ class Businesses {
    */
   static async changeName(id, newName) {
     let out = null;
-    let db = await database.getDB();
+    let db = await SQL.getDB();
     let business = await Businesses.get(id);
 
     if (business) {
-        let res = await db.run(`UPDATE businesses SET name = ? WHERE id = ?`, [newName, id]); 
+        let res = await db.run(`UPDATE businesses SET name = $1 WHERE id = $2`, [newName, id]); 
         out =  Boolean(res.changes) ? business : null;
         if (out) out.name = newName;
     }
@@ -131,10 +128,10 @@ class Businesses {
    */
   static async changePassword(id, newPassword) {
     let out = null;
-    let db = await database.getDB();
+    let db = await SQL.getDB();
     let business = await Businesses.get(id);
     if (business) {
-        let res = await db.run(`UPDATE businesses SET password = ? WHERE id = ?`, [newPassword, id]); 
+        let res = await db.run(`UPDATE businesses SET password = $1 WHERE id = $2`, [newPassword, id]); 
         out = Boolean(res.changes) ? business : null;
     }
     db.close();
