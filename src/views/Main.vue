@@ -8,7 +8,7 @@
         <BusinessFeed/>
       </div>
       <div class="map-pane">
-      Map goes here.
+      <GoogleMapLoader></GoogleMapLoader>
       </div>
     </div>
 
@@ -17,11 +17,12 @@
 
 <script>
 import BusinessFeed from "../components/BusinessFeed"
-
+import GoogleMapLoader from "../components/GoogleMapLoader"
 export default {
   name: "main",
   components: {
-    BusinessFeed
+    BusinessFeed,
+    GoogleMapLoader
   }
 };
 </script>
