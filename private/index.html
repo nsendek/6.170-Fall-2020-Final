@@ -12,6 +12,7 @@
   <script src="/javascripts/handlers/userHandlers.js"></script>
   <script src="/javascripts/handlers/reviewHandlers.js"></script>
   <script src="/javascripts/handlers/sessionHandlers.js"></script> 
+  <script src="/javascripts/handlers/badgeHandlers.js"></script> 
 
   <script src="/javascripts/services.js"></script>
   
@@ -245,11 +246,64 @@
       </div>
 
       <div id="badge" class="scrollbox operations"> 
-        <div> 
-          NOTHING RN
-        </div>
+        <form id="get-templates">
+          <h3>Get Badge Templates</h3>
+          <input type="submit" value="Get Templates">
+        </form>
+
+        <form id="get-businesses-badge">
+          <h3>Get Businesses by Badge Template</h3>
+          <div>
+            <label for="template">Badge Template:</label>
+            <input name="template">
+          </div>
+          <input type="submit" value="Get Businesses">
+        </form>
+
+        <form id="get-badges-business">
+          <h3>Get Badges of Business</h3>
+          <div>
+            <label for="id">Business ID:</label>
+            <input name="id">
+          </div>
+          <input type="submit" value="Get Badges">
+        </form>
+
+        <form id="add-badge">
+          <h3>Add Badge (must be signed in as Business)</h3>
+          <div>
+            <label for="template">Badge Template:</label>
+            <input name="template">
+          </div>
+          <input type="submit" value="Add">
+        </form>
+
+        <form id="remove-badge">
+          <h3>Remove Badge (must be signed in as Business)</h3>
+          <div>
+            <label for="template">Badge Template:</label>
+            <input name="template">
+          </div>
+          <input type="submit" value="Remove">
+        </form>
+
+        <form id="react-badge">
+          <h3>Affirm/Deny Badge (must be signed in as User)</h3>
+          <div>
+            <label for="id">Badge ID:</label>
+            <input name="id">
+          </div>
+          <radio-group>
+            <input type = "radio" name="type" value="affirm">
+            <label for="affirm">Affirm</label>
+            <input type = "radio" name="type" value="deny">
+            <label for="deny">Deny</label>
+          </radio-group>
+
+          <input type="submit" value="Submit">
+        </form>
+
       </div>
-      
     </section>
     <section> 
       <h2>Response:</h2>

@@ -3,8 +3,8 @@
  */
 function signIn(fields) {
   axios.post('/api/session', fields)
-    .then(signInChange) 
-    .catch(showResponse);
+  .then(showResponse)
+  .catch(showResponse); 
 }
 
 /**
@@ -12,8 +12,8 @@ function signIn(fields) {
  */
 function signOut(fields) {
   axios.delete('/api/session', fields)
-    .then(signOutChange) 
-    .catch(showResponse); 
+  .then(showResponse)
+  .catch(showResponse); 
 }
 
 /**
@@ -21,8 +21,8 @@ function signOut(fields) {
  */
 function getSession() {
   axios.get('/api/session')
-    .then(signOutChange) 
-    .catch(showResponse); 
+  .then(showResponse)
+  .catch(showResponse);  
 }
 
 /**
@@ -30,8 +30,8 @@ function getSession() {
  */
 function signInBusiness(fields) {
   axios.post('/api/session/business', fields)
-    .then(signInChange) 
-    .catch(showResponse);
+  .then(showResponse)
+  .catch(showResponse); 
 }
 
 /**
@@ -39,8 +39,8 @@ function signInBusiness(fields) {
  */
 function signOutBusiness(fields) {
   axios.delete('/api/session/business', fields)
-    .then(signInChange) 
-    .catch(showResponse);
+  .then(showResponse)
+  .catch(showResponse); 
 }
 
 

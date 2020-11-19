@@ -26,7 +26,7 @@ function deleteBusiness(fields) {
 }
 
 /**
- * calls @name PATCH/api/business with @param username
+ * calls @name PATCH/api/business/name with @param name
  */
 function changeBusinessName(fields) { 
   axios.patch(`/api/business`, fields)
@@ -35,7 +35,16 @@ function changeBusinessName(fields) {
 }
 
 /**
- * calls @name PATCH/api/business rwith @param password
+ * calls @name PATCH/api/business/account with @param accountName
+ */
+function changeBusinessAccountName(fields) { 
+  axios.patch(`/api/business`, fields)
+    .then(showResponse) 
+    .catch(showResponse);
+}
+
+/**
+ * calls @name PATCH/api/business/password rwith @param password
  */
 function changeBusinessPassword(fields) {
   axios.patch(`/api/business`, fields)
@@ -49,4 +58,5 @@ const businessHandlers = {
   'delete-business': deleteBusiness,
   'change-business-name': changeBusinessName,
   'change-business-password': changeBusinessPassword,
+  'change-business-account': changeBusinessAccountName,
 }

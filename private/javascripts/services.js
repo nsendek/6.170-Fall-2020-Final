@@ -40,38 +40,12 @@ function updateOperations(label) {
   });
 }
 
-function signInChange(axiosResponse) {
-  const fullResponse = axiosResponse.response === undefined
-    ? axiosResponse
-    : axiosResponse.response;
-  const abridgedResponse = {
-    data: fullResponse.data,
-    status: fullResponse.status,
-    statusText: fullResponse.statusText,
-  };
-  showObject(abridgedResponse);
-}
-
-function signOutChange(axiosResponse) {
-  const fullResponse = axiosResponse.response === undefined
-    ? axiosResponse
-    : axiosResponse.response;
-
-  const abridgedResponse = {
-    data: fullResponse.data,
-    status: fullResponse.status,
-    statusText: fullResponse.statusText,
-  };
-  showObject(abridgedResponse);
-}
-
-
-
 const formsAndHandlers = {
   ...businessHandlers,
   ...userHandlers,
   ...sessionHandlers,
-  ...reviewHandlers
+  ...reviewHandlers,
+  ...badgeHandlers
 }
 
 // attach handlers to forms
