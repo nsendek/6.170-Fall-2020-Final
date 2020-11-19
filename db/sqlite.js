@@ -44,8 +44,8 @@ async function createReviewTables() {
 
       CHECK (rating>0 AND rating<6)
       UNIQUE (userId, businessId)
-      FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
-      FOREIGN KEY(businessId) REFERENCES businesses(id) ON DELETE CASCADE
+      CONSTRAINT user_check FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
+      CONSTRAINT business_check FOREIGN KEY(businessId) REFERENCES businesses(id) ON DELETE CASCADE
       )`);
 
   await db.run(`CREATE TABLE IF NOT EXISTS review_likes (
@@ -53,8 +53,8 @@ async function createReviewTables() {
     reviewId INTEGER NOT NULL,
 
     UNIQUE (userId, reviewId)
-    FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
-    FOREIGN KEY(reviewId) REFERENCES reviews(id) ON DELETE CASCADE
+    CONSTRAINT user_check FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
+    CONSTRAINT review_check FOREIGN KEY(reviewId) REFERENCES reviews(id) ON DELETE CASCADE
     )`);
 
   db.close();
@@ -71,11 +71,11 @@ async function createBadgeTables() {
 
   await db.run(`CREATE TABLE IF NOT EXISTS badges (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      type TEXT NOT NULL,
+      label TEXT NOT NULL,
       businessId INTEGER NOT NULL,
-      UNIQUE (type, businessId)
-      FOREIGN KEY(type) REFERENCES badge_templates(label) ON DELETE CASCADE
-      FOREIGN KEY(businessId) REFERENCES businesses(id) ON DELETE CASCADE
+      UNIQUE (label, businessId)
+      CONSTRAINT template_check FOREIGN KEY(label) REFERENCES badge_templates(label) ON DELETE CASCADE
+      CONSTRAINT business_check FOREIGN KEY(businessId) REFERENCES businesses(id) ON DELETE CASCADE
     )`);
 
   await db.run(`CREATE TABLE IF NOT EXISTS badge_reacts (
@@ -85,8 +85,8 @@ async function createBadgeTables() {
 
       UNIQUE (userId, badgeId)
       CHECK (value=1 OR value=-1)
-      FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
-      FOREIGN KEY(badgeId) REFERENCES badges(id) ON DELETE CASCADE
+      CONSTRAINT user_check FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
+      CONSTRAINT badge_check FOREIGN KEY(badgeId) REFERENCES badges(id) ON DELETE CASCADE
     )`);
 
   db.close();
@@ -94,12 +94,20 @@ async function createBadgeTables() {
 
 /**
  * Returns a connection to the SQL database with "foreign_keys=on"
+ * adding SQLiteFormat so i can write in postgres syntax while still using SQLite
  */
 async function getDB() {
     let db = await Database.open('Zelp.db');
     await db.run('PRAGMA foreign_keys=on');
 
-    return db;
+    const SQLiteFormat = (q) => q.replace(/\$[0-9]+/gi,'?');
+
+    return {
+      run : (query,values) => db.run(SQLiteFormat(query),values),
+      get : (query,values) => db.get(SQLiteFormat(query),values),
+      all : (query,values) => db.all(SQLiteFormat(query),values),
+      close : () => db.close()
+    };
 }
 
 /**
@@ -107,6 +115,7 @@ async function getDB() {
  * @param {Error} err 
  */
 function parseError(err) {
+  // console.log(Object.assign({},err));
   return {
     message : err.message,
     code : err.errno,
@@ -122,8 +131,11 @@ async function initDB() {
     createBadgeTables();
 }
 
+const UNIX = () => `strftime("%s", "now")`;
+
 module.exports = {
   getDB,
   initDB,
-  parseError
+  parseError,
+  UNIX
 }
