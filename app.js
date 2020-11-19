@@ -11,15 +11,19 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const indexRouter = require('./routes/index');
 const sessionRouter = require('./routes/session');
+
 const userRouter = require('./routes/users');
 const businessRouter = require('./routes/businesses');
 const reviewRouter = require('./routes/reviews');
+const badgeRouter = require('./routes/badges');
+
 const searchRouter = require('./routes/search');
+
 
 const app = express();
 
 app.use(session({
-    secret: 'Fritter',
+    secret: 'Zelp',
     resave: true,
     saveUninitialized: true
   }));
@@ -41,12 +45,13 @@ app.use('/', indexRouter);
 app.use('/api/user', userRouter);
 app.use('/api/business', businessRouter);
 app.use('/api/review', reviewRouter);
+app.use('/api/badge', badgeRouter);
 
 app.use('/api/session', sessionRouter);
 app.use('/api/search', searchRouter);
 
 // debugging only
-app.use('/debug', require('./routes/debug'));
+// app.use('/debug', require('./routes/debug'));
 
 // no page handler
 app.use('*', (req, res) => res.redirect('/'));
