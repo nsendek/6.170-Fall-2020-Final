@@ -33,8 +33,7 @@ router.post('/', async (req, res) => {
     res.status(400).send({ error: `already signed in as ${req.session.user.username}` });
   } else {
     try {
-      if (!correctInput(req, res,['username','password']) 
-      || !(await dataExists(res, req.body.username, Users))) return;
+      if (!correctInput(req, res,['username','password']) ) return;
       
       let user = await Users.authenticate(req.body.username, req.body.password);
       if (user)  {

@@ -1,11 +1,11 @@
 const Users = require("../models/Users");
 const Businesses = require("../models/Businesses");
-const Reviews = require("../models/Businesses");
+const Reviews = require("../models/Reviews");
 
 /**
  * takes request and response variables and returns whether user is signed in.
  * it also throws the needed status code if not signed in. 
- * 
+ * @param {boolean} user determined whether the signIn in check is for a business account or personal
  * @throws {401} user is not signed in and not allowed to run certain function.
  * @returns {boolean} determining whether the user is signed in or not. 
  */
@@ -32,29 +32,21 @@ function signedIn(req, res, user = true) {
  * @throws {400} id is not a valid one (basically just needs to be a number)
  */
 function isID(res, id) {
-    if (isNaN(id)) {
-        res.status(400).send({ error: 'invalid ID' });
-    }
+    if (isNaN(id)) res.status(400).send({ error: 'invalid ID' });
     return !isNaN(id);
 }
 
 /**
- * takes id and checks that it is a valid type of id. 
+ * takes identifier and checks that a specified object exists in the Model. 
  * @param {number} id
- * @param {Freets | Users} Model is either the model for Freets or Users. both have an exists() method.
- * @param {Number | String} identifier - identies the object being searched, either a Number id or string username
+ * @param {Users | Businesses | Reviews } Model is either the model for Freets or Users. both have an exists() method.
+ * @param {number | string} identifier - identifier of the object being searched
  * @returns {Boolean} whether id is asociated with an existing Model object.
  * @throws {404} id is not asociated with an existing Model object.
  */
 async function dataExists(res, identifier, Model) {
     if (!(await Model.exists(identifier)))  {
-        if (Model == Users) 
-            res.status(404).send({ error : "user does not exist" });
-        else if (Model == Businesses) 
-            res.status(404).send({ error : "business does not exist" });
-        else if (Model == Reviews) 
-            res.status(404).send({ error : "review does not exist" });
-
+        res.status(404).send({ error : `${Model.toString()} does not exist` });
         return false;
     }
     return true;

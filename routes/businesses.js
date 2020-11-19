@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Businesses = require('../models/Businesses');
+const {Badges , BadgeTemplates} = require('../models/Badges');
 
 const { signedIn, correctInput , isID , dataExists } = require('./validators');
 
@@ -112,7 +113,8 @@ router.delete('/', async (req, res) => {
 router.get('/:id?', async (req, res) => {
   try{
     if (req.params.id) {
-      if (!isID(res,req.params.id)
+      if (!correctInput(req, res,[],['id'])
+      || !isID(res,req.params.id)
       || !(await dataExists(res, req.session.business.id, Businesses))) return;
 
       let business = await Businesses.get(req.params.id);
@@ -129,5 +131,51 @@ router.get('/:id?', async (req, res) => {
     res.status(503).json({ error: "could not get businesses" }).end();
   }
 });
+
+// BADGE RELATED ROUTES -----------------------------------------------
+
+/**
+ * get badges that belong to a specified business
+ * @name GET/api/business/:id/badge
+ * @returns {User[]} Array of all businesss 
+ */
+router.get('/:id?/badge', async (req, res) => {
+  if (!correctInput(req, res,[],['id'])
+  || !isID(res,req.params.id)
+  || !(await dataExists(res, req.params.id, Businesses))) return;
+
+  try{
+    let badges = await Badges.getBadgesByBusiness(req.params.id)
+    if (badges) {
+      res.status(200).send(badges);
+    } else {
+      res.status(404).send({error: "could not get"});
+    }
+  } catch (error) {
+    res.status(503).json({ error: "could not get badges" }).end();
+  }
+});
+
+
+/**
+ * @name GET/api/business/badge/:template
+ * @returns {User[]} Array of all businesss 
+ */
+router.get('/badge/:template?', async (req, res) => {
+  if (!correctInput(req, res,[],['template'])) return;
+
+  try{
+    let businesses = await Badges.getBusinessesByBadge(req.params.template);
+    if (businesses) {
+      res.status(200).send(businesses);
+    } else {
+      res.status(404).send({error: "could not get"});
+    }
+  } catch (error) {
+    res.status(503).json({ error: "could not get businesses" }).end();
+  }
+});
+
+
 
 module.exports = router;

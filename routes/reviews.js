@@ -96,11 +96,13 @@ router.post('/', async (req, res) => {
  * @throws {404} - if review does not exist
  */
 router.patch('/:id?', async (req, res) => {
+  console.log(req.body);
+  console.log(req.params.id)
     if (!signedIn(req, res) 
      || !correctInput(req, res, ['rating', 'content'])
      || !isID(res,req.params.id)
      || !(await dataExists(res, req.params.id, Reviews))) return;
-
+    console.log("GOT HERE");
     try {
         let owner = await Reviews.authenticate(req.session.user.id, req.params.id);
         if (owner) {
