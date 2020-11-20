@@ -28,8 +28,21 @@ const SQL = require('../db/index');
     }
 
     /**
+     * 
+     * @param {number} businessId - id of the business
+     * @param {number} id - id of the badge
+     * 
+     * @returns {boolean} true if business is associated with the ID; false otherwise
+     */
+    static async authenticate(businessId,id) {
+      let db = await SQL.getDB();
+      let badge = await db.get(`SELECT * FROM badges WHERE businessId = $1 AND id = $2`, [businessId, id]);
+      return Boolean(badge);
+    }
+
+    /**
      * get a specific badge 
-     * @param {string} label - label of badgeTemplate 
+     * @param {string} label - label of badge template 
      * @returns {Badge | undefined}
      */
     static async get(id) {
