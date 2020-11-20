@@ -1,41 +1,55 @@
+// OK
 function getBadgeTemplates() {
-  axios.get(`/api/badge/templates`)
+  axios.get(`/api/badge`)
     .then(showResponse)
     .catch(showResponse);
 }
 
+// OK
 function getBusinessesByBadge(fields) {
-  axios.get(`/api/business/badge/${fields.template}`)
+  axios.get(`/api/badge/filter/${fields.template}`)
     .then(showResponse)
     .catch(showResponse);
 }
 
+// OK
 function getBadgesOfBusiness(fields) {
-  axios.get(`/api/business/${fields.id}/badge`)
+  axios.get(`/api/business/${fields.id}/badges`)
     .then(showResponse)
     .catch(showResponse);
 }
 
+// OK
 function addBadge(fields) {
   axios.post(`/api/badge`,fields)
     .then(showResponse)
     .catch(showResponse);
 }
 
+// OK
 function removeBadge(fields) {
   axios.delete(`/api/badge/${fields.id}`,fields)
     .then(showResponse)
     .catch(showResponse);
 }
 
-function denyBadge(fields) {
-    axios.post(`/api/badge/${fields.id}/deny`)
-      .then(showResponse)
-      .catch(showResponse);
+
+function toggleAffirm(fields) {
+  axios.post(`/api/badge/${fields.id}/affirm`)
+    .then(showResponse)
+    .catch(showResponse);
+
+  axios.delete(`/api/badge/${fields.id}/affirm`)
+    .then(showResponse)
+    .catch(showResponse);
 }
 
-function affirmBadge(fields) {
-  axios.post(`/api/badge/${fields.id}/affirm`)
+function toggleDeny(fields) {
+  axios.post(`/api/badge/${fields.id}/deny`)
+    .then(showResponse)
+    .catch(showResponse);
+ 
+  axios.delete(`/api/badge/${fields.id}/deny`)
     .then(showResponse)
     .catch(showResponse);
 }
@@ -46,6 +60,6 @@ const badgeHandlers = {
   'get-badges-business': getBadgesOfBusiness,
   'add-badge': addBadge,
   'remove-badge': removeBadge,
-  'deny-badge' : denyBadge,
-  'affirm-badge' : affirmBadge,
+  'deny-badge' : toggleDeny,
+  'affirm-badge' : toggleAffirm,
 }
