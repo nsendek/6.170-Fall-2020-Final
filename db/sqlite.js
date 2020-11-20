@@ -131,6 +131,7 @@ async function initDB() {
     createBadgeTables();
 }
 
+// IDK why but SQLite and Postgres have different ways of getting unix time
 const UNIX = () => `strftime("%s", "now")`;
 
 module.exports = {

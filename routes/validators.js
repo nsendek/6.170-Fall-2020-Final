@@ -5,7 +5,7 @@ const Reviews = require("../models/Reviews");
 /**
  * takes request and response variables and returns whether user is signed in.
  * it also throws the needed status code if not signed in. 
- * @param {boolean} user determined whether the signIn in check is for a business account or personal
+ * @param {boolean} user - determines whether the signIn in check is for a business account or personal
  * @throws {401} user is not signed in and not allowed to run certain function.
  * @returns {boolean} determining whether the user is signed in or not. 
  */
@@ -39,7 +39,7 @@ function isID(res, id) {
 /**
  * takes identifier and checks that a specified object exists in the Model. 
  * @param {number} id
- * @param {Users | Businesses | Reviews } Model is either the model for Freets or Users. both have an exists() method.
+ * @param {Users | Businesses | Reviews | Badges } Model is any the model. all have an exists and toString methods.
  * @param {number | string} identifier - identifier of the object being searched
  * @returns {Boolean} whether id is asociated with an existing Model object.
  * @throws {404} id is not asociated with an existing Model object.

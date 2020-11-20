@@ -14,7 +14,7 @@ const pool = new Pool({
 async function createUsersTable() {
   let db = await getDB();
 
-  await db.create(`CREATE TABLE IF NOT EXISTS users (
+  await db.run(`CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY, 
       username TEXT NOT NULL UNIQUE, 
       password TEXT NOT NULL,
@@ -27,7 +27,7 @@ async function createUsersTable() {
 async function createBusinessTable() {
   let db = await getDB();
 
-  await db.create(`CREATE TABLE IF NOT EXISTS businesses (
+  await db.run(`CREATE TABLE IF NOT EXISTS businesses (
       id SERIAL PRIMARY KEY,
       name TEXT,
 
@@ -51,7 +51,6 @@ async function initDB() {
 async function getDB() {
   const client =  await pool.connect();
   return {
-    create : (query,values) => client.query(query,values),
     run : (query,values) => client.query(query,values),
     get : async (query,values) => (await client.query(query,values)).rows[0],
     all : async (query,values) => (await client.query(query,values)).rows,
@@ -71,6 +70,7 @@ function parseError(err) {
   }
 }
 
+// IDK why but SQLite and Postgres have different waaays of getting unix time
 const UNIX = () => "extract(epoch from now())";
 
 module.exports = {
