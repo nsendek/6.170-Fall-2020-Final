@@ -40,19 +40,10 @@ then you will find the application at `localhost:8080` in the browser
     * reviews.js
     * users.js
     * validators.js
-* **Melon Usk**:
+* **Josh Verdejo**:
   * src
-    * HomePage.vue
-    * Test.vue
-  * models:
-    * Model1.js
-    * Model2.js
-    * Users.js
-  * routes:
-    * route1.js
-    * route2.js
-    * users.js
-    * index.js
+    * Main.Vue (Added Google Maps functionality)
+  
 * **Gill Bates**:
   * src
     * HomePage.vue
