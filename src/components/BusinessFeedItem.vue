@@ -33,9 +33,9 @@ export default {
 
     methods: {
         getBusinessBadges: function() {
-            axios.get(`/api/badge/${this.business.id}`)
+            axios.get(`/api/business/${this.business.id}/badges`)
             .then((res) => {
-                this.badges = res.data ? res.data : [];
+                this.badges = res.data ? res.data.map(badge => badge.label) : [];
             })
         }
     }
