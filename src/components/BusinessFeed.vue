@@ -14,7 +14,7 @@
         Filter By: 
        <div v-for='(badge,index) in allBadges' v-bind:key="badge.id">
             <input type="checkbox" v-bind:id="index" value="badge" v-on:click="toggleCheck(index)" >
-            <label for="badge"> {{badge.name}} </label>
+            <label for="badge"> {{badge.label}} </label>
        </div>
 
         <button v-on:click= "filterBusinessesByBadge" type="button" onclick>Apply Filters</button>
@@ -70,17 +70,16 @@ export default {
         loadBadges: function() {
             axios.get("/api/badge")
             .then((res) => {
-                // res = list of {id: , name: } badge objects
+                // res = list of {id: , label: } badge objects
                 this.allBadges = res.data ? res.data : [];
                 this.allBadges.forEach((badgeObject) => badgeObject.checked = false)
-
             })
         },
 
         // Filters businesses by one or more badges
         filterBusinessesByBadge: function() {
             let badgeFilters = this.allBadges.filter((badgeObject) => badgeObject.checked)
-                                            .map((badgeObject) => badgeObject.name);
+                                            .map((badgeObject) => badgeObject.label);
             if (badgeFilters.length === 0) {
                 this.error = "Please choose one or more badges to filter by";
                 this.resetErrorMessage();
