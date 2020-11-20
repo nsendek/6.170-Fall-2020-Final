@@ -66,7 +66,7 @@ router.get('/filter/:badgeName', async (req, res) => {
 });
 
  /**
- * Add a Badge to a Business a Review
+ * Add a Badge to a Business
  * @name POST/api/badge
  * @return {Badge} - the created Badge Instance
  * 
@@ -83,7 +83,6 @@ router.post('/', async (req, res) => {
       || !(await dataExists(res, req.session.business.id, Businesses))) return;
 
       let badge = await Badges.add(req.session.business.id, req.body.template);
-      console.log("BADGE: ",badge)
       if (badge) res.status(201).send( badge );
       else res.status(400).send({ error : "business already has badge" });
       
@@ -91,5 +90,37 @@ router.post('/', async (req, res) => {
       res.status(503).send({ error: "could not add badge" });
   }
 });
+
+ /**
+ * Remove a Badge from a Business
+ * @name DELETE/api/badge/:id
+ * @param {number} id - id of the badge
+ * @return {Badge} - the removed Badge Instance
+ * 
+ * @throws {201} Badge is added 
+ * @throws {401} - if user is not signed in
+ * @throws {400} - if review is too long or not given
+ */
+router.delete('/:id?', async (req, res) => {
+  if (!signedIn(req, res, false) 
+  || !correctInput(req, res, [], ['id'])) return; 
+
+  try {
+    if (!(await dataExists(res, req.session.business.id, Businesses))) return;
+
+    let owner = await Badges.authenticate(req.session.business.id, req.params.id);
+    
+    if (owner) {
+      let badge = await Badges.remove(req.params.id);
+      if (badge) res.status(200).send( badge );
+      else res.status(400).send({ error : "business does not have badge" });
+    } else {
+      res.status(400).send({ error : "business not associated with badge ID" });
+    }
+      
+  } catch (error) {
+      res.status(503).send({ error: "could not remove badge" });
+  }
+})
 
  module.exports = router;

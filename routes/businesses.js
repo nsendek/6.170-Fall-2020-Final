@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Businesses = require('../models/Businesses');
-const {Badges , BadgeTemplates} = require('../models/Badges');
+const Badges = require('../models/Badges');
 
 const { signedIn, correctInput , isID , dataExists } = require('./validators');
 
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 /**
  * edit information about the business. 
  * this can be used to change name, password, but NOT BOTH. 
- * @name PATCH/api/business
+ * @name PATCH/api/business/:property?
  * @param {string} name - new name to change to
  * @param {string} password - new pssword to change to
  * @return {User} - the altered business object (minus paassword,even if password was changed)
@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
  * @throws {401} - if business is not signed in 
  * @throws {409} - if new name is taken
  */
-router.patch('/', async (req, res) => { 
+router.patch('/:property?', async (req, res) => { 
   if (!signedIn(req, res, false)) return;
 
   if (req.body.name && req.body.name.length) { // changing name
@@ -95,7 +95,6 @@ router.delete('/', async (req, res) => {
 
   try {
     let deleted = await Businesses.delete(req.session.business.id);
-    console.log(deleted);
     if (deleted) {
       req.session.business = null;
       res.status(200).send(deleted);
@@ -136,16 +135,15 @@ router.get('/:id?', async (req, res) => {
 
 /**
  * get badges that belong to a specified business
- * @name GET/api/business/:id/badge
+ * @name GET/api/business/:id/badges
  * @returns {User[]} Array of all businesss 
  */
-router.get('/:id?/badge', async (req, res) => {
+router.get('/:id?/badges', async (req, res) => {
   if (!correctInput(req, res,[],['id'])
   || !isID(res,req.params.id)
   || !(await dataExists(res, req.params.id, Businesses))) return;
-
-  try{
-    let badges = await Badges.getBadgesByBusiness(req.params.id)
+  try {
+    let badges = await Badges.getBusinessBadges(req.params.id)
     if (badges) {
       res.status(200).send(badges);
     } else {
@@ -155,27 +153,5 @@ router.get('/:id?/badge', async (req, res) => {
     res.status(503).json({ error: "could not get badges" }).end();
   }
 });
-
-
-/**
- * @name GET/api/business/badge/:template
- * @returns {User[]} Array of all businesss 
- */
-router.get('/badge/:template?', async (req, res) => {
-  if (!correctInput(req, res,[],['template'])) return;
-
-  try{
-    let businesses = await Badges.getBusinessesByBadge(req.params.template);
-    if (businesses) {
-      res.status(200).send(businesses);
-    } else {
-      res.status(404).send({error: "could not get"});
-    }
-  } catch (error) {
-    res.status(503).json({ error: "could not get businesses" }).end();
-  }
-});
-
-
 
 module.exports = router;
