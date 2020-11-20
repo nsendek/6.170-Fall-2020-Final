@@ -1,6 +1,6 @@
 
-# [Insert App Name Here and Link to the deployed URL](https://www.heroku.com/)
-## [Howard DaCosta]
+# [Zelp](https://nvhj-zelp.herokuapp.com/)
+## [NVHJ]
 ### Purpose and Functionality
 Describe the purpose and functionality of your application (~50 words) 
 
