@@ -27,20 +27,19 @@ then you will find the application at `localhost:8080` in the browser
     * Badge.js
   * routes:
     * badges.js
-* **Ben Bitdiddle**:
-  * src
-    * HomePage.vue
-    * Test.vue
+* **Niko Sendek**:
+  * db
+    * sqlite.js 
   * models:
-    * Model1.js
-    * Model2.js
+    * Businesses.js
+    * Reviews.js
     * Users.js
+    * Badge.js (partial)
   * routes:
-    * route1.js
-    * route2.js
+    * businesses.js
+    * reviews.js
     * users.js
-    * index.js
-  * Boilerplate code (main.js, babel.config.js, router.js, etc.)
+    * validators.js
 * **Melon Usk**:
   * src
     * HomePage.vue
