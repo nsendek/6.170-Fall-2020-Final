@@ -2,33 +2,40 @@
 .full-container{
     display: flex;
     justify-content: center;
+    height: 10vh;
   }
   
 .panes {
     display: flex;
-    margin: 0.5rem;
-    padding: 0.5rem;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
 .business-pane {
   display: flex;
   border: 2px solid black;
+  height: 50%; 
 }
 
 .map-pane {
   display: flex;
   flex-direction: column;
   justify-content: right;
+  margin: 0px;
+  padding: 0px;
+}
+
+.g-map{
+  width: 50vw;
+  height: 90vh;
 }
 
 
 .business-container {
     display: flex;
     border: 2px solid black;
-    margin: 0.5rem;
-    padding: 0.5rem;
+    /* margin: 0.5rem;
+    padding: 0.5rem; */
     align-items: center;
     flex-direction: column;
     flex-basis: auto;
