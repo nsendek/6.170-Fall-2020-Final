@@ -44,17 +44,7 @@ then you will find the application at `localhost:8080` in the browser
   * src
     * Main.Vue (Added Google Maps functionality)
   
-* **Gill Bates**:
-  * src
-    * HomePage.vue
-    * Test.vue
-  * models:
-    * Model1.js
-    * Model2.js
-    * Users.js
-  * routes:
-    * route1.js
-    * route2.js
-    * users.js
-    * index.js
-  * App.vue/router.js
+* **Violetta Jusiega**:
+  * web.css
+    * g-map
+    * map-pane
