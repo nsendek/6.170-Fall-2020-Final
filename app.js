@@ -45,13 +45,14 @@ app.use('/', indexRouter);
 app.use('/api/user', userRouter);
 app.use('/api/business', businessRouter);
 app.use('/api/review', reviewRouter);
+app.use('/api/session', sessionRouter);
 app.use('/api/badge', badgeRouter);
 
-app.use('/api/session', sessionRouter);
-app.use('/api/search', searchRouter);
+// app.use('/api/search', searchRouter);
 
 // debugging only
 // app.use('/debug', require('./routes/debug'));
+app.use('/api/badge', badgeRouter);
 
 // no page handler
 app.use('*', (req, res) => res.redirect('/'));

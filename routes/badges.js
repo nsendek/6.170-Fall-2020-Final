@@ -1,46 +1,95 @@
 const router = require('express').Router();
+const Badges = require('../models/Badges');
 const Businesses = require('../models/Businesses');
-const { Badges , BadgeTemplates }  = require('../models/Badges');
 const { signedIn, correctInput , isID , dataExists } = require('./validators');
 
 
- /**
- * Create a Review
- * @name POST/api/badge
- * @param {string} content - content of the Review 
- * @return {Badge} - the created Review
+/**
+ * Get all available badges
+ * @name GET/api/badge
+ * @param businessID - the id of the business being queried
  * 
- * @throws {201} review is created
+ * @throws {200} - If business does exist and badges retrieved successfully
+ * @throws {404} - if business does not exist
+ */
+router.get('/', async (req, res) => {
+    try{
+        if (req.params.businessId) {
+            //moved this to GET/api/business/:id/badges
+            
+            // if (!(dataExists(res, req.params.businessId, Businesses))) {
+            //     return;
+            // }
+            // let badges = await Badges.getBusinessBadges(req.params.businessId);
+            // if (badges) {
+            //     let labels = []
+            //     badges.forEach((badgeObject)=> labels.push(badgeObject.label));
+            //     res.status(200).send(labels);
+            // }
+        } else {
+            let badges = await Badges.getAll();
+            if (badges) {
+                res.status(200).send(badges);
+            }
+        }
+    }
+    catch (error) {
+        res.status(503).json({ error: "could not fetch badges for this business"}).end();
+    }
+});
+
+/**
+ * Get all businesses associated with a badge
+ * @name GET/api/badge/filter/:badgeName
+ * @param badgeNames - the name of the badge being querired
+ * @throws {200} - if the badge exists
+ * @throws {404} - if the badge does not exist
+ */
+router.get('/filter/:badgeName', async (req, res) => {
+    try{
+        if (req.params.badgeName) {
+            let businessesWithBadge = await Badges.filterBusinessByBadge(req.params.badgeName)
+            // already have catches in the Badges method
+            // .catch((err) => {
+            //     console.log("error @ filter route!", err);
+            // })
+            if (businessesWithBadge) {
+              res.status(200).send(businessesWithBadge);
+            } else {
+              res.status(404).send({error: "could not get businesses"});
+            }
+        }  
+    }
+    catch (error) {
+        res.status(503).json({ error: "could not fetch businesses with this badge"}).end();    
+    }
+});
+
+ /**
+ * Add a Badge to a Business a Review
+ * @name POST/api/badge
+ * @return {Badge} - the created Badge Instance
+ * 
+ * @throws {201} Badge is added 
  * @throws {401} - if user is not signed in
  * @throws {400} - if review is too long or not given
  */
 router.post('/', async (req, res) => {
   if (!signedIn(req, res, false) 
-   || !correctInput(req, res, ['businessId','template'])) return; 
+   || !correctInput(req, res, ['template'])) return; 
 
   try {
-    if (!(await dataExists(res, req.body.template, BadgeTemplates))
-      || !(await dataExists(res, req.body.businessId, Businesses))) return;
+    if (!(await dataExists(res, req.body.template, Badges))
+      || !(await dataExists(res, req.session.business.id, Businesses))) return;
 
-      let badge = await Badges.create(req.body.businessId, req.body.template);
+      let badge = await Badges.add(req.session.business.id, req.body.template);
+      console.log("BADGE: ",badge)
       if (badge) res.status(201).send( badge );
       else res.status(400).send({ error : "business already has badge" });
       
   } catch (error) {
-      res.status(503).send({ error: "could not create review" });
+      res.status(503).send({ error: "could not add badge" });
   }
 });
 
-router.get('/templates', async (req, res) => {
-  try {
-      let templates = await BadgeTemplates.getAll();
-      if (templates) res.status(201).send( templates );
-      else res.status(400).send({ error : "no templates found" });
-      
-  } catch (error) {
-      res.status(503).send({ error: "could not find templates" });
-  }
-});
-
-
-module.exports = router;
+ module.exports = router;

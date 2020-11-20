@@ -1,126 +1,107 @@
-const SQL = require('../db');
+const SQL = require('../db/index');
 
 /**
- * @typedef BadgeTemplate
- * @prop {string} label - brief title for the badge
- * @prop {string} description - brief description of what this badge means
+ * @typedef Badges
+ * @prop {string} label - the name of the badge
+ * @prop {string} businessID - the business with the badge
+
  */
-
-/**
- * @typedef Badge
- * @prop {number} id - the generated id for the freet
- * @prop {string} label - label of a specific BadgeTemplate
- * @prop {number} businessId - id of business with this bag
- */
-
-
-/**
- * @class BadgeTemplates
- * Stores all templates of badges
- * ALL BADGES MUST BE AN 'INSTANCE' OF A TEMPLATE
- * badges_templates table (id, label, businessId, score)
- */
- class BadgeTemplates {
-
-  static toString() {return "template";}
- /**
-   * get a specific badge template 
-   * @param {id} label - label of badgeTemplate 
-   * @returns {BadgeTemplate}
-   */
-  static async get(label) {
-    let db = await SQL.getDB();
-    let temp =  await db.get(`SELECT * FROM badge_templates WHERE label = $1`,[label]);
-    db.close();
-    return temp;
-  
-  }
-
-  /**
-   * get a all badge templates
-   * @returns {BadgeTemplate[]}
-   */
-  static async getAll() {
-    let db = await SQL.getDB();
-    let temps =  await db.all(`SELECT * FROM badge_templates`);
-    db.close();
-    return temps;
-  }
-
-  static async add(label, description) {
-    let db = await SQL.getDB();
-    let res = await db.run(`
-        INSERT INTO badge_templates(label, description) 
-        VALUES ($1, $2)`,
-        [label,description])
-      .catch(SQL.parseError);
-      
-    db.close();
-    return Boolean(res.changes) ? {label, description}: res;
-  }
-
-  static async exists(label) {
-    return Boolean(await BadgeTemplates.get(label));
-  }
- }
 
 
 /**
  * @class Badges
- * Stores all Badges in SQL SQL.
- * badges table (id, label, businessId, score)
+ * Stores all Badge -> Business mappings in SQL database.
+ * badges table (label, businessid)
  */
-class Badges {
-  /**
-   * get a specific badge 
-   * @param {id} id - id of badgeTemplate 
-   * @returns {Badge}
-   */
-  static async get(id) {
-    let db = await SQL.getDB();
-    let out =  await db.get(`SELECT * FROM badges WHERE id = $1`,[id]);
-    db.close();
-    return out;
-  }
+ class Badges {
 
-  /**
-   * get all businesses that have this badge
-   * @return {Business[]} IDs of businesses with badge
-   */
-  static async getBusinessesByBadge(label) {
-    let db = await SQL.getDB();
-    let out = await db.all(`
-        SELECT businessId as id, businesses.name, businesses.address
-        FROM badges 
-        JOIN businesses ON businesses.id=businessId
-        WHERE label = $1`,
-        [label]).catch(SQL.parseError);
-    db.close();
-    return out;
-  }
+    /**
+     * functions for dataExists in validators.js, 
+     * comfirms that badge template exists before seaarching based on a badge template
+     */
+    static toString() {return "badge";}
+    static async exists(label) {
+      let db = await SQL.getDB();
+      let out =  await db.get(`SELECT label, description FROM badge_templates WHERE label = $1`,[label]);
+      db.close();
+      return Boolean(out);
+    }
 
-  /**
-   * get all badges that a business has
-   * @return {Badge[]} list of Badges
-   */
-  static async getBadgesByBusiness(businessId) {
-    let db = await SQL.getDB();
-    let out = await db.all(`SELECT id, label FROM badges WHERE businessId = $1`,[businessId]);
-    db.close();
-    return out;
-  }
+    /**
+     * get a specific badge 
+     * @param {string} label - label of badgeTemplate 
+     * @returns {Badge | undefined}
+     */
+    static async get(id) {
+      let db = await SQL.getDB();
+      let out =  await db.get(`SELECT id,label,businessId FROM badges WHERE id = $1`,[id]);
+      db.close();
+      return out;
+    }
 
+    /**
+     * Get all badges types stored in DB
+     */
+    static async getAll() {
+        let db = await SQL.getDB()
+        let res = await db.all('SELECT * FROM badge_templates');
+        db.close();
+        return res;
+    }
+
+    /** 
+     * Get all badges associated with a business
+     * @param {Number} businessId - the id of the business
+     * @return {Badge[]} - a list of badges
+     */
+    static async getBusinessBadges(businessId) {
+        let db = await SQL.getDB();
+        let res = await db.all(`SELECT id, label FROM badges WHERE businessId = ${businessId}`);
+        db.close();
+        return res;
+    }
+
+    /**
+     * Get all businesses associated with a badge
+     * @param {Number []} badgeLabel - the name of the badge to filter the businesses by
+     * @returns {Business []} - the businesses who have that badge
+    */
+    static async filterBusinessByBadge(badgeLabel) {
+        let db = await SQL.getDB();
+
+        // you can combine two sql commands into one with JOIN, so you can query based on info from two tables
+        let out = await db.all(`
+            SELECT businessId as id, businesses.name, businesses.address
+            FROM badges 
+            JOIN businesses ON businesses.id=businessId
+            WHERE label = $1`,
+            [badgeLabel])
+        .catch(SQL.parseError);
+        db.close();
+        return out;
+        // let businessesWithBadge = await db.all(`SELECT businessId FROM badges WHERE label = '${badgeLabel}'`)
+        //                         .then((businessIds) => {
+        //                             let idList = businessIds.map((businessObject) => businessObject.businessId);
+        //                             return db.all(`SELECT id,name,address FROM businesses WHERE id IN (${idList.join(",")})`);
+        //                         })
+        //                         .catch((err) => {
+        //                             console.log(err);
+        //                         })
+        // return (businessesWithBadge === undefined) ? [] : businessesWithBadge;
+    }
+    
   /**
-   * 
-   * @param {number} businessId 
+   * creates an instance of the given badge and
+   * @param {number} businessId - id of business adding badge
+   * @param {string} label - the label of the specified badge type
    * @param {Badge | undefined} label 
    */
-  static async create(businessId, template) {
+  static async add(businessId, label) {
     let db = await SQL.getDB();
     let res = await db.run(`
         INSERT INTO badges(businessId, label) 
         VALUES ($1, $2)`,
-        [businessId, template])
+        [businessId, label])
       .catch(SQL.parseError);
 
     db.close();
@@ -128,8 +109,11 @@ class Badges {
     else return Badges.get(res.lastID);
   }
 
-  // static async delete(businessId, label) {
-  static async delete(badgeId) {
+  /**
+   * 
+   * @param {number} badgeId - id of badge
+   */
+  static async remove(badgeId) {
     let db = await SQL.getDB();
     let badge = await Badges.get(badgeId);
     let res = await db.run('DELETE FROM badges WHERE id = $1', [badgeId]);
@@ -154,8 +138,8 @@ class Badges {
 
   /**
    * deny a specfied badge
-   * @param {number} userId 
-   * @param {number} badgeId 
+   * @param {number} userId
+   * @param {number} badgeId
    */
   static async deny(userId, badgeId) {
     let db = await SQL.getDB();
@@ -168,8 +152,4 @@ class Badges {
   }
 }
 
-
-module.exports = {
-  Badges,
-  BadgeTemplates
-}
+ module.exports = Badges;

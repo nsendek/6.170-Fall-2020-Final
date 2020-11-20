@@ -2,9 +2,9 @@ const SQL = require('../db');
 
 /**
  * @typedef Business
- * @prop {number} id - the generated id for the freet
- * @prop {string} name - some string of character shorter than 140
- * @prop {string} address - some string of character shorter than 140
+ * @prop {number} id - the generated id for the business
+ * @prop {string} name - the name of the business
+ * @prop {string} address - the address of the business
  */
 
 
@@ -50,6 +50,7 @@ class Businesses {
   static async getAll() {
     let db = await SQL.getDB();
     let business = await db.all(`SELECT id,name FROM businesses ORDER BY id DESC`);    
+
     db.close();
     return business;
   }
@@ -97,7 +98,7 @@ class Businesses {
     let res = await db.run('DELETE FROM businesses WHERE id = $1', [id]);
 
     db.close();
-    return Boolean(res.changes) ? business : null; 
+    return Boolean(res.changes) ? business : undefined;
   }
 
     /**
@@ -137,7 +138,6 @@ class Businesses {
     db.close();
     return out;
   }
-
 }
 
 module.exports = Businesses;
