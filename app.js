@@ -51,7 +51,6 @@ app.use('/api/badge', badgeRouter);
 // app.use('/api/search', searchRouter);
 
 // debugging only
-// app.use('/debug', require('./routes/debug'));
 app.use('/api/badge', badgeRouter);
 
 // no page handler
