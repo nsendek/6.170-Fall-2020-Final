@@ -1,35 +1,32 @@
 
 # [Insert App Name Here and Link to the deployed URL](https://www.heroku.com/)
-## [Insert Team Name Here]
+## [Howard DaCosta]
 ### Purpose and Functionality
 Describe the purpose and functionality of your application (~50 words) 
+
+At this stage, users will be able to filter businesses by the badges that they have added. Once populated with the businesses in Cambridge, it will allow users to narrow down establishments that follow any given set of safety precautions.
 
 ### Instructions to Run Locally:
 In command line:
 ```console
-$ npm i
+$ npm run build
 $ npm run serve
 ```
 In a separate shell:
 ```console
-$ npm start
+$ npm run dev
 ```
 then you will find the application at `localhost:8080` in the browser
 
 ### Authorship:
-* **Alyssa P. Hacker**:
+* **Howard DaCosta**:
   * src
-    * HomePage.vue
-    * Test.vue
+    * BusinessFeed.vue
+    * BusinessFeedItem.vue
   * models:
-    * Model1.js
-    * Model2.js
-    * Users.js
+    * Badge.js
   * routes:
-    * route1.js
-    * route2.js
-    * users.js
-    * index.js
+    * badges.js
 * **Ben Bitdiddle**:
   * src
     * HomePage.vue

@@ -95,7 +95,7 @@ export default {
                         let allResults = res.data.filter((result) => {
                             return this.businesses
                             .map((businessObject) => businessObject.id)
-                            .includes(result.id)
+                            .includes(result.id);
                             });
                         this.businesses = allResults ? allResults : [];
 
