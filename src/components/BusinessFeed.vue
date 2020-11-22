@@ -13,12 +13,12 @@
     <div class= "filter-bar">
         Filter By: 
        <div v-for='(badge,index) in allBadges' v-bind:key="badge.id">
-            <input type="checkbox" v-bind:id="index" value="badge" v-on:click="toggleCheck(index)" >
+            <input type="checkbox" v-bind:id="index" v-model="allBadges[index].checked" value="badge" v-on:click="toggleCheck(index)" >
             <label for="badge"> {{badge.label}} </label>
        </div>
 
-        <button v-on:click= "filterBusinessesByBadges" type="button" onclick>Apply Filters</button>
-        <button v-on:click= "loadBusinesses" type="button" onclick>Reset Filters</button>
+        <v-btn v-on:click= "filterBusinessesByBadges" type="button" >Apply Filters</v-btn>
+        <v-btn v-on:click= "loadBusinesses" type="button" >Reset Filters</v-btn>
 
     </div>
 
@@ -37,7 +37,7 @@
 
 <script>
 import axios from "axios";
-// import { eventBus } from "../main";
+import { eventBus } from "../main";
 import BusinessFeedItem from "./BusinessFeedItem";
 export default {
     name: "BusinessFeed",
@@ -61,10 +61,13 @@ export default {
     methods: {
         // Loads all businesses
         loadBusinesses: function() {
-            axios.get("/api/business")
-            .then((res) => {
-                this.businesses = res.data ? res.data : [];
-            })
+          for (var idx = 0; idx < this.allBadges.length; idx++) 
+            this.allBadges[idx].checked = false; 
+        
+          axios.get("/api/business")
+          .then((res) => {
+              this.businesses = res.data ? res.data : [];
+          })
         },
         // Loads all badge types
         loadBadges: function() {
@@ -81,8 +84,7 @@ export default {
             let badgeFilters = this.allBadges.filter((badgeObject) => badgeObject.checked)
                                             .map((badgeObject) => badgeObject.label);
             if (badgeFilters.length === 0) {
-                this.error = "Please choose one or more badges to filter by";
-                this.resetErrorMessage();
+                eventBus.$emit('error-message',"Please choose one or more badges to filter by");
             } else {
 
             axios.get(`api/badge/filter`, {params : {badges : badgeFilters}})
@@ -90,12 +92,9 @@ export default {
                 this.businesses = res.data;
             })
             .catch((err) => {
-                this.error = err;
-                this.resetErrorMessage();
+                eventBus.$emit('error-message', err)
             })
-           
             }
-
         },
 
         toggleCheck: function(itemId) {
@@ -106,15 +105,6 @@ export default {
 
           }
         },
-
-        resetErrorMessage: function() {
-            setInterval(() => {
-                this.error = "";
-            }, 3000)
-        }
-
-
-
     }
     
 }
