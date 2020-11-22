@@ -101,13 +101,15 @@ function SQList(size) {
         let db = await SQL.getDB();
 
         // you can combine two sql commands into one with JOIN, so you can query based on info from two tables
+        // group by creates 'groups' of rows with the same businessId 
+        // COUNT(label) applies to those groups not the whole table
         let out = await db.all(`
             SELECT businesses.id, name, address
             FROM businesses 
             INNER JOIN badges ON badges.businessId = businesses.id AND badges.label IN ${SQList(labels.length)}
             GROUP BY businesses.id
             HAVING COUNT(label) = ${labels.length}`,
-            [...labels])
+            labels)
         .catch(SQL.parseError);
       
         db.close();

@@ -7,7 +7,7 @@ function getBadgeTemplates() {
 
 // OK
 function getBusinessesByBadge(fields) {
-  axios.get(`/api/badge/filter/${fields.template}`)
+  axios.get(`/api/badge/filter`)
     .then(showResponse)
     .catch(showResponse);
 }
