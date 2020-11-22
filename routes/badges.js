@@ -40,25 +40,20 @@ router.get('/', async (req, res) => {
 
 /**
  * Get all businesses associated with a badge
- * @name GET/api/badge/filter/:badgeName
+ * @name GET/api/badge/filter
  * @param badgeNames - the name of the badge being querired
  * @throws {200} - if the badge exists
  * @throws {404} - if the badge does not exist
  */
-router.get('/filter/:badgeName', async (req, res) => {
+router.get('/filter', async (req, res) => {
+  if (!correctInput(req, res, [],[],['badges'])) return; 
     try{
-        if (req.params.badgeName) {
-            let businessesWithBadge = await Badges.filterBusinessByBadge(req.params.badgeName)
-            // already have catches in the Badges method
-            // .catch((err) => {
-            //     console.log("error @ filter route!", err);
-            // })
-            if (businessesWithBadge) {
-              res.status(200).send(businessesWithBadge);
-            } else {
-              res.status(404).send({error: "could not get businesses"});
-            }
-        }  
+      let businessesWithBadge = await Badges.filterBusinessByBadges(req.query.badges)
+      if (businessesWithBadge) {
+        res.status(200).send(businessesWithBadge);
+      } else {
+        res.status(404).send({error: "could not get businesses"});
+      }
     }
     catch (error) {
         res.status(503).json({ error: "could not fetch businesses with this badge"}).end();    

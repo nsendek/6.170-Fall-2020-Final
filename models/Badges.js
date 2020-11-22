@@ -1,12 +1,30 @@
 const SQL = require('../db/index');
 
+
+/**
+ * create a blank array of input values for purposes of SQLite and postgres
+ * 
+ * SQList(1) => ($1)
+ * SQList(3) => ($1, $2, $3)
+ * SQList(n) => ($1, $2, $3 .... $n)
+ * 
+ * @param {number} size - expected size of SQL List
+ */
+function SQList(size) {
+  let out = "(";
+  for (x = 1 ; x <= size ; x++) {
+    out += x != size ? `$${x}, ` : `$${x}`
+  }
+  out += ")";
+  return out;
+}
+
+
 /**
  * @typedef Badges
  * @prop {string} label - the name of the badge
  * @prop {string} businessID - the business with the badge
-
  */
-
 
 /**
  * @class Badges
@@ -76,33 +94,26 @@ const SQL = require('../db/index');
 
     /**
      * Get all businesses associated with a badge
-     * @param {Number []} badgeLabel - the name of the badge to filter the businesses by
-     * @returns {Business []} - the businesses who have that badge
+     * @param {String[]} labels - list of badge labels
+     * @returns {Business []} - the businesses who have all the specified badges
     */
-    static async filterBusinessByBadge(badgeLabel) {
+    static async filterBusinessByBadges(labels = []) {
         let db = await SQL.getDB();
 
         // you can combine two sql commands into one with JOIN, so you can query based on info from two tables
         let out = await db.all(`
-            SELECT businessId as id, businesses.name, businesses.address
-            FROM badges 
-            JOIN businesses ON businesses.id=businessId
-            WHERE label = $1`,
-            [badgeLabel])
+            SELECT businesses.id, name, address
+            FROM businesses 
+            INNER JOIN badges ON badges.businessId = businesses.id AND badges.label IN ${SQList(labels.length)}
+            GROUP BY businesses.id
+            HAVING COUNT(label) = ${labels.length}`,
+            [...labels])
         .catch(SQL.parseError);
+      
         db.close();
         return out;
-        // let businessesWithBadge = await db.all(`SELECT businessId FROM badges WHERE label = '${badgeLabel}'`)
-        //                         .then((businessIds) => {
-        //                             let idList = businessIds.map((businessObject) => businessObject.businessId);
-        //                             return db.all(`SELECT id,name,address FROM businesses WHERE id IN (${idList.join(",")})`);
-        //                         })
-        //                         .catch((err) => {
-        //                             console.log(err);
-        //                         })
-        // return (businessesWithBadge === undefined) ? [] : businessesWithBadge;
     }
-    
+
   /**
    * creates an instance of the given badge and
    * @param {number} businessId - id of business adding badge

@@ -17,7 +17,7 @@
             <label for="badge"> {{badge.label}} </label>
        </div>
 
-        <button v-on:click= "filterBusinessesByBadge" type="button" onclick>Apply Filters</button>
+        <button v-on:click= "filterBusinessesByBadges" type="button" onclick>Apply Filters</button>
         <button v-on:click= "loadBusinesses" type="button" onclick>Reset Filters</button>
 
     </div>
@@ -77,33 +77,23 @@ export default {
         },
 
         // Filters businesses by one or more badges
-        filterBusinessesByBadge: function() {
+        filterBusinessesByBadges: function() {
             let badgeFilters = this.allBadges.filter((badgeObject) => badgeObject.checked)
                                             .map((badgeObject) => badgeObject.label);
             if (badgeFilters.length === 0) {
                 this.error = "Please choose one or more badges to filter by";
                 this.resetErrorMessage();
             } else {
-                // apply each filter to business list
-                badgeFilters.forEach((filterLabel) => {
-                    axios.get(`api/badge/filter/${filterLabel}`)
-                    .then((res) => {
-                        // need to apply filter to what is CURRENTLY in this.businesses
-                        // The route produces the filtered results on ALL businesses, 
-                        // and is unable to account for an already filtered business list
-                        let allResults = res.data.filter((result) => {
-                            return this.businesses
-                            .map((businessObject) => businessObject.id)
-                            .includes(result.id);
-                            });
-                        this.businesses = allResults ? allResults : [];
 
-                    })
-                    .catch((err) => {
-                        this.error = err;
-                        this.resetErrorMessage();
-                    })
-                })
+            axios.get(`api/badge/filter`, {params : {badges : badgeFilters}})
+            .then((res) => {
+                this.businesses = res.data;
+            })
+            .catch((err) => {
+                this.error = err;
+                this.resetErrorMessage();
+            })
+           
             }
 
         },
