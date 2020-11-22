@@ -17,8 +17,8 @@
             <label for="badge"> {{badge.label}} </label>
        </div>
 
-        <v-btn v-on:click= "filterBusinessesByBadges" type="button" >Apply Filters</v-btn>
-        <v-btn v-on:click= "loadBusinesses" type="button" >Reset Filters</v-btn>
+        <button v-on:click= "filterBusinessesByBadges" type="button" >Apply Filters</button>
+        <button v-on:click= "loadBusinesses" type="button" >Reset Filters</button>
 
     </div>
 
