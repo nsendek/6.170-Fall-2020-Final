@@ -1,4 +1,4 @@
-id,name,address,accountName,password,lat,lon
+id,name,address,accountName,password,lat,lng
 1,1369 Coffee House,"757 Massachusetts Ave, Cambridge, MA 02139, USA",b1,nvhj,42.36655289999999,-71.1053043
 2,1369 Coffee House,"1369 Cambridge St, Cambridge, MA 02139, USA",b2,nvhj,42.3737842,-71.10037129999999
 3,2 4-1 Optical,"1128 Massachusetts Ave, Lexington, MA 02420, USA",b3,nvhj,42.4356829,-71.21179599999999

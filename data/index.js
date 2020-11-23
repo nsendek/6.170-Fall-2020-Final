@@ -6,7 +6,7 @@ const sleep = require("system-sleep");
 
 let rowCount = 1;
 const output = []
-const headers = ['name', 'address', 'accountName', 'password', 'lat', 'lon']
+const headers = ['name', 'address', 'accountName', 'password', 'lat', 'lng']
 
 /**
  * NEED THIS FILE TO:
@@ -92,7 +92,7 @@ async function processRowData(row) {
     accountName : `b${rowCount}`,
     password : 'nvhj',
     lat : 0,
-    lon : 0
+    lng : 0
   };
 
   rowCount += 1;
@@ -110,7 +110,7 @@ async function processRowData(row) {
   try {
     out.address = data.results[0].formatted_address
     out.lat = data.results[0].geometry.location.lat
-    out.lon = data.results[0].geometry.location.lng
+    out.lng = data.results[0].geometry.location.lng
   } catch (err) {
     console.log(err);
   }
