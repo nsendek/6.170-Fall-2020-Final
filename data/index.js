@@ -78,7 +78,7 @@ async function writeDataToFile() {
 }
 
 async function processRowData(row) {
-  sleep(1000); // sleeping between calls to prevent OVER_QUERY_LIMIT error in google API
+  sleep(750); // sleeping between calls to prevent OVER_QUERY_LIMIT error in google API
   console.log("ROW: ",rowCount);
 
   // ignore lame businesses with no address or arbitrary "all locations"
@@ -99,7 +99,7 @@ async function processRowData(row) {
 
   let data = await axios.get("https://maps.googleapis.com/maps/api/geocode/json", { 
       params : { 
-          address : `${row.Address}, MA, USA`,
+          address : `${row.Address}, Cambridge, MA, USA`,
           key : "AIzaSyDKOlyw5FKzfofKtyQ5jfKFuleqelf1nhQ"
         }
     }).catch(err => err.response ? err.response : err)
@@ -114,17 +114,18 @@ async function processRowData(row) {
   } catch (err) {
     console.log(err);
   }
-  console.log(data);
+  console.log(out.name);
+  console.log(out.address);
+
   output.push(out);
 }
 
 function readDataFromFile() {
-  fs.createReadStream(path.resolve(__dirname, 'OpenCambridgeFullSet.csv'))
+  fs.createReadStream(path.resolve(__dirname, 'OpenCambridge.csv'))
     .pipe(csv.parse({ headers: true }))
     .on('error', error => console.error(error))
     .on('data', processRowData)
     .on('end', writeDataToFile);
-    
 }
 
 
