@@ -25,7 +25,7 @@ async function createBusinessTable() {
       password TEXT NOT NULL,
       
       lat INTEGER,
-      lon INTEGER
+      lng INTEGER
       )`);
 
   db.close();
