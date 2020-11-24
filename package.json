@@ -2,14 +2,14 @@
   "name": "zelp",
   "version": "0.1.0",
   "private": true,
-  "author": "Nikodimos Sendek",
+  "author": "NVHJ",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "dev": "nodemon ./bin/www",
     "start": "node ./bin/www",
-    "data" : "node ./data/index.js"
+    "data": "node ./data/index.js"
   },
   "dependencies": {
     "axios": "^0.18.1",
