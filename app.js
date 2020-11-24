@@ -50,9 +50,6 @@ app.use('/api/badge', badgeRouter);
 
 // app.use('/api/search', searchRouter);
 
-// debugging only
-app.use('/api/badge', badgeRouter);
-
 // no page handler
 app.use('*', (req, res) => res.redirect('/'));
 
