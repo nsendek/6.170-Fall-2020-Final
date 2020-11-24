@@ -1,25 +1,5 @@
 const SQL = require('../db/index');
 
-
-/**
- * create a blank array of input values for purposes of SQLite and postgres
- * 
- * SQList(1) => ($1)
- * SQList(3) => ($1, $2, $3)
- * SQList(n) => ($1, $2, $3 .... $n)
- * 
- * @param {number} size - expected size of SQL List
- */
-function SQList(size) {
-  let out = "(";
-  for (let x = 1 ; x <= size ; x++) {
-    out += x != size ? `$${x}, ` : `$${x}`
-  }
-  out += ")";
-  return out;
-}
-
-
 /**
  * @typedef Badges
  * @prop {string} label - the name of the badge
@@ -106,7 +86,7 @@ function SQList(size) {
         let out = await db.all(`
             SELECT businesses.id, name, address
             FROM businesses 
-            INNER JOIN badges ON badges.businessId = businesses.id AND badges.label IN ${SQList(labels.length)}
+            INNER JOIN badges ON badges.businessId = businesses.id AND badges.label IN ${SQL.list(labels.length)}
             GROUP BY businesses.id
             HAVING COUNT(label) = ${labels.length}`,
             labels)
