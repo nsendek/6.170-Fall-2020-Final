@@ -28,7 +28,7 @@ function mapReview(row) {
     review.author = { id : row.userId, username: row.username };
     return review;
   } catch (err) {
-    return;
+    return row;
   }
 }
 /**
@@ -185,7 +185,7 @@ class Reviews {
 
   static async unlike(userId, id) {
       let db = await SQL.getDB();
-      let res = await db.run(`DELETE FROM likes WHERE reviewId = ? AND userId = ?`, [id, userId]);
+      let res = await db.run(`DELETE FROM review_likes WHERE reviewId = ? AND userId = ?`, [id, userId]);
       db.close();
       return Boolean(res.changes);
   }

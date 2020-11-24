@@ -25,7 +25,7 @@ class Users {
   static async authenticate ( username, password ) {
       let db = await SQL.getDB();
       let user = await db.get(`
-          SELECT username, id 
+          SELECT username, id, timestamp
           FROM users 
           WHERE username = $1 AND password = $2`, [username, password]);
       db.close();
@@ -76,8 +76,7 @@ class Users {
         .catch(SQL.parseError);
 
       db.close();
-      if (res.error) return undefined; 
-      else return Users.get(res.lastID);
+      if (!res.error) return Users.get(res.lastID);
   }
 
   /**
@@ -111,8 +110,7 @@ class Users {
 
       db.close();
 
-      if (res.error) return undefined;
-      else return Users.get(id);
+      if (!res.error) return Users.get(id);
   }
 
   /**
@@ -130,8 +128,7 @@ class Users {
 
       db.close();
 
-      if (res.error) return undefined;
-      else return Users.get(id);
+      if (!res.error) return Users.get(id);
   }
 
   /**

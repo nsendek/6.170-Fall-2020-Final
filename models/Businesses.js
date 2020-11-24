@@ -93,8 +93,7 @@ class Businesses {
 
     db.close();
 
-    if (res.error) return undefined;
-    else return Businesses.get(res.lastID)
+    if (!res.error) return Businesses.get(res.lastID);
   }
 
   /**
@@ -114,7 +113,7 @@ class Businesses {
 
   /**
    * change name
-   * @param {string} oldName - old name
+   * @param {number} id - business ID
    * @param {string} newName - new name
    * @return {User | null} the altered User (minus password)
    */
@@ -182,8 +181,7 @@ class Businesses {
 
     db.close();
 
-    if (res.error) return undefined;
-    else return Businesses.get(id);
+    if (!res.error) return Businesses.get(id);
   }
 }
 
