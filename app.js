@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const cors = require('cors');
-const history = require("connect-history-api-fallback");
+// const history = require("connect-history-api-fallback");
 
 require('dotenv').config(); // This allows us to use variables in .env file through process.env
 const isProduction = process.env.NODE_ENV === 'production';
@@ -48,7 +48,7 @@ app.use('/api/review', reviewRouter);
 app.use('/api/session', sessionRouter);
 app.use('/api/badge', badgeRouter);
 
-// app.use('/api/search', searchRouter);
+app.use('/api/search', searchRouter);
 
 // no page handler
 app.use('*', (req, res) => res.redirect('/'));

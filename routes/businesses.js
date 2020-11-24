@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
  * @throws {200} - if business is altered
  * @throws {400} - no name or password are invalid
  * @throws {401} - if business is not signed in 
- * @throws {409} - if new name is taken
+ * @throws {409} - if new accountName is taken
  */
 router.patch('/:property?', async (req, res) => { 
   if ( !signedIn(req, res, false)
@@ -133,7 +133,7 @@ router.get('/:id?', async (req, res) => {
     }
 
   } catch (error) {
-    res.status(503).json({ error: "could not get businesses" }).end();
+    res.status(503).send({ error: "could not get businesses" });
   }
 });
 
@@ -156,7 +156,7 @@ router.get('/:id?/badges', async (req, res) => {
       res.status(404).send({error: "could not get"});
     }
   } catch (error) {
-    res.status(503).json({ error: "could not get badges" }).end();
+    res.status(503).send({ error: "could not get badges" });
   }
 });
 
