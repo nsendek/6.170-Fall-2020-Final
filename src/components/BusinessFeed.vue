@@ -17,8 +17,8 @@
             <label for="badge"> {{badge.label}} </label>
        </div>
 
-        <button v-on:click= "filterBusinessesByBadges" type="button" >Apply Filters</button>
-        <button v-on:click= "loadBusinesses" type="button" >Reset Filters</button>
+        <v-btn v-on:click= "filterBusinessesByBadges" type="button" >Apply Filters</v-btn>
+        <v-btn v-on:click= "loadBusinesses" type="button" >Reset Filters</v-btn>
 
     </div>
 
@@ -67,6 +67,7 @@ export default {
           axios.get("/api/business")
           .then((res) => {
               this.businesses = res.data ? res.data : [];
+              eventBus.$emit('businesses', res.data)
           })
         },
         // Loads all badge types
@@ -92,7 +93,7 @@ export default {
                 this.businesses = res.data;
             })
             .catch((err) => {
-                eventBus.$emit('error-message', err)
+                eventBus.$emit('error-message', err);
             })
             }
         },

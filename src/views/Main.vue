@@ -9,10 +9,17 @@
       </div>
       <div class="map-pane">
       <GmapMap class="g-map"
-        :center="{lat:42.3601, lng:-71.0942}"
+        :center="center"
         :zoom="15"
         map-type-id="roadmap"
       >
+          <!-- <GmapMarker
+              :key="index"
+              v-for="(b, index) in businesses"
+              :position="{lat : Number(b.lat), lng: Number(b.lng)}"
+              :clickable="true"
+              @click="log(b)"
+            /> -->
       </GmapMap>
       </div>
     </div>
@@ -21,12 +28,30 @@
 </template>
 
 <script>
+import { eventBus } from "../main";
 import BusinessFeed from "../components/BusinessFeed"
 
 export default {
-  name: "main",
+  name: "Main",
   components: {
     BusinessFeed
+  },
+  data() {
+    return {
+      center : {lat:42.3601, lng:-71.0942},
+      businesses : []
+    }
+  },
+  created() {
+    eventBus.$on('businesses', () => {
+      // this.businesses = businesses;
+      // window.console.log(this.businesses)
+    })
+  },
+  methods: {
+    log(b) {
+      window.console.log(b.name, b.address);
+    }
   }
 };
 </script>
