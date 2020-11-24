@@ -159,4 +159,4 @@ const SQL = require('../db/index');
   }
 }
 
- module.exports = Badges;
+ module.exports = Object.freeze(Badges);

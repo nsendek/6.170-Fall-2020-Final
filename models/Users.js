@@ -146,4 +146,4 @@ class Users {
   }
 }
 
-module.exports = Users;
+module.exports = Object.freeze(Users);

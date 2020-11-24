@@ -210,4 +210,4 @@ class Reviews {
   } 
 }
 
-module.exports = Reviews;
+module.exports = Object.freeze(Reviews);

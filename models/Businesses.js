@@ -185,4 +185,4 @@ class Businesses {
   }
 }
 
-module.exports = Businesses;
+module.exports = Object.freeze(Businesses);
