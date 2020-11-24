@@ -18,12 +18,12 @@ async function createBusinessTable() {
 
   await db.run(`CREATE TABLE IF NOT EXISTS businesses (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
+      
       name TEXT,
-
-      address TEXT NOT NULL,
-      accountName TEXT UNIQUE,
+      accountName TEXT NOT NULL UNIQUE,
       password TEXT NOT NULL,
       
+      address TEXT,
       lat INTEGER,
       lng INTEGER
       )`);

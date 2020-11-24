@@ -17,15 +17,15 @@ router.post('/', async (req, res) => {
   if (req.session.business) {
     res.status(400).send({ error : `already signed in as "${req.session.business.name}"` });
   } else { 
-    if (!correctInput(req, res,['name', 'address', 'password'])) return;
+    if (!correctInput(req, res,['name', 'accountName', 'password'])) return;
 
     try {
-      let business = await Businesses.create(req.body.name, req.body.address, req.body.password);
+      let business = await Businesses.create(req.body.name, req.body.accountName, req.body.password);
       if (business) {
         req.session.business = business;
-        res.status(201).send({ business, message : "business createn"});
+        res.status(201).send({ business, message : "business created"});
       } else {
-        res.status(409).json({ error: "address taken" }).end();
+        res.status(409).json({ error: "account name taken" }).end();
       }
     } catch (error) {
         res.status(503).json({ error: "could not create business" }).end();
@@ -36,10 +36,9 @@ router.post('/', async (req, res) => {
 /**
  * edit information about the business. 
  * this can be used to change name, password, but NOT BOTH. 
- * @name PATCH/api/business/:property?
- * @param {string} name - new name to change to
- * @param {string} password - new pssword to change to
- * @return {User} - the altered business object (minus paassword,even if password was changed)
+ * @name PATCH/api/business/:property
+ * 
+ * @return {Business} - the altered business object (minus paassword,even if password was changed)
  * 
  * @throws {200} - if business is altered
  * @throws {400} - no name or password are invalid
@@ -47,37 +46,44 @@ router.post('/', async (req, res) => {
  * @throws {409} - if new name is taken
  */
 router.patch('/:property?', async (req, res) => { 
-  if (!signedIn(req, res, false)) return;
-
-  if (req.body.name && req.body.name.length) { // changing name
-   
-    try {
-      let changed = await Businesses.changeName(req.session.business.id, req.body.name);
-      if (changed) {
-        res.status(200).send(changed);
-        req.session.business = changed;
-      }
-    } catch (error) {
-      res.status(503).json({ error: "could not change name" }).end();
+  if ( !signedIn(req, res, false)
+    || !correctInput(req, res,[],['property'])
+    || !correctInput(req, res,[req.params.property])
+  ) return;
+    let patchMethod;
+    switch (req.params.property){
+      case 'name':
+        patchMethod = Businesses.updateName;
+        break;
+      case 'address':
+        patchMethod = Businesses.updateAddress;
+        break;
+      case 'password':
+        patchMethod = Businesses.updatePassword;
+        break;
     }
 
-  } else if (req.body.password && req.body.password.length) { // changing password
-
     try {
-      let changed = await Businesses.changePassword(req.session.business.id, req.body.password);
-      if (changed) {
-        res.status(200).send(changed);
-        req.session.business = changed;
+      let updatedBusiness = await patchMethod(req.session.business.id, req.body[req.params.property]);
+      if (updatedBusiness) {
+        res.status(200).send(updatedBusiness);
+        req.session.business = updatedBusiness;
+
       } else {
-        res.status(400).send({ error: 'invalid new password.' });
+        switch(req.params.property) {
+          case "accountName":
+            res.status(409).send({ error: 'account name taken' });
+            break;
+          case "address":
+            res.status(404).send({ error: 'address and geocode not found' });
+            break;
+          default:
+            throw "oops";
+        }
       }
-    } catch (error) {
-      res.status(503).json({ error: "could not change password" }).end();
+    } catch (err) {
+      res.status(503).send({ error : `could not update business` });
     }
-
-  } else {
-    res.status(400).send({ error: 'no inputs given' });
-  }
 });
 
 /**

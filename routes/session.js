@@ -80,15 +80,15 @@ router.post('/business', async (req, res) => {
     res.status(400).send({ error: `already signed in as ${req.session.business.name}` });
   } else {
     try {
-      if (!correctInput(req, res,['id', 'password']) 
-      || !(await dataExists(res, req.body.id, Businesses))) return;
+      if (!correctInput(req, res,['accountName', 'password']) 
+      || !(await dataExists(res, req.body.accountName, Businesses))) return;
       
-      let business = await Businesses.authenticate(req.body.id, req.body.password);
+      let business = await Businesses.authenticate(req.body.accountName, req.body.password);
       if (business)  {
         req.session.business = business;
         res.status(200).send({ business, message : "signed in to business account"});
       } else {
-        res.status(401).send({ error: 'invalid password' });
+        res.status(401).send({ error: 'invalid account name and/or password' });
       }
     } catch (error) {
       res.status(503).json({ error: "could not sign in" }).end();
