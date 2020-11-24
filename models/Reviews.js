@@ -6,28 +6,29 @@ const SQL = require('../db');
  * @prop {string} content - some string of characters
  * @prop {number} rating - in the domain of 1-5
  * @prop {User} author - author of review 
+ * @prop {Business} business - business thats being reviewed 
  * @prop {number} businessID -  business
  */
 
 /**
  * 
- * @param {Object} row
+ * @param {Object} row containing all selected column values from SQL query
  * @returns {Review} 
  */
 function mapReview(row) {
   try {
     let review = {
       id : row.id, 
-      businessId : row.businessId,
       rating : row.rating,
       content :row.content,
       timestamp : row.timestamp
     };
     //map entire row to Review object with nested User object under 'creator' key
+    review.business = { id : row.businessId , name : row.businessName }
     review.author = { id : row.userId, username: row.username };
     return review;
   } catch (err) {
-    return undefined;
+    return;
   }
 }
 /**
@@ -61,9 +62,11 @@ class Reviews {
   static async getAll() {
       let db = await SQL.getDB();
       let data = await db.all(`
-          SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp
+          SELECT reviews.id, users.username, userId, businessId, 
+          businesses.name AS businessName, rating, content, reviews.timestamp
           FROM reviews
           JOIN users ON users.id=userId 
+          JOIN businesses ON businesses.id=businessId 
           ORDER BY reviews.timestamp DESC`);
       return data.map(mapReview);
   }
@@ -75,9 +78,11 @@ class Reviews {
   static async get(id) {
       let db = await SQL.getDB();
       let data = await db.get(`
-          SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp
+          SELECT reviews.id, users.username, userId, businessId, 
+          businesses.name AS businessName, rating, content, reviews.timestamp
           FROM reviews
-          JOIN users ON users.id=userId
+          JOIN users ON users.id=userId 
+          JOIN businesses ON businesses.id=businessId 
           WHERE reviews.id = $1`,[id]);
       return mapReview(data);
   }
@@ -90,9 +95,11 @@ class Reviews {
   static async getByUser(userId) {
     let db = await SQL.getDB();
     let data =  await db.all(`
-        SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp
+        SELECT reviews.id, users.username, userId, businessId, 
+        businesses.name AS businessName,rating, content, reviews.timestamp
         FROM reviews 
         JOIN users ON users.id=userId
+        JOIN businesses ON businesses.id=businessId 
         WHERE userId = $1
         ORDER BY reviews.timestamp DESC`,[userId]);
 
@@ -117,8 +124,9 @@ class Reviews {
         .catch(SQL.parseError);
 
     db.close();
-    if (res.error) return undefined; 
-    else return await Reviews.get(res.lastID);
+    console.log(res)
+
+    if (!res.error) return Reviews.get(res.lastID);
   }
 
   /**
@@ -151,8 +159,7 @@ class Reviews {
       .catch(SQL.parseError);
 
       db.close();
-      if (res.error) return undefined; 
-      else return await Reviews.get(res.lastID);
+      if (!res.error) return Reviews.get(res.lastID);
   }
 
   static async getLikes(id) {
