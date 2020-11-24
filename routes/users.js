@@ -33,6 +33,33 @@ router.post('/', async (req, res) => {
 });
 
 /**
+ * sign in as username
+ * @name POST/api/user/signedIn
+ * @return {User} - the signed in user
+ * 
+ * @throws {401} - if username / password combo is incorrect
+ * @throws {400} - if user is already signed in 
+ */
+router.post('/signin', async (req, res) => {
+  if (req.session.user) {
+    res.status(400).send({ error : `already signed in as ${req.session.user.username}` });
+  }
+  else{
+    if (!correctInput(req, res,['username', 'password'])) return;
+
+    // TODO not sure if we need await here
+    let user = await Users.authenticate(req.body.username, req.body.password); 
+    if(user){
+      req.session.user = user;
+      res.status(201).send({ user, message : "user created and signed in"});
+    }
+    else{
+      res.status(401).send({ error : `incorrect username or password` }); 
+    }
+  }
+});
+
+/**
  * edit information about the user. 
  * this can be used to change username, password, but NOT BOTH. 
  * @name PATCH/api/user
