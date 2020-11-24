@@ -14,10 +14,29 @@ const { initDB, getDB, parseError, UNIX} = require('./sqlite.js');
  * @method close - closes the database connection (not really mandatory for sqlite but probably for postgres).
  */
 
+/**
+ * create a blank array of input values for purposes of SQLite and postgres
+ * 
+ * list(1) => ($1)
+ * list(3) => ($1, $2, $3)
+ * list(n) => ($1, $2, $3 .... $n)
+ * 
+ * @param {number} size - expected size of SQL List
+ */
+function list(size) {
+  let out = "(";
+  for (let x = 1 ; x <= size ; x++) {
+    out += x != size ? `$${x}, ` : `$${x}`
+  }
+  out += ")";
+  return out;
+}
+
 initDB();
 
 module.exports = {
   getDB,
   parseError,
-  UNIX
+  UNIX,
+  list
 }
