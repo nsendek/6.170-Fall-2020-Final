@@ -2,6 +2,7 @@
   <div class='entire-page'>
     <div class='full-container'>
         <p style="text-align: center;">Zelp Main Page</p>
+        <router-link to="/login"> login </router-link>
     </div>
     <div class="panes">
       <div class="business-pane">

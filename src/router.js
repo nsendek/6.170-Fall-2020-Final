@@ -10,6 +10,11 @@ export default new Router({
       path: '/',
       name: 'main',
       component: () => import('./views/Main.vue')
+    }, 
+    {
+      path: '/login',
+      name: 'login', 
+      component: () => import('./views/LoginPage.vue')
     }
   ],
   linkActiveClass: "active",
