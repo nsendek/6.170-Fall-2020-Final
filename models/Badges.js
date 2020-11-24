@@ -12,7 +12,7 @@ const SQL = require('../db/index');
  */
 function SQList(size) {
   let out = "(";
-  for (x = 1 ; x <= size ; x++) {
+  for (let x = 1 ; x <= size ; x++) {
     out += x != size ? `$${x}, ` : `$${x}`
   }
   out += ")";
@@ -101,7 +101,7 @@ function SQList(size) {
         let db = await SQL.getDB();
 
         // you can combine two sql commands into one with JOIN, so you can query based on info from two tables
-        // group by creates 'groups' of rows with the same businessId 
+        // GROUP BY creates 'groups' of rows with the same businessId 
         // COUNT(label) applies to those groups not the whole table
         let out = await db.all(`
             SELECT businesses.id, name, address
@@ -131,7 +131,7 @@ function SQList(size) {
       .catch(SQL.parseError);
 
     db.close();
-    if (res.error) return undefined; 
+    if (res.error) return undefined;
     else return Badges.get(res.lastID);
   }
 
@@ -144,7 +144,7 @@ function SQList(size) {
     let badge = await Badges.get(badgeId);
     let res = await db.run('DELETE FROM badges WHERE id = $1', [badgeId]);
     db.close();
-    return  Boolean(res.changes) ? badge : undefined;
+    return  res.changes ? badge : undefined;
   }
 
   /**
@@ -166,6 +166,7 @@ function SQList(size) {
    * deny a specfied badge
    * @param {number} userId
    * @param {number} badgeId
+   * @returns {boolean} 
    */
   static async deny(userId, badgeId) {
     let db = await SQL.getDB();

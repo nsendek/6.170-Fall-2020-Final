@@ -131,7 +131,7 @@ class Reviews {
       let review = await Reviews.get(id);
       let res = await db.run('DELETE FROM reviews WHERE id = $1', [id]);
       db.close();
-      return Boolean(res.changes) ? review : undefined;
+      return res.changes ? review : undefined;
   }
 
   /**
@@ -169,7 +169,7 @@ class Reviews {
   }
 
   static async like(userId, id) {
-      let db = await database.getDB();
+      let db = await SQL.getDB();
       let res = await db.run(`INSERT INTO review_likes (reviewId,  userId) VALUES (?, ?)`, [id, userId])
                   .catch(() => undefined);
       db.close();
@@ -177,7 +177,7 @@ class Reviews {
   }
 
   static async unlike(userId, id) {
-      let db = await database.getDB();
+      let db = await SQL.getDB();
       let res = await db.run(`DELETE FROM likes WHERE reviewId = ? AND userId = ?`, [id, userId]);
       db.close();
       return Boolean(res.changes);

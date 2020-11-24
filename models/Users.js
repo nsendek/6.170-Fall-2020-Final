@@ -90,7 +90,7 @@ class Users {
       let user = await Users.get(id); // get before deleting
       let res = await db.run('DELETE FROM users WHERE id = $1', [id]);
       db.close();
-      return Boolean(res.changes) ? user : undefined;
+      return res.changes ? user : undefined;
   }
 
   /**
