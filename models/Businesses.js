@@ -1,4 +1,5 @@
 const SQL = require('../db');
+const axios = require('axios');
 
 /**
  * @typedef Business
@@ -19,17 +20,17 @@ class Businesses {
   static toString() {return "business";}
 
   /**
-   * Confirm that the (is, password) pair given exists in the database.
-   * @param {Number} id
+   * Confirm that the (accountName, password) pair given exists in the database.
+   * @param {string} accountName
    * @param {string} password 
    * @return {Business | undefined} - the authenticated Business (minus the password)
    */    
-  static async authenticate ( id, password ) {
+  static async authenticate ( accountName, password ) {
     let db = await SQL.getDB();
     let business = await db.get(`
         SELECT id, name 
         FROM businesses 
-        WHERE id = $1 AND password = $2`, [id, password]);
+        WHERE accountName = $1 AND password = $2`, [accountName, password]);
     db.close();
     return business;
   }
@@ -49,8 +50,7 @@ class Businesses {
    */
   static async getAll() {
     let db = await SQL.getDB();
-    let business = await db.all(`SELECT id,name FROM businesses ORDER BY id DESC`);    
-
+    let business = await db.all(`SELECT id,name,address,lat,lng FROM businesses ORDER BY id DESC`);
     db.close();
     return business;
   }
@@ -61,29 +61,65 @@ class Businesses {
    */
   static async get(id) {
     let db = await SQL.getDB();
-    let out = await db.get(`SELECT id, name, address FROM businesses WHERE id = $1`,[id]);
+    let out = await db.get(`SELECT id,name,address,lat,lng FROM businesses WHERE id = $1`,[id]);
     db.close();
     return out;
   }
 
   /**
-   * Add a business.
-   * @param {string} name 
-   * @param {string} address
-   * @param {string} password 
+   * create a business account
+   * @param {string} name - front facing name of business
+   * @param {string} accountName - backend identifier of businiess  (because names can't be unique) 
+   * @param {string} password - password of business account 
    * @return {Business | undefined} - new Business (minus the password)
    */
-  static async create(name, address,  password) {
+  static async create(name, accountName, password) {
     let db = await SQL.getDB();
+
+    // insert into business into database.
     let res = await db.run(`
-        INSERT INTO businesses (name, address, password) 
+        INSERT INTO businesses (name, accountName, password) 
         VALUES ($1, $2, $3)`
-        ,[name, address,  password])
+        ,[name, accountName, password])
       .catch(SQL.parseError);
+
     db.close();
+
+    console.log(res);
 
     if (res.error) return undefined;
     else return Businesses.get(res.lastID)
+  }
+
+  static async addAddress(address, businessId) {
+    let db = await SQL.getDB();
+    let out = {address, lat : 0, lng : 0}
+
+    // do geocoding of address to lat long
+    let data = await axios.get("https://maps.googleapis.com/maps/api/geocode/json", { 
+      params : { 
+          address : `${address}, Cambridge, MA, USA`,
+          key : "AIzaSyDKOlyw5FKzfofKtyQ5jfKFuleqelf1nhQ"
+        }
+    })
+      .then(data => data.data)
+      .catch(err => err.response ? err.response : err);
+
+    if (!data.results[0]) return undefined;
+    
+    out.address = data.results[0].formatted_address;
+    out.lat = data.results[0].geometry.location.lat;
+    out.lng = data.results[0].geometry.location.lng;
+
+    let res = await db.run(`UPDATE businesses 
+      SET address = $1, lat = $2, lng = $3 
+      WHERE id = $4`, [out.address, out.lat, out.lng, businessId])
+      .catch(SQL.parseError);
+
+    db.close();
+
+    if (res.error) return undefined;
+    else return await Businesses.get(res.lastID);
   }
 
   /**
@@ -98,10 +134,10 @@ class Businesses {
     let res = await db.run('DELETE FROM businesses WHERE id = $1', [id]);
 
     db.close();
-    return Boolean(res.changes) ? business : undefined;
+    return res.changes ? business : undefined;
   }
 
-    /**
+  /**
    * change name
    * @param {string} oldName - old name
    * @param {string} newName - new name
@@ -114,7 +150,7 @@ class Businesses {
 
     if (business) {
         let res = await db.run(`UPDATE businesses SET name = $1 WHERE id = $2`, [newName, id]); 
-        out =  Boolean(res.changes) ? business : null;
+        out =  res.changes ? business : null;
         if (out) out.name = newName;
     }
     db.close();
@@ -133,7 +169,7 @@ class Businesses {
     let business = await Businesses.get(id);
     if (business) {
         let res = await db.run(`UPDATE businesses SET password = $1 WHERE id = $2`, [newPassword, id]); 
-        out = Boolean(res.changes) ? business : null;
+        out = res.changes ? business : null;
     }
     db.close();
     return out;
