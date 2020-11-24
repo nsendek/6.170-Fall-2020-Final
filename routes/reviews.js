@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Businesses = require('../models/Businesses');
 const Reviews = require('../models/Reviews');
 const Users = require('../models/Users');
 
@@ -66,10 +67,15 @@ router.get('/author/:id?', async (req, res) => {
  */
 router.post('/', async (req, res) => {
     if (!signedIn(req, res) 
-     || !correctInput(req, res, ['businessId','rating','content'])) return;
-    
+     || !correctInput(req, res, ['businessId','rating','content'])
+     || !(await dataExists(res, req.body.businessId, Businesses))) return;
+
+    if (req.body.rating > 5 || req.body.rating < 1) {
+      res.status(400).send({ error : "rating must be within 1-5" });
+      return;
+    }
+
     try {
-        
         let review = await Reviews.create(
             req.session.user.id, 
             req.body.businessId,
@@ -77,7 +83,8 @@ router.post('/', async (req, res) => {
             req.body.content
           );
         if (review) res.status(201).send( review );
-        else res.status(400).send({ error : "review not made idk" });
+        else res.status(409).send({ error : "a review already exists" });
+
     } catch (error) {
         res.status(503).send({ error: "could not create review" });
     }
@@ -96,13 +103,11 @@ router.post('/', async (req, res) => {
  * @throws {404} - if review does not exist
  */
 router.patch('/:id?', async (req, res) => {
-  console.log(req.body);
-  console.log(req.params.id)
     if (!signedIn(req, res) 
      || !correctInput(req, res, ['rating', 'content'])
      || !isID(res,req.params.id)
      || !(await dataExists(res, req.params.id, Reviews))) return;
-    console.log("GOT HERE");
+
     try {
         let owner = await Reviews.authenticate(req.session.user.id, req.params.id);
         if (owner) {
