@@ -41,11 +41,11 @@ export default {
     // }
   },
   created: function() {
-    eventBus.$on("signin-success", () => {
-    });
+    // eventBus.$on("signin-success", () => {
+    // });
     
-    eventBus.$on("signout-success", () => {
-    });
+    // eventBus.$on("signout-success", () => {
+    // });
 
     eventBus.$on("error-message", (message) => {
       this.addError(message);

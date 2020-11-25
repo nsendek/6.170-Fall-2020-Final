@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
 
 /**
  * sign in as username
- * @name POST/api/user/signedIn
+ * @name POST/api/user/signin
  * @return {User} - the signed in user
  * 
  * @throws {401} - if username / password combo is incorrect
@@ -51,13 +51,29 @@ router.post('/signin', async (req, res) => {
     let user = await Users.authenticate(req.body.username, req.body.password); 
     if(user){
       req.session.user = user;
-      res.status(201).send({ user, message : "user created and signed in"});
+      res.status(201).send({ user, message : `signed in as ${req.session.user.username}`});
     }
     else{
       res.status(401).send({ error : `incorrect username or password` }); 
     }
   }
 });
+
+/**
+ * sign out of user account
+ * @name POST/api/user/signout
+ * 
+ * @throws {400} - if user is already signed out 
+ */
+router.post('/signout', async (req, res) => {
+  if (req.session.user) {
+    req.session.user = undefined; 
+    res.status(201).send({ message : `${req.session.user.username} successfully signed out` });
+  }
+  else{
+    res.status(401).send({ error : `user already signed out` }); 
+  }
+})
 
 /**
  * edit information about the user. 

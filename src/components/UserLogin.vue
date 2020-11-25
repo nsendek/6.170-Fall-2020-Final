@@ -32,14 +32,14 @@ export default {
         username : this.username, 
         password : this.password
       })
-      .then((response) => { // TODO change to "signin-success"?
-        eventBus.$emit("success-message", response); 
-        // TODO navigate back to the main page 
-        // TODO store user session info in front end? cookies? state?
-        //this.router.navigate(['/main']);
+      .then((response) => {
+        eventBus.$emit("success-message", response.data.message); 
+        this.$state.username = response.data.username; 
+        this.$state.isBusiness = false; 
+        this.$router.push('/');
       })
-      .catch((error) => {
-        eventBus.$emit("error-message", error); 
+      .catch((error) => { 
+        eventBus.$emit("error-message", error.response.data.error); 
       });
     }, 
 
