@@ -3,7 +3,11 @@
     <div>{{this.$state.username}} </div>
 
     <div><v-btn v-on:click="signout"> SIGN OUT </v-btn></div>
+
     <div class="account-options">
+      <router-link :to="`/business/${businessID}`">
+        <h3>View Your Public Page</h3>
+      </router-link>
         <h1> Change Account Information </h1>
         <div> 
             <input type="text" v-model="username" placeholder="new username" />
@@ -16,7 +20,7 @@
         </div>
 
         <div>
-            <input type="text" v-model="name" placeholder="new name" />
+            <input  type="text" v-model="name" placeholder="new name" />
             <v-btn v-on:click="updateBusinessInfo('name')">update name</v-btn>
         </div>
 
