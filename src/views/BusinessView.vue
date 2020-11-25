@@ -18,7 +18,7 @@
         <v-card style="padding:25px; margin-bottom: 10px;" :key="idx" v-for="(review,idx) in reviews">
           <div class="flex-row" style="display:flex; flex-direction:row; align-items:center; ">
             <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
-            <v-rating style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
+            <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
           </div>
           <div> {{review.content}} </div>
         </v-card>
@@ -49,10 +49,6 @@ export default {
       await this.loadBadges();
       await this.loadReviews();  
     }
-    window.console.log("BUSINESS GOT");
-    window.console.log(this.business);
-    window.console.log(this.reviews);
-    window.console.log(this.badges);
   },
 	methods : {
     async loadBusiness() {
@@ -89,7 +85,10 @@ export default {
 	},
 }
 </script>
-<style scoped>
+<style>
+.review-rating .v-icon {
+  padding : 3px !important;
+}
 .main {
   display: flex;
   flex-direction: row;
@@ -104,6 +103,7 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 0px 20px;
   align-items: center;
   justify-content: center;
   /* justify-content: flex-end; */
@@ -111,8 +111,7 @@ export default {
 
 .right-container {
   width: 60%;
-  padding-left: 50px;
-  padding-right: 40px;
+  padding: 0px 20px;
   height: 100vh;
   overflow-y: scroll;
 }
