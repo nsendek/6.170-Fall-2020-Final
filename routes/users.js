@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Businesses = require('../models/Businesses');
 const Users = require('../models/Users');
 
 const { signedIn, correctInput , isID , dataExists } = require('./validators');
@@ -42,7 +43,7 @@ router.post('/', async (req, res) => {
  */
 router.post('/signin', async (req, res) => {
   if (req.session.user) {
-    res.status(400).send({ error : `already signed in as ${req.session.user.username}` });
+    res.status(400).send({ error : `already signed in as ${req.session.user}` });
   }
   else{
     if (!correctInput(req, res,['username', 'password'])) return;
@@ -50,11 +51,25 @@ router.post('/signin', async (req, res) => {
     // TODO not sure if we need await here
     let user = await Users.authenticate(req.body.username, req.body.password); 
     if(user){
-      req.session.user = user;
-      res.status(201).send({ user, message : `signed in as ${req.session.user.username}`});
+      req.session.user = req.body.username;
+      res.status(201).send({ 
+        username: req.body.username,
+        isBusiness: false,
+        message : `signed in as ${req.session.user}`,
+      });
     }
-    else{
-      res.status(401).send({ error : `incorrect username or password` }); 
+    else{ // try business account 
+      let user = await Businesses.authenticate(req.body.username, req.body.password); 
+      if(user){
+        req.session.user = req.body.username;
+        res.status(201).send({
+           username: req.body.username,
+           isBusiness: true,
+           message : `signed in as ${req.session.user}`,
+          });
+      } else {
+        res.status(401).send({ error : `incorrect username or password` });
+      } 
     }
   }
 });
@@ -67,8 +82,8 @@ router.post('/signin', async (req, res) => {
  */
 router.post('/signout', async (req, res) => {
   if (req.session.user) {
-    let username = req.session.user.username; 
-    req.session.user = undefined; 
+    let username = req.session.user; 
+    req.session.user = undefined;
     res.status(201).send({ message : `${username} successfully signed out` });
   }
   else{

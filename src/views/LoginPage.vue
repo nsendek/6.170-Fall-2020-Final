@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav-bar v-bind:showUserInfo="false" />
+    <NavBar v-bind:showUserInfo="false" />
 
     <user-login v-if="userLogin"/>
     <user-create-account v-else-if="userCreateAccount" />

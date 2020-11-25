@@ -22,6 +22,11 @@ export default new Router({
       component: () => import('./views/UserProfilePage.vue')
     },
     {
+      path: '/business-profile',
+      name: 'business-profile',
+      component: () => import('./views/BusinessProfilePage.vue')
+    },
+    {
       path: '/business/:id',
       name: 'business', 
       component: () => import('./views/BusinessView.vue')

@@ -112,6 +112,26 @@ class Businesses {
   }
 
   /**
+   * 
+   * @param {*} id 
+   * @param {*} newAccountName - new account Name 
+   * @return {User | null} the altered User (minus password)
+   */
+  static async updateAccountName(id, newAccountName) {
+    let out = null;
+    let db = await SQL.getDB();
+    let business = await Businesses.get(id);
+
+    if (business) {
+        let res = await db.run(`UPDATE businesses SET accountName = $1 WHERE id = $2`, [newAccountName, id]); 
+        out =  res.changes ? business : null;
+        if (out) out.name = newName;
+    }
+    db.close();
+    return out;
+  }
+
+  /**
    * change name
    * @param {number} id - business ID
    * @param {string} newName - new name

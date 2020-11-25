@@ -47,12 +47,15 @@ router.post('/', async (req, res) => {
  * @throws {409} - if new accountName is taken
  */
 router.patch('/:property?', async (req, res) => { 
-  if ( !signedIn(req, res, false)
+  if ( !signedIn(req, res, true)
     || !correctInput(req, res,[],['property'])
     || !correctInput(req, res,[req.params.property])
   ) return;
     let patchMethod;
     switch (req.params.property){
+      case 'accountName':
+        patchMethod = Businesses.updateAccountName;
+        break;
       case 'name':
         patchMethod = Businesses.updateName;
         break;
