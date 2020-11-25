@@ -4,6 +4,13 @@
     justify-content: center;
     height: 10vh;
   }
+
+.navbar{
+  display: flex; 
+  justify-content: space-between;
+  flex-direction: row; 
+  margin: 20px;
+}
   
 .panes {
     display: flex;

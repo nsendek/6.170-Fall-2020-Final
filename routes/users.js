@@ -67,8 +67,9 @@ router.post('/signin', async (req, res) => {
  */
 router.post('/signout', async (req, res) => {
   if (req.session.user) {
+    let username = req.session.user.username; 
     req.session.user = undefined; 
-    res.status(201).send({ message : `${req.session.user.username} successfully signed out` });
+    res.status(201).send({ message : `${username} successfully signed out` });
   }
   else{
     res.status(401).send({ error : `user already signed out` }); 

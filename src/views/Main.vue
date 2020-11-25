@@ -1,9 +1,10 @@
 <template>
   <div class='entire-page'>
-    <div class='full-container'>
+    <!-- <div class='full-container'>
         <p style="text-align: center;">Zelp Main Page</p>
         <router-link to="/login"> login </router-link>
-    </div>
+    </div> -->
+    <nav-bar />
     <div class="panes">
       <div class="business-pane">
         <BusinessFeed/>
@@ -31,11 +32,13 @@
 <script>
 import { eventBus } from "../main";
 import BusinessFeed from "../components/BusinessFeed"
+import NavBar from "../components/NavBar"
 
 export default {
   name: "Main",
   components: {
-    BusinessFeed
+    BusinessFeed,
+    NavBar
   },
   data() {
     return {

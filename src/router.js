@@ -15,6 +15,11 @@ export default new Router({
       path: '/login',
       name: 'login', 
       component: () => import('./views/LoginPage.vue')
+    }, 
+    {
+      path: '/user-profile',
+      name: 'user-profile',
+      component: () => import('./views/UserProfilePage.vue')
     }
   ],
   linkActiveClass: "active",

@@ -34,7 +34,7 @@ export default {
       })
       .then((response) => {
         eventBus.$emit("success-message", response.data.message); 
-        this.$state.username = response.data.username; 
+        this.$state.username = response.data.user.username; 
         this.$state.isBusiness = false; 
         this.$router.push('/');
       })

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link to="/"> ZELP </router-link>
+    <nav-bar v-bind:showUserInfo="false" />
 
     <user-login v-if="userLogin"/>
     <user-create-account v-else-if="userCreateAccount" />
@@ -15,13 +15,15 @@ import { eventBus } from "../main";
 
 import UserCreateAccount from '../components/UserCreateAccount.vue'
 import UserLogin from '../components/UserLogin.vue'
+import NavBar from "../components/NavBar.vue"
 
 export default {
   name : "LoginPage", 
 
   components : {
     UserLogin,
-    UserCreateAccount
+    UserCreateAccount, 
+    NavBar
   }, 
 
   data : function(){
