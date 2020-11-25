@@ -1,7 +1,3 @@
-const Users = require("../models/Users");
-const Businesses = require("../models/Businesses");
-const Reviews = require("../models/Reviews");
-
 /**
  * takes request and response variables and returns whether user is signed in.
  * it also throws the needed status code if not signed in. 
@@ -9,8 +5,8 @@ const Reviews = require("../models/Reviews");
  * @throws {401} user is not signed in and not allowed to run certain function.
  * @returns {boolean} determining whether the user is signed in or not. 
  */
-function signedIn(req, res, user = true) {
-  if (user) { // user signin check
+function signedIn(req, res, checkUser = true) {
+  if (checkUser) { // user signin check
     if (!req.session.user) {
       res.status(401).send({ error: 'you are not signed in.' });
       return false;

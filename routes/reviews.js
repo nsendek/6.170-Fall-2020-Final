@@ -8,7 +8,7 @@ const { signedIn, correctInput , isID , dataExists} = require('./validators');
 
 /**
  * Get all Review posted if ID is given return single Review
- * @name GET/api/reviews
+ * @name GET/api/review
  * @param {number} id - the id of the review.
  * @return {Review[]} - the created short
  */
@@ -35,7 +35,7 @@ router.get('/:id?', async (req, res) => {
 
 /**
  * Get all Reviews from a specific user.  
- * @name GET/api/reviews/author/:id
+ * @name GET/api/review/author/:id
  * @param {number} id - the id of the user.
  * @return {Review[]} - all Reviews made by user
  * 
@@ -92,7 +92,7 @@ router.post('/', async (req, res) => {
 
  /**
  * Edit a Review
- * @name PATCH/api/reviews/:id
+ * @name PATCH/api/review/:id
  * @param {number} :id - id of the review
  * @body {string} content - new content of the Review 
  * @return {Review} the updated Review
@@ -124,7 +124,7 @@ router.patch('/:id?', async (req, res) => {
 
 /**
  * delete specified Review 
- * @name DELETE/api/reviews/:id
+ * @name DELETE/api/review/:id
  * @param {number} :id - id of the review
  * @return {Review} the updated Review
  * 
@@ -168,7 +168,7 @@ router.delete('/:id?', async (req, res, next) => {
  * @throws {400} - review id is invalid, NaN, or undefined
  * @throws {404} - review does not exist
  */
-router.get('/:id?/likes', async (req, res) => {
+router.get('/:id/likes', async (req, res) => {
     if (!correctInput(req, res, [], ['id'])
      || !isID(res,req.params.id)
      || !(await dataExists(res, req.params.id, Reviews))) return;
@@ -192,7 +192,7 @@ router.get('/:id?/likes', async (req, res) => {
  * @throws {404} - review does not exist
  * @throws {409} - review is already liked
  */
-router.post('/:id?/likes', async (req, res) => {
+router.post('/:id/likes', async (req, res) => {
     if (!signedIn(req, res) 
      || !correctInput(req, res, [], ['id'])
      || !isID(res,req.params.id)
@@ -218,7 +218,7 @@ router.post('/:id?/likes', async (req, res) => {
  * @throws {404} - review does not exist
  * @throws {409} - review is already unliked
  */
-router.delete('/:id?/likes', async (req, res) => {
+router.delete('/:id/likes', async (req, res) => {
     if (!signedIn(req, res) 
      || !correctInput(req, res, [], ['id'])
      || !isID(res,req.params.id)

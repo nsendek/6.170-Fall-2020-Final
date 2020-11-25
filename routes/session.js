@@ -22,13 +22,13 @@ router.get('/', async (req, res) => {
 
 /**
  * sign in and save user to session
- * @name POST/api/session
+ * @name POST/api/session/user
  * @throws {200} - if user is signed in
  * 
  * @throws {400} - if user is already signed in
  * @throws {401} - if username or password do not authenticate a user
  */
-router.post('/', async (req, res) => {
+router.post('/user', async (req, res) => {
   if (req.session.user) {
     res.status(400).send({ error: `already signed in as ${req.session.user.username}` });
   } else {
@@ -50,12 +50,12 @@ router.post('/', async (req, res) => {
 
 /**
  * sign out and remove username from session.
- * @name DELETE/api/session
+ * @name DELETE/api/session/user
  * @throws {200} - if user is signed out
  * 
  * @throws {401} - if user is not signed in 
  */
-router.delete('/', async (req, res) => {
+router.delete('/user', async (req, res) => {
   if (!signedIn(req, res)) return;
 
   try {

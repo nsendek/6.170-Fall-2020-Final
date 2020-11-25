@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
  * @throws {409} - if new accountName is taken
  */
 router.patch('/:property?', async (req, res) => { 
-  if ( !signedIn(req, res, true)
+  if ( !signedIn(req, res, false) // need to be signed in to business
     || !correctInput(req, res,[],['property'])
     || !correctInput(req, res,[req.params.property])
   ) return;

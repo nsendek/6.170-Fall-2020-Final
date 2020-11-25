@@ -55,7 +55,7 @@ router.get('/filter', async (req, res) => {
  */
 router.post('/', async (req, res) => {
   if (!signedIn(req, res, false) 
-   || !correctInput(req, res, ['template'])) return; 
+   || !correctInput(req, res, ['label'])) return; 
 
   try {
     if (!(await dataExists(res, req.body.template, Badges))
