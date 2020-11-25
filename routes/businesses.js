@@ -3,6 +3,7 @@ const Businesses = require('../models/Businesses');
 const Badges = require('../models/Badges');
 
 const { signedIn, correctInput , isID , dataExists } = require('./validators');
+const Reviews = require('../models/Reviews');
 
 /**
  * create business and store name and password. 
@@ -137,24 +138,37 @@ router.get('/:id?', async (req, res) => {
   }
 });
 
-// BADGE RELATED ROUTES -----------------------------------------------
+// BADGE & REVIEW RELATED ROUTES -----------------------------------------------
 
 /**
  * get badges that belong to a specified business
  * @name GET/api/business/:id/badges
  * @returns {User[]} Array of all businesss 
  */
-router.get('/:id?/badges', async (req, res) => {
+router.get('/:id/badges', async (req, res) => {
   if (!correctInput(req, res,[],['id'])
   || !isID(res,req.params.id)
   || !(await dataExists(res, req.params.id, Businesses))) return;
   try {
     let badges = await Badges.getBusinessBadges(req.params.id)
-    if (badges) {
-      res.status(200).send(badges);
-    } else {
-      res.status(404).send({error: "could not get"});
-    }
+    res.status(200).send(badges);
+  } catch (error) {
+    res.status(503).send({ error: "could not get badges" });
+  }
+});
+
+/**
+ * get badges that belong to a specified business
+ * @name GET/api/business/:id/badges
+ * @returns {User[]} Array of all businesss 
+ */
+router.get('/:id/reviews', async (req, res) => {
+  if (!correctInput(req, res,[],['id'])
+  || !isID(res,req.params.id)
+  || !(await dataExists(res, req.params.id, Businesses))) return;
+  try {
+    let badges = await Reviews.getByBusiness(req.params.id)
+    res.status(200).send(badges);
   } catch (error) {
     res.status(503).send({ error: "could not get badges" });
   }
