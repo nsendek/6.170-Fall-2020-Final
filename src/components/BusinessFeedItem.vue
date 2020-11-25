@@ -1,9 +1,9 @@
 <template>
 
 <div class="business-container">
-
-<h3>{{business.name}}</h3>
-
+<router-link :to="`/business/${business.id}`">
+  <h3>{{business.name}}</h3>
+</router-link>
 <i>Address: {{business.address}}</i>
 
 Badges: {{this.badges}}
