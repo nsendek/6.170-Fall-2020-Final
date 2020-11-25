@@ -4,16 +4,16 @@
     prominent
     v-for="(alert,idx) in alerts.slice().reverse()"
     :key="idx"
-    :class="alert[0]"
+    :class="alert.type"
     dismissible
     transition="slide-y-transition"
     >
-      {{alert[1]}}
+      {{alert.message}}
     </v-alert>
   </div>
 </template>
 <script>
-// import axios from "axios";
+import axios from "axios";
 import { eventBus } from "../main";
 
 export default {
@@ -22,6 +22,7 @@ export default {
     return {
       alerts : [],
       lastID : 1,
+      maxAlerts : 3,
       timeout : 3000 // 3 sec
     }
   },
@@ -30,23 +31,23 @@ export default {
    * if there no longer is a session, delete the cookie as well.
    */
   async beforeCreate() {
-    // let response = await axios.get("/api/session")
-    //   .catch(err => err.response); 
-    // if (response.status == 200) {
-    //   this.$state.username = response.data.user.username;
-    //   this.$state.id = response.data.user.id;
-    // } else {
-    //   this.$cookie.set('zelp-username', null);
-    //   this.$cookie.set('zelp-userId', null);
-    // }
+    let response = await axios.get("/api/session")
+      .catch(err => err.response); 
+
+    if (response.status == 200) {
+      if (response.data.user) {
+        this.$state.username = response.data.user.username;
+        this.$state.id = response.data.user.id;
+      } else if (response.data.business) {
+        this.$state.username = response.data.business.username;
+        this.$state.id = response.data.user.id;
+      }
+    } else {
+      this.$cookie.set('zelp-username', null);
+      this.$cookie.set('zelp-userId', null);
+    }
   },
   created: function() {
-    // eventBus.$on("signin-success", () => {
-    // });
-    
-    // eventBus.$on("signout-success", () => {
-    // });
-
     eventBus.$on("error-message", (message) => {
       this.addError(message);
     });
@@ -57,20 +58,20 @@ export default {
   },
   methods : {
     addSuccess(message) {
-      this.addAlert(['success',message, this.lastID]);
+      this.addAlert({type: 'success', message, id: this.lastID});
     },
     addError(message) {
-      this.addAlert(['error',message, this.lastID]);
+      this.addAlert({type: 'error',message, id :this.lastID});
     },
     addAlert(data){
       this.alerts.push(data);
-      if (this.alerts.length > 3) this.alerts.splice(0,1);
+      if (this.alerts.length > this.maxAlerts) this.alerts.splice(0,1);
       this.startTimer(this.lastID);
       this.lastID += 1;
     },
     startTimer(id) {
       setTimeout(() => {
-        this.alerts = this.alerts.filter((alert) => (alert[2] != id));
+        this.alerts = this.alerts.filter((alert) => (alert.id != id));
       }, this.timeout);
     }
   }
