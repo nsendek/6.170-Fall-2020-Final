@@ -24,12 +24,11 @@ const { initDB, getDB, parseError, UNIX} = require('./sqlite.js');
  * @param {number} size - expected size of SQL List
  */
 function list(size) {
-  let out = "(";
+  let out = "";
   for (let x = 1 ; x <= size ; x++) {
     out += x != size ? `$${x}, ` : `$${x}`
   }
-  out += ")";
-  return out;
+  return `(${out})`;
 }
 
 initDB();
