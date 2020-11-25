@@ -125,7 +125,7 @@ class Businesses {
     if (business) {
         let res = await db.run(`UPDATE businesses SET accountName = $1 WHERE id = $2`, [newAccountName, id]); 
         out =  res.changes ? business : null;
-        if (out) out.name = newName;
+        if (out) out.name = newAccountName;
     }
     db.close();
     return out;
