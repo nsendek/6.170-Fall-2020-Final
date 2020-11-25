@@ -54,14 +54,15 @@ router.get('/filter', async (req, res) => {
  * @throws {400} - if review is too long or not given
  */
 router.post('/', async (req, res) => {
+  console.log("body?:", req.body);
   if (!signedIn(req, res, false) 
    || !correctInput(req, res, ['label'])) return; 
 
   try {
-    if (!(await dataExists(res, req.body.template, Badges))
+    if (!(await dataExists(res, req.body.label, Badges))
       || !(await dataExists(res, req.session.business.id, Businesses))) return;
 
-      let badge = await Badges.add(req.session.business.id, req.body.template);
+      let badge = await Badges.add(req.session.business.id, req.body.label);
       if (badge) res.status(201).send( badge );
       else res.status(400).send({ error : "business already has badge" });
       

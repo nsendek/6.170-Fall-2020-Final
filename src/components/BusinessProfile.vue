@@ -64,9 +64,41 @@
               </v-card>
             </v-menu>
           </div>
-
         </div>
 
+        <h1> Add Badges </h1>
+        <div class="badges">
+
+          <div class="badges" v-for="(badge,idx) in otherBadges" :key="idx">
+            <v-menu
+              v-model="badge.menu"
+              :close-on-content-click="false"
+              :nudge-width="50"
+              :key="idx"
+              bottom
+              offset-y
+            >
+              <template v-slot:activator='{on, attrs}'>
+                <v-chip 
+                  style="margin: 5px;" 
+                  :key="idx"
+                  v-on = 'on'
+                  v-bind='attrs'>
+                    {{badge.label}}
+                </v-chip>
+              </template>
+              <v-card>
+                <v-list>
+                  <v-btn
+                   color="green"
+                   v-on:click="addBadge(idx)"
+                  > Add Badge </v-btn>
+                </v-list>
+
+              </v-card>
+            </v-menu>
+          </div>
+        </div>
 
 
     </div>
@@ -90,7 +122,7 @@ export default {
       address: "",
       businessID: null,
       badges: [],
-      menu: false,
+      otherBadges: [],
     }
   }, 
 
@@ -108,10 +140,23 @@ export default {
         .then((response) => {
           this.badges = response.data;
           this.badges.forEach((badgeObject) => badgeObject.menu = false);
+          this.getOtherBadges();
         })
       })
       .catch((error) => {
         window.console.log(error.response); 
+      })
+    },
+
+    getOtherBadges: function() {
+      axios.get('/api/badge')
+      .then((response) => {
+        let badgesOwned = this.badges.map((badgeObject) => badgeObject.label);
+        this.otherBadges = response.data.filter((badgeObject) => !(badgesOwned.includes(badgeObject.label)));
+        this.otherBadges.forEach((badgeObject) => badgeObject.menu = false);
+      })
+      .catch((error) => {
+        window.console.log(error.response);
       })
     },
 
@@ -146,17 +191,39 @@ export default {
 
     deleteBadge: function(idx) {
       if (confirm("Are you sure you want to delete this badge?")) {
-        let badgeID = this.badges[idx].id;
-        axios.delete(`api/badge/${badgeID}`)
+        let badgeDeleted = this.badges[idx];
+        axios.delete(`api/badge/${badgeDeleted.id}`)
         .then(() => {
           eventBus.$emit("success-message", "Badge deleted successfully");
           this.badges = this.badges.filter((badge,index) => index !== idx);
+          badgeDeleted.menu = false;
+          this.otherBadges.push(badgeDeleted);
         })
         .catch((error) => {
           console.log(error);
-          eventBus.$emit("error-message", error.response.data.error);
+          eventBus.$emit("error-message", "Unable to delete badge");
         })
       }
+    },
+
+    addBadge: function(idx) {
+      if (confirm("Are you sure you want to add this badge?")) {
+        let badgeLabel = this.otherBadges[idx].label;
+        axios.post('api/badge' , {label : badgeLabel})
+        .then((response) => {
+          eventBus.$emit("success-message", "Badge added successfully");
+          this.otherBadges = this.otherBadges.filter((badgeObject, index) => index != idx);
+          let badgeAdded = response.data;
+          badgeAdded.menu = false;
+          this.badges.push(badgeAdded);
+
+        })
+        .catch((error) => {
+          console.log(error);
+          eventBus.$emit("error-message", "Unable to add badge");
+        });
+      }
+
     },
 
     signout : function(){
