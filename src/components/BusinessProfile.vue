@@ -26,8 +26,13 @@
         </div>
 
 
-        <h1> Change Profile Information </h1>
-        Maybe the rest of the profile goes here???
+        <h1> Your Badges </h1>
+        <div style="text-align:center;">
+          <v-chip style="margin: 5px;" :key="idx" v-for="(badge,idx) in badges">
+            {{badge.label}}
+          </v-chip>
+        </div>
+
     </div>
     
 
@@ -46,11 +51,31 @@ export default {
       username : "", 
       password : "",
       name: "",
-      address: ""
+      address: "",
+      businessID: null,
+      badges: [],
     }
   }, 
 
+  mounted: function() {
+    this.getBadges();
+  },
+
   methods : {
+
+    getBadges: function() {
+      axios.get(`/api/business/account/${this.$state.username}`)
+      .then((response) => {
+        this.businessID = response.data.id;
+        axios.get(`/api/business/${this.businessID}/badges`)
+        .then((response) => {
+          this.badges = response.data;
+        })
+      })
+      .catch((error) => {
+        window.console.log(error.response); 
+      })
+    },
 
     updateBusinessInfo: function(patchType) {
         let content;

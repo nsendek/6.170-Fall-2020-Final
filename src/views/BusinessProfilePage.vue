@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav-bar />
-    <business-profile />
+    <business-profile/>
   </div>
 </template>
 

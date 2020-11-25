@@ -1,25 +1,17 @@
 /**
  * takes request and response variables and returns whether user is signed in.
  * it also throws the needed status code if not signed in. 
- * @param {boolean} user - determines whether the signIn in check is for a business account or personal
  * @throws {401} user is not signed in and not allowed to run certain function.
  * @returns {boolean} determining whether the user is signed in or not. 
  */
-function signedIn(req, res, checkUser = true) {
-  if (checkUser) { // user signin check
+function signedIn(req, res,) {
     if (!req.session.user) {
-      res.status(401).send({ error: 'you are not signed in.' });
-      return false;
+        res.status(401).send({ error: 'you are not signed in.' });
+        return false;
     }
-    return true;
-  } else {
-    if (!req.session.business) {
-      res.status(401).send({ error: 'you are not signed in.' });
-      return false;
+        return true;
     }
-    return true;      
-  }
-}
+
 
 /**
  * takes id and checks that it is a valid type of id. 

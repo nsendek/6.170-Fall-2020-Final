@@ -75,6 +75,17 @@ class Businesses {
   }
 
   /**
+   * Return the business ID assoicated with a user account
+   * @param {*} accountName 
+   */
+  static async getIDFromAccount(accountName) {
+    let db = await SQL.getDB();
+    let out = await db.get(`SELECT id FROM businesses WHERE accountName = $1`,[accountName]);
+    db.close();
+    return out;
+  }
+
+  /**
    * create a business account
    * @param {string} name - front facing name of business
    * @param {string} accountName - backend identifier of businiess  (because names can't be unique) 

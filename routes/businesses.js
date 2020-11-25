@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
  * @throws {409} - if new accountName is taken
  */
 router.patch('/:property?', async (req, res) => { 
-  if ( !signedIn(req, res, false) // need to be signed in to business
+  if ( !signedIn(req, res) // need to be signed in to business
     || !correctInput(req, res,[],['property'])
     || !correctInput(req, res,[req.params.property])
   ) return;
@@ -100,7 +100,7 @@ router.patch('/:property?', async (req, res) => {
  * @throws {404} - if business doesn't exist
  */
 router.delete('/', async (req, res) => {
-  if (!signedIn(req, res, false)
+  if (!signedIn(req, res)
     || !(await dataExists(res, req.session.business.id, Businesses))) return;
 
   try {
@@ -138,6 +138,26 @@ router.get('/:id?', async (req, res) => {
 
   } catch (error) {
     res.status(503).send({ error: "could not get businesses" });
+  }
+});
+
+/**
+ * @name GET/api/business/account/:accountName
+ * @returns {Business} - Business associated with accountName
+ */
+router.get('/account/:accountName', async (req, res) => {
+  try {
+    if (req.params.accountName && Businesses.exists(req.params.accountName)) {
+      let businessID = await Businesses.getIDFromAccount(req.params.accountName);
+      if (businessID) {
+        res.status(200).send(businessID);
+      }
+    } 
+    else {
+      res.status(404).send({error: "There are no businesses associated with this account"});
+    }
+  } catch (error) {
+    res.status(503).send({ error: "could not get businesses associated with this account" });
   }
 });
 
