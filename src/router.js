@@ -15,6 +15,11 @@ export default new Router({
       path: '/login',
       name: 'login', 
       component: () => import('./views/LoginPage.vue')
+    },
+    {
+      path: '/business/:id',
+      name: 'business', 
+      component: () => import('./views/BusinessView.vue')
     }
   ],
   linkActiveClass: "active",
