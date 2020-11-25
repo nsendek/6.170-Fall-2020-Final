@@ -14,27 +14,11 @@ const { signedIn, correctInput , isID , dataExists } = require('./validators');
  */
 router.get('/', async (req, res) => {
     try{
-        if (req.params.businessId) {
-            //moved this to GET/api/business/:id/badges
-            
-            // if (!(dataExists(res, req.params.businessId, Businesses))) {
-            //     return;
-            // }
-            // let badges = await Badges.getBusinessBadges(req.params.businessId);
-            // if (badges) {
-            //     let labels = []
-            //     badges.forEach((badgeObject)=> labels.push(badgeObject.label));
-            //     res.status(200).send(labels);
-            // }
-        } else {
-            let badges = await Badges.getAll();
-            if (badges) {
-                res.status(200).send(badges);
-            }
-        }
+      let badges = await Badges.getAll();
+      if (badges) res.status(200).send(badges);
     }
     catch (error) {
-        res.status(503).json({ error: "could not fetch badges for this business"}).end();
+        res.status(503).json({ error: "could not fetch badges"}).end();
     }
 });
 

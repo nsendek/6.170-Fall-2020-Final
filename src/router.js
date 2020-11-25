@@ -20,6 +20,11 @@ export default new Router({
       path: '/user-profile',
       name: 'user-profile',
       component: () => import('./views/UserProfilePage.vue')
+    },
+    {
+      path: '/business/:id',
+      name: 'business', 
+      component: () => import('./views/BusinessView.vue')
     }
   ],
   linkActiveClass: "active",

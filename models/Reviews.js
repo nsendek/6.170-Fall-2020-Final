@@ -87,8 +87,8 @@ class Reviews {
       return mapReview(data);
   }
 
-    /**
-   * Get a Reviewd by userId.
+  /**
+   * Get a Reviews by userId.
    * @param {number} userId - id of creator of Reviews
    * @return {Review[]]} - found Reviews
    */
@@ -102,6 +102,25 @@ class Reviews {
         JOIN businesses ON businesses.id=businessId 
         WHERE userId = $1
         ORDER BY reviews.timestamp DESC`,[userId]);
+
+    return data.map(mapReview);
+  }
+
+  /**
+   * Get a Reviews by businessId.
+   * @param {number} businessId - id of business reviewed
+   * @return {Review[]]} - found Reviews
+   */
+  static async getByBusiness(businessId) {
+    let db = await SQL.getDB();
+    let data =  await db.all(`
+        SELECT reviews.id, users.username, userId, businessId, 
+        businesses.name AS businessName,rating, content, reviews.timestamp
+        FROM reviews 
+        JOIN users ON users.id=userId
+        JOIN businesses ON businesses.id=businessId 
+        WHERE businessId = $1
+        ORDER BY reviews.timestamp DESC`,[businessId]);
 
     return data.map(mapReview);
   }

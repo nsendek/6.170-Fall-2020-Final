@@ -34,12 +34,16 @@ then you will find the application at `localhost:8080` in the browser
     * Businesses.js
     * Reviews.js
     * Users.js
-    * Badge.js (partial)
+    * Badge.js
   * routes:
     * businesses.js
     * reviews.js
     * users.js
     * validators.js
+  * src
+    * Feed.vue
+    * BusinessView.vue
+    * EventHandler.vue
 * **Josh Verdejo**:
   * src
     * Main.Vue (Added Google Maps functionality)
