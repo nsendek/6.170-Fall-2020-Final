@@ -120,7 +120,7 @@ router.get('/:id?', async (req, res) => {
     if (req.params.id) {
       if (!correctInput(req, res,[],['id'])
       || !isID(res,req.params.id)
-      || !(await dataExists(res, req.session.business.id, Businesses))) return;
+      || !(await dataExists(res, req.params.id, Businesses))) return;
 
       let business = await Businesses.get(req.params.id);
       if (business) {
