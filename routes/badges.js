@@ -82,11 +82,10 @@ router.post('/', async (req, res) => {
  */
 router.delete('/:id?', async (req, res) => {
   if (!signedIn(req, res, false) 
-  || !correctInput(req, res, [], ['id'])) return; 
+  || !correctInput(req, res, [], ['id'])
+  || !isID(req.params.id)) return; 
 
   try {
-    if (!(await dataExists(res, req.session.business.id, Businesses))) return;
-
     let owner = await Badges.authenticate(req.session.business.id, req.params.id);
     
     if (owner) {
