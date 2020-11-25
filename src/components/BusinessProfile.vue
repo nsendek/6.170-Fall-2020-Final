@@ -89,6 +89,8 @@
               </template>
               <v-card>
                 <v-list>
+                  <v-list-item-title>Badge Description</v-list-item-title>
+                  <v-list-item-title>{{badge.description}}</v-list-item-title> 
                   <v-btn
                    color="green"
                    v-on:click="addBadge(idx)"
@@ -99,7 +101,11 @@
             </v-menu>
           </div>
         </div>
-
+        <br><br><br><br>
+        <v-btn
+          color="red"
+          v-on:click="deleteAccount()"
+        > Delete Account </v-btn>
 
     </div>
     
@@ -238,6 +244,21 @@ export default {
         window.console.log(error.response); 
         eventBus.$emit("error-message", error.response.data.error); 
       });
+    },
+
+
+    deleteAccount: function() {
+      if (confirm("Are you sure you want to delete your account? This cannot be undone.")) {
+        axios.delete('api/business')
+        .then(() => {
+          eventBus.$emit("success-message", "Account deleted successfully");
+          this.$router.push('/');
+        })
+        .catch((error) => {
+          console.log(error.response.data.error);
+          eventBus.$emit("error-message", "Unable to delete this account"); 
+        })
+      }
     }
   }
 }
@@ -248,7 +269,8 @@ export default {
   text-align:vcenter; 
   display: flex;
   flex-direction:row;
-  /* justify-content: center; */
+  flex-wrap: wrap;
+  justify-content: center;
 
 
 }

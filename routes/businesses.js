@@ -18,10 +18,10 @@ router.post('/', async (req, res) => {
   if (req.session.business) {
     res.status(400).send({ error : `already signed in as "${req.session.business.name}"` });
   } else { 
-    if (!correctInput(req, res,['name', 'accountName', 'password'])) return;
+    if (!correctInput(req, res,['name', 'accountName', 'password', 'address'])) return;
 
     try {
-      let business = await Businesses.create(req.body.name, req.body.accountName, req.body.password);
+      let business = await Businesses.create(req.body.name, req.body.accountName, req.body.password, req.body.address);
       if (business) {
         req.session.business = business;
         res.status(201).send({ business, message : "business created"});
