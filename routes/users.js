@@ -47,29 +47,14 @@ router.post('/signin', async (req, res) => {
   }
   else{
     if (!correctInput(req, res,['username', 'password'])) return;
-
     // TODO not sure if we need await here
     let user = await Users.authenticate(req.body.username, req.body.password); 
     if(user){
-      req.session.user = req.body.username;
+      req.session.user = user;
       res.status(201).send({ 
         username: req.body.username,
-        isBusiness: false,
-        message : `signed in as ${req.session.user}`,
+        message : `signed in as ${req.body.username}`,
       });
-    }
-    else{ // try business account 
-      let user = await Businesses.authenticate(req.body.username, req.body.password); 
-      if(user){
-        req.session.user = req.body.username;
-        res.status(201).send({
-           username: req.body.username,
-           isBusiness: true,
-           message : `signed in as ${req.session.user}`,
-          });
-      } else {
-        res.status(401).send({ error : `incorrect username or password` });
-      } 
     }
   }
 });
@@ -82,9 +67,9 @@ router.post('/signin', async (req, res) => {
  */
 router.post('/signout', async (req, res) => {
   if (req.session.user) {
-    let username = req.session.user; 
-    req.session.user = undefined;
-    res.status(201).send({ message : `${username} successfully signed out` });
+    let user = req.session.user; 
+    req.session.destroy();
+    res.status(201).send({ message : `${user.username} successfully signed out` });
   }
   else{
     res.status(401).send({ error : `user already signed out` }); 

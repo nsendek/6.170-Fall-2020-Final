@@ -123,6 +123,7 @@ const SQL = require('../db/index');
     let db = await SQL.getDB();
     let badge = await Badges.get(badgeId);
     let res = await db.run('DELETE FROM badges WHERE id = $1', [badgeId]);
+    console.log("ran with no error?");
     db.close();
     return  res.changes ? badge : undefined;
   }

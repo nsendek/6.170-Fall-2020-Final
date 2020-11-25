@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
-    <EventHandler /> 
-    <router-view/>
-  </div>
+  <v-app>
+    <div id="app">
+      <EventHandler /> 
+      <router-view/>
+    </div>
+  </v-app>
 </template>
 <script>
 import EventHandler from "./components/EventHandler.vue";

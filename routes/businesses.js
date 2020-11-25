@@ -34,6 +34,53 @@ router.post('/', async (req, res) => {
   }
 }); 
 
+
+/**
+ * sign in as business
+ * @name POST/api/business/signin
+ * @return {User} - the signed in business
+ * 
+ * @throws {401} - if username / password combo is incorrect
+ * @throws {400} - if user is already signed in 
+ */
+router.post('/signin', async (req, res) => {
+  if (req.session.business) {
+    res.status(400).send({ error : `already signed in as ${req.session.user}` });
+  }
+  else{
+    if (!correctInput(req, res,['username', 'password'])) return;
+
+      let business = await Businesses.authenticate(req.body.username, req.body.password); 
+      if( business ) {
+        req.session.business = business;
+        res.status(201).send({
+           username: req.body.username,
+           message : `signed in as ${req.body.username}`,
+          });
+      } else {
+        res.status(401).send({ error : `incorrect username or password` });
+      } 
+    }
+});
+
+/**
+ * sign out of a business account
+ * @name POST/api/business/signout
+ * 
+ * @throws {400} - if business is already signed out 
+ */
+router.post('/signout', async (req, res) => {
+  if (req.session.business) {
+    let business = req.session.business; 
+    req.session.destroy();
+    res.status(201).send({ message : `${business.accountName} successfully signed out` });
+  }
+  else{
+    res.status(401).send({ error : `user already signed out` }); 
+  }
+})
+
+
 /**
  * edit information about the business. 
  * this can be used to change name, password, but NOT BOTH. 
@@ -47,7 +94,7 @@ router.post('/', async (req, res) => {
  * @throws {409} - if new accountName is taken
  */
 router.patch('/:property?', async (req, res) => { 
-  if ( !signedIn(req, res) // need to be signed in to business
+  if ( !signedIn(req, res, false) // need to be signed in to business
     || !correctInput(req, res,[],['property'])
     || !correctInput(req, res,[req.params.property])
   ) return;
@@ -100,7 +147,7 @@ router.patch('/:property?', async (req, res) => {
  * @throws {404} - if business doesn't exist
  */
 router.delete('/', async (req, res) => {
-  if (!signedIn(req, res)
+  if (!signedIn(req, res, false)
     || !(await dataExists(res, req.session.business.id, Businesses))) return;
 
   try {
@@ -173,7 +220,7 @@ router.get('/:id/badges', async (req, res) => {
   || !isID(res,req.params.id)
   || !(await dataExists(res, req.params.id, Businesses))) return;
   try {
-    let badges = await Badges.getBusinessBadges(req.params.id)
+    let badges = await Badges.getBusinessBadges(req.params.id);
     res.status(200).send(badges);
   } catch (error) {
     res.status(503).send({ error: "could not get badges" });

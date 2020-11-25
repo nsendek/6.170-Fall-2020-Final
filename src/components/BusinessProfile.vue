@@ -27,11 +27,47 @@
 
 
         <h1> Your Badges </h1>
-        <div style="text-align:center;">
-          <v-chip style="margin: 5px;" :key="idx" v-for="(badge,idx) in badges">
-            {{badge.label}}
-          </v-chip>
+
+        <div class="badges">
+
+          <div class="badges" v-for="(badge,idx) in badges" :key="idx">
+            <v-menu
+              v-model="badge.menu"
+              :close-on-content-click="false"
+              :nudge-width="200"
+              :key="idx"
+              bottom
+              offset-y
+            >
+              <template v-slot:activator='{on, attrs}'>
+                <v-chip 
+                  style="margin: 5px;" 
+                  :key="idx"
+                  v-on = 'on'
+                  v-bind='attrs'>
+                    {{badge.label}}
+                </v-chip>
+              </template>
+              <v-card>
+                <v-list>
+                  <v-list-item-content>
+                    <v-list-item-title>Badge Information</v-list-item-title>
+                    <v-list-item-title>Affirm / Deny Ratio: TBD</v-list-item-title>
+                  </v-list-item-content>
+
+                  <v-btn
+                   color="red"
+                   v-on:click="deleteBadge(idx)"
+                  > Delete Badge </v-btn>
+                </v-list>
+
+              </v-card>
+            </v-menu>
+          </div>
+
         </div>
+
+
 
     </div>
     
@@ -54,6 +90,7 @@ export default {
       address: "",
       businessID: null,
       badges: [],
+      menu: false,
     }
   }, 
 
@@ -70,6 +107,7 @@ export default {
         axios.get(`/api/business/${this.businessID}/badges`)
         .then((response) => {
           this.badges = response.data;
+          this.badges.forEach((badgeObject) => badgeObject.menu = false);
         })
       })
       .catch((error) => {
@@ -106,8 +144,23 @@ export default {
         });
     },
 
+    deleteBadge: function(idx) {
+      if (confirm("Are you sure you want to delete this badge?")) {
+        let badgeID = this.badges[idx].id;
+        axios.delete(`api/badge/${badgeID}`)
+        .then(() => {
+          eventBus.$emit("success-message", "Badge deleted successfully");
+          this.badges = this.badges.filter((badge,index) => index !== idx);
+        })
+        .catch((error) => {
+          console.log(error);
+          eventBus.$emit("error-message", error.response.data.error);
+        })
+      }
+    },
+
     signout : function(){
-      axios.post("/api/user/signout")
+      axios.post("/api/business/signout")
       .then((response) => {
         eventBus.$emit("success-message", response.data.message);
         this.$state.username = ""; 
@@ -122,3 +175,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.badges {
+  text-align:vcenter; 
+  display: flex;
+  flex-direction:row;
+  /* justify-content: center; */
+
+
+}
+</style>

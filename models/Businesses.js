@@ -28,7 +28,7 @@ class Businesses {
   static async authenticate ( accountName, password ) {
     let db = await SQL.getDB();
     let business = await db.get(`
-        SELECT id, name 
+        SELECT id, name, accountName 
         FROM businesses 
         WHERE accountName = $1 AND password = $2`, [accountName, password]);
     db.close();
