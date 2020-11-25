@@ -2,7 +2,7 @@
  * calls @name POST/api/session
  */
 function signIn(fields) {
-  axios.post('/api/session', fields)
+  axios.post('/api/session/user', fields)
   .then(showResponse)
   .catch(showResponse); 
 }
@@ -11,7 +11,7 @@ function signIn(fields) {
  * calls @name DELETE/api/session
  */
 function signOut(fields) {
-  axios.delete('/api/session', fields)
+  axios.delete('/api/session/user', fields)
   .then(showResponse)
   .catch(showResponse); 
 }
