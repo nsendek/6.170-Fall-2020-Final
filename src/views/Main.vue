@@ -17,7 +17,9 @@
           v-for="(b, index) in businesses"
           :position="{lat : Number(b.lat), lng: Number(b.lng)}"
           :clickable="true"
-          @click="log(b); panTo(b.lat,b.lng)"
+          @click="log(b); panTo(b.lat,b.lng);"
+          :label = label(b)
+          :icon = icon()
         />
       </GmapMap>
       </div>
@@ -71,6 +73,12 @@ export default {
   methods: {
     log(b) {
       window.console.log(b.name, b.address);
+    },
+    label(b) {
+      return b.name;
+    },
+    icon() {
+      return {url: "https://cdn.pixabay.com/photo/2020/04/29/10/06/mouth-guard-5108188_1280.png", scaledSize: {width:70, height:70}};
     },
     panTo(lat,lng){
       this.$refs.map.$mapPromise.then((map) => {
