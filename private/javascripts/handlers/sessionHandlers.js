@@ -2,7 +2,7 @@
  * calls @name POST/api/session
  */
 function signIn(fields) {
-  axios.post('/api/session/user', fields)
+  axios.post('/api/user/signin', fields)
   .then(showResponse)
   .catch(showResponse); 
 }
@@ -11,7 +11,7 @@ function signIn(fields) {
  * calls @name DELETE/api/session
  */
 function signOut(fields) {
-  axios.delete('/api/session/user', fields)
+  axios.post('/api/user/signout', fields)
   .then(showResponse)
   .catch(showResponse); 
 }
@@ -29,7 +29,7 @@ function getSession() {
  * calls @name POST/api/session
  */
 function signInBusiness(fields) {
-  axios.post('/api/session/business', fields)
+  axios.post('/api/business/signin', fields)
   .then(showResponse)
   .catch(showResponse); 
 }
@@ -38,7 +38,7 @@ function signInBusiness(fields) {
  * calls @name DELETE/api/session/business
  */
 function signOutBusiness(fields) {
-  axios.delete('/api/session/business', fields)
+  axios.post('/api/business/signout', fields)
   .then(showResponse)
   .catch(showResponse); 
 }
