@@ -84,7 +84,7 @@ const SQL = require('../db/index');
         // GROUP BY creates 'groups' of rows with the same businessId 
         // COUNT(label) applies to those groups not the whole table
         let out = await db.all(`
-            SELECT businesses.id, name, address
+            SELECT businesses.id, name, address, lat, lng
             FROM businesses 
             INNER JOIN badges ON badges.businessId = businesses.id AND badges.label IN ${SQL.list(labels.length)}
             GROUP BY businesses.id

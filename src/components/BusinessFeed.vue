@@ -91,7 +91,7 @@ export default {
             axios.get(`api/badge/filter`, {params : {badges : badgeFilters}})
             .then((res) => {
                 this.businesses = res.data;
-                eventBus.$emit('businesses', res.data);
+                eventBus.$emit('businesses', res.data)
             })
             .catch((err) => {
                 eventBus.$emit('error-message', err);
