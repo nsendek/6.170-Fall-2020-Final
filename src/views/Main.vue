@@ -75,7 +75,7 @@ export default {
       window.console.log(b.name, b.address);
     },
     label(b) {
-      return b.name;
+      return ""+this.businesses.indexOf(b);
     },
     icon() {
       return {url: "https://cdn.pixabay.com/photo/2020/04/29/10/06/mouth-guard-5108188_1280.png", scaledSize: {width:70, height:70}};
