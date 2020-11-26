@@ -39,22 +39,33 @@ export default {
   },
   data() {
     return {
-      center : {lat:42.3601, lng:-71.0942},
+      center : {lat:42.3601, lng:-71.0943},
       businesses : []
     }
   },
-  created() {
+  mounted() {
     eventBus.$on('businesses', (businesses) => {
       this.businesses = businesses;
-      if (this.businesses.length ===1){
-        let lat = this.businesses[0].lat;
-        let lng = this.businesses[0].lng;
-        this.$refs.map.$mapPromise.then((map) => {
-          console.log(this.businesses[0].lat)
+      if(this && this.$refs && this.$refs.map && this.$refs.map.$mapPromise){
+      this.$refs.map.$mapPromise.then((map) => {
+      if (businesses.length ===1){
+        let lat = businesses[0].lat;
+        let lng = businesses[0].lng;
+        
           map.panTo({lat,lng})
+      }
+      else if(businesses.length > 1){
+          let minlat = businesses.reduce((prev, curr) => (prev.lat && curr.lat && prev.lat < curr.lat) ? prev : curr)
+          let minlng = businesses.reduce((prev, curr) => (prev.lng && curr.lng && prev.lng < curr.lng) ? prev : curr)
+          let maxlat = businesses.reduce((prev, curr) => (prev.lat && curr.lat && prev.lat > curr.lat) ? prev : curr)
+          let maxlng = businesses.reduce((prev, curr) => (prev.lng && curr.lng && prev.lng > curr.lng) ? prev : curr)
+          // console.log(minlat,minlng,maxlat,maxlng)
+          // console.log(minlat.lat,minlng.lng,maxlat.lat,maxlng.lng)
+          let bounds = ({south:minlat.lat,west:minlng.lng, north:maxlat.lat,east:maxlng.lng})
+          this.$refs.map.$mapObject.fitBounds(bounds,0);
+      }
         })
       }
-      // window.console.log(this.businesses)
     })
   },
   methods: {
