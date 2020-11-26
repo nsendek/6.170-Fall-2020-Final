@@ -11,13 +11,13 @@
         :zoom="15"
         map-type-id="roadmap"
       >
-          <!-- <GmapMarker
-              :key="index"
-              v-for="(b, index) in businesses"
-              :position="{lat : Number(b.lat), lng: Number(b.lng)}"
-              :clickable="true"
-              @click="log(b)"
-            /> -->
+      <GmapMarker
+          :key="index"
+          v-for="(b, index) in businesses"
+          :position="{lat : Number(b.lat), lng: Number(b.lng)}"
+          :clickable="true"
+          @click="log(b)"
+        />
       </GmapMap>
       </div>
     </div>
@@ -43,9 +43,9 @@ export default {
     }
   },
   created() {
-    eventBus.$on('businesses', () => {
-      // this.businesses = businesses;
-      // window.console.log(this.businesses)
+    eventBus.$on('businesses', (businesses) => {
+      this.businesses = businesses;
+      window.console.log(this.businesses)
     })
   },
   methods: {
