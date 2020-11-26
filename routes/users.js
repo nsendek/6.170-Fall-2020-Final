@@ -56,6 +56,11 @@ router.post('/signin', async (req, res) => {
         message : `signed in as ${req.body.username}`,
       });
     }
+    else {
+      res.status(404).send({
+        error: `incorrect username or password`
+      });
+    }
   }
 });
 

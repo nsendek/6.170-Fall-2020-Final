@@ -3,7 +3,11 @@
     <div>{{this.$state.username}} </div>
 
     <div><v-btn v-on:click="signout"> SIGN OUT </v-btn></div>
+
     <div class="account-options">
+      <router-link :to="`/business/${businessID}`">
+        <h3>View Your Public Page</h3>
+      </router-link>
         <h1> Change Account Information </h1>
         <div> 
             <input type="text" v-model="username" placeholder="new username" />
@@ -16,7 +20,7 @@
         </div>
 
         <div>
-            <input type="text" v-model="name" placeholder="new name" />
+            <input  type="text" v-model="name" placeholder="new name" />
             <v-btn v-on:click="updateBusinessInfo('name')">update name</v-btn>
         </div>
 
@@ -89,6 +93,8 @@
               </template>
               <v-card>
                 <v-list>
+                  <v-list-item-title>Badge Description</v-list-item-title>
+                  <v-list-item-title>{{badge.description}}</v-list-item-title> 
                   <v-btn
                    color="green"
                    v-on:click="addBadge(idx)"
@@ -99,7 +105,11 @@
             </v-menu>
           </div>
         </div>
-
+        <br><br><br><br>
+        <v-btn
+          color="red"
+          v-on:click="deleteAccount()"
+        > Delete Account </v-btn>
 
     </div>
     
@@ -238,6 +248,21 @@ export default {
         window.console.log(error.response); 
         eventBus.$emit("error-message", error.response.data.error); 
       });
+    },
+
+
+    deleteAccount: function() {
+      if (confirm("Are you sure you want to delete your account? This cannot be undone.")) {
+        axios.delete('api/business')
+        .then(() => {
+          eventBus.$emit("success-message", "Account deleted successfully");
+          this.$router.push('/');
+        })
+        .catch((error) => {
+          console.log(error.response.data.error);
+          eventBus.$emit("error-message", "Unable to delete this account"); 
+        })
+      }
     }
   }
 }
@@ -248,7 +273,8 @@ export default {
   text-align:vcenter; 
   display: flex;
   flex-direction:row;
-  /* justify-content: center; */
+  flex-wrap: wrap;
+  justify-content: center;
 
 
 }

@@ -89,10 +89,11 @@ class Businesses {
    * create a business account
    * @param {string} name - front facing name of business
    * @param {string} accountName - backend identifier of businiess  (because names can't be unique) 
-   * @param {string} password - password of business account 
+   * @param {string} password - password of business account
+   * @param {string} address - the address of the business 
    * @return {Business | undefined} - new Business (minus the password)
    */
-  static async create(name, accountName, password) {
+  static async create(name, accountName, password, address) {
     let db = await SQL.getDB();
 
     // insert into business into database.
@@ -101,6 +102,8 @@ class Businesses {
         VALUES ($1, $2, $3)`
         ,[name, accountName, password])
       .catch(SQL.parseError);
+
+    await this.updateAddress(res.lastID, address);
 
     db.close();
 
