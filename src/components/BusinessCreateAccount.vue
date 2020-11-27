@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <div class="big-title">WELCOME TO ZELP</div>
+    <div class="big-title">Welcome To Zelp</div>
         <p class="zelp-description">
         Zelp is a platform designed by students in the Cambridge community to keep users 
         informed on local businesses and their practices in the Covid Era.
@@ -46,6 +46,9 @@ export default {
       })
       .then((response) => { // TODO change to "signin-success"?
         eventBus.$emit("success-message", response.data.message); 
+        this.$state.username = response.data.username; 
+        this.$state.isBusiness = true;
+        this.$router.push('/');
       })
       .catch((error) => {
         eventBus.$emit("error-message", error.response.data.error); 
