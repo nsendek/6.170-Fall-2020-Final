@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="center-container">
     <div class="big-title">Welcome To Zelp</div>
         <p class="zelp-description">
         Zelp is a platform designed by students in the Cambridge community to keep users 
@@ -8,7 +8,7 @@
         business’s safety precauations. The community gives feedback on the policies you 
         display here, and the better you do the safer your customers will feel!
         </p>
-    <div class="login-container">
+    <div class="center-container">
       <div class="text-input"><v-text-field v-model="name" label="business name" placeholder="business name" filled/></div>
       <div class="text-input"><v-text-field v-model="address" label="address" placeholder="address" filled/></div>
       <div class="text-input"><v-text-field v-model="accountName" label="account username" placeholder="account username" filled/></div>
@@ -44,9 +44,11 @@ export default {
         name: this.name,
         address: this.address
       })
-      .then((response) => { // TODO change to "signin-success"?
+      .then((response) => {
+        window.console.log("heyyyyyyy"); 
         eventBus.$emit("success-message", response.data.message); 
-        this.$state.username = response.data.username; 
+        window.console.log(response.data); 
+        this.$state.username = response.data.business.name; 
         this.$state.isBusiness = true;
         this.$router.push('/');
       })

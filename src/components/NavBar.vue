@@ -10,10 +10,10 @@
       <router-link to="/login" class="nav-login-button"> <div class="nav-login-button"> LOG IN </div></router-link>  
     </div> 
     <div v-else-if="this.$state.username && !(this.$state.isBusiness)"> 
-      <div> <router-link to="/user-profile"> {{this.$state.username}} </router-link></div>
+      <router-link to="/user-profile" class="nav-login-button"> <div class="nav-login-button"> {{this.$state.username}} </div></router-link>
     </div> 
     <div v-else-if="this.$state.username && (this.$state.isBusiness)">
-      <div> <router-link to="/business-profile"> {{this.$state.username}} </router-link></div>
+      <router-link to="/business-profile" class="nav-login-button"> <div class="nav-login-button"> {{this.$state.username}} </div></router-link>
     </div>
 
   </v-app-bar>
