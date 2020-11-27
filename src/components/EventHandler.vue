@@ -39,12 +39,12 @@ export default {
         this.$state.username = response.data.user.username;
         this.$state.id = response.data.user.id;
       } else if (response.data.business) {
-        this.$state.username = response.data.business.username;
-        this.$state.id = response.data.user.id;
+        this.$state.username = response.data.business.accountName;
+        this.$state.id = response.data.business.id;
       }
     } else {
-      this.$cookie.set('zelp-username', null);
-      this.$cookie.set('zelp-userId', null);
+      this.$state.username = "";
+      this.$state.id = 0;
     }
   },
   created: function() {
