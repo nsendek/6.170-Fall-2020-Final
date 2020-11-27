@@ -47,8 +47,8 @@ export default {
   },
   created : async function () {
     if (await this.loadBusiness()) {
-      await this.loadBadges();
-      await this.loadReviews();  
+       this.loadBadges();
+       this.loadReviews();  
     }
   },
 	methods : {
@@ -95,25 +95,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* color: white; */
   width : 100%;
-}
-
-.left-container {
-  width: 40%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0px 20px;
-  align-items: center;
-  justify-content: center;
-  /* justify-content: flex-end; */
-}
-
-.right-container {
-  width: 60%;
-  padding: 0px 20px;
-  height: 100%;
-  overflow-y: scroll;
 }
 </style>

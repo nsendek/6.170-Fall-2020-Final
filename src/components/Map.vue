@@ -23,8 +23,7 @@ export default {
   data() {
     return {
       center : {lat:42.3601, lng:-71.0943},
-      businesses : [],
-      first : true
+      businesses : []
     }
   },
   mounted() {
@@ -46,7 +45,6 @@ export default {
           // console.log(minlat,minlng,maxlat,maxlng)
           // console.log(minlat.lat,minlng.lng,maxlat.lat,maxlng.lng)
           let bounds = ({south:minlat.lat,west:minlng.lng, north:maxlat.lat,east:maxlng.lng})
- 
           this.$refs.map.$mapObject.fitBounds(bounds,0);
       }
         })
