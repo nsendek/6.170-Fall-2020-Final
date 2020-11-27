@@ -1,5 +1,6 @@
 <template>
-  <v-app-bar app flat height="65px" class="navbar">
+  <!-- var(--navbar-height) is defined in web.css -->
+  <v-app-bar app color="white" flat height="var(--navbar-height)"> 
 
     <router-link to="/" class="zelp-logo"> <div class="zelp-logo"> ZELP  </div></router-link>
     
@@ -23,3 +24,11 @@ export default {
   name : "NavBar", 
 }
 </script>
+<style scoped>
+header {
+  /* DON'T delete forces navbar to not auto grow/shrink or be absolute*/
+  position: relative !important;
+  max-height: var(--navbar-height) !important;
+  min-height: var(--navbar-height) !important;
+}
+</style>

@@ -41,43 +41,20 @@ body {
 }
 
 .left-col {
-  padding-top: 0px; 
-  padding-right:0px;
-  padding-bottom:0px;
+  padding-top: 0px ; 
+  padding-right:0px ;
+  padding-bottom:0px ;
 }
 
 .right-col {
-  padding-top: 0px; 
-  padding-left:0px; 
-  padding-bottom:0px;
+  padding-top: 0px ;  
+  padding-left:0px ; 
+  padding-bottom:0px ;
 }
 .scroll-box {
-  height : calc(100vh - 65px);
-  height: -o-calc(100vh - 65px);
-  height: -webkit-calc(100vh - 65px);
-  height: -moz-calc(100vh - 65px);
-  overflow-y: scroll;
-}
-
-.primary-header {
-  font-size: 2.5em;
-  text-align: center;
-  margin: 20px;
-}
-
-.secondary-header {
-  font-size: 2em;
-  text-align: center;
-}
-
-.tertiary-header {
-  font-size: 1.5em;
-  text-align: center;
-}
-
-.quaternary-header {
-  font-size: 1em;
-  text-align: center;
+  /* DON'T delete below */
+  height : calc(100vh - var(--navbar-height));
+  overflow-y: scroll; 
 }
 </style>
 

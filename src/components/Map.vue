@@ -23,7 +23,8 @@ export default {
   data() {
     return {
       center : {lat:42.3601, lng:-71.0943},
-      businesses : []
+      businesses : [],
+      first : true
     }
   },
   mounted() {
@@ -45,6 +46,7 @@ export default {
           // console.log(minlat,minlng,maxlat,maxlng)
           // console.log(minlat.lat,minlng.lng,maxlat.lat,maxlng.lng)
           let bounds = ({south:minlat.lat,west:minlng.lng, north:maxlat.lat,east:maxlng.lng})
+ 
           this.$refs.map.$mapObject.fitBounds(bounds,0);
       }
         })
@@ -69,11 +71,9 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 .g-map{
-  height : calc(100vh - 65px);
-  height: -o-calc(100vh - 65px);
-  height: -webkit-calc(100vh - 65px);
-  height: -moz-calc(100vh - 65px);
+  /* DON'T delete below */
+  height : calc(100vh - var(--navbar-height));
 }
 </style>
