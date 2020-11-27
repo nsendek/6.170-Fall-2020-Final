@@ -1,18 +1,19 @@
 <template>
-  <div>
-    <div>{{this.$state.username}} </div>
+  <div class="center-container">
+    <div class="big-title">{{this.$state.username}} </div>
 
-    <div> 
-      <input type="text" v-model="username" placeholder="new username" />
-      <button v-on:click="updateUsername">update username</button>
+    <div class="row-container"> 
+      <v-text-field v-model="username" placeholder="new username" dense filled/>
+      <v-btn v-on:click="updateUsername">update username</v-btn>
     </div>
 
-    <div> 
-      <input type="text" v-model="password" placeholder="new password" />
-      <button v-on:click="updatePassword">update password</button>
+    <div class="row-container"> 
+      <v-text-field v-model="password" placeholder="new password" dense filled/>
+      <v-btn v-on:click="updatePassword">update password</v-btn>
     </div>
 
-    <div><button v-on:click="signout"> SIGN OUT </button></div>
+    <div><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></div>
+    <div><v-btn v-on:click="deleteAccount" class="wide-button" color="red"> delete account </v-btn></div>
   </div>
 </template>
 
@@ -59,11 +60,23 @@ export default {
     }, 
 
     signout : function(){
-      window.console.log("what is going on");
       axios.post("/api/user/signout")
       .then((response) => {
-        window.console.log("i did it"); 
         eventBus.$emit("success-message", response.data.message);
+        this.$state.username = ""; 
+        this.$router.push('/');
+      })
+      .catch((error) => { 
+        window.console.log(error.response); 
+        eventBus.$emit("error-message", error.response.data.error); 
+      });
+    }, 
+
+    deleteAccount : function() {
+      axios.delete("/api/user/")
+      .then((response) => {
+        eventBus.$emit("success-message", "account successfully deleted");
+        window.console.log(response.data); 
         this.$state.username = ""; 
         this.$router.push('/');
       })

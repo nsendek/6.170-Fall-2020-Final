@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="center-container">
     <div class="big-title"> WELCOME TO ZELP </div>
     <div> 
         <p class="zelp-description">
@@ -11,7 +11,7 @@
          regulations and informing other members of the Cambridge community.
         </p>  
     </div> 
-    <div class="login-container">
+    <div class="center-container">
       <div class="text-input"><v-text-field v-model="username" label="username" placeholder="username" filled /></div>
       <div class="text-input"><v-text-field v-model="password" label="password" placeholder="password" filled /></div>
 
