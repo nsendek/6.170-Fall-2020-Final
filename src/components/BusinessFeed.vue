@@ -1,15 +1,6 @@
 <template>
-
 <div>
     <h1>Businesses</h1>
-    <div v-if='success' class="success-message">
-        {{ success }}
-    </div>
-
-    <div v-if='error' class="error-message">
-        {{ error }}
-    </div>
-
     <div class= "filter-bar">
         Filter By: 
        <div v-for='(badge,index) in allBadges' v-bind:key="badge.id">
@@ -23,15 +14,14 @@
     </div>
 
 
-    <div v-if='businesses.length'>
+    <Feed dataType="Businesses">
         <BusinessFeedItem
             v-for="business in businesses"
             v-bind:key="business.id"
             v-bind:business="business"
         />
-    </div>
+    </Feed>
 </div>
-    
 </template>
 
 
@@ -39,9 +29,10 @@
 import axios from "axios";
 import { eventBus } from "../main";
 import BusinessFeedItem from "./BusinessFeedItem";
+import Feed from "./Feed"
 export default {
     name: "BusinessFeed",
-    components: {BusinessFeedItem},
+    components: {BusinessFeedItem, Feed},
     data() {
         return {
             error:"",

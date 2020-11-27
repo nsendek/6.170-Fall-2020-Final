@@ -4,11 +4,11 @@ from random import choice
 
 # open the businesses and badges csv
 businesses = pd.read_csv('./businesses.csv')
-badges = pd.read_csv('./badges.csv')
+badges = pd.read_csv('./badge_templates.csv')
 
 # assign badges to businesses
 businessBadges = []
-itemNumber = 0
+itemNumber = 1
 for index, row in businesses.iterrows(): 
   businessID = row["id"]
   for index, row in badges.iterrows(): 
@@ -17,5 +17,5 @@ for index, row in businesses.iterrows():
       bbEntry = {'id' : itemNumber, 'label' : row['label'], 'businessId' : businessID}
       businessBadges.append(bbEntry)
       itemNumber += 1
-pd.DataFrame(businessBadges).to_csv('./businessBadges.csv')
+pd.DataFrame(businessBadges).to_csv('./badges.csv', index=False)
   

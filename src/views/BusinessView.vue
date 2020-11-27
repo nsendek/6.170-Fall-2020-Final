@@ -1,31 +1,32 @@
 <template >
-	<div class = "main">
-    <div :class="'left-container'">
-      <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
-        <div class = "secondary-header"> <b>{{business.name}}</b> </div>
-        <div class = "quarternary-header"> {{business.address}} </div>
-        <div style="text-align:center;">
-          <v-chip style="margin: 5px;" :key="idx" v-for="(badge,idx) in badges">
-            {{badge.label}}
-          </v-chip>
-        </div>
-      </v-card>
-    </div>
-
-    <div :class="'right-container'">
-      <div class = "primary-header" style="text-align: center;"> REVIEWS </div>
-      <Feed>
-        <v-card style="padding:25px; margin-bottom: 10px;" :key="idx" v-for="(review,idx) in reviews">
-          <div class="flex-row" style="display:flex; flex-direction:row; align-items:center; ">
-            <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
-            <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
+    <div class = "main">
+      
+      <div >
+        <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
+          <div class = "secondary-header"> <b>{{business.name}}</b> </div>
+          <div class = "quarternary-header"> {{business.address}} </div>
+          <div style="text-align:center;">
+            <v-chip style="margin: 5px;" :key="idx" v-for="(badge,idx) in badges">
+              {{badge.label}}
+            </v-chip>
           </div>
-          <div> {{review.content}} </div>
         </v-card>
-      </Feed>
-    </div>
+      </div>
 
-	</div>
+      <div >
+        <div class = "primary-header" style="text-align: center;"> REVIEWS </div>
+        <Feed>
+          <v-card style="padding:25px; margin-bottom: 10px;" :key="idx" v-for="(review,idx) in reviews">
+            <div class="flex-row" style="display:flex; flex-direction:row; align-items:center; ">
+              <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
+              <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
+            </div>
+            <div> {{review.content}} </div>
+          </v-card>
+        </Feed>
+      </div>
+
+    </div>
 </template>
 <script>
 import axios from "axios";
@@ -91,16 +92,16 @@ export default {
 }
 .main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   /* color: white; */
-  height : 100%;
+  width : 100%;
 }
 
 .left-container {
   width: 40%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   padding: 0px 20px;
@@ -112,28 +113,7 @@ export default {
 .right-container {
   width: 60%;
   padding: 0px 20px;
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
-}
-
-.primary-header {
-  font-size: 2.5em;
-  text-align: center;
-  margin: 20px;
-}
-
-.secondary-header {
-  font-size: 2em;
-  text-align: center;
-}
-
-.tertiary-header {
-  font-size: 1.5em;
-  text-align: center;
-}
-
-.quaternary-header {
-  font-size: 1em;
-  text-align: center;
 }
 </style>

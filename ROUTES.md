@@ -22,10 +22,10 @@
 | **URL**              | **HTTP Verb** |  **Action**|
 |----------------------|---------------|------------|
 | `/session/`          | GET           | Gets any active session between client and api (both user or business)
-| `/session/user`      | POST          | Validates password/username input and starts user session
+<!-- | `/session/user`      | POST          | Validates password/username input and starts user session
 | `/session/user`      | DELETE        | Ends user session if it exists
 | `/session/business`  | POST          | Validates password/accountName input and starts business session
-| `/session/business`  | DELETE        | Ends business session if it exists
+| `/session/business`  | DELETE        | Ends business session if it exists -->
 
 ## /api/review
 | **URL**              | **HTTP Verb** |  **Action**|

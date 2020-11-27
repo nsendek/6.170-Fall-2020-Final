@@ -1,25 +1,25 @@
 <template>
-  <div class="navbar">
-    <div><router-link to="/"> ZELP </router-link></div> 
-    <div v-if="this.$state.username == ''"> 
-      <router-link to="/login"> LOG IN </router-link>  
+  <v-app-bar app flat height="65px" class="navbar">
+
+    <router-link to="/" class="zelp-logo"> <div class="zelp-logo"> ZELP  </div></router-link>
+    
+    <v-spacer></v-spacer>
+
+    <div v-if="!this.$state.username"> 
+      <router-link to="/login" class="nav-login-button"> <div class="nav-login-button"> LOG IN </div></router-link>  
     </div> 
-    <div v-else-if="this.$state.username != '' && !(this.$state.isBusiness)"> 
+    <div v-else-if="this.$state.username && !(this.$state.isBusiness)"> 
       <div> <router-link to="/user-profile"> {{this.$state.username}} </router-link></div>
     </div> 
-    <div v-else-if="this.$state.username != '' && (this.$state.isBusiness)">
+    <div v-else-if="this.$state.username && (this.$state.isBusiness)">
       <div> <router-link to="/business-profile"> {{this.$state.username}} </router-link></div>
     </div>
-  </div>
-</template>
 
+  </v-app-bar>
+</template>
 <script>
 
 export default {
   name : "NavBar", 
-
-  props : {
-    showUserInfo : {default : true}
-  }, 
 }
 </script>

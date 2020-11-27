@@ -1,10 +1,8 @@
 <template>
   <div>
-    <NavBar v-bind:showUserInfo="false" />
-
-    <user-login v-if="userLogin"/>
-    <user-create-account v-else-if="userCreateAccount" />
-    <business-create-account v-else-if="businessCreateAccount" />
+    <UserLogin v-if="userLogin"/>
+    <UserCreateAccount v-else-if="userCreateAccount" />
+    <BusinessCreateAccount v-else-if="businessCreateAccount" />
   </div>
 </template>
 
@@ -14,7 +12,6 @@ import { eventBus } from "../main";
 import UserCreateAccount from '../components/UserCreateAccount.vue'
 import BusinessCreateAccount from '../components/BusinessCreateAccount.vue'
 import UserLogin from '../components/UserLogin.vue'
-import NavBar from "../components/NavBar.vue"
 
 export default {
   name : "LoginPage", 
@@ -23,7 +20,6 @@ export default {
     UserLogin,
     BusinessCreateAccount,
     UserCreateAccount, 
-    NavBar
   }, 
 
   data : function(){

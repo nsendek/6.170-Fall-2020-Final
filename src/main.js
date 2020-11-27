@@ -25,7 +25,7 @@ export const eventBus = new Vue();
 Vue.config.productionTip = false
 
 // global state
-Vue.prototype.$state = Vue.observable({ username : "", isBusiness : false, businesses : []});
+Vue.prototype.$state = Vue.observable({ username : "", id : 0, isBusiness : false});
 
 new Vue({
   router, 

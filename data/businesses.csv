@@ -1,833 +1,833 @@
-id,name,address,accountName,password,lat,lng
-1,1369 Coffee House,"757 Massachusetts Ave, Cambridge, MA 02139, USA",b1,nvhj,42.36655289999999,-71.1053043
-2,1369 Coffee House,"1369 Cambridge St, Cambridge, MA 02139, USA",b2,nvhj,42.3737842,-71.10037129999999
-3,2 4-1 Optical,"1128 Massachusetts Ave, Cambridge, MA 02138, USA",b3,nvhj,42.37075540000001,-71.1140788
-4,5th Street Laundromat,"58 5th St, Cambridge, MA 02141, USA",b4,nvhj,42.3711879,-71.08303
-5,730 Tavern,"730 Massachusetts Ave, Cambridge, MA 02139, USA",b5,nvhj,42.3659936,-71.10518569999999
-6,9Zaab Thai Street Food,"569 Cambridge St, Cambridge, MA 02141, USA",b6,nvhj,42.3719262,-71.08578059999999
-7,A&E Citgo Service Station,"199 Concord Ave, Cambridge, MA 02138, USA",b7,nvhj,42.3827556,-71.1310421
-8,Abbey,"1755 Massachusetts Ave, Cambridge, MA 02140, USA",b8,nvhj,42.3850955,-71.1190657
-9,ABC Pizza House,"744 Massachusetts Ave, Cambridge, MA 02139, USA",b9,nvhj,42.3661498,-71.1053572
-10,Abide Place,"317 Massachusetts Ave, Cambridge, MA 02139, USA",b10,nvhj,42.3625244,-71.09853559999999
-11,Abodeon,"1731 Massachusetts Ave, Cambridge, MA 02138, USA",b11,nvhj,42.3841916,-71.119205
-12,Abroad Modern,"260 Concord Ave, Cambridge, MA 02138, USA",b12,nvhj,42.3831165,-71.1329453
-13,Aceituna Grill,"605 W Kendall St, Cambridge, MA 02142, USA",b13,nvhj,42.3643885,-71.08189089999999
-14,Advance Tire Company,"185 Broadway, Cambridge, MA 02139, USA",b14,nvhj,42.3659413,-71.09181579999999
-15,Aestheticare Day Spa,"310 Cambridge St, Cambridge, MA 02141, USA",b15,nvhj,42.3710951,-71.0810914
-16,African Gift Items,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b16,nvhj,42.3872124,-71.1185319
-17,Al Bara Market,"304 Prospect St, Cambridge, MA 02139, USA",b17,nvhj,42.37274379999999,-71.0984079
-18,Al's Café,"NE49, 600 Technology Square, Cambridge, MA 02139, USA",b18,nvhj,42.3634064,-71.0930845
-19,Aladdin Auto Service,"162 Alewife Brook Pkwy, Cambridge, MA 02138, USA",b19,nvhj,42.3912981,-71.13752339999999
-20,Alan Russo Hair Design,"2516 Massachusetts Ave, Cambridge, MA 02140, USA",b20,nvhj,42.3993978,-71.13327129999999
-21,Albert's Market,"638 Cambridge St, Cambridge, MA 02141, USA",b21,nvhj,42.371846,-71.0870807
-22,Albertine Press,"1309 Cambridge St, Cambridge, MA 02139, USA",b22,nvhj,42.3737343,-71.0994292
-23,Alden and Harlow,"40 Brattle St, Cambridge, MA 02138, USA",b23,nvhj,42.3735278,-71.121526
-24,Aleppo Palace,"25 Central Square, Cambridge, MA 02139, USA",b24,nvhj,42.3654136,-71.1046073
-25,Alfred Hair Salon,"8 Eliot St, Cambridge, MA 02138, USA",b25,nvhj,42.3725099,-71.1214332
-26,Alfredo's Italian Kitchen,"691 Cambridge St, Cambridge, MA 02141, USA",b26,nvhj,42.372248,-71.0881019
-27,Ali Tailoring and Cleaning,"164 Hampshire St, Cambridge, MA 02139, USA",b27,nvhj,42.37175209999999,-71.0986865
-28,Alive and Kicking Lobsters,"273 Putnam Ave, Cambridge, MA 02139, USA",b28,nvhj,42.3625257,-71.11397099999999
-29,All Star Pizza Bar,"1238 Cambridge St, Cambridge, MA 02139, USA",b29,nvhj,42.3732404,-71.0980874
-30,All Star Sandwich Bar,"1245 Cambridge St, Cambridge, MA 02139, USA",b30,nvhj,42.373484,-71.098199
-31,Amador Bilingual Voiceovers,"North Cambridge, Cambridge, MA, USA",b31,nvhj,42.3933869,-71.1308572
-32,Amelia's Trattoria,"111 Harvard St, Cambridge, MA 02139, USA",b32,nvhj,42.3650525,-71.09269780000001
-33,American Dural,"135 Huron Ave, Cambridge, MA 02138, USA",b33,nvhj,42.38292999999999,-71.13054679999999
-34,American Martial Arts Center,"36 Spinelli Pl, Cambridge, MA 02138, USA",b34,nvhj,42.3920332,-71.1529746
-35,Amorino Gelato,"50 John F. Kennedy St, Cambridge, MA 02138, USA",b35,nvhj,42.3720079,-71.120381
-36,Andala Coffee House,"286 Franklin St, Cambridge, MA 02139, USA",b36,nvhj,42.36470629999999,-71.10571089999999
-37,Anderson & McQuaid Co. Inc.,"170 Fawcett St, Cambridge, MA 02138, USA",b37,nvhj,42.3934473,-71.1493425
-38,Andover Shop,"22 Holyoke St, Cambridge, MA 02138, USA",b38,nvhj,42.3722356,-71.1182417
-39,Andre Hair Salon,"1206 Massachusetts Ave, Cambridge, MA 02138, USA",b39,nvhj,42.3718118,-71.11531719999999
-40,Andy's Diner,"2030 Massachusetts Ave, Cambridge, MA 02140, USA",b40,nvhj,42.3906318,-71.1221196
-41,Anime Zakka,"36 John F. Kennedy St, Cambridge, MA 02138, USA",b41,nvhj,42.3726743,-71.1198689
-42,Anna's Taqueria,"Porter Square, Cambridge, MA 02140, USA",b42,nvhj,42.3888566,-71.11939819999999
-43,Anthony's Pizza,"43 Gore St, Cambridge, MA 02141, USA",b43,nvhj,42.3718137,-71.07946679999999
-44,Anthropologie,"44 Brattle St, Cambridge, MA 02138, USA",b44,nvhj,42.3737541,-71.12187410000001
-45,Antonia Bodywork,"872 Massachusetts Ave, Cambridge, MA 02139, USA",b45,nvhj,42.3674388,-71.1077853
-46,Apple Cinemas,"168 Alewife Brook Pkwy, Cambridge, MA 02138, USA",b46,nvhj,42.3912436,-71.1380746
-47,Arams #2 House of Pizza,"345 Cambridge St, Cambridge, MA 02141, USA",b47,nvhj,42.371459,-71.0816779
-48,Area Four,"NE47, 500 Technology Square, Cambridge, MA 02139, USA",b48,nvhj,42.3633736,-71.0925996
-49,Armageddon Record Shop,"12b Eliot St, Cambridge, MA 02138, USA",b49,nvhj,42.3723109,-71.12157239999999
-50,Armando's Pizza and Subs,"163 Huron Ave, Cambridge, MA 02138, USA",b50,nvhj,42.382338,-71.131337
-51,Aroush's Tailor Shop,"864 Massachusetts Ave, Cambridge, MA 02139, USA",b51,nvhj,42.3675286,-71.1074265
-52,Arrow Cleaning and Tailoring,"1134 Massachusetts Ave, Cambridge, MA 02138, USA",b52,nvhj,42.37088720000001,-71.1141761
-53,Art and Soul Yoga,"91 Hampshire St, Cambridge, MA 02139, USA",b53,nvhj,42.3690342,-71.0947965
-54,ArtBar,"40 Edwin H Land Blvd, Cambridge, MA 02142, USA",b54,nvhj,42.3667097,-71.07489389999999
-55,Arthur Murray Dance Center,"151 Alewife Brook Pkwy, Cambridge, MA 02140, USA",b55,nvhj,42.393836,-71.1411863
-56,Artisans Trading Furniture,"125 Fawcett St, Cambridge, MA 02138, USA",b56,nvhj,42.3928129,-71.14758599999999
-57,Artist & Craftsman Supply,"580 Massachusetts Ave, Cambridge, MA 02139, USA",b57,nvhj,42.3646342,-71.1029806
-58,Asa Hair Design,"36 John F. Kennedy St, Cambridge, MA 02138, USA",b58,nvhj,42.3726743,-71.1198689
-59,Asmara Restaurant,"739 Massachusetts Ave, Cambridge, MA 02139, USA",b59,nvhj,42.3665057,-71.10498419999999
-60,A Street Frames,"755 Concord Ave, Cambridge, MA 02138, USA",b60,nvhj,42.3907155,-71.1532995
-61,Atlas Barber Shop,"14A Eliot St, Cambridge, MA 02138, USA",b61,nvhj,42.37218499999999,-71.12154319999999
-62,Atomic Bean Café,"904 Massachusetts Ave, Cambridge, MA 02139, USA",b62,nvhj,42.368112,-71.1086325
-63,Atwood's Tavern,"877 Cambridge St, Cambridge, MA 02141, USA",b63,nvhj,42.3727439,-71.0914444
-64,Audio Lab,"36 John F. Kennedy St, Cambridge, MA 02138, USA",b64,nvhj,42.3726743,-71.1198689
-65,B Good,"301 Third St, Cambridge, MA 02142, USA",b65,nvhj,42.3641806,-71.0834814
-66,B Good,"1 Eliot St, Cambridge, MA 02138, USA",b66,nvhj,42.372666,-71.121371
-67,Bagelsaurus,"1796 Massachusetts Ave, Cambridge, MA 02140, USA",b67,nvhj,42.3860286,-71.1195879
-68,Bambara,"25 Edwin H Land Blvd, Cambridge, MA 02141, USA",b68,nvhj,42.3678891,-71.0749273
-69,Baraka Cuisine,"1728 Massachusetts Ave, Cambridge, MA 02138, USA",b69,nvhj,42.3840796,-71.11985489999999
-70,Barismo,"364 Broadway, Cambridge, MA 02139, USA",b70,nvhj,42.370484,-71.1044197
-71,Barre & Soul,"36 John F. Kennedy St, Cambridge, MA 02138, USA",b71,nvhj,42.3726743,-71.1198689
-72,Base Crave,"344 Huron Ave, Cambridge, MA 02138, USA",b72,nvhj,42.3810906,-71.1380513
-73,Basil Tree Catering & Café,"10 Fawcett St, Cambridge, MA 02138, USA",b73,nvhj,42.389329,-71.1453622
-74,Basta Pasta,"319 Western Ave, Cambridge, MA 02139, USA",b74,nvhj,42.3646894,-71.1132166
-75,Bay State Pool Supplies,"691 Concord Ave, Cambridge, MA 02138, USA",b75,nvhj,42.3902598,-71.15092419999999
-76,Beantown Taqueria,"245 Massachusetts Ave, Cambridge, MA 02139, USA",b76,nvhj,42.3618117,-71.0972366
-77,Beat Brew Hall,"13a Brattle St, Cambridge, MA 02138, USA",b77,nvhj,42.3735322,-71.1202322
-78,Beauty Spa,"1766 Massachusetts Ave, Cambridge, MA 02138, USA",b78,nvhj,42.3853759,-71.1196228
-79,Beauty's Pizza,"187 Hampshire St, Cambridge, MA 02139, USA",b79,nvhj,42.3727649,-71.09934799999999
-80,BeautyBase Eyebrow Threading,"574 Cambridge St, Cambridge, MA 02141, USA",b80,nvhj,42.371661,-71.0859663
-81,Bedworks,"15 Western Ave, Cambridge, MA 02163, USA",b81,nvhj,42.3653827,-71.1049768
-82,Benedetto,"1 Bennett St, Cambridge, MA 02138, USA",b82,nvhj,42.3722449,-71.123044
-83,Bertucci's,"799 Main St, Cambridge, MA 02139, USA",b83,nvhj,42.3634041,-71.0973897
-84,Betty's Hair Now,"397 Cambridge St, Cambridge, MA 02141, USA",b84,nvhj,42.3715071,-71.0827331
-85,Beyond Fitness Pilates Studio,"29 Smith Pl, Cambridge, MA 02138, USA",b85,nvhj,42.3917134,-71.15244779999999
-86,Bisq,"1071 Cambridge St, Cambridge, MA 02141, USA",b86,nvhj,42.373233,-71.09485649999999
-87,Black Sheep,"350 Main St, Cambridge, MA 02142, USA",b87,nvhj,42.362207,-71.08731019999999
-88,Black Sheep Bagel,"56 John F. Kennedy St, Cambridge, MA 02138, USA",b88,nvhj,42.3717355,-71.1204815
-89,Blackbird Doughnuts,"1350 Massachusetts Ave, Cambridge, MA 02138, USA",b89,nvhj,42.3770019,-71.1166599
-90,Blaze Pizza,"First St, Cambridge, MA 02141, USA",b90,nvhj,42.3702166,-71.0768705
-91,Blick Art Supply,"619 Massachusetts Ave, Cambridge, MA 02139, USA",b91,nvhj,42.3653753,-71.1032322
-92,Blue Bag Records,"2325 Massachusetts Ave, Cambridge, MA 02140, USA",b92,nvhj,42.3958927,-71.12819309999999
-93,Blue Bottle,"88 Ames St, Cambridge, MA 02142, USA",b93,nvhj,42.3632638,-71.087818
-94,Blue Bottle,"40 Bow St, Cambridge, MA 02138, USA",b94,nvhj,42.3714676,-71.1168375
-95,Bluemoon Smoke Shop,"1295 Cambridge St, Cambridge, MA 02139, USA",b95,nvhj,42.3736782,-71.09898749999999
-96,Bluemoon Smoke Shop,"1704 Massachusetts Ave, Cambridge, MA 02138, USA",b96,nvhj,42.38322609999999,-71.11985489999999
-97,Bluemoon Smoke Shop,"896 Massachusetts Ave, Cambridge, MA 02139, USA",b97,nvhj,42.3679578,-71.1084352
-98,Bluestone Lane,"27 Brattle St, Cambridge, MA 02138, USA",b98,nvhj,42.3736083,-71.1206904
-99,Boathouse,"65 Mount Auburn Street, 65 Mt Auburn St, Cambridge, MA 02138, USA",b99,nvhj,42.3720079,-71.1180151
-100,Bob Slate Stationer,"30 Brattle St, Cambridge, MA 02138, USA",b100,nvhj,42.3731651,-71.1206126
-101,Boca Grande,"149 First St, Cambridge, MA 02142, USA",b101,nvhj,42.36627230000001,-71.0780979
-102,Bodhi Leaf,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",b102,nvhj,42.3708466,-71.1135184
-103,Body One Massage,"1776 Massachusetts Ave, Cambridge, MA 02140, USA",b103,nvhj,42.3857469,-71.1196228
-104,BodyScapes Fitness,"356 Third St, Cambridge, MA 02142, USA",b104,nvhj,42.3635776,-71.08342259999999
-105,Bon Chon,"57 John F. Kennedy St, Cambridge, MA 02138, USA",b105,nvhj,42.3720507,-71.12077239999999
-106,Bon Me - Alewife,"201 Alewife Brook Pkwy, Cambridge, MA 02138, USA",b106,nvhj,42.3900464,-71.1429253
-107,Bon Me - Kendall,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",b107,nvhj,42.3673039,-71.09012129999999
-108,Bon Me Test Kitchen,"60 Binney St, Cambridge, MA 02142, USA",b108,nvhj,42.365026,-71.079815
-109,Bon Me- Harvard,"1350 Massachusetts Ave, Cambridge, MA 02138, USA",b109,nvhj,42.3770019,-71.1166599
-110,Bondir,"279a Broadway, Cambridge, MA 02139, USA",b110,nvhj,42.3682904,-71.09776889999999
-111,Bonny's Garden Center,"41 Bay State Rd, Cambridge, MA 02138, USA",b111,nvhj,42.3874371,-71.13958319999999
-112,Boomerangs,"563 Massachusetts Ave, Cambridge, MA 02139, USA",b112,nvhj,42.3648033,-71.10212179999999
-113,Border Café,"32 Church St, Cambridge, MA 02138, USA",b113,nvhj,42.3742934,-71.1202318
-114,Boston Burger Company,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",b114,nvhj,42.3708466,-71.1135184
-115,Boston Convenience,"1 Leighton St, Cambridge, MA 02141, USA",b115,nvhj,42.3698228,-71.0731297
-116,Boston Dog Company,"2512 Massachusetts Ave, Cambridge, MA 02140, USA",b116,nvhj,42.3993016,-71.13299169999999
-117,Boston Dog Company,"505 Cambridge St, Cambridge, MA 02141, USA",b117,nvhj,42.3717888,-71.0846001
-118,Boston iPhone Repair,"1208 Massachusetts Ave, Cambridge, MA 02138, USA",b118,nvhj,42.3718905,-71.1153984
-119,Boston Tattoo Company,"36 Prospect St, Cambridge, MA 02139, USA",b119,nvhj,42.3660116,-71.10332869999999
-120,Boston Tea Shop,"54 John F. Kennedy St, Cambridge, MA 02138, USA",b120,nvhj,42.3718604,-71.1204808
-121,Bourbon Coffee,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b121,nvhj,42.3872124,-71.1185319
-122,Brattle Square Florist,"31 Brattle St, Cambridge, MA 02138, USA",b122,nvhj,42.3736904,-71.1207368
-123,Brattle Square Optical,"1077 Massachusetts Ave, Cambridge, MA 02138, USA",b123,nvhj,42.3704241,-71.1130548
-124,Brazilian Ipanema Hair Salon,"781 Cambridge St, Cambridge, MA 02141, USA",b124,nvhj,42.3724364,-71.0897499
-125,Bridge Gallery,"5 Pemberton St, Cambridge, MA 02140, USA",b125,nvhj,42.392343,-71.1252396
-126,Bright Horizons,"2465 Massachusetts Ave, Cambridge, MA 02140, USA",b126,nvhj,42.3987746,-71.1315295
-127,Broadsheet Coffee Roasters,"100 Kirkland St, Cambridge, MA 02138, USA",b127,nvhj,42.3779725,-71.1073006
-128,Broadway Auto,"320 Broadway, Cambridge, MA 02139, USA",b128,nvhj,42.3692791,-71.101379
-129,Broadway Bicycle,"351 Broadway, Cambridge, MA 02139, USA",b129,nvhj,42.3704596,-71.1035144
-130,Broadway Marketplace,"468 Broadway, Cambridge, MA 02138, USA",b130,nvhj,42.3737524,-71.11314700000001
-131,Brookline Lunch,"9 Brookline St, Cambridge, MA 02139, USA",b131,nvhj,42.3637641,-71.1017365
-132,Brother's Market,"One Broadway, 1 Broadway, Cambridge, MA 02142, USA",b132,nvhj,42.3627822,-71.0835375
-133,Brother's Market,"414 Cambridge St, Cambridge, MA 02141, USA",b133,nvhj,42.3713184,-71.083088
-134,Browz Threading,"1923 Massachusetts Ave, Cambridge, MA 02140, USA",b134,nvhj,42.3893963,-71.1197045
-135,Bryn Mawr Bookstore,"373 Huron Ave, Cambridge, MA 02138, USA",b135,nvhj,42.38128560000001,-71.1389797
-136,C'est Bon Market and Liquors,"1436 Massachusetts Ave, Cambridge, MA 02138, USA",b136,nvhj,42.3742022,-71.11909179999999
-137,C. Brendan Noonan Realty,"360 Huron Ave, Cambridge, MA 02138, USA",b137,nvhj,42.3810738,-71.1387415
-138,Cabot's Candy,"1300 Massachusetts Ave, Cambridge, MA 02138, USA",b138,nvhj,42.3727516,-71.1173161
-139,Cafe Du Pays,"233 Cardinal Medeiros Ave, Cambridge, MA 02141, USA",b139,nvhj,42.3676619,-71.0911235
-140,Café Barada,"2269 Massachusetts Ave, Cambridge, MA 02140, USA",b140,nvhj,42.394794,-71.1268875
-141,Café Luna,"612 Main St, Cambridge, MA 02139, USA",b141,nvhj,42.3628665,-71.0942245
-142,Café Mami,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b142,nvhj,42.3872124,-71.1185319
-143,Café Sushi,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",b143,nvhj,42.3708466,-71.1135184
-144,Café Zing,"37 White St #1, Cambridge, MA 02140, USA",b144,nvhj,42.3893884,-71.1185346
-145,Cambridge Antiques Market,"201 Monsignor O'Brien Highway, Cambridge, MA 02141, USA",b145,nvhj,42.3724767,-71.0790026
-146,Cambridge Artists' Cooperative,"59a Church St, Cambridge, MA 02138, USA",b146,nvhj,42.3742094,-71.1211069
-147,Cambridge Bicycle,"259 Massachusetts Ave, Cambridge, MA 02139, USA",b147,nvhj,42.3618351,-71.0973644
-148,Cambridge Body & Brain Yoga andTai Chi,"1773 Massachusetts Ave, Cambridge, MA 02140, USA",b148,nvhj,42.3855171,-71.11892639999999
-149,Cambridge Brewing Co.,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",b149,nvhj,42.3673039,-71.09012129999999
-150,Cambridge Cat Clinic,"1108 Cambridge St, Cambridge, MA 02139, USA",b150,nvhj,42.3729913,-71.09580989999999
-151,Cambridge Clogs,"1798 Massachusetts Ave, Cambridge, MA 02140, USA",b151,nvhj,42.386073,-71.11957629999999
-152,Cambridge Common,"1667 Massachusetts Ave, Cambridge, MA 02138, USA",b152,nvhj,42.3820856,-71.1193674
-153,Cambridge Greenhouse,"2301 Massachusetts Ave, Cambridge, MA 02140, USA",b153,nvhj,42.3953319,-71.1276093
-154,Cambridge House of Pizza,"2420 Massachusetts Ave, Cambridge, MA 02140, USA",b154,nvhj,42.397386,-71.130755
-155,Cambridge Nails and Skin Spa,"2096 Massachusetts Ave, Cambridge, MA 02140, USA",b155,nvhj,42.3913661,-71.1236961
-156,Cambridge Naturals,"37 White St #1, Cambridge, MA 02140, USA",b156,nvhj,42.3893884,-71.1185346
-157,Cambridge Nature's Way Dry Cleaners,"47 Mt Auburn St, Cambridge, MA 02138, USA",b157,nvhj,42.3713615,-71.116644
-158,Cambridge Pizzeria,"263 Brookline St, Cambridge, MA 02139, USA",b158,nvhj,42.3577583,-71.10783169999999
-159,Cambridge Rug Company,"1157 Cambridge St, Cambridge, MA 02139, USA",b159,nvhj,42.3733537,-71.09643489999999
-160,Cambridge School of Culinary Arts,"2020 Massachusetts Ave, Cambridge, MA 02140, USA",b160,nvhj,42.3905429,-71.121967
-161,Cambridge Shoe Repair,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",b161,nvhj,42.3708466,-71.1135184
-162,Cambridge Smoke Shop,"1199 Cambridge St, Cambridge, MA 02139, USA",b162,nvhj,42.3733881,-71.0973166
-163,Cambridge Spirits,"9 Broad Canal Way, Cambridge, MA 02142, USA",b163,nvhj,42.363312,-71.082741
-164,Cambridge Street Cleaners,"506 Cambridge St, Cambridge, MA 02141, USA",b164,nvhj,42.3715531,-71.0847129
-165,Cambridge Used Bicycles,"201 Monsignor O'Brien Highway, Cambridge, MA 02141, USA",b165,nvhj,42.3724767,-71.0790026
-166,Cambridge Veterinary Care,"1724 Massachusetts Ave, Cambridge, MA 02138, USA",b166,nvhj,42.3840083,-71.11981500000002
-167,Cambridge Wine and Spirits,"202 Alewife Brook Pkwy, Cambridge, MA 02138, USA",b167,nvhj,42.3888948,-71.141772
-168,Cambridgeside Galleria,"100 Cambridgeside Pl, Cambridge, MA 02141, USA",b168,nvhj,42.3681321,-71.0763644
-169,Cantab Lounge,"738 Massachusetts Ave, Cambridge, MA 02139, USA",b169,nvhj,42.3660624,-71.1053713
-170,Cardullo's,"6 Brattle St, Cambridge, MA 02138, USA",b170,nvhj,42.3735986,-71.119762
-171,Casa Portugal,"1200 Cambridge St, Cambridge, MA 02139, USA",b171,nvhj,42.3731555,-71.09734019999999
-172,Catalyst Café,"75 Binney St, Cambridge, MA 02142, USA",b172,nvhj,42.365703,-71.080571
-173,Catalyst Performance Training,"91 Sidney St, Cambridge, MA 02139, USA",b173,nvhj,42.3610391,-71.10279489999999
-174,Catalyst Restaurant,"300 Tech Square, 300 Technology Square, Cambridge, MA 02139, USA",b174,nvhj,42.3633654,-71.0916238
-175,Cava,"82 Ames St, Cambridge, MA 02142, USA",b175,nvhj,42.3631132,-71.08786309999999
-176,Cellar Wine and Spirits,"991 Massachusetts Ave, Cambridge, MA 02138, USA",b176,nvhj,42.3694971,-71.1108259
-177,Central Bakery,"732 Cambridge St, Cambridge, MA 02141, USA",b177,nvhj,42.37189499999999,-71.08909
-178,Central Barber Shop,"1611 Massachusetts Ave, Cambridge, MA 02138, USA",b178,nvhj,42.3801557,-71.119695
-179,Central Rock Gym,"127 Smith Pl, Cambridge, MA 02138, USA",b179,nvhj,42.3938542,-71.150421
-180,Central Square Eye Care,"3 Central Square, Cambridge, MA 02139, USA",b180,nvhj,42.3649409,-71.103909
-181,Central Square Florist,"653 Massachusetts Ave, Cambridge, MA 02139, USA",b181,nvhj,42.3657113,-71.10354459999999
-182,Central Square Post Office,"770 Massachusetts Ave, Cambridge, MA 02139, USA",b182,nvhj,42.36635990000001,-71.1061373
-183,Central Square Theater,"450 Massachusetts Ave, Cambridge, MA 02139, USA",b183,nvhj,42.3634198,-71.1012291
-184,Chalawan,"1790 Massachusetts Ave, Cambridge, MA 02140, USA",b184,nvhj,42.3859319,-71.1195647
-185,Chameleon Tattoo & Body Piercing,"36 John F. Kennedy St, Cambridge, MA 02138, USA",b185,nvhj,42.3726743,-71.1198689
-186,Changsho,"1712 Massachusetts Ave, Cambridge, MA 02138, USA",b186,nvhj,42.3835163,-71.1199245
-187,Charles Hotel,"1 Bennett St, Cambridge, MA 02138, USA",b187,nvhj,42.3722449,-71.123044
-188,Charles River Canoe and Kayak,"15 Broad Canal Way, Cambridge, MA 02142, USA",b188,nvhj,42.3628826,-71.0820784
-189,Charlie's Barber Shop,"1794 Massachusetts Ave, Cambridge, MA 02140, USA",b189,nvhj,42.3859994,-71.1196344
-190,Charlie's Kitchen,"10 Eliot St, Cambridge, MA 02138, USA",b190,nvhj,42.3724144,-71.121526
-191,Cheapo Records,"538 Massachusetts Ave, Cambridge, MA 02139, USA",b191,nvhj,42.36422659999999,-71.10229919999999
-192,Chicago Pizza,"239 Massachusetts Ave, Cambridge, MA 02139, USA",b192,nvhj,42.3617046,-71.0971321
-193,China Fair,"2100 Massachusetts Ave, Cambridge, MA 02140, USA",b193,nvhj,42.39145269999999,-71.1238238
-194,Christina's Homemade Ice Cream,"1255 Cambridge St, Cambridge, MA 02139, USA",b194,nvhj,42.37352,-71.0983761
-195,Christina's Spice and Speciality Shop,"1297 Cambridge St, Cambridge, MA 02139, USA",b195,nvhj,42.3736365,-71.0992073
-196,Christopher's,"1920 Massachusetts Ave, Cambridge, MA 02140, USA",b196,nvhj,42.3890462,-71.1200405
-197,Chutney's,"36 John F. Kennedy St, Cambridge, MA 02138, USA",b197,nvhj,42.3726743,-71.1198689
-198,Cilantro Chinese Cuisine,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",b198,nvhj,42.3708466,-71.1135184
-199,Circle Furniture,"199 Alewife Brook Pkwy, Cambridge, MA 02138, USA",b199,nvhj,42.39028589999999,-71.1427042
-200,Citgo Gas,"199 Concord Ave, Cambridge, MA 02138, USA",b200,nvhj,42.3827556,-71.1310421
-201,City Express Dry Cleaners,"428 Massachusetts Ave, Cambridge, MA 02139, USA",b201,nvhj,42.3633903,-71.1007711
-202,City Liquors,"616 Cambridge St, Cambridge, MA 02141, USA",b202,nvhj,42.3717336,-71.0865002
-203,City Market,"1695 Massachusetts Ave, Cambridge, MA 02138, USA",b203,nvhj,42.382912,-71.1193373
-204,City Paint,"1149 Cambridge St, Cambridge, MA 02139, USA",b204,nvhj,42.3733075,-71.0962725
-205,City Paint & Supply,"2564 Massachusetts Ave, Cambridge, MA 02140, USA",b205,nvhj,42.4000232,-71.1346164
-206,Classic Graphx,"678 Massachusetts Ave, Cambridge, MA 02139, USA",b206,nvhj,42.3655321,-71.10447359999999
-207,Cleenland,"89a Norfolk St, Cambridge, MA 02139, USA",b207,nvhj,42.3664615,-71.1005541
-208,Clevergreen Cleaners,"314 Third St, Cambridge, MA 02142, USA",b208,nvhj,42.3649673,-71.0826233
-209,Clipmates Hair Studio,"141 Hampshire St, Cambridge, MA 02139, USA",b209,nvhj,42.3711528,-71.0970164
-210,Clothware,"1773 Massachusetts Ave, Cambridge, MA 02140, USA",b210,nvhj,42.3855171,-71.11892639999999
-211,Clover - Central,"496 Massachusetts Ave, Cambridge, MA 02139, USA",b211,nvhj,42.36389399999999,-71.101626
-212,Clover - Harvard,"1326 Massachusetts Ave, Cambridge, MA 02138, USA",b212,nvhj,42.3729277,-71.1178963
-213,Clover - HQ,"1075 Cambridge St, Cambridge, MA 02139, USA",b213,nvhj,42.3732647,-71.0950422
-214,Clover - Kendall,"5 Cambridge Center, Cambridge, MA 02142, USA",b214,nvhj,42.3627924,-71.08756029999999
-215,Club Passim,"47 Palmer St, Cambridge, MA 02138, USA",b215,nvhj,42.3741821,-71.11974889999999
-216,Coady Florist,"1540 Cambridge St, Cambridge, MA 02139, USA",b216,nvhj,42.37424530000001,-71.10634619999999
-217,Coast Cafe,"233 River St, Cambridge, MA 02139, USA",b217,nvhj,42.3630358,-71.1116267
-218,Colette,"1924 Massachusetts Ave, Cambridge, MA 02140, USA",b218,nvhj,42.3892499,-71.1203655
-219,Columbia Market,"151 Columbia St, Cambridge, MA 02139, USA",b219,nvhj,42.3669578,-71.09801569999999
-220,Commonwealth Cambridge,"11 Broad Canal Way, Cambridge, MA 02142, USA",b220,nvhj,42.36334859999999,-71.0826005
-221,Commonwealth Lock,"1853 Massachusetts Ave, Cambridge, MA 02140, USA",b221,nvhj,42.3878401,-71.1189827
-222,Commonwealth Wine School,"35 Dunster St, Cambridge, MA 02138, USA",b222,nvhj,42.3725791,-71.119337
-223,Concord Ave. Cafe,"294 Concord Ave, Cambridge, MA 02138, USA",b223,nvhj,42.3836924,-71.13409410000001
-224,Convenience Plus,"751 Massachusetts Ave, Cambridge, MA 02139, USA",b224,nvhj,42.3665908,-71.10515079999999
-225,Coolidge Cleaners,"746 Massachusetts Ave, Cambridge, MA 02139, USA",b225,nvhj,42.3661046,-71.10545619999999
-226,Corazon de Frida Mexican Cantina,"1287 Cambridge St, Cambridge, MA 02139, USA",b226,nvhj,42.3736907,-71.09892289999999
-227,Corbu Spa and Salon,"1 Bennett St, Cambridge, MA 02138, USA",b227,nvhj,42.3722449,-71.123044
-228,Courthouse Fish Market,"494A Cambridge St, Cambridge, MA 02141, USA",b228,nvhj,42.37151250000001,-71.08444779999999
-229,Courthouse Seafood Restaurant,"498 Cambridge St, Cambridge, MA 02141, USA",b229,nvhj,42.3715435,-71.0845927
-230,Craigie on Main,"853 Main St, Cambridge, MA 02139, USA",b230,nvhj,42.36349,-71.0986633
-231,Crate Escape Too,"368 Huron Ave, Cambridge, MA 02138, USA",b231,nvhj,42.3810057,-71.13893209999999
-232,Crimson Bikes,"1001 Massachusetts Ave, Cambridge, MA 02138, USA",b232,nvhj,42.3696346,-71.1111973
-233,Crimson Corner,"35 Brattle St, Cambridge, MA 02138, USA",b233,nvhj,42.3736074,-71.12097949999999
-234,Curio Coffee and Wine,"441 Cambridge St, Cambridge, MA 02141, USA",b234,nvhj,42.3716201,-71.0834998
-235,Curio Spice,"2265 Massachusetts Ave, Cambridge, MA 02140, USA",b235,nvhj,42.3945484,-71.1267726
-236,Custom Barber Shop,"49 Brattle St, Cambridge, MA 02138, USA",b236,nvhj,42.3741801,-71.1214332
-237,Custom Eyes,"50 Prospect St, Cambridge, MA 02139, USA",b237,nvhj,42.3662023,-71.1031431
-238,CWK at Kendall,"300 Athenaeum St, Cambridge, MA 02142, USA",b238,nvhj,42.3643821,-71.0813703
-239,D & D Convenience,"101 Magazine St, Cambridge, MA 02139, USA",b239,nvhj,42.3602168,-71.11005999999999
-240,Dado Tea,"955 Massachusetts Ave, Cambridge, MA 02139, USA",b240,nvhj,42.36910049999999,-71.1098047
-241,Dado Tea,"50, 50 Church St, Cambridge, MA 02138, USA",b241,nvhj,42.3739624,-71.1204815
-242,Daedalus,"45.5 Mt Auburn St, Cambridge, MA 02138, USA",b242,nvhj,42.3713279,-71.116477
-243,Dial,"907 Main St, Cambridge, MA 02139, USA",b243,nvhj,42.3636264,-71.0996514
-244,Dana Hill Liquors,"910 Massachusetts Ave, Cambridge, MA 02139, USA",b244,nvhj,42.3682599,-71.108762
-245,Dance Complex,"536 Massachusetts Ave, Cambridge, MA 02139, USA",b245,nvhj,42.364204,-71.1023075
-246,Daniel R. Spirer Jewelers,"1780 Massachusetts Ave, Cambridge, MA 02140, USA",b246,nvhj,42.3858285,-71.1196111
-247,Darul Kabab,"2072 Massachusetts Ave, Cambridge, MA 02140, USA",b247,nvhj,42.39112069999999,-71.12329
-248,David's Shoes on First,"75 First St, Cambridge, MA 02141, USA",b248,nvhj,42.3684112,-71.0777955
-249,Dazzling Nail Care,"2327 Massachusetts Ave, Cambridge, MA 02140, USA",b249,nvhj,42.3959403,-71.1283016
-250,Desfina Restaurant,"202 Third St, Cambridge, MA 02141, USA",b250,nvhj,42.36750259999999,-71.0809525
-251,Desi Dhaba,"401 Massachusetts Ave, Cambridge, MA 02139, USA",b251,nvhj,42.3636487,-71.09999049999999
-252,Design Within Reach,"1045 Massachusetts Ave, Cambridge, MA 02138, USA",b252,nvhj,42.3701104,-71.1126828
-253,Diaper Lab,"200 Elm St, Cambridge, MA 02140, USA",b253,nvhj,42.3932113,-71.1209689
-254,Dickson Brothers True Value,"26 Brattle St, Cambridge, MA 02138, USA",b254,nvhj,42.3731301,-71.12038869999999
-255,Dig,"82 Mt Auburn St, Cambridge, MA 02138, USA",b255,nvhj,42.3721713,-71.11955309999999
-256,Dimi's Place,"272 Brookline St, Cambridge, MA 02139, USA",b256,nvhj,42.3573341,-71.1077389
-257,Domino's Pizza,"1033 Massachusetts Avenue, 1033 Massachusetts Ave, Cambridge, MA 02138, USA",b257,nvhj,42.36985809999999,-71.1119844
-258,Down Under School Yoga,"2000 Massachusetts Ave, Cambridge, MA 02140, USA",b258,nvhj,42.3902413,-71.1215028
-259,Dress Code Cleaners,"276 Broadway, Cambridge, MA 02139, USA",b259,nvhj,42.3678666,-71.0976273
-260,Drinkwater's,"2067 Massachusetts Ave, Cambridge, MA 02140, USA",b260,nvhj,42.3915915,-71.12289539999999
-261,Druid,"1357 Cambridge St, Cambridge, MA 02139, USA",b261,nvhj,42.37378409999999,-71.100171
-262,Dry Bar,"1081 Massachusetts Ave, Cambridge, MA 02138, USA",b262,nvhj,42.3704987,-71.1131514
-263,Dumpling Daughter,"73 Ames St, Cambridge, MA 02142, USA",b263,nvhj,42.3633627,-71.0885606
-264,Dumpling House,"950 Massachusetts Ave, Cambridge, MA 02139, USA",b264,nvhj,42.3685407,-71.1102224
-265,Dunkin Donuts,"One Broadway, 1 Broadway, Cambridge, MA 02142, USA",b265,nvhj,42.3627822,-71.0835375
-266,Dunkin Donuts,"222 Broadway, Cambridge, MA 02139, USA",b266,nvhj,42.3663518,-71.0941138
-267,Dunkin Donuts,"37 White St #1, Cambridge, MA 02140, USA",b267,nvhj,42.3893884,-71.1185346
-268,Dunkin Donuts,"2480 Massachusetts Ave, Cambridge, MA 02140, USA",b268,nvhj,42.39871429999999,-71.1321561
-269,Dunkin Donuts,"616 Massachusetts Ave, Cambridge, MA 02139, USA",b269,nvhj,42.3649913,-71.1033473
-270,Dunkin Donuts,"1001 Massachusetts Ave, Cambridge, MA 02138, USA",b270,nvhj,42.3696346,-71.1111973
-271,East Coast Barber Shop,"261 Cambridge St, Cambridge, MA 02141, USA",b271,nvhj,42.3712058,-71.0803138
-272,East Side Bar and Grille,"561 Cambridge St, Cambridge, MA 02141, USA",b272,nvhj,42.3719396,-71.0856414
-273,Easy Chairs Antiques,"375 Huron Ave, Cambridge, MA 02138, USA",b273,nvhj,42.3813014,-71.13907259999999
-274,ED Simmons/All State Insurance Agency/Cambridgeport Insurance Agency,"770 Massachusetts Ave, Cambridge, MA 02139, USA",b274,nvhj,42.3663507,-71.1059859
-275,EH Chocolatier,"145 Huron Ave, Cambridge, MA 02138, USA",b275,nvhj,42.3828487,-71.1307171
-276,El Jefe's Taqueria,"83 Mt Auburn St, Cambridge, MA 02138, USA",b276,nvhj,42.3725094,-71.11963779999999
-277,Elegant Tailor & Cleaners,"1687 Massachusetts Ave, Cambridge, MA 02138, USA",b277,nvhj,42.3827389,-71.1193906
-278,Elia's Hair Care,"319 Massachusetts Ave, Cambridge, MA 02139, USA",b278,nvhj,42.36254,-71.0985767
-279,Eliot Street Cafe/Dunkin Donuts,"65 John F. Kennedy St, Cambridge, MA 02138, USA",b279,nvhj,42.37186,-71.121133
-280,Elite Barbershop,"2384 Massachusetts Ave, Cambridge, MA 02140, USA",b280,nvhj,42.3968649,-71.1299841
-281,Elmendorf Baking Supplies and Café,"594 Cambridge St, Cambridge, MA 02141, USA",b281,nvhj,42.3717314,-71.0862776
-282,"Erika Salloux, Professional Organizer, Living Harmony","24 Harvey St, Cambridge, MA 02140, USA",b282,nvhj,42.3971097,-71.1311527
-283,Esmeralda,"54 Church St, Cambridge, MA 02138, USA",b283,nvhj,42.3740244,-71.1208505
-284,Estetika Spa,"370 Huron Ave, Cambridge, MA 02138, USA",b284,nvhj,42.38100439999999,-71.13912959999999
-285,Euphoria Babershop,"766B Cambridge St, Cambridge, MA 02141, USA",b285,nvhj,42.3721407,-71.0895807
-286,European Country Antiques,"146 Huron Ave, Cambridge, MA 02138, USA",b286,nvhj,42.3826237,-71.130485
-287,European Wax Center,"1868 Massachusetts Ave, Cambridge, MA 02140, USA",b287,nvhj,42.3880116,-71.1197388
-288,Evolve Fitness,"52 New St, Cambridge, MA 02138, USA",b288,nvhj,42.3879049,-71.13960639999999
-289,EVOO,"350 Third St, Cambridge, MA 02142, USA",b289,nvhj,42.363582,-71.0832289
-290,Eye Q,"12 Eliot St, Cambridge, MA 02138, USA",b290,nvhj,42.3723109,-71.12157239999999
-291,Falafel Corner,"8 Eliot St, Cambridge, MA 02138, USA",b291,nvhj,42.3725099,-71.1214332
-292,Family Nail and Spa,"746 Cambridge St, Cambridge, MA 02141, USA",b292,nvhj,42.3720615,-71.0894017
-293,Famous Cutz,"444 Cambridge St, Cambridge, MA 02141, USA",b293,nvhj,42.3713319,-71.08365669999999
-294,Faron Salon,"1784 Massachusetts Ave, Cambridge, MA 02140, USA",b294,nvhj,42.3859027,-71.1196111
-295,Fast Phil's Haircuts,"2528 Massachusetts Ave, Cambridge, MA 02140, USA",b295,nvhj,42.3995661,-71.1334559
-296,Felipe's Taqueria,"21 Brattle St, Cambridge, MA 02138, USA",b296,nvhj,42.3734606,-71.120502
-297,Felix Shoe Repair,"1304 Massachusetts Ave, Cambridge, MA 02138, USA",b297,nvhj,42.3728187,-71.1173598
-298,Fernandes Fish Market,"1097 Cambridge St, Cambridge, MA 02139, USA",b298,nvhj,42.3731327,-71.0954829
-299,Fernandes Market,"875 Cambridge St, Cambridge, MA 02141, USA",b299,nvhj,42.3726782,-71.09135979999999
-300,Ferro's Foodtown,"336 Rindge Ave, Cambridge, MA 02140, USA",b300,nvhj,42.3936268,-71.1374711
-301,Filomena's Beauty and Hair Salon,"164 Hampshire St, Cambridge, MA 02139, USA",b301,nvhj,42.37175209999999,-71.0986865
-302,First United Market,"271 Brookline St, Cambridge, MA 02139, USA",b302,nvhj,42.3575751,-71.1080638
-303,Fishmonger,"252 Huron Ave, Cambridge, MA 02138, USA",b303,nvhj,42.3813572,-71.1340013
-304,Fitlab Pilates,"1305 Cambridge St, Cambridge, MA 02139, USA",b304,nvhj,42.3737118,-71.099406
-305,Five Doors Health and Wellness,"763 Massachusetts Ave, Cambridge, MA 02139, USA",b305,nvhj,42.3666337,-71.1053481
-306,Five Spices House,"546 Massachusetts Ave, Cambridge, MA 02139, USA",b306,nvhj,42.3642804,-71.1022837
-307,Flame Hot Pot and Sushi,"1001 Massachusetts Ave, Cambridge, MA 02138, USA",b307,nvhj,42.3696346,-71.1111973
-308,Flour Bakery,"40 Erie St, Cambridge, MA 02139, USA",b308,nvhj,42.3573464,-71.10465180000001
-309,Flour Bakery,"190 Massachusetts Ave, Cambridge, MA 02139, USA",b309,nvhj,42.3610025,-71.0966286
-310,Flour Bakery,"114 Mt Auburn St, Cambridge, MA 02138, USA",b310,nvhj,42.3730471,-71.12239570000001
-311,Flyod's 99 Barbershop,"1672 Massachusetts Ave, Cambridge, MA 02138, USA",b311,nvhj,42.382136,-71.119945
-312,Follow the Honey,"1132 Massachusetts Ave, Cambridge, MA 02138, USA",b312,nvhj,42.3708331,-71.1142096
-313,FoodLand,"2234 Massachusetts Ave, Cambridge, MA 02140, USA",b313,nvhj,42.3937807,-71.126493
-314,Foot Heaven,"875 Main St, Cambridge, MA 02139, USA",b314,nvhj,42.3636263,-71.09891859999999
-315,Forage,"5 Craigie Cir, Cambridge, MA 02138, USA",b315,nvhj,42.3793762,-71.1272125
-316,Formaggio Kendall,"94 Hampshire St, Cambridge, MA 02139, USA",b316,nvhj,42.368827,-71.0951351
-317,Formaggio Kitchen,"244 Huron Ave, Cambridge, MA 02138, USA",b317,nvhj,42.3813436,-71.1337576
-318,Forty Winks,"56 John F. Kennedy St, Cambridge, MA 02138, USA",b318,nvhj,42.3717355,-71.1204815
-319,Four Seaons Nail Design,"889 Cambridge St, Cambridge, MA 02141, USA",b319,nvhj,42.3727041,-71.0916697
-320,Francis Bane Dentistry,"2179 Massachusetts Ave, Cambridge, MA 02140, USA",b320,nvhj,42.3928789,-71.1246826
-321,Franco's Hair Studio,"157 Hampshire St, Cambridge, MA 02139, USA",b321,nvhj,42.371693,-71.0981598
-322,Frank's Steakhouse,"2310 Massachusetts Ave, Cambridge, MA 02140, USA",b322,nvhj,42.3953525,-71.12819089999999
-323,Fresh Mart,"222 Broadway, Cambridge, MA 02139, USA",b323,nvhj,42.3663518,-71.0941138
-324,Fresh Pond Ballet,"1798 Massachusetts Ave, Cambridge, MA 02140, USA",b324,nvhj,42.386073,-71.11957629999999
-325,Friendly Corner Convenience Store,"2408 Massachusetts Ave, Cambridge, MA 02140, USA",b325,nvhj,42.397364,-71.13060639999999
-326,Fuji Restaurant,"300 Third St, Cambridge, MA 02142, USA",b326,nvhj,42.36521279999999,-71.081997
-327,Fun Antiques,"33 Belmont St, Cambridge, MA 02138, USA",b327,nvhj,42.3750591,-71.1515438
-328,Galante Insurance,"1939 Massachusetts Ave, Cambridge, MA 02140, USA",b328,nvhj,42.3896924,-71.1199638
-329,Garment District/Boston Costume,"200 Broadway, Cambridge, MA 02139, USA",b329,nvhj,42.3658874,-71.0930228
-330,Gather Here,"1343 Cambridge St, Cambridge, MA 02139, USA",b330,nvhj,42.3737356,-71.0999454
-331,General Optical Company,"2038 Massachusetts Ave, Cambridge, MA 02140, USA",b331,nvhj,42.3906762,-71.1223672
-332,Genki Ya,"231 Alewife Brook Pkwy, Cambridge, MA 02138, USA",b332,nvhj,42.3891021,-71.1434823
-333,Gentle Dental,"19 White St, Cambridge, MA 02140, USA",b333,nvhj,42.3896076,-71.1190891
-334,Gentle Dental,"725 Massachusetts Ave, Cambridge, MA 02139, USA",b334,nvhj,42.3663058,-71.1046897
-335,Get in Shape for Women,"1764 Massachusetts Ave, Cambridge, MA 02138, USA",b335,nvhj,42.3852646,-71.1196228
-336,Giulia,"1682 Massachusetts Ave, Cambridge, MA 02138, USA",b336,nvhj,42.3825077,-71.1199941
-337,Glass House,"450 Kendall St, Cambridge, MA 02142, USA",b337,nvhj,42.3633362,-71.08143989999999
-338,Golden Touch Cleaners,"987 Massachusetts Ave, Cambridge, MA 02138, USA",b338,nvhj,42.369356,-71.1108143
-339,"Gomes Travel Service, Inc.","777 Cambridge St, Cambridge, MA 02141, USA",b339,nvhj,42.3724047,-71.0895642
-340,Good Vibrations,"52 John F. Kennedy St, Cambridge, MA 02138, USA",b340,nvhj,42.371916,-71.1204304
-341,Goodwill Store,"520 Massachusetts Ave, Cambridge, MA 02139, USA",b341,nvhj,42.3640823,-71.1020289
-342,Gorgeous Nails,"435 Cambridge St, Cambridge, MA 02141, USA",b342,nvhj,42.3716653,-71.0835987
-343,Gracies Kendall Square,"399 Binney St, Cambridge, MA 02141, USA",b343,nvhj,42.3676032,-71.0902725
-344,Gracenote Coffee and Wine,"150 First St, Cambridge, MA 02142, USA",b344,nvhj,42.3662828,-71.07771389999999
-345,Grafton Street Pub & Grill,"1230 Massachusetts Ave, Cambridge, MA 02138, USA",b345,nvhj,42.37224399999999,-71.115894
-346,Gran Gusto,"90 Sherman St, Cambridge, MA 02140, USA",b346,nvhj,42.388679,-71.13229299999999
-347,GrayMist Studio and Shop,"364 Huron Ave, Cambridge, MA 02138, USA",b347,nvhj,42.38099829999999,-71.13893039999999
-348,Great Eastern Trading Company,"49 River St, Cambridge, MA 02139, USA",b348,nvhj,42.3647608,-71.1065551
-349,Greek Corner,"2366 Massachusetts Ave, Cambridge, MA 02140, USA",b349,nvhj,42.3963792,-71.1295298
-350,Green Street Grill,"280 Green St, Cambridge, MA 02139, USA",b350,nvhj,42.3645171,-71.1041992
-351,Grendel's Den,"89 Winthrop St, Cambridge, MA 02138, USA",b351,nvhj,42.3724617,-71.1208398
-352,Grolier Poetry Book Shop,"6 Plympton St, Cambridge, MA 02138, USA",b352,nvhj,42.3724459,-71.1164383
-353,Guangzhou Restaurant,"1220 Cambridge St, Cambridge, MA 02139, USA",b353,nvhj,42.3731458,-71.0978276
-354,Guitar Stop,"1760 Massachusetts Ave, Cambridge, MA 02138, USA",b354,nvhj,42.3851983,-71.11966919999999
-355,Gustazo Cuban Restauant & Café,"2067 Massachusetts Ave, Cambridge, MA 02140, USA",b355,nvhj,42.3915915,-71.12289539999999
-356,Gymnastic Academy of Boston,"128 Smith Pl, Cambridge, MA 02138, USA",b356,nvhj,42.3936605,-71.1501507
-357,Gypsy Place Coffee,"90 Hampshire St, Cambridge, MA 02139, USA",b357,nvhj,42.3684656,-71.0946476
-358,H&R Block,"674 Massachusetts Ave, Cambridge, MA 02139, USA",b358,nvhj,42.3655319,-71.1044726
-359,H&R Block,"1910 Massachusetts Ave, Cambridge, MA 02140, USA",b359,nvhj,42.3889118,-71.11995929999999
-360,Hair Collage,"759 Massachusetts Ave, Cambridge, MA 02139, USA",b360,nvhj,42.3665671,-71.10536019999999
-361,Hair Company,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b361,nvhj,42.3872124,-71.1185319
-362,Hair Connection,"1768 Massachusetts Ave, Cambridge, MA 02140, USA",b362,nvhj,42.3854212,-71.11958539999999
-363,Hair Theory Studio,"5 Arrow St, Cambridge, MA 02138, USA",b364,nvhj,42.3712379,-71.1145722
-364,Hair International,"2300 Massachusetts Ave, Cambridge, MA 02140, USA",b363,nvhj,42.3950629,-71.12790919999999
-365,Half Shell Pizza,"1760 Massachusetts Ave, Cambridge, MA 02138, USA",b365,nvhj,42.3851983,-71.11966919999999
-366,Hallie's Flower Garden,"248 Huron Ave, Cambridge, MA 02138, USA",b366,nvhj,42.3813448,-71.1338737
-367,Hampshire Market,"117 Hampshire St, Cambridge, MA 02139, USA",b367,nvhj,42.36996,-71.09594129999999
-368,Hanaya Floral Design,"292 Concord Ave, Cambridge, MA 02138, USA",b368,nvhj,42.3836964,-71.1340227
-369,Handle Bar Indoor Cycling Studio,"1030 Massachusetts Ave, Cambridge, MA 02138, USA",b369,nvhj,42.3694825,-71.112265
-370,Harvard Beauty Spa,"997 Massachusetts Ave, Cambridge, MA 02138, USA",b370,nvhj,42.3694119,-71.1110966
-371,Harvard Book Store,"1256 Massachusetts Ave, Cambridge, MA 02138, USA",b371,nvhj,42.3725675,-71.1163528
-372,Harvard Square Community Acupuncture,"1208 Massachusetts Ave, Cambridge, MA 02138, USA",b372,nvhj,42.3718905,-71.1153984
-373,Harvard Coop,"1400 Massachusetts Ave, Cambridge, MA 02138, USA",b373,nvhj,42.3737459,-71.119646
-374,Harvard Eyebrow Threading,"12 Eliot St, Cambridge, MA 02138, USA",b374,nvhj,42.3723109,-71.12157239999999
-375,Harvard House of Pizza,"1706 Massachusetts Ave, Cambridge, MA 02138, USA",b375,nvhj,42.3832996,-71.11985969999999
-376,Harvard Market,"1627 Cambridge St, Cambridge, MA 02138, USA",b376,nvhj,42.3749663,-71.10927079999999
-377,Harvard Shop,52 JFK St & 67 Mt. Auburn St.,b377,nvhj,0,0
-378,Harvard Shop,"36 John F. Kennedy St, Cambridge, MA 02138, USA",b378,nvhj,42.3726743,-71.1198689
-379,Harvard Square Shiatsu,"186 Hampshire St, Cambridge, MA 02139, USA",b379,nvhj,42.3724592,-71.0995685
-380,Harvard Wine Company,"1664 Massachusetts Ave, Cambridge, MA 02138, USA",b380,nvhj,42.3819478,-71.1200399
-381,Harvest,"44 Brattle St, Cambridge, MA 02138, USA",b381,nvhj,42.3737541,-71.12187410000001
-382,Harvest of India,"1001 Massachusetts Ave, Cambridge, MA 02138, USA",b382,nvhj,42.3696346,-71.1111973
-383,Havana Club,"288 Green St, Cambridge, MA 02139, USA",b383,nvhj,42.3646038,-71.1043268
-384,Headlines Unisex Barbershop,"1111 Cambridge St, Cambridge, MA 02139, USA",b384,nvhj,42.3732417,-71.095669
-385,Healthworks,"35 White St, Cambridge, MA 02140, USA",b385,nvhj,42.388955,-71.1188569
-386,Heartbreak Hill Running Company,"294 Massachusetts Ave, Cambridge, MA 02139, USA",b386,nvhj,42.3621846,-71.0986535
-387,Helmand,"143 First St, Cambridge, MA 02142, USA",b387,nvhj,42.366448,-71.0781437
-388,Henrietta's Table,"1 Bennett St, Cambridge, MA 02138, USA",b388,nvhj,42.3722449,-71.123044
-389,Henry Bear's Park,"37 White St #1, Cambridge, MA 02140, USA",b389,nvhj,42.3893884,-71.1185346
-390,Hi-Rise Bread Company,"208 Concord Ave, Cambridge, MA 02138, USA",b390,nvhj,42.38243310000001,-71.1314366
-391,Hi-Rise Bread Company,"1663 Massachusetts Ave, Cambridge, MA 02138, USA",b391,nvhj,42.3818261,-71.1195213
-392,Hidden Treasures,"36 John F. Kennedy St, Cambridge, MA 02138, USA",b392,nvhj,42.3726743,-71.1198689
-393,Highland Fried,"1271 Cambridge St, Cambridge, MA 02139, USA",b393,nvhj,42.3735991,-71.0986561
-394,Hillside Cleaners,"49 Brattle St, Cambridge, MA 02138, USA",b394,nvhj,42.3741801,-71.1214332
-395,Hilton Tent City,"565 Massachusetts Ave, Cambridge, MA 02139, USA",b395,nvhj,42.3648563,-71.1022146
-396,HMart,"581 Massachusetts Ave, Cambridge, MA 02139, USA",b396,nvhj,42.3650455,-71.1025628
-397,Honeycomb Creamery,"1702 Massachusetts Ave, Cambridge, MA 02138, USA",b397,nvhj,42.3831798,-71.1198525
-398,Honey Jones Studio,"270 Huron Ave, Cambridge, MA 02138, USA",b398,nvhj,42.3813172,-71.134802
-399,Hong Kong Restaurant,"1238 Massachusetts Ave, Cambridge, MA 02138, USA",b399,nvhj,42.3723645,-71.1160019
-400,Hotel 1868,"1868 Massachusetts Ave, Cambridge, MA 02140, USA",b400,nvhj,42.3880116,-71.1197388
-401,Hourglass Tattoo,"1680 Massachusetts Ave, Cambridge, MA 02138, USA",b401,nvhj,42.3824548,-71.1199013
-402,Hourly Oyster House,"15 Dunster St, Cambridge, MA 02138, USA",b402,nvhj,42.3729377,-71.11913679999999
-403,House of Chang,"282 Concord Ave, Cambridge, MA 02138, USA",b403,nvhj,42.3835218,-71.133746
-404,Hubba Hubba,"2 Ellery St, Cambridge, MA 02138, USA",b404,nvhj,42.3696546,-71.1115638
-405,Huron Cleaners,"1654 Massachusetts Ave, Cambridge, MA 02138, USA",b405,nvhj,42.3816767,-71.1200173
-406,I Love Sushi,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b406,nvhj,42.3872124,-71.1185319
-407,iFixonWheels,"361 Cambridge St, Cambridge, MA 02141, USA",b407,nvhj,42.3714153,-71.0820681
-408,Iggy's Bread,"130 Fawcett St, Cambridge, MA 02138, USA",b408,nvhj,42.3935739,-71.1482865
-409,IHOP,"16 Eliot St, Cambridge, MA 02138, USA",b409,nvhj,42.3720348,-71.1215162
-410,Image Care Electrolysis,"1426 Cambridge St, Cambridge, MA 02139, USA",b410,nvhj,42.373695,-71.1020289
-411,Imagine Playspace,"23 Bay State Rd, Cambridge, MA 02138, USA",b411,nvhj,42.3874271,-71.1402497
-412,Imperial Cleaners,"161 Huron Ave, Cambridge, MA 02138, USA",b412,nvhj,42.3824362,-71.1312717
-413,Improv Boston,"40 Prospect St, Cambridge, MA 02139, USA",b413,nvhj,42.3659875,-71.1031895
-414,In Style Barber Shop,"566 Cambridge St, Cambridge, MA 02141, USA",b414,nvhj,42.3716214,-71.0857341
-415,India Pavilion,"17 Central Square, Cambridge, MA 02139, USA",b415,nvhj,42.3653925,-71.1047518
-416,Inman Pharmacy,"1414 Cambridge St, Cambridge, MA 02139, USA",b416,nvhj,42.3736305,-71.1015415
-417,Inman Square Hardware,"1337 Cambridge St, Cambridge, MA 02139, USA",b417,nvhj,42.3737313,-71.099847
-418,Inman Square Laudromat,"1298 Cambridge St, Cambridge, MA 02139, USA",b418,nvhj,42.3733833,-71.0992203
-419,Inman Square Wine and Spirits,"1226 Cambridge St, Cambridge, MA 02139, USA",b419,nvhj,42.3732493,-71.09786629999999
-420,International Convenience,"102 Columbia St, Cambridge, MA 02139, USA",b420,nvhj,42.3658168,-71.0982687
-421,International Language Center,"2014 Massachusetts Ave, Cambridge, MA 02140, USA",b421,nvhj,42.3904596,-71.1218045
-422,Irving House,"24 Irving St, Cambridge, MA 02138, USA",b422,nvhj,42.3755396,-71.1106674
-423,Isabel Y Anita Gallery Salon,"1168 Massachusetts Ave, Cambridge, MA 02138, USA",b423,nvhj,42.3713418,-71.1147369
-424,Ittoku,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b424,nvhj,42.3872124,-71.1185319
-425,Izzy's Restaurant and Sub Shop,"169 Harvard St, Cambridge, MA 02139, USA",b425,nvhj,42.3662856,-71.0955761
-426,J. August,"1320 Massachusetts Ave, Cambridge, MA 02138, USA",b426,nvhj,42.3728722,-71.11773660000001
-427,J. Miles,"340 Huron Ave, Cambridge, MA 02138, USA",b427,nvhj,42.381104,-71.1379121
-428,J.P. Licks,"1312 Massachusetts Ave, Cambridge, MA 02138, USA",b428,nvhj,42.3728618,-71.1175264
-429,Jack's Tailoring & Dry Cleaning,"1937 Massachusetts Ave, Cambridge, MA 02140, USA",b429,nvhj,42.3896787,-71.12002319999999
-430,Jae H Kim Tae Kwan Do,"2000 Massachusetts Ave, Cambridge, MA 02140, USA",b430,nvhj,42.3902413,-71.1215028
-431,Jeana's Dirty Dog Salon,"298 Concord Ave, Cambridge, MA 02138, USA",b431,nvhj,42.3837517,-71.1344582
-432,Jessica Nails and Spa,"2000 Massachusetts Ave, Cambridge, MA 02140, USA",b432,nvhj,42.3902413,-71.1215028
-433,Jimmy's Shoe Repair,"42 Prospect St, Cambridge, MA 02139, USA",b433,nvhj,42.3660088,-71.1030966
-434,Joe Sent Me,"2388 Massachusetts Ave, Cambridge, MA 02140, USA",b434,nvhj,42.3968931,-71.1300696
-435,John and Nick's Texaco Services,"975 Massachusetts Ave, Cambridge, MA 02139, USA",b435,nvhj,42.3692313,-71.1102457
-436,John's Barber Shop,"16 Prospect St, Cambridge, MA 02139, USA",b436,nvhj,42.3658287,-71.1035765
-437,Joie De ViVre,"1792 Massachusetts Ave, Cambridge, MA 02140, USA",b437,nvhj,42.3859729,-71.1195879
-438,Join Ventures Physical Therapy,"356 Third St, Cambridge, MA 02142, USA",b438,nvhj,42.3635776,-71.08342259999999
-439,Jose's,"131 Sherman St, Cambridge, MA 02140, USA",b439,nvhj,42.3901881,-71.13285239999999
-440,Judy Jetson Hair,"1765 Massachusetts Ave, Cambridge, MA 02140, USA",b440,nvhj,42.3852731,-71.11901929999999
-441,Juniors Automotive and Gas,"1725 Massachusetts Ave, Cambridge, MA 02138, USA",b441,nvhj,42.3840057,-71.1192128
-442,Kaledoscope Tattoo,"2374 Massachusetts Ave, Cambridge, MA 02140, USA",b442,nvhj,42.3967034,-71.1297404
-443,Kantipur Cafe,"119 Hampshire St, Cambridge, MA 02139, USA",b443,nvhj,42.3699905,-71.09598729999999
-444,Keezer’s and Le Couturier,"1740 Massachusetts Ave, Cambridge, MA 02138, USA",b444,nvhj,42.3846204,-71.119762
-445,Kendall Flower Shop,"96 Ames St, Cambridge, MA 02142, USA",b445,nvhj,42.3633552,-71.08760769999999
-446,Kendall Hotel,"350 Main St, Cambridge, MA 02142, USA",b446,nvhj,42.362207,-71.08731019999999
-447,Kendall House of Pizza,"201 Third St, Cambridge, MA 02141, USA",b447,nvhj,42.367611,-71.0813703
-448,Kendall Kitchen,"201 Broadway, Cambridge, MA 02139, USA",b448,nvhj,42.3661103,-71.0923724
-449,Kendall Square Cinema,"365 Binney St, Cambridge, MA 02142, USA",b449,nvhj,42.3679575,-71.0896839
-450,K-oop Hairstyling,"4 Broad Canal Way, Cambridge, MA 02142, USA",b450,nvhj,42.363192,-71.0831326
-451,Koreana,"158 Prospect St, Cambridge, MA 02139, USA",b451,nvhj,42.3690595,-71.1009612
-452,Kung Fu Tea,"1160 Massachusetts Ave, Cambridge, MA 02138, USA",b452,nvhj,42.3712897,-71.114629
-453,L.A. Burdick Chocolate,"52 Brattle St, Cambridge, MA 02138, USA",b453,nvhj,42.3743053,-71.1220598
-454,L.A. Market,"2362 Massachusetts Ave, Cambridge, MA 02140, USA",b454,nvhj,42.3963984,-71.1294168
-455,La Fabrica,"450 Massachusetts Ave, Cambridge, MA 02139, USA",b455,nvhj,42.3634198,-71.1012291
-456,La Flamme Barber Shop,"21 Dunster St, Cambridge, MA 02138, USA",b456,nvhj,42.3728227,-71.1192362
-457,La Moon Thai Spa,"220 Concord Ave, Cambridge, MA 02138, USA",b457,nvhj,42.3825851,-71.13178479999999
-458,La Saison Bakery,"407 Concord Ave, Cambridge, MA 02138, USA",b458,nvhj,42.3859141,-71.1380295
-459,Lamplighter Brewery,"284 Broadway, Cambridge, MA 02139, USA",b459,nvhj,42.3678174,-71.0979205
-460,LaundroMutt,"489 Concord Ave, Cambridge, MA 02138, USA",b460,nvhj,42.3868844,-71.14069719999999
-461,Laundry Room,"1761 Massachusetts Ave, Cambridge, MA 02140, USA",b461,nvhj,42.38522700000001,-71.11903509999999
-462,Laura Jean Floral,"270 Concord Ave, Cambridge, MA 02138, USA",b462,nvhj,42.3833354,-71.133305
-463,Le Petit Salon Curl Concept,"56 John F. Kennedy St, Cambridge, MA 02138, USA",b463,nvhj,42.3717355,-71.1204815
-464,Le's,"36 John F. Kennedy St, Cambridge, MA 02138, USA",b464,nvhj,42.3726743,-71.1198689
-465,Le's Beauty & Nail,"480 Cambridge St, Cambridge, MA 02141, USA",b465,nvhj,42.3714507,-71.0843531
-466,Le's Sushi Bar and Restaurant,"425 Cambridge St, Cambridge, MA 02141, USA",b466,nvhj,42.371647,-71.08327369999999
-467,Learning Center,"657 Cambridge St, Cambridge, MA 02141, USA",b467,nvhj,42.3721369,-71.0872332
-468,Leavitt & Peirce,"1316 Massachusetts Ave, Cambridge, MA 02138, USA",b468,nvhj,42.372856,-71.11762569999999
-469,Legal Fish Bowl,"355 Main St, Cambridge, MA 02142, USA",b469,nvhj,42.3628181,-71.08743609999999
-470,Legal Seafood,"355 Main St, Cambridge, MA 02142, USA",b470,nvhj,42.3628181,-71.08743609999999
-471,Leo Caroll Jewelers,"1348 Cambridge St, Cambridge, MA 02139, USA",b471,nvhj,42.3735188,-71.0999215
-472,Lesley Barnes and Noble,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b472,nvhj,42.3872124,-71.1185319
-473,Lewis Beauty Salon,"44 Prospect St, Cambridge, MA 02139, USA",b473,nvhj,42.3660021,-71.1031663
-474,Life Alive Organic Café,"765 Massachusetts Ave, Cambridge, MA 02139, USA",b474,nvhj,42.3666438,-71.10537049999999
-475,Lily P's,"50 Binney St, Cambridge, MA 02142, USA",b475,nvhj,42.3650356,-71.07866659999999
-476,Lilypad,"1353 Cambridge St, Cambridge, MA 02139, USA",b476,nvhj,42.3738079,-71.100088
-477,Lingo Café and Bar,"2 Education Cir, Cambridge, MA 02141, USA",b477,nvhj,42.3698357,-71.06885849999999
-478,Little Crepe Cafe,"102 Oxford St, Cambridge, MA 02140, USA",b478,nvhj,42.3831266,-71.1160019
-479,Little Details,"2255 Massachusetts Ave, Cambridge, MA 02140, USA",b479,nvhj,42.3943896,-71.12652779999999
-480,Little Donkey,"505 Massachusetts Ave, Cambridge, MA 02139, USA",b480,nvhj,42.3643442,-71.1015176
-481,Living Harmony,"24 Harvey St, Cambridge, MA 02140, USA",b481,nvhj,42.3971097,-71.1311527
-482,Lizard Lounge,"1667 Massachusetts Ave, Cambridge, MA 02138, USA",b482,nvhj,42.3820856,-71.1193674
-483,Lizzy's Ice Cream,"29 Church St, Cambridge, MA 02138, USA",b483,nvhj,42.3745228,-71.12012179999999
-484,Loeb Drama Center/American Repertory Theater,"Loeb Drama Center, 64 Brattle St, Cambridge, MA 02138, USA",b484,nvhj,42.3748457,-71.1229902
-485,Lola Hair Studio,"87 Blanchard Rd, Cambridge, MA 02138, USA",b485,nvhj,42.3941629,-71.1579318
-486,Lone Star Taco Bar,"635 Cambridge St, Cambridge, MA 02141, USA",b486,nvhj,42.37207919999999,-71.0868948
-487,Longfellow Bar,"40 Brattle St #3, Cambridge, MA 02138, USA",b487,nvhj,42.3735278,-71.121526
-488,Looks,"2 Arrow St, Cambridge, MA 02138, USA",b488,nvhj,42.3708165,-71.1145363
-489,Lord Hobo,"92 Hampshire St, Cambridge, MA 02139, USA",b489,nvhj,42.3687255,-71.0949554
-490,Lovely Spa,"473 Cambridge St, Cambridge, MA 02141, USA",b490,nvhj,42.3717445,-71.08406289999999
-491,Loyal Companion,"95 First St, Cambridge, MA 02141, USA",b491,nvhj,42.36806920000001,-71.07774909999999
-492,Loyal Nine,"660 Cambridge St, Cambridge, MA 02141, USA",b492,nvhj,42.3718494,-71.08761439999999
-493,Luce,"1 Shepard St, Cambridge, MA 02138, USA",b493,nvhj,42.38186229999999,-71.1201221
-494,Lucky's Corner,"272 Broadway, Cambridge, MA 02139, USA",b494,nvhj,42.3678216,-71.0976187
-495,Lucky's Tattoo and Piercing,"694 Massachusetts Ave, Cambridge, MA 02139, USA",b495,nvhj,42.3657372,-71.1047299
-496,Luigi's Variety,"520 Cambridge St, Cambridge, MA 02141, USA",b496,nvhj,42.3715689,-71.08499139999999
-497,Lulu Family Cuts,"2323 Massachusetts Ave, Cambridge, MA 02140, USA",b497,nvhj,42.3958432,-71.1281906
-498,M'lor Cafe,"1093 Cambridge St, Cambridge, MA 02139, USA",b498,nvhj,42.3731796,-71.0954136
-499,Ma Magoo's,"6 Concord Ln, Cambridge, MA 02138, USA",b499,nvhj,42.3880121,-71.1424014
-500,Mad Monkfish,"524 Massachusetts Ave, Cambridge, MA 02139, USA",b500,nvhj,42.364137,-71.1021313
-501,Made by Me,"1685 Massachusetts Ave, Cambridge, MA 02138, USA",b501,nvhj,42.3826866,-71.1193558
-502,Mae Asian Eatery,"781 Main St, Cambridge, MA 02139, USA",b502,nvhj,42.3633825,-71.0968697
-503,Magic Beans,"361 Huron Ave, Cambridge, MA 02138, USA",b503,nvhj,42.3813642,-71.138678
-504,Maharaja,"57 John F. Kennedy St, Cambridge, MA 02138, USA",b504,nvhj,42.3720507,-71.12077239999999
-505,Mainely Burgers,"704 Massachusetts Ave, Cambridge, MA 02139, USA",b505,nvhj,42.3659526,-71.104964
-506,Majestic Yoga,"382 Huron Ave, Cambridge, MA 02138, USA",b506,nvhj,42.3809169,-71.1392118
-507,Mamaleh's Deli,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",b507,nvhj,42.3673039,-71.09012129999999
-508,Marathon Sports,"1654 Massachusetts Ave, Cambridge, MA 02138, USA",b508,nvhj,42.3816767,-71.1200173
-509,Marimekko,"350 Huron Ave, Cambridge, MA 02138, USA",b509,nvhj,42.3810906,-71.1380513
-510,Mariposa Bakery,"424 Massachusetts Ave, Cambridge, MA 02139, USA",b510,nvhj,42.3633039,-71.1007291
-511,Market Square Jewelers,"1156 Massachusetts Ave, Cambridge, MA 02138, USA",b511,nvhj,42.37125899999999,-71.1146325
-512,Martin Brothers Liquors,"1144 Cambridge St, Cambridge, MA 02139, USA",b512,nvhj,42.3730422,-71.0964582
-513,Mary Chung,"464 Massachusetts Ave, Cambridge, MA 02139, USA",b513,nvhj,42.3636454,-71.1012944
-514,Mass Ave Diner,"906 Massachusetts Ave, Cambridge, MA 02139, USA",b514,nvhj,42.3681385,-71.1086789
-515,Mass Ave. Chicken,"736 Massachusetts Ave, Cambridge, MA 02139, USA",b515,nvhj,42.366109,-71.10521400000002
-516,Massage Ultra,"2107 Massachusetts Ave, Cambridge, MA 02140, USA",b516,nvhj,42.3918651,-71.1235221
-517,Matthew Feldman Gallery,"370 1/2 Huron Ave, Cambridge, MA 02138, USA",b517,nvhj,42.3809303,-71.13907259999999
-518,Mayflower Poultry Company,"621 Cambridge St, Cambridge, MA 02141, USA",b518,nvhj,42.3719782,-71.0865805
-519,McDonald's,"463 Massachusetts Ave, Cambridge, MA 02139, USA",b519,nvhj,42.3640329,-71.1008684
-520,Mead Hall,"90 Broadway, Cambridge, MA 02142, USA",b520,nvhj,42.3636291,-71.0871057
-521,Mediterranean Grill,"2401 Massachusetts Ave, Cambridge, MA 02140, USA",b521,nvhj,42.3971972,-71.1296727
-522,Metropolitan Laundromat,"266 Brookline St, Cambridge, MA 02139, USA",b522,nvhj,42.3574747,-71.1076925
-523,Mexcito Street Tacos,"305 Kendall St, Cambridge, MA 02142, USA",b523,nvhj,42.363636,-71.0821321
-524,Michaels,"37 White St #1, Cambridge, MA 02140, USA",b524,nvhj,42.3893884,-71.1185346
-525,Microcenter,"730 Memorial Dr, Cambridge, MA 02139, USA",b525,nvhj,42.3572095,-71.1143075
-526,Mid Cambridge Cleaners,"1540a Cambridge St, Cambridge, MA 02139, USA",b526,nvhj,42.374331,-71.1063363
-527,Middle East,"472 Massachusetts Ave, Cambridge, MA 02139, USA",b527,nvhj,42.363599,-71.10153199999999
-528,Middlesex Lounge,"315 Massachusetts Ave, Cambridge, MA 02139, USA",b528,nvhj,42.3625136,-71.09837399999999
-529,Midwest Grill,"1124 Cambridge St, Cambridge, MA 02139, USA",b529,nvhj,42.3729181,-71.0959475
-530,Mike's Monster Guitar,"896 Massachusetts Ave, Cambridge, MA 02139, USA",b530,nvhj,42.3679578,-71.1084352
-531,Mike's Pastry,"11 Dunster St, Cambridge, MA 02138, USA",b531,nvhj,42.3729986,-71.1191213
-532,Milk Bar,"1 Brattle St, Cambridge, MA 02138, USA",b532,nvhj,42.37325269999999,-71.12122910000001
-533,Million Year Picnic,"99 Mt Auburn St, Cambridge, MA 02138, USA",b533,nvhj,42.3728615,-71.12058549999999
-534,Mint Julep,"6 Church St, Cambridge, MA 02138, USA",b534,nvhj,42.3742832,-71.1192652
-535,Miracle of Science,"321 Massachusetts Ave, Cambridge, MA 02139, USA",b535,nvhj,42.3625781,-71.0985551
-536,Misrak Beauty Salon,"2368 Massachusetts Ave, Cambridge, MA 02140, USA",b536,nvhj,42.396622,-71.12983799999999
-537,MIT Coop,"80 Broadway, Cambridge, MA 02142, USA",b537,nvhj,42.3630202,-71.0863337
-538,MIT Museum,"MIT Museum Building, 265 Massachusetts Ave, Cambridge, MA 02139, USA",b538,nvhj,42.3622611,-71.09754459999999
-539,MIT Press Bookstore,"301 Massachusetts Ave, Cambridge, MA 02139, USA",b539,nvhj,42.3624535,-71.09824429999999
-540,Mit-It Restaurant,"1678 Massachusetts Ave, Cambridge, MA 02138, USA",b540,nvhj,42.3823964,-71.1199941
-541,MK Hair Studio,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",b541,nvhj,42.3673039,-71.09012129999999
-542,Mobile Gas Station,"2615 Massachusetts Ave, Cambridge, MA 02140, USA",b542,nvhj,42.4010983,-71.1352662
-543,Mobilia Gallery,"358 Huron Ave, Cambridge, MA 02138, USA",b543,nvhj,42.3810132,-71.1384691
-544,Modern Homebrew Emporium,"2304 Massachusetts Ave, Cambridge, MA 02140, USA",b544,nvhj,42.395134,-71.12804129999999
-545,Mohawk Shade and Blind,"2098 Massachusetts Ave, Cambridge, MA 02140, USA",b545,nvhj,42.3914257,-71.1237194
-546,Momi Nomi,"1128 Cambridge St, Cambridge, MA 02139, USA",b546,nvhj,42.3730251,-71.0961195
-547,Mona Lisa Pizza,"1625 Cambridge St, Cambridge, MA 02138, USA",b547,nvhj,42.3749008,-71.1091172
-548,Monella,"29 Brattle St, Cambridge, MA 02138, USA",b548,nvhj,42.3735893,-71.1207507
-549,Monica's Beauty Salon,"377 Walden St, Cambridge, MA 02138, USA",b549,nvhj,42.3837042,-71.1344447
-550,Montrose Spa,"1646 Massachusetts Ave, Cambridge, MA 02138, USA",b550,nvhj,42.381221,-71.1199939
-551,Moona,"243 Hampshire St, Cambridge, MA 02139, USA",b551,nvhj,42.3741762,-71.1010295
-552,Mother Juice,"625 W Kendall St, Cambridge, MA 02142, USA",b552,nvhj,42.36448619999999,-71.0819672
-553,Motto,"26 Church St, Cambridge, MA 02138, USA",b553,nvhj,42.374232,-71.1199941
-554,Mozi Foot Spa,"2348 Massachusetts Ave, Cambridge, MA 02140, USA",b554,nvhj,42.396085,-71.129025
-555,Mr. Bartley's Burger Cottage,"1246 Massachusetts Ave, Cambridge, MA 02138, USA",b555,nvhj,42.3724573,-71.1162294
-556,Mu Lan Restaurant,"228 Broadway, Cambridge, MA 02139, USA",b556,nvhj,42.3663317,-71.09432269999999
-557,Mucky Kids Art Studio,"2404 Massachusetts Ave, Cambridge, MA 02140, USA",b557,nvhj,42.3971994,-71.13040950000001
-558,Mudflat Gallery,"37 White St #1, Cambridge, MA 02140, USA",b558,nvhj,42.3893884,-71.1185346
-559,Multicultural Arts Center,"41 Second St, East Cambridge, MA 02141, USA",b559,nvhj,42.36982039999999,-71.07924729999999
-560,Muqueca,"1008 Cambridge St, Cambridge, MA 02141, USA",b560,nvhj,42.372644,-71.0939049
-561,Naco Taco,"297 Massachusetts Ave, Cambridge, MA 02139, USA",b561,nvhj,42.3624141,-71.09801329999999
-562,Nail and Spa Waxing,"2000 Massachusetts Ave, Cambridge, MA 02140, USA",b562,nvhj,42.3902413,-71.1215028
-563,Nails 159,"159 Hampshire St, Cambridge, MA 02139, USA",b563,nvhj,42.3717525,-71.0982403
-564,Nails by Porter,"7 Upland Rd, Cambridge, MA 02140, USA",b564,nvhj,42.38825,-71.1198316
-565,National Tire and Battery,"2501 Massachusetts Ave, Cambridge, MA 02140, USA",b565,nvhj,42.3994045,-71.1321794
-566,Natural Healing Center,"2032 Massachusetts Ave, Cambridge, MA 02140, USA",b566,nvhj,42.3906244,-71.12220409999999
-567,New City Microcreamery,"403 Massachusetts Ave, Cambridge, MA 02139, USA",b567,nvhj,42.363606,-71.1001362
-568,New Deal Fish Market,"622 Cambridge St, Cambridge, MA 02141, USA",b568,nvhj,42.3718096,-71.0867746
-569,New England Aikido,"2000 Massachusetts Ave, Cambridge, MA 02140, USA",b569,nvhj,42.3902413,-71.1215028
-570,New England Comics,"14A Eliot St, Cambridge, MA 02138, USA",b570,nvhj,42.37218499999999,-71.12154319999999
-571,Newbury Comics,"36 John F. Kennedy St, Cambridge, MA 02138, USA",b571,nvhj,42.3726743,-71.1198689
-572,Newtowne Grille,"1945 Massachusetts Ave, Cambridge, MA 02140, USA",b572,nvhj,42.3897425,-71.1200255
-573,907 Main,"907 Main St, Cambridge, MA 02139, USA",b573,nvhj,42.3636264,-71.0996514
-574,Nine Tastes,"50 John F. Kennedy St, Cambridge, MA 02138, USA",b574,nvhj,42.3720079,-71.120381
-575,Nirvana - Taste of India,"1680 Massachusetts Ave, Cambridge, MA 02138, USA",b575,nvhj,42.3824548,-71.1199013
-576,Noodle Stix,"11 Belmont St, Cambridge, MA 02138, USA",b576,nvhj,42.3749531,-71.1506306
-577,Noir,"1 Bennett St, Cambridge, MA 02138, USA",b577,nvhj,42.3722449,-71.123044
-578,Nomad,"1771 Massachusetts Ave, Cambridge, MA 02140, USA",b578,nvhj,42.3854946,-71.11890319999999
-579,Noor Oriental Rugs,"769 Concord Ave, Cambridge, MA 02138, USA",b579,nvhj,42.39079230000001,-71.1542975
-580,North Cambridge Laundromat,"2410 Massachusetts Ave, Cambridge, MA 02140, USA",b580,nvhj,42.3973485,-71.13067070000001
-581,Nu Do Society,"125 River St, Cambridge, MA 02139, USA",b581,nvhj,42.3640336,-71.1087137
-582,Nubar,"16 Garden St, Cambridge, MA 02138, USA",b582,nvhj,42.3773472,-71.1233596
-583,Nussli 118,"2259 Massachusetts Ave, Cambridge, MA 02140, USA",b583,nvhj,42.3944631,-71.1265667
-584,Nyx Gallery,"Oberon, 12 Arrow St, Cambridge, MA 02138, USA",b584,nvhj,42.3711736,-71.11500389999999
-585,Oath Pizza,"Novartis Global Research Headquarters, 181 Massachusetts Ave, Cambridge, MA 02139, USA",b585,nvhj,42.3614695,-71.09573859999999
-586,Oberon - American Repertory Theater,"2 Arrow St, Cambridge, MA 02138, USA",b586,nvhj,42.3708165,-71.1145363
-587,Oggi Gourmet,"30 Dunster St, Cambridge, MA 02138, USA",b587,nvhj,42.3724285,-71.1189815
-588,Ole/Olecito,"11 Springfield St, Cambridge, MA 02139, USA",b588,nvhj,42.3740611,-71.1001488
-589,Oleana,"134 Hampshire St, Cambridge, MA 02139, USA",b589,nvhj,42.3705339,-71.09720089999999
-590,Olympia Fencing Center,"127 Smith Pl, Cambridge, MA 02138, USA",b590,nvhj,42.3938542,-71.150421
-591,On the Spot Computer Repairs,"819b Cambridge St, Cambridge, MA 02141, USA",b591,nvhj,42.3725327,-71.0904253
-592,One Ramen,"1759 Massachusetts Ave, Cambridge, MA 02140, USA",b592,nvhj,42.385181,-71.1190773
-593,Ono Pokebar,"1923 Massachusetts Ave, Cambridge, MA 02140, USA",b593,nvhj,42.3893963,-71.1197045
-594,Orange Theory Fitness,"270 Third St, Cambridge, MA 02142, USA",b594,nvhj,42.3660585,-71.08195060000001
-595,Orient Sunshine Wellness Center,"91 Blanchard Rd, Cambridge, MA 02138, USA",b595,nvhj,42.3941872,-71.1579813
-596,Orinoco,"56 John F. Kennedy St, Cambridge, MA 02138, USA",b596,nvhj,42.3717355,-71.1204815
-597,Otto,"1432 Massachusetts Ave, Cambridge, MA 02138, USA",b597,nvhj,42.374173,-71.1191529
-598,Outpost 186,"186 1/2 Hampshire St, Cambridge, MA 02139, USA",b598,nvhj,42.37247199999999,-71.0996201
-599,Pacheco Jewelers,"599 Cambridge St, Cambridge, MA 02141, USA",b599,nvhj,42.3720413,-71.0861288
-600,Pacific Street Cafe,"NW86, 70 Pacific St, Cambridge, MA 02139, USA",b600,nvhj,42.3598002,-71.1019621
-601,Paddy's Lunch,"260 Walden St, Cambridge, MA 02138, USA",b601,nvhj,42.3859706,-71.1311813
-602,Pagu,"310 Massachusetts Ave, Cambridge, MA 02139, USA",b602,nvhj,42.3624211,-71.09908349999999
-603,Paine Senior Services,"3 Church St, Cambridge, MA 02138, USA",b603,nvhj,42.3745528,-71.1193763
-604,Pammy's,"928 Massachusetts Ave, Cambridge, MA 02139, USA",b604,nvhj,42.3683959,-71.10915469999999
-605,Pandemonium Books & Games,"4 Pleasant St, Cambridge, MA 02139, USA",b605,nvhj,42.3660936,-71.1056
-606,Panera Bread,"37 White St #1, Cambridge, MA 02140, USA",b606,nvhj,42.3893884,-71.1185346
-607,Paper Source,"1802 Massachusetts Ave, Cambridge, MA 02140, USA",b607,nvhj,42.3864303,-71.1194836
-608,Parise Cleaners,"14 Warren St, Cambridge, MA 02141, USA",b608,nvhj,42.37264039999999,-71.088009
-609,PARK Restaurant & Bar,"59 John F. Kennedy St, Cambridge, MA 02138, USA",b609,nvhj,42.37180559999999,-71.12096269999999
-610,Parrelli Optical,"Porter Square, Cambridge, MA 02140, USA",b610,nvhj,42.3888566,-71.11939819999999
-611,Passage to India,"1900 Massachusetts Ave, Cambridge, MA 02140, USA",b611,nvhj,42.3887627,-71.1199013
-612,Pavement Coffeehouse,"1350 Massachusetts Ave, Cambridge, MA 02138, USA",b612,nvhj,42.3770019,-71.1166599
-613,Pearce Law,"2067 Massachusetts Ave, Cambridge, MA 02140, USA",b613,nvhj,42.3915915,-71.12289539999999
-614,Peet's Coffee,"100 Mt Auburn St, Cambridge, MA 02138, USA",b614,nvhj,42.3726508,-71.12068180000001
-615,Pemberton Market,"2225 Massachusetts Ave, Cambridge, MA 02140, USA",b615,nvhj,42.39382850000001,-71.1257731
-616,People's Republik,"878 Massachusetts Ave, Cambridge, MA 02139, USA",b616,nvhj,42.3676773,-71.1078781
-617,Pepper Sky's,"20 Pearl St, Cambridge, MA 02139, USA",b617,nvhj,42.3642108,-71.1029152
-618,Petali Flowers,"90 Mount Auburn Street, 92 Mt Auburn St, Cambridge, MA 02138, USA",b618,nvhj,42.3722476,-71.1198555
-619,PetSmart,"160 Alewife Brook Pkwy, Cambridge, MA 02138, USA",b619,nvhj,42.39064,-71.1401814
-620,Phoenix Landing,"512 Massachusetts Ave, Cambridge, MA 02139, USA",b620,nvhj,42.3639709,-71.1020289
-621,Phyllis R. Stein Career Counseling and Coaching,"59 Parker St, Cambridge, MA 02138, USA",b621,nvhj,42.3796514,-71.129429
-622,Pierre Barber Shop,"274 Broadway, Cambridge, MA 02139, USA",b622,nvhj,42.3678443,-71.0975627
-623,Pill Hardware,"743 Massachusetts Ave, Cambridge, MA 02139, USA",b623,nvhj,42.3665346,-71.1050928
-624,Pino Brothers Link,"1132 Cambridge St, Cambridge, MA 02139, USA",b624,nvhj,42.3729947,-71.0961796
-625,Pinocchio's PIzza,"74 Winthrop St, Cambridge, MA 02138, USA",b625,nvhj,42.3719941,-71.1203655
-626,Pita Cambridge,"12 Springfield St, Cambridge, MA 02139, USA",b626,nvhj,42.3740435,-71.1005898
-627,Plan B Salon,"99 Mt Auburn St, Cambridge, MA 02138, USA",b627,nvhj,42.3728615,-71.12058549999999
-628,Planet Fitness,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b628,nvhj,42.3872124,-71.1185319
-629,Plough and Stars,"912 Massachusetts Ave, Cambridge, MA 02139, USA",b629,nvhj,42.36822189999999,-71.1088414
-630,Pod,"35 Sacramento St, Cambridge, MA 02138, USA",b630,nvhj,42.3827184,-71.1160019
-631,Pokeworks,"1440 Massachusetts Ave, Cambridge, MA 02138, USA",b631,nvhj,42.3742998,-71.119164
-632,Porter Square Books,"37 White St #1, Cambridge, MA 02140, USA",b632,nvhj,42.3893884,-71.1185346
-633,Porter Square Hotel,"1924 Massachusetts Ave, Cambridge, MA 02140, USA",b633,nvhj,42.3892499,-71.1203655
-634,Porter Square Wine & Spirits,"37 White St #1, Cambridge, MA 02140, USA",b634,nvhj,42.3893884,-71.1185346
-635,Portugalia,"723 Cambridge St, Cambridge, MA 02141, USA",b635,nvhj,42.37233639999999,-71.0887286
-636,Pressed Juicery,"1380 Massachusetts Ave, Cambridge, MA 02138, USA",b636,nvhj,42.373312,-71.119062
-637,Primo Cambridge,"783 Main St, Cambridge, MA 02139, USA",b637,nvhj,42.3633422,-71.0969081
-638,Professional Geeks,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",b638,nvhj,42.3708466,-71.1135184
-639,Psychic Spiritual New Age Boutique,"163 Hampshire St, Cambridge, MA 02139, USA",b639,nvhj,42.3718042,-71.0982416
-640,Pull-Up Truck,"1 Oxford St, Cambridge, MA 02138, USA",b640,nvhj,42.37665000000001,-71.11603099999999
-641,Punjabi Dhaba,"225 Hampshire St, Cambridge, MA 02139, USA",b641,nvhj,42.3738823,-71.10078709999999
-642,Puritan & Company,"1166 Cambridge St, Cambridge, MA 02139, USA",b642,nvhj,42.3729571,-71.0968295
-643,Pyara Spa and Salon,"1050 Massachusetts Ave, Cambridge, MA 02138, USA",b643,nvhj,42.3697867,-71.1129613
-644,Q Audio,"5 Brookline St, Cambridge, MA 02139, USA",b644,nvhj,42.3638508,-71.1017075
-645,Q Ballroom,"26 New St, Cambridge, MA 02138, USA",b645,nvhj,42.3878553,-71.1404605
-646,Qi Foot Spa,"1168 Massachusetts Ave, Cambridge, MA 02138, USA",b646,nvhj,42.3713418,-71.1147369
-647,Qingdao Garden,"2382 Massachusetts Ave, Cambridge, MA 02140, USA",b647,nvhj,42.3968057,-71.1299583
-648,Quick Food Mart,"1253 Cambridge St, Cambridge, MA 02139, USA",b648,nvhj,42.3735224,-71.0983275
-649,Rangzen Tibet Place,"24 Pearl St, Cambridge, MA 02139, USA",b649,nvhj,42.3641529,-71.1029549
-650,Raspberry Beret,"2302 Massachusetts Ave, Cambridge, MA 02140, USA",b650,nvhj,42.3950642,-71.12802479999999
-651,Raven Used Books,"23 Church St, Cambridge, MA 02138, USA",b651,nvhj,42.3745052,-71.11985489999999
-652,Rebekah Brooks Jewlery,"17 Brattle St, Cambridge, MA 02138, USA",b652,nvhj,42.3735308,-71.1204412
-653,Red House Restaurant,"98 Winthrop St, Cambridge, MA 02138, USA",b653,nvhj,42.3723006,-71.1212939
-654,Redemption Tattoo,"2096 Massachusetts Ave, Cambridge, MA 02140, USA",b654,nvhj,42.3913661,-71.1236961
-655,Regattabar,"1 Bennett St, Cambridge, MA 02138, USA",b655,nvhj,42.3722449,-71.123044
-656,ReSide,"266 Concord Ave, Cambridge, MA 02138, USA",b656,nvhj,42.3833124,-71.1332238
-657,Revela Salon,"614 Main St, Cambridge, MA 02139, USA",b657,nvhj,42.3628772,-71.0944051
-658,Revival Café and Kitchen,"125 Cambridge Park Dr, Cambridge, MA 02140, USA",b658,nvhj,42.3951805,-71.14573349999999
-659,Richards,"1193 Cambridge St, Cambridge, MA 02139, USA",b659,nvhj,42.3733995,-71.0972474
-660,Riverside Tattoo Company,"1700 Massachusetts Ave, Cambridge, MA 02138, USA",b660,nvhj,42.3831227,-71.1199013
-661,"Robin Bledsoe, Bookseller","1640 Massachusetts Ave, Cambridge, MA 02138, USA",b661,nvhj,42.3811692,-71.1201578
-662,Rockler Woodworking & Hardware,"2154 Massachusetts Ave, Cambridge, MA 02140, USA",b662,nvhj,42.3922044,-71.12475220000002
-663,Rodney's Bookstore,"698 Massachusetts Ave, Cambridge, MA 02139, USA",b663,nvhj,42.3657859,-71.1049256
-664,Roxy's Central / A4Cade,"292 Massachusetts Ave, Cambridge, MA 02139, USA",b664,nvhj,42.3620629,-71.09839389999999
-665,Royal East,"782 Main St, Cambridge, MA 02139, USA",b665,nvhj,42.3630749,-71.0969901
-666,Royal Pastry Shop,"738 Cambridge St, Cambridge, MA 02141, USA",b666,nvhj,42.372059,-71.08916959999999
-667,Royal Punjab,"251 Cambridge St, Cambridge, MA 02141, USA",b667,nvhj,42.371206,-71.0801445
-668,Rumba Y Timbal Dance Studio,"7 Temple St, Cambridge, MA 02139, USA",b668,nvhj,42.3665411,-71.1040634
-669,Russell House Tavern,"14 John F. Kennedy St, Cambridge, MA 02138, USA",b669,nvhj,42.373158,-71.11945899999999
-670,S + H Construction,"26 New St, Cambridge, MA 02138, USA",b670,nvhj,42.3878553,-71.1404605
-671,S&S Restaurant,"1334 Cambridge St, Cambridge, MA 02139, USA",b671,nvhj,42.3735007,-71.09977049999999
-672,Sakana Sushi,"983 Massachusetts Ave, Cambridge, MA 02138, USA",b672,nvhj,42.3693183,-71.11075629999999
-673,Salon at Huron Village,"366 Huron Ave, Cambridge, MA 02138, USA",b673,nvhj,42.3809808,-71.13893329999999
-674,Salon Bellamar,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",b674,nvhj,42.3708466,-71.1135184
-675,Salon Bellissima,"202 Hampshire St, Cambridge, MA 02139, USA",b675,nvhj,42.3730862,-71.1002532
-676,Salon Luna,"1871 Massachusetts Ave, Cambridge, MA 02140, USA",b676,nvhj,42.3883603,-71.11937619999999
-677,Salon Michael Domenic,"1426 Cambridge St, Cambridge, MA 02139, USA",b677,nvhj,42.373695,-71.1020289
-678,Saloniki Greek,"Novartis Global Research Headquarters, 181 Massachusetts Ave, Cambridge, MA 02139, USA",b678,nvhj,42.3614695,-71.09573859999999
-679,Saloniki Greek,"24 Dunster St, Cambridge, MA 02138, USA",b679,nvhj,42.3726084,-71.1189777
-680,Sanctuary by VIM,"350 Massachusetts Ave, Cambridge, MA 02139, USA",b680,nvhj,42.3624617,-71.0996316
-681,Santouka Harvard Square,"1 Bow St, Cambridge, MA 02138, USA",b681,nvhj,42.3721851,-71.1159449
-682,Sapporo Ramen,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b682,nvhj,42.3872124,-71.1185319
-683,Sapporo Ramen Central,"581 Massachusetts Ave, Cambridge, MA 02139, USA",b683,nvhj,42.3650455,-71.1025628
-684,Sarah's Market and Café,"200 Concord Ave, Cambridge, MA 02138, USA",b684,nvhj,42.3822049,-71.13106239999999
-685,Sarchioni's,"51 Plymouth St, Cambridge, MA 02141, USA",b685,nvhj,42.3691564,-71.09260499999999
-686,Sasha Salon and Spa,"23 Arrow St, Cambridge, MA 02138, USA",b686,nvhj,42.3716949,-71.11532919999999
-687,Sav-More Spirits,"233 Alewife Brook Pkwy, Cambridge, MA 02138, USA",b687,nvhj,42.3891258,-71.1436215
-688,Savenor's Market,"92 Kirkland St, Cambridge, MA 02138, USA",b688,nvhj,42.3778373,-71.1073953
-689,Savvy Hair Design,"1232 Cambridge St, Cambridge, MA 02139, USA",b689,nvhj,42.3732656,-71.0979971
-690,Season to Taste Catering,"2447 Massachusetts Ave, Cambridge, MA 02140, USA",b690,nvhj,42.3983313,-71.1309957
-691,Sebastians,"415 Main St, Cambridge, MA 02142, USA",b691,nvhj,42.3629651,-71.0887548
-692,Second Street Café,"89 Second St, Cambridge, MA 02141, USA",b692,nvhj,42.3685242,-71.0793276
-693,See,"1276 Massachusetts Ave, Cambridge, MA 02138, USA",b693,nvhj,42.3726446,-71.1167449
-694,Senses,"650 E Kendall St, Cambridge, MA 02142, USA",b694,nvhj,42.364514,-71.0811022
-695,Seven Stars,"731 Massachusetts Ave, Cambridge, MA 02139, USA",b695,nvhj,42.3664792,-71.1047679
-696,Sewing and Vacuum Center,"89 Blanchard Rd, Cambridge, MA 02138, USA",b696,nvhj,42.3941266,-71.1580091
-697,Shabu and Mein,"148 First St, Cambridge, MA 02142, USA",b697,nvhj,42.3664178,-71.07769789999999
-698,Shaking Crab,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b698,nvhj,42.3872124,-71.1185319
-699,Shanghai Fresh,"735 Massachusetts Ave, Cambridge, MA 02139, USA",b699,nvhj,42.36653210000001,-71.1048607
-700,Shanti,"7 Broad Canal Way, Cambridge, MA 02142, USA",b700,nvhj,42.3634412,-71.08292550000002
-701,Shay's Pub & Wine Bar,"58 John F. Kennedy St, Cambridge, MA 02138, USA",b701,nvhj,42.3717355,-71.1204815
-702,Shaynedoro Pet Beauty Salon,"31 Belmont St, Cambridge, MA 02138, USA",b702,nvhj,42.3750331,-71.15146589999999
-703,Shegar Café and Ethiopian Restaurant,"2376 Massachusetts Ave, Cambridge, MA 02140, USA",b703,nvhj,42.3966757,-71.12976859999999
-704,Sherman Williams Paint,"93 First St, Cambridge, MA 02141, USA",b704,nvhj,42.368123,-71.0777298
-705,Shine Pub,"2046 Massachusetts Ave, Cambridge, MA 02140, USA",b705,nvhj,42.3908879,-71.1225638
-706,Shop Fog Linen,"35 Sacramento St, Cambridge, MA 02138, USA",b706,nvhj,42.3827184,-71.1160019
-707,Shy Bird,"390 Third St, Cambridge, MA 02142, USA",b707,nvhj,42.3626649,-71.0840797
-708,Sign of the Dove,"37 White St #1, Cambridge, MA 02140, USA",b708,nvhj,42.3893884,-71.1185346
-709,Signet Education,"1132 Massachusetts Ave, Cambridge, MA 02138, USA",b709,nvhj,42.3708331,-71.1142096
-710,Silk Road Uyghur Cuisine,"645 Cambridge St, Cambridge, MA 02141, USA",b710,nvhj,42.3721312,-71.08711939999999
-711,Similans,"145 First St, Cambridge, MA 02142, USA",b711,nvhj,42.3663154,-71.0782366
-712,Simons Coffee Shop,"1736 Massachusetts Ave, Cambridge, MA 02138, USA",b712,nvhj,42.3844799,-71.1198084
-713,Simply Erinn's Unisex Shop,"268 Brookline St, Cambridge, MA 02139, USA",b713,nvhj,42.3573938,-71.1077621
-714,Sinclair,"52 Church St, Cambridge, MA 02138, USA",b714,nvhj,42.3739749,-71.1205932
-715,Sinclair Kitchen,"52 Church St, Cambridge, MA 02138, USA",b715,nvhj,42.3739749,-71.1205932
-716,Skampa,"424 Cambridge St, Cambridge, MA 02141, USA",b716,nvhj,42.3713434,-71.0833433
-717,Skenderian Apothecary,"1613 Cambridge St, Cambridge, MA 02138, USA",b717,nvhj,42.3749567,-71.10895479999999
-718,Skin Art Studio,"528 Cambridge St, Cambridge, MA 02141, USA",b718,nvhj,42.3715702,-71.08510749999999
-719,Sly's Barbershop,"321 Western Ave, Cambridge, MA 02139, USA",b719,nvhj,42.3646681,-71.1133095
-720,Smoke Shop,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",b720,nvhj,42.3673039,-71.09012129999999
-721,Smoke Shop,"8 Holyoke St, Cambridge, MA 02138, USA",b721,nvhj,42.3726782,-71.1179154
-722,Social Wines,"196 Massachusetts Ave, Cambridge, MA 02139, USA",b722,nvhj,42.3611158,-71.0967955
-723,Sofra Bakery and Cafe,"1 Belmont St, Cambridge, MA 02138, USA",b723,nvhj,42.3748978,-71.15030569999999
-724,Sonia Music Venue,"10 Brookline St, Cambridge, MA 02139, USA",b724,nvhj,42.36347680000001,-71.1016343
-725,Spa Lapis,"1776 Massachusetts Ave, Cambridge, MA 02140, USA",b725,nvhj,42.3857469,-71.1196228
-726,Sparkle Cleaners,"373 Walden St, Cambridge, MA 02138, USA",b726,nvhj,42.3838434,-71.1344132
-727,Spices,"24 Holyoke St, Cambridge, MA 02138, USA",b727,nvhj,42.3721825,-71.1183777
-728,Spindler Confections,"2257 Massachusetts Ave, Cambridge, MA 02140, USA",b728,nvhj,42.394428,-71.1265833
-729,Spira Yoga Shala,"151 Cambridge St, Cambridge, MA 02141, USA",b729,nvhj,42.3709795,-71.0782467
-730,Staples Connect,"186 Alewife Brook Pkwy, Cambridge, MA 02138, USA",b730,nvhj,42.390252,-71.14079629999999
-731,Star Variety,"4 Central Square, Cambridge, MA 02139, USA",b731,nvhj,42.3649394,-71.1039316
-732,Starbucks,"750 Memorial Dr, Cambridge, MA 02139, USA",b732,nvhj,42.3580785,-71.1150503
-733,Starbucks,"120 Broadway, Cambridge, MA 02142, USA",b733,nvhj,42.3638965,-71.0881488
-734,Starbucks,"1662 Massachusetts Ave, Cambridge, MA 02138, USA",b734,nvhj,42.3819279,-71.1199757
-735,Starbucks,"468 Broadway, Cambridge, MA 02138, USA",b735,nvhj,42.3737524,-71.11314700000001
-736,Starbucks Central Square,"655 Massachusetts Ave, Cambridge, MA 02139, USA",b736,nvhj,42.3657234,-71.1034912
-737,Starbucks Harvard Square,"1380 Massachusetts Ave, Cambridge, MA 02138, USA",b737,nvhj,42.373312,-71.119062
-738,State Park,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",b738,nvhj,42.3673039,-71.09012129999999
-739,Stereo Jacks,"1686 Massachusetts Ave, Cambridge, MA 02138, USA",b739,nvhj,42.3826561,-71.1199941
-740,Suds-zo Laundromat,"562 Cambridge St, Cambridge, MA 02141, USA",b740,nvhj,42.3717501,-71.0855315
-741,Sugar and Spice,"1933 Massachusetts Ave, Cambridge, MA 02140, USA",b741,nvhj,42.3896291,-71.1199121
-742,Sulmona,"608 Main St, Cambridge, MA 02139, USA",b742,nvhj,42.3622991,-71.0941459
-743,Sumiao Hunan Kitchen,"270 Third St, Cambridge, MA 02142, USA",b743,nvhj,42.3660585,-71.08195060000001
-744,Summer Shack,"149 Alewife Brook Pkwy, Cambridge, MA 02140, USA",b744,nvhj,42.3937407,-71.1410313
-745,Sun Garden Healing Center,"740 Cambridge St, Cambridge, MA 02141, USA",b745,nvhj,42.3720749,-71.0892625
-746,Sunny Nails,"846A Massachusetts Ave, Cambridge, MA 02139, USA",b746,nvhj,42.3673625,-71.107119
-747,Super Cuts,"2150 Massachusetts Ave, Cambridge, MA 02140, USA",b747,nvhj,42.3921994,-71.1247563
-748,Super Nails,"389 Cambridge St, Cambridge, MA 02141, USA",b748,nvhj,42.3715543,-71.08260659999999
-749,Super Roll Up Café,"726 Cambridge St, Cambridge, MA 02141, USA",b749,nvhj,42.3720115,-71.0888911
-750,Surya Indian Kitchen,"114 Magazine St, Cambridge, MA 02139, USA",b750,nvhj,42.3598669,-71.1099671
-751,Susan's Beauty Salon,"408 Cambridge St, Cambridge, MA 02141, USA",b751,nvhj,42.3713178,-71.08290889999999
-752,Susanna,"1776 Massachusetts Ave, Cambridge, MA 02140, USA",b752,nvhj,42.3857469,-71.1196228
-753,Susi's Gallery for Children,"348 Huron Ave, Cambridge, MA 02138, USA",b753,nvhj,42.3811026,-71.13804809999999
-754,Suvaai,"2378 Massachusetts Ave, Cambridge, MA 02140, USA",b754,nvhj,42.3967207,-71.1297998
-755,Sweet Touch Café,"241 Cambridge St, Cambridge, MA 02141, USA",b755,nvhj,42.3711355,-71.07995780000002
-756,Sweetgreen,"39 John F. Kennedy St, Cambridge, MA 02138, USA",b756,nvhj,42.37269939999999,-71.1202186
-757,Swiss Watchmaker,"58 Church St, Cambridge, MA 02138, USA",b757,nvhj,42.3740292,-71.1209906
-758,TAGS Hardware,"37 White St #1, Cambridge, MA 02140, USA",b758,nvhj,42.3893884,-71.1185346
-759,Tahaza Hummus Kitchen,"First St, Cambridge, MA 02141, USA",b759,nvhj,42.3702166,-71.0768705
-760,Talulla,"377 Walden St, Cambridge, MA 02138, USA",b760,nvhj,42.3837042,-71.1344447
-761,Tampopo,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b761,nvhj,42.3872124,-71.1185319
-762,Tanjore,"18 Eliot St, Cambridge, MA 02138, USA",b762,nvhj,42.3720772,-71.1213765
-763,Tapiocarias House of Flavors,"204 Hampshire St, Cambridge, MA 02139, USA",b763,nvhj,42.3731166,-71.1003229
-764,Tasty Burger,"40 John F. Kennedy St, Cambridge, MA 02138, USA",b764,nvhj,42.3725821,-71.1198316
-765,Tatte,"318 Third St, Cambridge, MA 02142, USA",b765,nvhj,42.3649073,-71.0826451
-766,Tatte,"1288 Massachusetts Ave, Cambridge, MA 02138, USA",b766,nvhj,42.3726897,-71.1169437
-767,Teddy's Shoes,"548 Massachusetts Ave, Cambridge, MA 02139, USA",b767,nvhj,42.3643785,-71.1023611
-768,Temple Bar,"1688 Massachusetts Ave, Cambridge, MA 02138, USA",b768,nvhj,42.3827224,-71.1199477
-769,Temple of Groom,"908 Massachusetts Ave, Cambridge, MA 02139, USA",b769,nvhj,42.3681689,-71.1087486
-770,Tess,"52 Brattle St, Cambridge, MA 02138, USA",b770,nvhj,42.3743053,-71.1220598
-771,Thazar Hair Studio,"962 Cambridge St, Cambridge, MA 02141, USA",b771,nvhj,42.3725757,-71.0930692
-772,Thistle and Shamrock,"62 Walden St, Cambridge, MA 02140, USA",b772,nvhj,42.388955,-71.1248385
-773,Thread and Shape,"2 Bow St, Cambridge, MA 02138, USA",b773,nvhj,42.3719861,-71.1155477
-774,Toad,"1912 Massachusetts Ave, Cambridge, MA 02140, USA",b774,nvhj,42.3889796,-71.11992710000001
-775,Toaki Japanese Gifts,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b775,nvhj,42.3872124,-71.1185319
-776,Tocco Classico,"1638 Massachusetts Ave, Cambridge, MA 02138, USA",b776,nvhj,42.38098189999999,-71.12007299999999
-777,"Today's Insurance Agency, Inc.","777 Cambridge St, Cambridge, MA 02141, USA",b777,nvhj,42.3724047,-71.0895642
-778,Tommy's Value,"49 Mt Auburn St, Cambridge, MA 02138, USA",b778,nvhj,42.3714067,-71.1166982
-779,Top Cleaners,"1300 Cambridge St, Cambridge, MA 02139, USA",b779,nvhj,42.3733833,-71.0992203
-780,Top Drawer,"5 Brattle St, Cambridge, MA 02138, USA",b780,nvhj,42.3736038,-71.11969289999999
-781,Toscanini's Ice Cream,"159 First St, Cambridge, MA 02142, USA",b781,nvhj,42.3660952,-71.0784687
-782,Toscano,"52 Brattle St, Cambridge, MA 02138, USA",b782,nvhj,42.3743053,-71.1220598
-783,Trattoria Pulcinella,"147 Huron Ave, Cambridge, MA 02138, USA",b783,nvhj,42.3827605,-71.1307984
-784,Tropical Dimension Food Store,"1262 Cambridge St, Cambridge, MA 02139, USA",b784,nvhj,42.3732287,-71.09864
-785,Tunc Tanin - Financial Services,"45 Prospect St, Cambridge, MA 02139, USA",b785,nvhj,42.3664974,-71.1036769
-786,TurnStyle,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",b786,nvhj,42.3673039,-71.09012129999999
-787,Two Little Owls Schoolouse,"501 Cambridge St, Cambridge, MA 02141, USA",b787,nvhj,42.3717987,-71.0842718
-788,U-Haul,"844 Main St, Cambridge, MA 02139, USA",b788,nvhj,42.3629738,-71.0984749
-789,University Market,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",b789,nvhj,42.3708466,-71.1135184
-790,University Stationery,"296 Massachusetts Ave, Cambridge, MA 02139, USA",b790,nvhj,42.3622228,-71.098672
-791,University Wine Shop,"1737 Massachusetts Ave, Cambridge, MA 02138, USA",b791,nvhj,42.38436919999999,-71.1191585
-792,Unyamanee Thai Spa,"1034 Cambridge St, Cambridge, MA 02141, USA",b792,nvhj,42.3726367,-71.09432919999999
-793,Upper Crust Pizza,"1782 Massachusetts Ave, Cambridge, MA 02140, USA",b793,nvhj,42.3858656,-71.1196111
-794,UPS Store,"1770 Massachusetts Ave, Cambridge, MA 02138, USA",b794,nvhj,42.38548720000001,-71.1196228
-795,Upward Spiral Studio,"7 Temple St, Cambridge, MA 02139, USA",b795,nvhj,42.3665411,-71.1040634
-796,Urban Hearth,"2263 Massachusetts Ave, Cambridge, MA 02140, USA",b796,nvhj,42.3945285,-71.1266902
-797,Valvoline Instant Oil Change,"2485 Massachusetts Ave, Cambridge, MA 02140, USA",b797,nvhj,42.399157,-71.131924
-798,Vasquez Barber Shop,"1052 Cambridge St, Cambridge, MA 02141, USA",b798,nvhj,42.372781,-71.0949262
-799,Veggie Galaxy,"450 Massachusetts Ave, Cambridge, MA 02139, USA",b799,nvhj,42.3634198,-71.1012291
-800,Veggie Grill,"57 John F. Kennedy St, Cambridge, MA 02138, USA",b800,nvhj,42.3720507,-71.12077239999999
-801,Vester,"75 Ames St, Cambridge, MA 02142, USA",b801,nvhj,42.3635904,-71.08878179999999
-802,Viale,"502 Massachusetts Ave, Cambridge, MA 02139, USA",b802,nvhj,42.3639393,-71.1018432
-803,Village Kitchen,"359 Huron Ave, Cambridge, MA 02138, USA",b803,nvhj,42.3813843,-71.1384691
-804,VIM Fitness,"579 Massachusetts Ave, Cambridge, MA 02139, USA",b804,nvhj,42.3650684,-71.1025856
-805,Violette Gluten Free Bakery,"1786 Massachusetts Ave, Cambridge, MA 02140, USA",b805,nvhj,42.3859348,-71.1195046
-806,Vitality Massage Therapy,"2326 Massachusetts Ave, Cambridge, MA 02140, USA",b806,nvhj,42.3956361,-71.12867469999999
-807,Ward Maps,"1735 Massachusetts Ave, Cambridge, MA 02138, USA",b807,nvhj,42.3842804,-71.11918179999999
-808,Wasabi at Porter,"2088 Massachusetts Ave, Cambridge, MA 02140, USA",b808,nvhj,42.39126359999999,-71.1234757
-809,Wash and Dry,"73 River St, Cambridge, MA 02139, USA",b809,nvhj,42.36444609999999,-71.1073734
-810,Waxing the City,"2166 Massachusetts Ave, Cambridge, MA 02140, USA",b810,nvhj,42.3922911,-71.1248799
-811,Waypoint,"1030 Massachusetts Ave, Cambridge, MA 02138, USA",b811,nvhj,42.3694825,-71.112265
-812,Weltkuche Bistro,"3 Glassworks Ave, Cambridge, MA 02141, USA",b812,nvhj,42.3708883,-71.0746348
-813,Western Market,"317 Western Ave, Cambridge, MA 02139, USA",b813,nvhj,42.3646894,-71.1132166
-814,Whitneys,"37 John F. Kennedy St, Cambridge, MA 02138, USA",b814,nvhj,42.3727581,-71.120155
-815,Whole Heart Provisions,"298 Massachusetts Ave, Cambridge, MA 02139, USA",b815,nvhj,42.3622842,-71.0987146
-816,Whole Heart Provisions,"1350 Massachusetts Ave, Cambridge, MA 02138, USA",b816,nvhj,42.3770019,-71.1166599
-817,Wholesome Fresh,"60 Church St, Cambridge, MA 02138, USA",b817,nvhj,42.3740155,-71.12105310000001
-818,Wismic Unisex Salon,"270 Broadway, Cambridge, MA 02139, USA",b818,nvhj,42.3676478,-71.0972827
-819,Wrapro,"1670 Massachusetts Ave, Cambridge, MA 02138, USA",b819,nvhj,42.3820929,-71.1201118
-820,WTPhelan,"1812 Massachusetts Ave, Cambridge, MA 02140, USA",b820,nvhj,42.3868407,-71.1194141
-821,Wu Dao King Fu & Tai Chi,"130 Smith Pl, Cambridge, MA 02138, USA",b821,nvhj,42.3939438,-71.1501943
-822,Yayla Tribal Rugs,"283 Broadway, Cambridge, MA 02139, USA",b822,nvhj,42.3684003,-71.09829189999999
-823,YBlank,"766 Cambridge St, Cambridge, MA 02141, USA",b823,nvhj,42.3721308,-71.08969239999999
-824,Yoki Express,"1871 Massachusetts Ave, Cambridge, MA 02140, USA",b824,nvhj,42.3883603,-71.11937619999999
-825,Your Hair Salon,"27 Mt Auburn St, Cambridge, MA 02138, USA",b825,nvhj,42.3709444,-71.1152101
-826,Yume Ga Arukara,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",b826,nvhj,42.3872124,-71.1185319
-827,Yume Wo Katare,"1923 Massachusetts Ave, Cambridge, MA 02140, USA",b827,nvhj,42.3893963,-71.1197045
-828,Yummy Thai Cuisine,"2261 Massachusetts Ave, Cambridge, MA 02140, USA",b828,nvhj,42.3944835,-71.1266438
-829,Za Cambridge,"350 Third St, Cambridge, MA 02142, USA",b829,nvhj,42.363582,-71.0832289
-830,Zina's Hair Salon,"450 Cambridge St, Cambridge, MA 02141, USA",b830,nvhj,42.3713292,-71.08374959999999
-831,Zinneken's,"1 Arrow St, Cambridge, MA 02138, USA",b831,nvhj,42.3711639,-71.11459599999999
-832,Zinnia Jewelry,"1300 Massachusetts Ave, Cambridge, MA 02138, USA",b832,nvhj,42.3727516,-71.1173161
+id,name,accountName,password,address,lat,lng
+1,1369 Coffee House,b1,nvhj,"757 Massachusetts Ave, Cambridge, MA 02139, USA",42.36655289999999,-71.1053043
+2,1369 Coffee House,b2,nvhj,"1369 Cambridge St, Cambridge, MA 02139, USA",42.3737842,-71.10037129999999
+3,2 4-1 Optical,b3,nvhj,"1128 Massachusetts Ave, Cambridge, MA 02138, USA",42.37075540000001,-71.1140788
+4,5th Street Laundromat,b4,nvhj,"58 5th St, Cambridge, MA 02141, USA",42.3711879,-71.08303
+5,730 Tavern,b5,nvhj,"730 Massachusetts Ave, Cambridge, MA 02139, USA",42.3659936,-71.10518569999999
+6,9Zaab Thai Street Food,b6,nvhj,"569 Cambridge St, Cambridge, MA 02141, USA",42.3719262,-71.08578059999999
+7,A&E Citgo Service Station,b7,nvhj,"199 Concord Ave, Cambridge, MA 02138, USA",42.3827556,-71.1310421
+8,Abbey,b8,nvhj,"1755 Massachusetts Ave, Cambridge, MA 02140, USA",42.3850955,-71.1190657
+9,ABC Pizza House,b9,nvhj,"744 Massachusetts Ave, Cambridge, MA 02139, USA",42.3661498,-71.1053572
+10,Abide Place,b10,nvhj,"317 Massachusetts Ave, Cambridge, MA 02139, USA",42.3625244,-71.09853559999999
+11,Abodeon,b11,nvhj,"1731 Massachusetts Ave, Cambridge, MA 02138, USA",42.3841916,-71.119205
+12,Abroad Modern,b12,nvhj,"260 Concord Ave, Cambridge, MA 02138, USA",42.3831165,-71.1329453
+13,Aceituna Grill,b13,nvhj,"605 W Kendall St, Cambridge, MA 02142, USA",42.3643885,-71.08189089999999
+14,Advance Tire Company,b14,nvhj,"185 Broadway, Cambridge, MA 02139, USA",42.3659413,-71.09181579999999
+15,Aestheticare Day Spa,b15,nvhj,"310 Cambridge St, Cambridge, MA 02141, USA",42.3710951,-71.0810914
+16,African Gift Items,b16,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+17,Al Bara Market,b17,nvhj,"304 Prospect St, Cambridge, MA 02139, USA",42.37274379999999,-71.0984079
+18,Al's Café,b18,nvhj,"NE49, 600 Technology Square, Cambridge, MA 02139, USA",42.3634064,-71.0930845
+19,Aladdin Auto Service,b19,nvhj,"162 Alewife Brook Pkwy, Cambridge, MA 02138, USA",42.3912981,-71.13752339999999
+20,Alan Russo Hair Design,b20,nvhj,"2516 Massachusetts Ave, Cambridge, MA 02140, USA",42.3993978,-71.13327129999999
+21,Albert's Market,b21,nvhj,"638 Cambridge St, Cambridge, MA 02141, USA",42.371846,-71.0870807
+22,Albertine Press,b22,nvhj,"1309 Cambridge St, Cambridge, MA 02139, USA",42.3737343,-71.0994292
+23,Alden and Harlow,b23,nvhj,"40 Brattle St, Cambridge, MA 02138, USA",42.3735278,-71.121526
+24,Aleppo Palace,b24,nvhj,"25 Central Square, Cambridge, MA 02139, USA",42.3654136,-71.1046073
+25,Alfred Hair Salon,b25,nvhj,"8 Eliot St, Cambridge, MA 02138, USA",42.3725099,-71.1214332
+26,Alfredo's Italian Kitchen,b26,nvhj,"691 Cambridge St, Cambridge, MA 02141, USA",42.372248,-71.0881019
+27,Ali Tailoring and Cleaning,b27,nvhj,"164 Hampshire St, Cambridge, MA 02139, USA",42.37175209999999,-71.0986865
+28,Alive and Kicking Lobsters,b28,nvhj,"273 Putnam Ave, Cambridge, MA 02139, USA",42.3625257,-71.11397099999999
+29,All Star Pizza Bar,b29,nvhj,"1238 Cambridge St, Cambridge, MA 02139, USA",42.3732404,-71.0980874
+30,All Star Sandwich Bar,b30,nvhj,"1245 Cambridge St, Cambridge, MA 02139, USA",42.373484,-71.098199
+31,Amador Bilingual Voiceovers,b31,nvhj,"North Cambridge, Cambridge, MA, USA",42.3933869,-71.1308572
+32,Amelia's Trattoria,b32,nvhj,"111 Harvard St, Cambridge, MA 02139, USA",42.3650525,-71.09269780000001
+33,American Dural,b33,nvhj,"135 Huron Ave, Cambridge, MA 02138, USA",42.38292999999999,-71.13054679999999
+34,American Martial Arts Center,b34,nvhj,"36 Spinelli Pl, Cambridge, MA 02138, USA",42.3920332,-71.1529746
+35,Amorino Gelato,b35,nvhj,"50 John F. Kennedy St, Cambridge, MA 02138, USA",42.3720079,-71.120381
+36,Andala Coffee House,b36,nvhj,"286 Franklin St, Cambridge, MA 02139, USA",42.36470629999999,-71.10571089999999
+37,Anderson & McQuaid Co. Inc.,b37,nvhj,"170 Fawcett St, Cambridge, MA 02138, USA",42.3934473,-71.1493425
+38,Andover Shop,b38,nvhj,"22 Holyoke St, Cambridge, MA 02138, USA",42.3722356,-71.1182417
+39,Andre Hair Salon,b39,nvhj,"1206 Massachusetts Ave, Cambridge, MA 02138, USA",42.3718118,-71.11531719999999
+40,Andy's Diner,b40,nvhj,"2030 Massachusetts Ave, Cambridge, MA 02140, USA",42.3906318,-71.1221196
+41,Anime Zakka,b41,nvhj,"36 John F. Kennedy St, Cambridge, MA 02138, USA",42.3726743,-71.1198689
+42,Anna's Taqueria,b42,nvhj,"Porter Square, Cambridge, MA 02140, USA",42.3888566,-71.11939819999999
+43,Anthony's Pizza,b43,nvhj,"43 Gore St, Cambridge, MA 02141, USA",42.3718137,-71.07946679999999
+44,Anthropologie,b44,nvhj,"44 Brattle St, Cambridge, MA 02138, USA",42.3737541,-71.12187410000001
+45,Antonia Bodywork,b45,nvhj,"872 Massachusetts Ave, Cambridge, MA 02139, USA",42.3674388,-71.1077853
+46,Apple Cinemas,b46,nvhj,"168 Alewife Brook Pkwy, Cambridge, MA 02138, USA",42.3912436,-71.1380746
+47,Arams #2 House of Pizza,b47,nvhj,"345 Cambridge St, Cambridge, MA 02141, USA",42.371459,-71.0816779
+48,Area Four,b48,nvhj,"NE47, 500 Technology Square, Cambridge, MA 02139, USA",42.3633736,-71.0925996
+49,Armageddon Record Shop,b49,nvhj,"12b Eliot St, Cambridge, MA 02138, USA",42.3723109,-71.12157239999999
+50,Armando's Pizza and Subs,b50,nvhj,"163 Huron Ave, Cambridge, MA 02138, USA",42.382338,-71.131337
+51,Aroush's Tailor Shop,b51,nvhj,"864 Massachusetts Ave, Cambridge, MA 02139, USA",42.3675286,-71.1074265
+52,Arrow Cleaning and Tailoring,b52,nvhj,"1134 Massachusetts Ave, Cambridge, MA 02138, USA",42.37088720000001,-71.1141761
+53,Art and Soul Yoga,b53,nvhj,"91 Hampshire St, Cambridge, MA 02139, USA",42.3690342,-71.0947965
+54,ArtBar,b54,nvhj,"40 Edwin H Land Blvd, Cambridge, MA 02142, USA",42.3667097,-71.07489389999999
+55,Arthur Murray Dance Center,b55,nvhj,"151 Alewife Brook Pkwy, Cambridge, MA 02140, USA",42.393836,-71.1411863
+56,Artisans Trading Furniture,b56,nvhj,"125 Fawcett St, Cambridge, MA 02138, USA",42.3928129,-71.14758599999999
+57,Artist & Craftsman Supply,b57,nvhj,"580 Massachusetts Ave, Cambridge, MA 02139, USA",42.3646342,-71.1029806
+58,Asa Hair Design,b58,nvhj,"36 John F. Kennedy St, Cambridge, MA 02138, USA",42.3726743,-71.1198689
+59,Asmara Restaurant,b59,nvhj,"739 Massachusetts Ave, Cambridge, MA 02139, USA",42.3665057,-71.10498419999999
+60,A Street Frames,b60,nvhj,"755 Concord Ave, Cambridge, MA 02138, USA",42.3907155,-71.1532995
+61,Atlas Barber Shop,b61,nvhj,"14A Eliot St, Cambridge, MA 02138, USA",42.37218499999999,-71.12154319999999
+62,Atomic Bean Café,b62,nvhj,"904 Massachusetts Ave, Cambridge, MA 02139, USA",42.368112,-71.1086325
+63,Atwood's Tavern,b63,nvhj,"877 Cambridge St, Cambridge, MA 02141, USA",42.3727439,-71.0914444
+64,Audio Lab,b64,nvhj,"36 John F. Kennedy St, Cambridge, MA 02138, USA",42.3726743,-71.1198689
+65,B Good,b65,nvhj,"301 Third St, Cambridge, MA 02142, USA",42.3641806,-71.0834814
+66,B Good,b66,nvhj,"1 Eliot St, Cambridge, MA 02138, USA",42.372666,-71.121371
+67,Bagelsaurus,b67,nvhj,"1796 Massachusetts Ave, Cambridge, MA 02140, USA",42.3860286,-71.1195879
+68,Bambara,b68,nvhj,"25 Edwin H Land Blvd, Cambridge, MA 02141, USA",42.3678891,-71.0749273
+69,Baraka Cuisine,b69,nvhj,"1728 Massachusetts Ave, Cambridge, MA 02138, USA",42.3840796,-71.11985489999999
+70,Barismo,b70,nvhj,"364 Broadway, Cambridge, MA 02139, USA",42.370484,-71.1044197
+71,Barre & Soul,b71,nvhj,"36 John F. Kennedy St, Cambridge, MA 02138, USA",42.3726743,-71.1198689
+72,Base Crave,b72,nvhj,"344 Huron Ave, Cambridge, MA 02138, USA",42.3810906,-71.1380513
+73,Basil Tree Catering & Café,b73,nvhj,"10 Fawcett St, Cambridge, MA 02138, USA",42.389329,-71.1453622
+74,Basta Pasta,b74,nvhj,"319 Western Ave, Cambridge, MA 02139, USA",42.3646894,-71.1132166
+75,Bay State Pool Supplies,b75,nvhj,"691 Concord Ave, Cambridge, MA 02138, USA",42.3902598,-71.15092419999999
+76,Beantown Taqueria,b76,nvhj,"245 Massachusetts Ave, Cambridge, MA 02139, USA",42.3618117,-71.0972366
+77,Beat Brew Hall,b77,nvhj,"13a Brattle St, Cambridge, MA 02138, USA",42.3735322,-71.1202322
+78,Beauty Spa,b78,nvhj,"1766 Massachusetts Ave, Cambridge, MA 02138, USA",42.3853759,-71.1196228
+79,Beauty's Pizza,b79,nvhj,"187 Hampshire St, Cambridge, MA 02139, USA",42.3727649,-71.09934799999999
+80,BeautyBase Eyebrow Threading,b80,nvhj,"574 Cambridge St, Cambridge, MA 02141, USA",42.371661,-71.0859663
+81,Bedworks,b81,nvhj,"15 Western Ave, Cambridge, MA 02163, USA",42.3653827,-71.1049768
+82,Benedetto,b82,nvhj,"1 Bennett St, Cambridge, MA 02138, USA",42.3722449,-71.123044
+83,Bertucci's,b83,nvhj,"799 Main St, Cambridge, MA 02139, USA",42.3634041,-71.0973897
+84,Betty's Hair Now,b84,nvhj,"397 Cambridge St, Cambridge, MA 02141, USA",42.3715071,-71.0827331
+85,Beyond Fitness Pilates Studio,b85,nvhj,"29 Smith Pl, Cambridge, MA 02138, USA",42.3917134,-71.15244779999999
+86,Bisq,b86,nvhj,"1071 Cambridge St, Cambridge, MA 02141, USA",42.373233,-71.09485649999999
+87,Black Sheep,b87,nvhj,"350 Main St, Cambridge, MA 02142, USA",42.362207,-71.08731019999999
+88,Black Sheep Bagel,b88,nvhj,"56 John F. Kennedy St, Cambridge, MA 02138, USA",42.3717355,-71.1204815
+89,Blackbird Doughnuts,b89,nvhj,"1350 Massachusetts Ave, Cambridge, MA 02138, USA",42.3770019,-71.1166599
+90,Blaze Pizza,b90,nvhj,"First St, Cambridge, MA 02141, USA",42.3702166,-71.0768705
+91,Blick Art Supply,b91,nvhj,"619 Massachusetts Ave, Cambridge, MA 02139, USA",42.3653753,-71.1032322
+92,Blue Bag Records,b92,nvhj,"2325 Massachusetts Ave, Cambridge, MA 02140, USA",42.3958927,-71.12819309999999
+93,Blue Bottle,b93,nvhj,"88 Ames St, Cambridge, MA 02142, USA",42.3632638,-71.087818
+94,Blue Bottle,b94,nvhj,"40 Bow St, Cambridge, MA 02138, USA",42.3714676,-71.1168375
+95,Bluemoon Smoke Shop,b95,nvhj,"1295 Cambridge St, Cambridge, MA 02139, USA",42.3736782,-71.09898749999999
+96,Bluemoon Smoke Shop,b96,nvhj,"1704 Massachusetts Ave, Cambridge, MA 02138, USA",42.38322609999999,-71.11985489999999
+97,Bluemoon Smoke Shop,b97,nvhj,"896 Massachusetts Ave, Cambridge, MA 02139, USA",42.3679578,-71.1084352
+98,Bluestone Lane,b98,nvhj,"27 Brattle St, Cambridge, MA 02138, USA",42.3736083,-71.1206904
+99,Boathouse,b99,nvhj,"65 Mount Auburn Street, 65 Mt Auburn St, Cambridge, MA 02138, USA",42.3720079,-71.1180151
+100,Bob Slate Stationer,b100,nvhj,"30 Brattle St, Cambridge, MA 02138, USA",42.3731651,-71.1206126
+101,Boca Grande,b101,nvhj,"149 First St, Cambridge, MA 02142, USA",42.36627230000001,-71.0780979
+102,Bodhi Leaf,b102,nvhj,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",42.3708466,-71.1135184
+103,Body One Massage,b103,nvhj,"1776 Massachusetts Ave, Cambridge, MA 02140, USA",42.3857469,-71.1196228
+104,BodyScapes Fitness,b104,nvhj,"356 Third St, Cambridge, MA 02142, USA",42.3635776,-71.08342259999999
+105,Bon Chon,b105,nvhj,"57 John F. Kennedy St, Cambridge, MA 02138, USA",42.3720507,-71.12077239999999
+106,Bon Me - Alewife,b106,nvhj,"201 Alewife Brook Pkwy, Cambridge, MA 02138, USA",42.3900464,-71.1429253
+107,Bon Me - Kendall,b107,nvhj,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",42.3673039,-71.09012129999999
+108,Bon Me Test Kitchen,b108,nvhj,"60 Binney St, Cambridge, MA 02142, USA",42.365026,-71.079815
+109,Bon Me- Harvard,b109,nvhj,"1350 Massachusetts Ave, Cambridge, MA 02138, USA",42.3770019,-71.1166599
+110,Bondir,b110,nvhj,"279a Broadway, Cambridge, MA 02139, USA",42.3682904,-71.09776889999999
+111,Bonny's Garden Center,b111,nvhj,"41 Bay State Rd, Cambridge, MA 02138, USA",42.3874371,-71.13958319999999
+112,Boomerangs,b112,nvhj,"563 Massachusetts Ave, Cambridge, MA 02139, USA",42.3648033,-71.10212179999999
+113,Border Café,b113,nvhj,"32 Church St, Cambridge, MA 02138, USA",42.3742934,-71.1202318
+114,Boston Burger Company,b114,nvhj,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",42.3708466,-71.1135184
+115,Boston Convenience,b115,nvhj,"1 Leighton St, Cambridge, MA 02141, USA",42.3698228,-71.0731297
+116,Boston Dog Company,b116,nvhj,"2512 Massachusetts Ave, Cambridge, MA 02140, USA",42.3993016,-71.13299169999999
+117,Boston Dog Company,b117,nvhj,"505 Cambridge St, Cambridge, MA 02141, USA",42.3717888,-71.0846001
+118,Boston iPhone Repair,b118,nvhj,"1208 Massachusetts Ave, Cambridge, MA 02138, USA",42.3718905,-71.1153984
+119,Boston Tattoo Company,b119,nvhj,"36 Prospect St, Cambridge, MA 02139, USA",42.3660116,-71.10332869999999
+120,Boston Tea Shop,b120,nvhj,"54 John F. Kennedy St, Cambridge, MA 02138, USA",42.3718604,-71.1204808
+121,Bourbon Coffee,b121,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+122,Brattle Square Florist,b122,nvhj,"31 Brattle St, Cambridge, MA 02138, USA",42.3736904,-71.1207368
+123,Brattle Square Optical,b123,nvhj,"1077 Massachusetts Ave, Cambridge, MA 02138, USA",42.3704241,-71.1130548
+124,Brazilian Ipanema Hair Salon,b124,nvhj,"781 Cambridge St, Cambridge, MA 02141, USA",42.3724364,-71.0897499
+125,Bridge Gallery,b125,nvhj,"5 Pemberton St, Cambridge, MA 02140, USA",42.392343,-71.1252396
+126,Bright Horizons,b126,nvhj,"2465 Massachusetts Ave, Cambridge, MA 02140, USA",42.3987746,-71.1315295
+127,Broadsheet Coffee Roasters,b127,nvhj,"100 Kirkland St, Cambridge, MA 02138, USA",42.3779725,-71.1073006
+128,Broadway Auto,b128,nvhj,"320 Broadway, Cambridge, MA 02139, USA",42.3692791,-71.101379
+129,Broadway Bicycle,b129,nvhj,"351 Broadway, Cambridge, MA 02139, USA",42.3704596,-71.1035144
+130,Broadway Marketplace,b130,nvhj,"468 Broadway, Cambridge, MA 02138, USA",42.3737524,-71.11314700000001
+131,Brookline Lunch,b131,nvhj,"9 Brookline St, Cambridge, MA 02139, USA",42.3637641,-71.1017365
+132,Brother's Market,b132,nvhj,"One Broadway, 1 Broadway, Cambridge, MA 02142, USA",42.3627822,-71.0835375
+133,Brother's Market,b133,nvhj,"414 Cambridge St, Cambridge, MA 02141, USA",42.3713184,-71.083088
+134,Browz Threading,b134,nvhj,"1923 Massachusetts Ave, Cambridge, MA 02140, USA",42.3893963,-71.1197045
+135,Bryn Mawr Bookstore,b135,nvhj,"373 Huron Ave, Cambridge, MA 02138, USA",42.38128560000001,-71.1389797
+136,C'est Bon Market and Liquors,b136,nvhj,"1436 Massachusetts Ave, Cambridge, MA 02138, USA",42.3742022,-71.11909179999999
+137,C. Brendan Noonan Realty,b137,nvhj,"360 Huron Ave, Cambridge, MA 02138, USA",42.3810738,-71.1387415
+138,Cabot's Candy,b138,nvhj,"1300 Massachusetts Ave, Cambridge, MA 02138, USA",42.3727516,-71.1173161
+139,Cafe Du Pays,b139,nvhj,"233 Cardinal Medeiros Ave, Cambridge, MA 02141, USA",42.3676619,-71.0911235
+140,Café Barada,b140,nvhj,"2269 Massachusetts Ave, Cambridge, MA 02140, USA",42.394794,-71.1268875
+141,Café Luna,b141,nvhj,"612 Main St, Cambridge, MA 02139, USA",42.3628665,-71.0942245
+142,Café Mami,b142,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+143,Café Sushi,b143,nvhj,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",42.3708466,-71.1135184
+144,Café Zing,b144,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+145,Cambridge Antiques Market,b145,nvhj,"201 Monsignor O'Brien Highway, Cambridge, MA 02141, USA",42.3724767,-71.0790026
+146,Cambridge Artists' Cooperative,b146,nvhj,"59a Church St, Cambridge, MA 02138, USA",42.3742094,-71.1211069
+147,Cambridge Bicycle,b147,nvhj,"259 Massachusetts Ave, Cambridge, MA 02139, USA",42.3618351,-71.0973644
+148,Cambridge Body & Brain Yoga andTai Chi,b148,nvhj,"1773 Massachusetts Ave, Cambridge, MA 02140, USA",42.3855171,-71.11892639999999
+149,Cambridge Brewing Co.,b149,nvhj,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",42.3673039,-71.09012129999999
+150,Cambridge Cat Clinic,b150,nvhj,"1108 Cambridge St, Cambridge, MA 02139, USA",42.3729913,-71.09580989999999
+151,Cambridge Clogs,b151,nvhj,"1798 Massachusetts Ave, Cambridge, MA 02140, USA",42.386073,-71.11957629999999
+152,Cambridge Common,b152,nvhj,"1667 Massachusetts Ave, Cambridge, MA 02138, USA",42.3820856,-71.1193674
+153,Cambridge Greenhouse,b153,nvhj,"2301 Massachusetts Ave, Cambridge, MA 02140, USA",42.3953319,-71.1276093
+154,Cambridge House of Pizza,b154,nvhj,"2420 Massachusetts Ave, Cambridge, MA 02140, USA",42.397386,-71.130755
+155,Cambridge Nails and Skin Spa,b155,nvhj,"2096 Massachusetts Ave, Cambridge, MA 02140, USA",42.3913661,-71.1236961
+156,Cambridge Naturals,b156,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+157,Cambridge Nature's Way Dry Cleaners,b157,nvhj,"47 Mt Auburn St, Cambridge, MA 02138, USA",42.3713615,-71.116644
+158,Cambridge Pizzeria,b158,nvhj,"263 Brookline St, Cambridge, MA 02139, USA",42.3577583,-71.10783169999999
+159,Cambridge Rug Company,b159,nvhj,"1157 Cambridge St, Cambridge, MA 02139, USA",42.3733537,-71.09643489999999
+160,Cambridge School of Culinary Arts,b160,nvhj,"2020 Massachusetts Ave, Cambridge, MA 02140, USA",42.3905429,-71.121967
+161,Cambridge Shoe Repair,b161,nvhj,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",42.3708466,-71.1135184
+162,Cambridge Smoke Shop,b162,nvhj,"1199 Cambridge St, Cambridge, MA 02139, USA",42.3733881,-71.0973166
+163,Cambridge Spirits,b163,nvhj,"9 Broad Canal Way, Cambridge, MA 02142, USA",42.363312,-71.082741
+164,Cambridge Street Cleaners,b164,nvhj,"506 Cambridge St, Cambridge, MA 02141, USA",42.3715531,-71.0847129
+165,Cambridge Used Bicycles,b165,nvhj,"201 Monsignor O'Brien Highway, Cambridge, MA 02141, USA",42.3724767,-71.0790026
+166,Cambridge Veterinary Care,b166,nvhj,"1724 Massachusetts Ave, Cambridge, MA 02138, USA",42.3840083,-71.11981500000002
+167,Cambridge Wine and Spirits,b167,nvhj,"202 Alewife Brook Pkwy, Cambridge, MA 02138, USA",42.3888948,-71.141772
+168,Cambridgeside Galleria,b168,nvhj,"100 Cambridgeside Pl, Cambridge, MA 02141, USA",42.3681321,-71.0763644
+169,Cantab Lounge,b169,nvhj,"738 Massachusetts Ave, Cambridge, MA 02139, USA",42.3660624,-71.1053713
+170,Cardullo's,b170,nvhj,"6 Brattle St, Cambridge, MA 02138, USA",42.3735986,-71.119762
+171,Casa Portugal,b171,nvhj,"1200 Cambridge St, Cambridge, MA 02139, USA",42.3731555,-71.09734019999999
+172,Catalyst Café,b172,nvhj,"75 Binney St, Cambridge, MA 02142, USA",42.365703,-71.080571
+173,Catalyst Performance Training,b173,nvhj,"91 Sidney St, Cambridge, MA 02139, USA",42.3610391,-71.10279489999999
+174,Catalyst Restaurant,b174,nvhj,"300 Tech Square, 300 Technology Square, Cambridge, MA 02139, USA",42.3633654,-71.0916238
+175,Cava,b175,nvhj,"82 Ames St, Cambridge, MA 02142, USA",42.3631132,-71.08786309999999
+176,Cellar Wine and Spirits,b176,nvhj,"991 Massachusetts Ave, Cambridge, MA 02138, USA",42.3694971,-71.1108259
+177,Central Bakery,b177,nvhj,"732 Cambridge St, Cambridge, MA 02141, USA",42.37189499999999,-71.08909
+178,Central Barber Shop,b178,nvhj,"1611 Massachusetts Ave, Cambridge, MA 02138, USA",42.3801557,-71.119695
+179,Central Rock Gym,b179,nvhj,"127 Smith Pl, Cambridge, MA 02138, USA",42.3938542,-71.150421
+180,Central Square Eye Care,b180,nvhj,"3 Central Square, Cambridge, MA 02139, USA",42.3649409,-71.103909
+181,Central Square Florist,b181,nvhj,"653 Massachusetts Ave, Cambridge, MA 02139, USA",42.3657113,-71.10354459999999
+182,Central Square Post Office,b182,nvhj,"770 Massachusetts Ave, Cambridge, MA 02139, USA",42.36635990000001,-71.1061373
+183,Central Square Theater,b183,nvhj,"450 Massachusetts Ave, Cambridge, MA 02139, USA",42.3634198,-71.1012291
+184,Chalawan,b184,nvhj,"1790 Massachusetts Ave, Cambridge, MA 02140, USA",42.3859319,-71.1195647
+185,Chameleon Tattoo & Body Piercing,b185,nvhj,"36 John F. Kennedy St, Cambridge, MA 02138, USA",42.3726743,-71.1198689
+186,Changsho,b186,nvhj,"1712 Massachusetts Ave, Cambridge, MA 02138, USA",42.3835163,-71.1199245
+187,Charles Hotel,b187,nvhj,"1 Bennett St, Cambridge, MA 02138, USA",42.3722449,-71.123044
+188,Charles River Canoe and Kayak,b188,nvhj,"15 Broad Canal Way, Cambridge, MA 02142, USA",42.3628826,-71.0820784
+189,Charlie's Barber Shop,b189,nvhj,"1794 Massachusetts Ave, Cambridge, MA 02140, USA",42.3859994,-71.1196344
+190,Charlie's Kitchen,b190,nvhj,"10 Eliot St, Cambridge, MA 02138, USA",42.3724144,-71.121526
+191,Cheapo Records,b191,nvhj,"538 Massachusetts Ave, Cambridge, MA 02139, USA",42.36422659999999,-71.10229919999999
+192,Chicago Pizza,b192,nvhj,"239 Massachusetts Ave, Cambridge, MA 02139, USA",42.3617046,-71.0971321
+193,China Fair,b193,nvhj,"2100 Massachusetts Ave, Cambridge, MA 02140, USA",42.39145269999999,-71.1238238
+194,Christina's Homemade Ice Cream,b194,nvhj,"1255 Cambridge St, Cambridge, MA 02139, USA",42.37352,-71.0983761
+195,Christina's Spice and Speciality Shop,b195,nvhj,"1297 Cambridge St, Cambridge, MA 02139, USA",42.3736365,-71.0992073
+196,Christopher's,b196,nvhj,"1920 Massachusetts Ave, Cambridge, MA 02140, USA",42.3890462,-71.1200405
+197,Chutney's,b197,nvhj,"36 John F. Kennedy St, Cambridge, MA 02138, USA",42.3726743,-71.1198689
+198,Cilantro Chinese Cuisine,b198,nvhj,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",42.3708466,-71.1135184
+199,Circle Furniture,b199,nvhj,"199 Alewife Brook Pkwy, Cambridge, MA 02138, USA",42.39028589999999,-71.1427042
+200,Citgo Gas,b200,nvhj,"199 Concord Ave, Cambridge, MA 02138, USA",42.3827556,-71.1310421
+201,City Express Dry Cleaners,b201,nvhj,"428 Massachusetts Ave, Cambridge, MA 02139, USA",42.3633903,-71.1007711
+202,City Liquors,b202,nvhj,"616 Cambridge St, Cambridge, MA 02141, USA",42.3717336,-71.0865002
+203,City Market,b203,nvhj,"1695 Massachusetts Ave, Cambridge, MA 02138, USA",42.382912,-71.1193373
+204,City Paint,b204,nvhj,"1149 Cambridge St, Cambridge, MA 02139, USA",42.3733075,-71.0962725
+205,City Paint & Supply,b205,nvhj,"2564 Massachusetts Ave, Cambridge, MA 02140, USA",42.4000232,-71.1346164
+206,Classic Graphx,b206,nvhj,"678 Massachusetts Ave, Cambridge, MA 02139, USA",42.3655321,-71.10447359999999
+207,Cleenland,b207,nvhj,"89a Norfolk St, Cambridge, MA 02139, USA",42.3664615,-71.1005541
+208,Clevergreen Cleaners,b208,nvhj,"314 Third St, Cambridge, MA 02142, USA",42.3649673,-71.0826233
+209,Clipmates Hair Studio,b209,nvhj,"141 Hampshire St, Cambridge, MA 02139, USA",42.3711528,-71.0970164
+210,Clothware,b210,nvhj,"1773 Massachusetts Ave, Cambridge, MA 02140, USA",42.3855171,-71.11892639999999
+211,Clover - Central,b211,nvhj,"496 Massachusetts Ave, Cambridge, MA 02139, USA",42.36389399999999,-71.101626
+212,Clover - Harvard,b212,nvhj,"1326 Massachusetts Ave, Cambridge, MA 02138, USA",42.3729277,-71.1178963
+213,Clover - HQ,b213,nvhj,"1075 Cambridge St, Cambridge, MA 02139, USA",42.3732647,-71.0950422
+214,Clover - Kendall,b214,nvhj,"5 Cambridge Center, Cambridge, MA 02142, USA",42.3627924,-71.08756029999999
+215,Club Passim,b215,nvhj,"47 Palmer St, Cambridge, MA 02138, USA",42.3741821,-71.11974889999999
+216,Coady Florist,b216,nvhj,"1540 Cambridge St, Cambridge, MA 02139, USA",42.37424530000001,-71.10634619999999
+217,Coast Cafe,b217,nvhj,"233 River St, Cambridge, MA 02139, USA",42.3630358,-71.1116267
+218,Colette,b218,nvhj,"1924 Massachusetts Ave, Cambridge, MA 02140, USA",42.3892499,-71.1203655
+219,Columbia Market,b219,nvhj,"151 Columbia St, Cambridge, MA 02139, USA",42.3669578,-71.09801569999999
+220,Commonwealth Cambridge,b220,nvhj,"11 Broad Canal Way, Cambridge, MA 02142, USA",42.36334859999999,-71.0826005
+221,Commonwealth Lock,b221,nvhj,"1853 Massachusetts Ave, Cambridge, MA 02140, USA",42.3878401,-71.1189827
+222,Commonwealth Wine School,b222,nvhj,"35 Dunster St, Cambridge, MA 02138, USA",42.3725791,-71.119337
+223,Concord Ave. Cafe,b223,nvhj,"294 Concord Ave, Cambridge, MA 02138, USA",42.3836924,-71.13409410000001
+224,Convenience Plus,b224,nvhj,"751 Massachusetts Ave, Cambridge, MA 02139, USA",42.3665908,-71.10515079999999
+225,Coolidge Cleaners,b225,nvhj,"746 Massachusetts Ave, Cambridge, MA 02139, USA",42.3661046,-71.10545619999999
+226,Corazon de Frida Mexican Cantina,b226,nvhj,"1287 Cambridge St, Cambridge, MA 02139, USA",42.3736907,-71.09892289999999
+227,Corbu Spa and Salon,b227,nvhj,"1 Bennett St, Cambridge, MA 02138, USA",42.3722449,-71.123044
+228,Courthouse Fish Market,b228,nvhj,"494A Cambridge St, Cambridge, MA 02141, USA",42.37151250000001,-71.08444779999999
+229,Courthouse Seafood Restaurant,b229,nvhj,"498 Cambridge St, Cambridge, MA 02141, USA",42.3715435,-71.0845927
+230,Craigie on Main,b230,nvhj,"853 Main St, Cambridge, MA 02139, USA",42.36349,-71.0986633
+231,Crate Escape Too,b231,nvhj,"368 Huron Ave, Cambridge, MA 02138, USA",42.3810057,-71.13893209999999
+232,Crimson Bikes,b232,nvhj,"1001 Massachusetts Ave, Cambridge, MA 02138, USA",42.3696346,-71.1111973
+233,Crimson Corner,b233,nvhj,"35 Brattle St, Cambridge, MA 02138, USA",42.3736074,-71.12097949999999
+234,Curio Coffee and Wine,b234,nvhj,"441 Cambridge St, Cambridge, MA 02141, USA",42.3716201,-71.0834998
+235,Curio Spice,b235,nvhj,"2265 Massachusetts Ave, Cambridge, MA 02140, USA",42.3945484,-71.1267726
+236,Custom Barber Shop,b236,nvhj,"49 Brattle St, Cambridge, MA 02138, USA",42.3741801,-71.1214332
+237,Custom Eyes,b237,nvhj,"50 Prospect St, Cambridge, MA 02139, USA",42.3662023,-71.1031431
+238,CWK at Kendall,b238,nvhj,"300 Athenaeum St, Cambridge, MA 02142, USA",42.3643821,-71.0813703
+239,D & D Convenience,b239,nvhj,"101 Magazine St, Cambridge, MA 02139, USA",42.3602168,-71.11005999999999
+240,Dado Tea,b240,nvhj,"955 Massachusetts Ave, Cambridge, MA 02139, USA",42.36910049999999,-71.1098047
+241,Dado Tea,b241,nvhj,"50, 50 Church St, Cambridge, MA 02138, USA",42.3739624,-71.1204815
+242,Daedalus,b242,nvhj,"45.5 Mt Auburn St, Cambridge, MA 02138, USA",42.3713279,-71.116477
+243,Dial,b243,nvhj,"907 Main St, Cambridge, MA 02139, USA",42.3636264,-71.0996514
+244,Dana Hill Liquors,b244,nvhj,"910 Massachusetts Ave, Cambridge, MA 02139, USA",42.3682599,-71.108762
+245,Dance Complex,b245,nvhj,"536 Massachusetts Ave, Cambridge, MA 02139, USA",42.364204,-71.1023075
+246,Daniel R. Spirer Jewelers,b246,nvhj,"1780 Massachusetts Ave, Cambridge, MA 02140, USA",42.3858285,-71.1196111
+247,Darul Kabab,b247,nvhj,"2072 Massachusetts Ave, Cambridge, MA 02140, USA",42.39112069999999,-71.12329
+248,David's Shoes on First,b248,nvhj,"75 First St, Cambridge, MA 02141, USA",42.3684112,-71.0777955
+249,Dazzling Nail Care,b249,nvhj,"2327 Massachusetts Ave, Cambridge, MA 02140, USA",42.3959403,-71.1283016
+250,Desfina Restaurant,b250,nvhj,"202 Third St, Cambridge, MA 02141, USA",42.36750259999999,-71.0809525
+251,Desi Dhaba,b251,nvhj,"401 Massachusetts Ave, Cambridge, MA 02139, USA",42.3636487,-71.09999049999999
+252,Design Within Reach,b252,nvhj,"1045 Massachusetts Ave, Cambridge, MA 02138, USA",42.3701104,-71.1126828
+253,Diaper Lab,b253,nvhj,"200 Elm St, Cambridge, MA 02140, USA",42.3932113,-71.1209689
+254,Dickson Brothers True Value,b254,nvhj,"26 Brattle St, Cambridge, MA 02138, USA",42.3731301,-71.12038869999999
+255,Dig,b255,nvhj,"82 Mt Auburn St, Cambridge, MA 02138, USA",42.3721713,-71.11955309999999
+256,Dimi's Place,b256,nvhj,"272 Brookline St, Cambridge, MA 02139, USA",42.3573341,-71.1077389
+257,Domino's Pizza,b257,nvhj,"1033 Massachusetts Avenue, 1033 Massachusetts Ave, Cambridge, MA 02138, USA",42.36985809999999,-71.1119844
+258,Down Under School Yoga,b258,nvhj,"2000 Massachusetts Ave, Cambridge, MA 02140, USA",42.3902413,-71.1215028
+259,Dress Code Cleaners,b259,nvhj,"276 Broadway, Cambridge, MA 02139, USA",42.3678666,-71.0976273
+260,Drinkwater's,b260,nvhj,"2067 Massachusetts Ave, Cambridge, MA 02140, USA",42.3915915,-71.12289539999999
+261,Druid,b261,nvhj,"1357 Cambridge St, Cambridge, MA 02139, USA",42.37378409999999,-71.100171
+262,Dry Bar,b262,nvhj,"1081 Massachusetts Ave, Cambridge, MA 02138, USA",42.3704987,-71.1131514
+263,Dumpling Daughter,b263,nvhj,"73 Ames St, Cambridge, MA 02142, USA",42.3633627,-71.0885606
+264,Dumpling House,b264,nvhj,"950 Massachusetts Ave, Cambridge, MA 02139, USA",42.3685407,-71.1102224
+265,Dunkin Donuts,b265,nvhj,"One Broadway, 1 Broadway, Cambridge, MA 02142, USA",42.3627822,-71.0835375
+266,Dunkin Donuts,b266,nvhj,"222 Broadway, Cambridge, MA 02139, USA",42.3663518,-71.0941138
+267,Dunkin Donuts,b267,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+268,Dunkin Donuts,b268,nvhj,"2480 Massachusetts Ave, Cambridge, MA 02140, USA",42.39871429999999,-71.1321561
+269,Dunkin Donuts,b269,nvhj,"616 Massachusetts Ave, Cambridge, MA 02139, USA",42.3649913,-71.1033473
+270,Dunkin Donuts,b270,nvhj,"1001 Massachusetts Ave, Cambridge, MA 02138, USA",42.3696346,-71.1111973
+271,East Coast Barber Shop,b271,nvhj,"261 Cambridge St, Cambridge, MA 02141, USA",42.3712058,-71.0803138
+272,East Side Bar and Grille,b272,nvhj,"561 Cambridge St, Cambridge, MA 02141, USA",42.3719396,-71.0856414
+273,Easy Chairs Antiques,b273,nvhj,"375 Huron Ave, Cambridge, MA 02138, USA",42.3813014,-71.13907259999999
+274,ED Simmons/All State Insurance Agency/Cambridgeport Insurance Agency,b274,nvhj,"770 Massachusetts Ave, Cambridge, MA 02139, USA",42.3663507,-71.1059859
+275,EH Chocolatier,b275,nvhj,"145 Huron Ave, Cambridge, MA 02138, USA",42.3828487,-71.1307171
+276,El Jefe's Taqueria,b276,nvhj,"83 Mt Auburn St, Cambridge, MA 02138, USA",42.3725094,-71.11963779999999
+277,Elegant Tailor & Cleaners,b277,nvhj,"1687 Massachusetts Ave, Cambridge, MA 02138, USA",42.3827389,-71.1193906
+278,Elia's Hair Care,b278,nvhj,"319 Massachusetts Ave, Cambridge, MA 02139, USA",42.36254,-71.0985767
+279,Eliot Street Cafe/Dunkin Donuts,b279,nvhj,"65 John F. Kennedy St, Cambridge, MA 02138, USA",42.37186,-71.121133
+280,Elite Barbershop,b280,nvhj,"2384 Massachusetts Ave, Cambridge, MA 02140, USA",42.3968649,-71.1299841
+281,Elmendorf Baking Supplies and Café,b281,nvhj,"594 Cambridge St, Cambridge, MA 02141, USA",42.3717314,-71.0862776
+282,"Erika Salloux, Professional Organizer, Living Harmony",b282,nvhj,"24 Harvey St, Cambridge, MA 02140, USA",42.3971097,-71.1311527
+283,Esmeralda,b283,nvhj,"54 Church St, Cambridge, MA 02138, USA",42.3740244,-71.1208505
+284,Estetika Spa,b284,nvhj,"370 Huron Ave, Cambridge, MA 02138, USA",42.38100439999999,-71.13912959999999
+285,Euphoria Babershop,b285,nvhj,"766B Cambridge St, Cambridge, MA 02141, USA",42.3721407,-71.0895807
+286,European Country Antiques,b286,nvhj,"146 Huron Ave, Cambridge, MA 02138, USA",42.3826237,-71.130485
+287,European Wax Center,b287,nvhj,"1868 Massachusetts Ave, Cambridge, MA 02140, USA",42.3880116,-71.1197388
+288,Evolve Fitness,b288,nvhj,"52 New St, Cambridge, MA 02138, USA",42.3879049,-71.13960639999999
+289,EVOO,b289,nvhj,"350 Third St, Cambridge, MA 02142, USA",42.363582,-71.0832289
+290,Eye Q,b290,nvhj,"12 Eliot St, Cambridge, MA 02138, USA",42.3723109,-71.12157239999999
+291,Falafel Corner,b291,nvhj,"8 Eliot St, Cambridge, MA 02138, USA",42.3725099,-71.1214332
+292,Family Nail and Spa,b292,nvhj,"746 Cambridge St, Cambridge, MA 02141, USA",42.3720615,-71.0894017
+293,Famous Cutz,b293,nvhj,"444 Cambridge St, Cambridge, MA 02141, USA",42.3713319,-71.08365669999999
+294,Faron Salon,b294,nvhj,"1784 Massachusetts Ave, Cambridge, MA 02140, USA",42.3859027,-71.1196111
+295,Fast Phil's Haircuts,b295,nvhj,"2528 Massachusetts Ave, Cambridge, MA 02140, USA",42.3995661,-71.1334559
+296,Felipe's Taqueria,b296,nvhj,"21 Brattle St, Cambridge, MA 02138, USA",42.3734606,-71.120502
+297,Felix Shoe Repair,b297,nvhj,"1304 Massachusetts Ave, Cambridge, MA 02138, USA",42.3728187,-71.1173598
+298,Fernandes Fish Market,b298,nvhj,"1097 Cambridge St, Cambridge, MA 02139, USA",42.3731327,-71.0954829
+299,Fernandes Market,b299,nvhj,"875 Cambridge St, Cambridge, MA 02141, USA",42.3726782,-71.09135979999999
+300,Ferro's Foodtown,b300,nvhj,"336 Rindge Ave, Cambridge, MA 02140, USA",42.3936268,-71.1374711
+301,Filomena's Beauty and Hair Salon,b301,nvhj,"164 Hampshire St, Cambridge, MA 02139, USA",42.37175209999999,-71.0986865
+302,First United Market,b302,nvhj,"271 Brookline St, Cambridge, MA 02139, USA",42.3575751,-71.1080638
+303,Fishmonger,b303,nvhj,"252 Huron Ave, Cambridge, MA 02138, USA",42.3813572,-71.1340013
+304,Fitlab Pilates,b304,nvhj,"1305 Cambridge St, Cambridge, MA 02139, USA",42.3737118,-71.099406
+305,Five Doors Health and Wellness,b305,nvhj,"763 Massachusetts Ave, Cambridge, MA 02139, USA",42.3666337,-71.1053481
+306,Five Spices House,b306,nvhj,"546 Massachusetts Ave, Cambridge, MA 02139, USA",42.3642804,-71.1022837
+307,Flame Hot Pot and Sushi,b307,nvhj,"1001 Massachusetts Ave, Cambridge, MA 02138, USA",42.3696346,-71.1111973
+308,Flour Bakery,b308,nvhj,"40 Erie St, Cambridge, MA 02139, USA",42.3573464,-71.10465180000001
+309,Flour Bakery,b309,nvhj,"190 Massachusetts Ave, Cambridge, MA 02139, USA",42.3610025,-71.0966286
+310,Flour Bakery,b310,nvhj,"114 Mt Auburn St, Cambridge, MA 02138, USA",42.3730471,-71.12239570000001
+311,Flyod's 99 Barbershop,b311,nvhj,"1672 Massachusetts Ave, Cambridge, MA 02138, USA",42.382136,-71.119945
+312,Follow the Honey,b312,nvhj,"1132 Massachusetts Ave, Cambridge, MA 02138, USA",42.3708331,-71.1142096
+313,FoodLand,b313,nvhj,"2234 Massachusetts Ave, Cambridge, MA 02140, USA",42.3937807,-71.126493
+314,Foot Heaven,b314,nvhj,"875 Main St, Cambridge, MA 02139, USA",42.3636263,-71.09891859999999
+315,Forage,b315,nvhj,"5 Craigie Cir, Cambridge, MA 02138, USA",42.3793762,-71.1272125
+316,Formaggio Kendall,b316,nvhj,"94 Hampshire St, Cambridge, MA 02139, USA",42.368827,-71.0951351
+317,Formaggio Kitchen,b317,nvhj,"244 Huron Ave, Cambridge, MA 02138, USA",42.3813436,-71.1337576
+318,Forty Winks,b318,nvhj,"56 John F. Kennedy St, Cambridge, MA 02138, USA",42.3717355,-71.1204815
+319,Four Seaons Nail Design,b319,nvhj,"889 Cambridge St, Cambridge, MA 02141, USA",42.3727041,-71.0916697
+320,Francis Bane Dentistry,b320,nvhj,"2179 Massachusetts Ave, Cambridge, MA 02140, USA",42.3928789,-71.1246826
+321,Franco's Hair Studio,b321,nvhj,"157 Hampshire St, Cambridge, MA 02139, USA",42.371693,-71.0981598
+322,Frank's Steakhouse,b322,nvhj,"2310 Massachusetts Ave, Cambridge, MA 02140, USA",42.3953525,-71.12819089999999
+323,Fresh Mart,b323,nvhj,"222 Broadway, Cambridge, MA 02139, USA",42.3663518,-71.0941138
+324,Fresh Pond Ballet,b324,nvhj,"1798 Massachusetts Ave, Cambridge, MA 02140, USA",42.386073,-71.11957629999999
+325,Friendly Corner Convenience Store,b325,nvhj,"2408 Massachusetts Ave, Cambridge, MA 02140, USA",42.397364,-71.13060639999999
+326,Fuji Restaurant,b326,nvhj,"300 Third St, Cambridge, MA 02142, USA",42.36521279999999,-71.081997
+327,Fun Antiques,b327,nvhj,"33 Belmont St, Cambridge, MA 02138, USA",42.3750591,-71.1515438
+328,Galante Insurance,b328,nvhj,"1939 Massachusetts Ave, Cambridge, MA 02140, USA",42.3896924,-71.1199638
+329,Garment District/Boston Costume,b329,nvhj,"200 Broadway, Cambridge, MA 02139, USA",42.3658874,-71.0930228
+330,Gather Here,b330,nvhj,"1343 Cambridge St, Cambridge, MA 02139, USA",42.3737356,-71.0999454
+331,General Optical Company,b331,nvhj,"2038 Massachusetts Ave, Cambridge, MA 02140, USA",42.3906762,-71.1223672
+332,Genki Ya,b332,nvhj,"231 Alewife Brook Pkwy, Cambridge, MA 02138, USA",42.3891021,-71.1434823
+333,Gentle Dental,b333,nvhj,"19 White St, Cambridge, MA 02140, USA",42.3896076,-71.1190891
+334,Gentle Dental,b334,nvhj,"725 Massachusetts Ave, Cambridge, MA 02139, USA",42.3663058,-71.1046897
+335,Get in Shape for Women,b335,nvhj,"1764 Massachusetts Ave, Cambridge, MA 02138, USA",42.3852646,-71.1196228
+336,Giulia,b336,nvhj,"1682 Massachusetts Ave, Cambridge, MA 02138, USA",42.3825077,-71.1199941
+337,Glass House,b337,nvhj,"450 Kendall St, Cambridge, MA 02142, USA",42.3633362,-71.08143989999999
+338,Golden Touch Cleaners,b338,nvhj,"987 Massachusetts Ave, Cambridge, MA 02138, USA",42.369356,-71.1108143
+339,"Gomes Travel Service, Inc.",b339,nvhj,"777 Cambridge St, Cambridge, MA 02141, USA",42.3724047,-71.0895642
+340,Good Vibrations,b340,nvhj,"52 John F. Kennedy St, Cambridge, MA 02138, USA",42.371916,-71.1204304
+341,Goodwill Store,b341,nvhj,"520 Massachusetts Ave, Cambridge, MA 02139, USA",42.3640823,-71.1020289
+342,Gorgeous Nails,b342,nvhj,"435 Cambridge St, Cambridge, MA 02141, USA",42.3716653,-71.0835987
+343,Gracies Kendall Square,b343,nvhj,"399 Binney St, Cambridge, MA 02141, USA",42.3676032,-71.0902725
+344,Gracenote Coffee and Wine,b344,nvhj,"150 First St, Cambridge, MA 02142, USA",42.3662828,-71.07771389999999
+345,Grafton Street Pub & Grill,b345,nvhj,"1230 Massachusetts Ave, Cambridge, MA 02138, USA",42.37224399999999,-71.115894
+346,Gran Gusto,b346,nvhj,"90 Sherman St, Cambridge, MA 02140, USA",42.388679,-71.13229299999999
+347,GrayMist Studio and Shop,b347,nvhj,"364 Huron Ave, Cambridge, MA 02138, USA",42.38099829999999,-71.13893039999999
+348,Great Eastern Trading Company,b348,nvhj,"49 River St, Cambridge, MA 02139, USA",42.3647608,-71.1065551
+349,Greek Corner,b349,nvhj,"2366 Massachusetts Ave, Cambridge, MA 02140, USA",42.3963792,-71.1295298
+350,Green Street Grill,b350,nvhj,"280 Green St, Cambridge, MA 02139, USA",42.3645171,-71.1041992
+351,Grendel's Den,b351,nvhj,"89 Winthrop St, Cambridge, MA 02138, USA",42.3724617,-71.1208398
+352,Grolier Poetry Book Shop,b352,nvhj,"6 Plympton St, Cambridge, MA 02138, USA",42.3724459,-71.1164383
+353,Guangzhou Restaurant,b353,nvhj,"1220 Cambridge St, Cambridge, MA 02139, USA",42.3731458,-71.0978276
+354,Guitar Stop,b354,nvhj,"1760 Massachusetts Ave, Cambridge, MA 02138, USA",42.3851983,-71.11966919999999
+355,Gustazo Cuban Restauant & Café,b355,nvhj,"2067 Massachusetts Ave, Cambridge, MA 02140, USA",42.3915915,-71.12289539999999
+356,Gymnastic Academy of Boston,b356,nvhj,"128 Smith Pl, Cambridge, MA 02138, USA",42.3936605,-71.1501507
+357,Gypsy Place Coffee,b357,nvhj,"90 Hampshire St, Cambridge, MA 02139, USA",42.3684656,-71.0946476
+358,H&R Block,b358,nvhj,"674 Massachusetts Ave, Cambridge, MA 02139, USA",42.3655319,-71.1044726
+359,H&R Block,b359,nvhj,"1910 Massachusetts Ave, Cambridge, MA 02140, USA",42.3889118,-71.11995929999999
+360,Hair Collage,b360,nvhj,"759 Massachusetts Ave, Cambridge, MA 02139, USA",42.3665671,-71.10536019999999
+361,Hair Company,b361,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+362,Hair Connection,b362,nvhj,"1768 Massachusetts Ave, Cambridge, MA 02140, USA",42.3854212,-71.11958539999999
+363,Hair Theory Studio,b363,nvhj,"5 Arrow St, Cambridge, MA 02138, USA",42.3712379,-71.1145722
+364,Hair International,b364,nvhj,"2300 Massachusetts Ave, Cambridge, MA 02140, USA",42.3950629,-71.12790919999999
+365,Half Shell Pizza,b365,nvhj,"1760 Massachusetts Ave, Cambridge, MA 02138, USA",42.3851983,-71.11966919999999
+366,Hallie's Flower Garden,b366,nvhj,"248 Huron Ave, Cambridge, MA 02138, USA",42.3813448,-71.1338737
+367,Hampshire Market,b367,nvhj,"117 Hampshire St, Cambridge, MA 02139, USA",42.36996,-71.09594129999999
+368,Hanaya Floral Design,b368,nvhj,"292 Concord Ave, Cambridge, MA 02138, USA",42.3836964,-71.1340227
+369,Handle Bar Indoor Cycling Studio,b369,nvhj,"1030 Massachusetts Ave, Cambridge, MA 02138, USA",42.3694825,-71.112265
+370,Harvard Beauty Spa,b370,nvhj,"997 Massachusetts Ave, Cambridge, MA 02138, USA",42.3694119,-71.1110966
+371,Harvard Book Store,b371,nvhj,"1256 Massachusetts Ave, Cambridge, MA 02138, USA",42.3725675,-71.1163528
+372,Harvard Square Community Acupuncture,b372,nvhj,"1208 Massachusetts Ave, Cambridge, MA 02138, USA",42.3718905,-71.1153984
+373,Harvard Coop,b373,nvhj,"1400 Massachusetts Ave, Cambridge, MA 02138, USA",42.3737459,-71.119646
+374,Harvard Eyebrow Threading,b374,nvhj,"12 Eliot St, Cambridge, MA 02138, USA",42.3723109,-71.12157239999999
+375,Harvard House of Pizza,b375,nvhj,"1706 Massachusetts Ave, Cambridge, MA 02138, USA",42.3832996,-71.11985969999999
+376,Harvard Market,b376,nvhj,"1627 Cambridge St, Cambridge, MA 02138, USA",42.3749663,-71.10927079999999
+377,Harvard Shop,b377,nvhj,52 JFK St & 67 Mt. Auburn St.,0,0
+378,Harvard Shop,b378,nvhj,"36 John F. Kennedy St, Cambridge, MA 02138, USA",42.3726743,-71.1198689
+379,Harvard Square Shiatsu,b379,nvhj,"186 Hampshire St, Cambridge, MA 02139, USA",42.3724592,-71.0995685
+380,Harvard Wine Company,b380,nvhj,"1664 Massachusetts Ave, Cambridge, MA 02138, USA",42.3819478,-71.1200399
+381,Harvest,b381,nvhj,"44 Brattle St, Cambridge, MA 02138, USA",42.3737541,-71.12187410000001
+382,Harvest of India,b382,nvhj,"1001 Massachusetts Ave, Cambridge, MA 02138, USA",42.3696346,-71.1111973
+383,Havana Club,b383,nvhj,"288 Green St, Cambridge, MA 02139, USA",42.3646038,-71.1043268
+384,Headlines Unisex Barbershop,b384,nvhj,"1111 Cambridge St, Cambridge, MA 02139, USA",42.3732417,-71.095669
+385,Healthworks,b385,nvhj,"35 White St, Cambridge, MA 02140, USA",42.388955,-71.1188569
+386,Heartbreak Hill Running Company,b386,nvhj,"294 Massachusetts Ave, Cambridge, MA 02139, USA",42.3621846,-71.0986535
+387,Helmand,b387,nvhj,"143 First St, Cambridge, MA 02142, USA",42.366448,-71.0781437
+388,Henrietta's Table,b388,nvhj,"1 Bennett St, Cambridge, MA 02138, USA",42.3722449,-71.123044
+389,Henry Bear's Park,b389,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+390,Hi-Rise Bread Company,b390,nvhj,"208 Concord Ave, Cambridge, MA 02138, USA",42.38243310000001,-71.1314366
+391,Hi-Rise Bread Company,b391,nvhj,"1663 Massachusetts Ave, Cambridge, MA 02138, USA",42.3818261,-71.1195213
+392,Hidden Treasures,b392,nvhj,"36 John F. Kennedy St, Cambridge, MA 02138, USA",42.3726743,-71.1198689
+393,Highland Fried,b393,nvhj,"1271 Cambridge St, Cambridge, MA 02139, USA",42.3735991,-71.0986561
+394,Hillside Cleaners,b394,nvhj,"49 Brattle St, Cambridge, MA 02138, USA",42.3741801,-71.1214332
+395,Hilton Tent City,b395,nvhj,"565 Massachusetts Ave, Cambridge, MA 02139, USA",42.3648563,-71.1022146
+396,HMart,b396,nvhj,"581 Massachusetts Ave, Cambridge, MA 02139, USA",42.3650455,-71.1025628
+397,Honeycomb Creamery,b397,nvhj,"1702 Massachusetts Ave, Cambridge, MA 02138, USA",42.3831798,-71.1198525
+398,Honey Jones Studio,b398,nvhj,"270 Huron Ave, Cambridge, MA 02138, USA",42.3813172,-71.134802
+399,Hong Kong Restaurant,b399,nvhj,"1238 Massachusetts Ave, Cambridge, MA 02138, USA",42.3723645,-71.1160019
+400,Hotel 1868,b400,nvhj,"1868 Massachusetts Ave, Cambridge, MA 02140, USA",42.3880116,-71.1197388
+401,Hourglass Tattoo,b401,nvhj,"1680 Massachusetts Ave, Cambridge, MA 02138, USA",42.3824548,-71.1199013
+402,Hourly Oyster House,b402,nvhj,"15 Dunster St, Cambridge, MA 02138, USA",42.3729377,-71.11913679999999
+403,House of Chang,b403,nvhj,"282 Concord Ave, Cambridge, MA 02138, USA",42.3835218,-71.133746
+404,Hubba Hubba,b404,nvhj,"2 Ellery St, Cambridge, MA 02138, USA",42.3696546,-71.1115638
+405,Huron Cleaners,b405,nvhj,"1654 Massachusetts Ave, Cambridge, MA 02138, USA",42.3816767,-71.1200173
+406,I Love Sushi,b406,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+407,iFixonWheels,b407,nvhj,"361 Cambridge St, Cambridge, MA 02141, USA",42.3714153,-71.0820681
+408,Iggy's Bread,b408,nvhj,"130 Fawcett St, Cambridge, MA 02138, USA",42.3935739,-71.1482865
+409,IHOP,b409,nvhj,"16 Eliot St, Cambridge, MA 02138, USA",42.3720348,-71.1215162
+410,Image Care Electrolysis,b410,nvhj,"1426 Cambridge St, Cambridge, MA 02139, USA",42.373695,-71.1020289
+411,Imagine Playspace,b411,nvhj,"23 Bay State Rd, Cambridge, MA 02138, USA",42.3874271,-71.1402497
+412,Imperial Cleaners,b412,nvhj,"161 Huron Ave, Cambridge, MA 02138, USA",42.3824362,-71.1312717
+413,Improv Boston,b413,nvhj,"40 Prospect St, Cambridge, MA 02139, USA",42.3659875,-71.1031895
+414,In Style Barber Shop,b414,nvhj,"566 Cambridge St, Cambridge, MA 02141, USA",42.3716214,-71.0857341
+415,India Pavilion,b415,nvhj,"17 Central Square, Cambridge, MA 02139, USA",42.3653925,-71.1047518
+416,Inman Pharmacy,b416,nvhj,"1414 Cambridge St, Cambridge, MA 02139, USA",42.3736305,-71.1015415
+417,Inman Square Hardware,b417,nvhj,"1337 Cambridge St, Cambridge, MA 02139, USA",42.3737313,-71.099847
+418,Inman Square Laudromat,b418,nvhj,"1298 Cambridge St, Cambridge, MA 02139, USA",42.3733833,-71.0992203
+419,Inman Square Wine and Spirits,b419,nvhj,"1226 Cambridge St, Cambridge, MA 02139, USA",42.3732493,-71.09786629999999
+420,International Convenience,b420,nvhj,"102 Columbia St, Cambridge, MA 02139, USA",42.3658168,-71.0982687
+421,International Language Center,b421,nvhj,"2014 Massachusetts Ave, Cambridge, MA 02140, USA",42.3904596,-71.1218045
+422,Irving House,b422,nvhj,"24 Irving St, Cambridge, MA 02138, USA",42.3755396,-71.1106674
+423,Isabel Y Anita Gallery Salon,b423,nvhj,"1168 Massachusetts Ave, Cambridge, MA 02138, USA",42.3713418,-71.1147369
+424,Ittoku,b424,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+425,Izzy's Restaurant and Sub Shop,b425,nvhj,"169 Harvard St, Cambridge, MA 02139, USA",42.3662856,-71.0955761
+426,J. August,b426,nvhj,"1320 Massachusetts Ave, Cambridge, MA 02138, USA",42.3728722,-71.11773660000001
+427,J. Miles,b427,nvhj,"340 Huron Ave, Cambridge, MA 02138, USA",42.381104,-71.1379121
+428,J.P. Licks,b428,nvhj,"1312 Massachusetts Ave, Cambridge, MA 02138, USA",42.3728618,-71.1175264
+429,Jack's Tailoring & Dry Cleaning,b429,nvhj,"1937 Massachusetts Ave, Cambridge, MA 02140, USA",42.3896787,-71.12002319999999
+430,Jae H Kim Tae Kwan Do,b430,nvhj,"2000 Massachusetts Ave, Cambridge, MA 02140, USA",42.3902413,-71.1215028
+431,Jeana's Dirty Dog Salon,b431,nvhj,"298 Concord Ave, Cambridge, MA 02138, USA",42.3837517,-71.1344582
+432,Jessica Nails and Spa,b432,nvhj,"2000 Massachusetts Ave, Cambridge, MA 02140, USA",42.3902413,-71.1215028
+433,Jimmy's Shoe Repair,b433,nvhj,"42 Prospect St, Cambridge, MA 02139, USA",42.3660088,-71.1030966
+434,Joe Sent Me,b434,nvhj,"2388 Massachusetts Ave, Cambridge, MA 02140, USA",42.3968931,-71.1300696
+435,John and Nick's Texaco Services,b435,nvhj,"975 Massachusetts Ave, Cambridge, MA 02139, USA",42.3692313,-71.1102457
+436,John's Barber Shop,b436,nvhj,"16 Prospect St, Cambridge, MA 02139, USA",42.3658287,-71.1035765
+437,Joie De ViVre,b437,nvhj,"1792 Massachusetts Ave, Cambridge, MA 02140, USA",42.3859729,-71.1195879
+438,Join Ventures Physical Therapy,b438,nvhj,"356 Third St, Cambridge, MA 02142, USA",42.3635776,-71.08342259999999
+439,Jose's,b439,nvhj,"131 Sherman St, Cambridge, MA 02140, USA",42.3901881,-71.13285239999999
+440,Judy Jetson Hair,b440,nvhj,"1765 Massachusetts Ave, Cambridge, MA 02140, USA",42.3852731,-71.11901929999999
+441,Juniors Automotive and Gas,b441,nvhj,"1725 Massachusetts Ave, Cambridge, MA 02138, USA",42.3840057,-71.1192128
+442,Kaledoscope Tattoo,b442,nvhj,"2374 Massachusetts Ave, Cambridge, MA 02140, USA",42.3967034,-71.1297404
+443,Kantipur Cafe,b443,nvhj,"119 Hampshire St, Cambridge, MA 02139, USA",42.3699905,-71.09598729999999
+444,Keezer’s and Le Couturier,b444,nvhj,"1740 Massachusetts Ave, Cambridge, MA 02138, USA",42.3846204,-71.119762
+445,Kendall Flower Shop,b445,nvhj,"96 Ames St, Cambridge, MA 02142, USA",42.3633552,-71.08760769999999
+446,Kendall Hotel,b446,nvhj,"350 Main St, Cambridge, MA 02142, USA",42.362207,-71.08731019999999
+447,Kendall House of Pizza,b447,nvhj,"201 Third St, Cambridge, MA 02141, USA",42.367611,-71.0813703
+448,Kendall Kitchen,b448,nvhj,"201 Broadway, Cambridge, MA 02139, USA",42.3661103,-71.0923724
+449,Kendall Square Cinema,b449,nvhj,"365 Binney St, Cambridge, MA 02142, USA",42.3679575,-71.0896839
+450,K-oop Hairstyling,b450,nvhj,"4 Broad Canal Way, Cambridge, MA 02142, USA",42.363192,-71.0831326
+451,Koreana,b451,nvhj,"158 Prospect St, Cambridge, MA 02139, USA",42.3690595,-71.1009612
+452,Kung Fu Tea,b452,nvhj,"1160 Massachusetts Ave, Cambridge, MA 02138, USA",42.3712897,-71.114629
+453,L.A. Burdick Chocolate,b453,nvhj,"52 Brattle St, Cambridge, MA 02138, USA",42.3743053,-71.1220598
+454,L.A. Market,b454,nvhj,"2362 Massachusetts Ave, Cambridge, MA 02140, USA",42.3963984,-71.1294168
+455,La Fabrica,b455,nvhj,"450 Massachusetts Ave, Cambridge, MA 02139, USA",42.3634198,-71.1012291
+456,La Flamme Barber Shop,b456,nvhj,"21 Dunster St, Cambridge, MA 02138, USA",42.3728227,-71.1192362
+457,La Moon Thai Spa,b457,nvhj,"220 Concord Ave, Cambridge, MA 02138, USA",42.3825851,-71.13178479999999
+458,La Saison Bakery,b458,nvhj,"407 Concord Ave, Cambridge, MA 02138, USA",42.3859141,-71.1380295
+459,Lamplighter Brewery,b459,nvhj,"284 Broadway, Cambridge, MA 02139, USA",42.3678174,-71.0979205
+460,LaundroMutt,b460,nvhj,"489 Concord Ave, Cambridge, MA 02138, USA",42.3868844,-71.14069719999999
+461,Laundry Room,b461,nvhj,"1761 Massachusetts Ave, Cambridge, MA 02140, USA",42.38522700000001,-71.11903509999999
+462,Laura Jean Floral,b462,nvhj,"270 Concord Ave, Cambridge, MA 02138, USA",42.3833354,-71.133305
+463,Le Petit Salon Curl Concept,b463,nvhj,"56 John F. Kennedy St, Cambridge, MA 02138, USA",42.3717355,-71.1204815
+464,Le's,b464,nvhj,"36 John F. Kennedy St, Cambridge, MA 02138, USA",42.3726743,-71.1198689
+465,Le's Beauty & Nail,b465,nvhj,"480 Cambridge St, Cambridge, MA 02141, USA",42.3714507,-71.0843531
+466,Le's Sushi Bar and Restaurant,b466,nvhj,"425 Cambridge St, Cambridge, MA 02141, USA",42.371647,-71.08327369999999
+467,Learning Center,b467,nvhj,"657 Cambridge St, Cambridge, MA 02141, USA",42.3721369,-71.0872332
+468,Leavitt & Peirce,b468,nvhj,"1316 Massachusetts Ave, Cambridge, MA 02138, USA",42.372856,-71.11762569999999
+469,Legal Fish Bowl,b469,nvhj,"355 Main St, Cambridge, MA 02142, USA",42.3628181,-71.08743609999999
+470,Legal Seafood,b470,nvhj,"355 Main St, Cambridge, MA 02142, USA",42.3628181,-71.08743609999999
+471,Leo Caroll Jewelers,b471,nvhj,"1348 Cambridge St, Cambridge, MA 02139, USA",42.3735188,-71.0999215
+472,Lesley Barnes and Noble,b472,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+473,Lewis Beauty Salon,b473,nvhj,"44 Prospect St, Cambridge, MA 02139, USA",42.3660021,-71.1031663
+474,Life Alive Organic Café,b474,nvhj,"765 Massachusetts Ave, Cambridge, MA 02139, USA",42.3666438,-71.10537049999999
+475,Lily P's,b475,nvhj,"50 Binney St, Cambridge, MA 02142, USA",42.3650356,-71.07866659999999
+476,Lilypad,b476,nvhj,"1353 Cambridge St, Cambridge, MA 02139, USA",42.3738079,-71.100088
+477,Lingo Café and Bar,b477,nvhj,"2 Education Cir, Cambridge, MA 02141, USA",42.3698357,-71.06885849999999
+478,Little Crepe Cafe,b478,nvhj,"102 Oxford St, Cambridge, MA 02140, USA",42.3831266,-71.1160019
+479,Little Details,b479,nvhj,"2255 Massachusetts Ave, Cambridge, MA 02140, USA",42.3943896,-71.12652779999999
+480,Little Donkey,b480,nvhj,"505 Massachusetts Ave, Cambridge, MA 02139, USA",42.3643442,-71.1015176
+481,Living Harmony,b481,nvhj,"24 Harvey St, Cambridge, MA 02140, USA",42.3971097,-71.1311527
+482,Lizard Lounge,b482,nvhj,"1667 Massachusetts Ave, Cambridge, MA 02138, USA",42.3820856,-71.1193674
+483,Lizzy's Ice Cream,b483,nvhj,"29 Church St, Cambridge, MA 02138, USA",42.3745228,-71.12012179999999
+484,Loeb Drama Center/American Repertory Theater,b484,nvhj,"Loeb Drama Center, 64 Brattle St, Cambridge, MA 02138, USA",42.3748457,-71.1229902
+485,Lola Hair Studio,b485,nvhj,"87 Blanchard Rd, Cambridge, MA 02138, USA",42.3941629,-71.1579318
+486,Lone Star Taco Bar,b486,nvhj,"635 Cambridge St, Cambridge, MA 02141, USA",42.37207919999999,-71.0868948
+487,Longfellow Bar,b487,nvhj,"40 Brattle St #3, Cambridge, MA 02138, USA",42.3735278,-71.121526
+488,Looks,b488,nvhj,"2 Arrow St, Cambridge, MA 02138, USA",42.3708165,-71.1145363
+489,Lord Hobo,b489,nvhj,"92 Hampshire St, Cambridge, MA 02139, USA",42.3687255,-71.0949554
+490,Lovely Spa,b490,nvhj,"473 Cambridge St, Cambridge, MA 02141, USA",42.3717445,-71.08406289999999
+491,Loyal Companion,b491,nvhj,"95 First St, Cambridge, MA 02141, USA",42.36806920000001,-71.07774909999999
+492,Loyal Nine,b492,nvhj,"660 Cambridge St, Cambridge, MA 02141, USA",42.3718494,-71.08761439999999
+493,Luce,b493,nvhj,"1 Shepard St, Cambridge, MA 02138, USA",42.38186229999999,-71.1201221
+494,Lucky's Corner,b494,nvhj,"272 Broadway, Cambridge, MA 02139, USA",42.3678216,-71.0976187
+495,Lucky's Tattoo and Piercing,b495,nvhj,"694 Massachusetts Ave, Cambridge, MA 02139, USA",42.3657372,-71.1047299
+496,Luigi's Variety,b496,nvhj,"520 Cambridge St, Cambridge, MA 02141, USA",42.3715689,-71.08499139999999
+497,Lulu Family Cuts,b497,nvhj,"2323 Massachusetts Ave, Cambridge, MA 02140, USA",42.3958432,-71.1281906
+498,M'lor Cafe,b498,nvhj,"1093 Cambridge St, Cambridge, MA 02139, USA",42.3731796,-71.0954136
+499,Ma Magoo's,b499,nvhj,"6 Concord Ln, Cambridge, MA 02138, USA",42.3880121,-71.1424014
+500,Mad Monkfish,b500,nvhj,"524 Massachusetts Ave, Cambridge, MA 02139, USA",42.364137,-71.1021313
+501,Made by Me,b501,nvhj,"1685 Massachusetts Ave, Cambridge, MA 02138, USA",42.3826866,-71.1193558
+502,Mae Asian Eatery,b502,nvhj,"781 Main St, Cambridge, MA 02139, USA",42.3633825,-71.0968697
+503,Magic Beans,b503,nvhj,"361 Huron Ave, Cambridge, MA 02138, USA",42.3813642,-71.138678
+504,Maharaja,b504,nvhj,"57 John F. Kennedy St, Cambridge, MA 02138, USA",42.3720507,-71.12077239999999
+505,Mainely Burgers,b505,nvhj,"704 Massachusetts Ave, Cambridge, MA 02139, USA",42.3659526,-71.104964
+506,Majestic Yoga,b506,nvhj,"382 Huron Ave, Cambridge, MA 02138, USA",42.3809169,-71.1392118
+507,Mamaleh's Deli,b507,nvhj,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",42.3673039,-71.09012129999999
+508,Marathon Sports,b508,nvhj,"1654 Massachusetts Ave, Cambridge, MA 02138, USA",42.3816767,-71.1200173
+509,Marimekko,b509,nvhj,"350 Huron Ave, Cambridge, MA 02138, USA",42.3810906,-71.1380513
+510,Mariposa Bakery,b510,nvhj,"424 Massachusetts Ave, Cambridge, MA 02139, USA",42.3633039,-71.1007291
+511,Market Square Jewelers,b511,nvhj,"1156 Massachusetts Ave, Cambridge, MA 02138, USA",42.37125899999999,-71.1146325
+512,Martin Brothers Liquors,b512,nvhj,"1144 Cambridge St, Cambridge, MA 02139, USA",42.3730422,-71.0964582
+513,Mary Chung,b513,nvhj,"464 Massachusetts Ave, Cambridge, MA 02139, USA",42.3636454,-71.1012944
+514,Mass Ave Diner,b514,nvhj,"906 Massachusetts Ave, Cambridge, MA 02139, USA",42.3681385,-71.1086789
+515,Mass Ave. Chicken,b515,nvhj,"736 Massachusetts Ave, Cambridge, MA 02139, USA",42.366109,-71.10521400000002
+516,Massage Ultra,b516,nvhj,"2107 Massachusetts Ave, Cambridge, MA 02140, USA",42.3918651,-71.1235221
+517,Matthew Feldman Gallery,b517,nvhj,"370 1/2 Huron Ave, Cambridge, MA 02138, USA",42.3809303,-71.13907259999999
+518,Mayflower Poultry Company,b518,nvhj,"621 Cambridge St, Cambridge, MA 02141, USA",42.3719782,-71.0865805
+519,McDonald's,b519,nvhj,"463 Massachusetts Ave, Cambridge, MA 02139, USA",42.3640329,-71.1008684
+520,Mead Hall,b520,nvhj,"90 Broadway, Cambridge, MA 02142, USA",42.3636291,-71.0871057
+521,Mediterranean Grill,b521,nvhj,"2401 Massachusetts Ave, Cambridge, MA 02140, USA",42.3971972,-71.1296727
+522,Metropolitan Laundromat,b522,nvhj,"266 Brookline St, Cambridge, MA 02139, USA",42.3574747,-71.1076925
+523,Mexcito Street Tacos,b523,nvhj,"305 Kendall St, Cambridge, MA 02142, USA",42.363636,-71.0821321
+524,Michaels,b524,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+525,Microcenter,b525,nvhj,"730 Memorial Dr, Cambridge, MA 02139, USA",42.3572095,-71.1143075
+526,Mid Cambridge Cleaners,b526,nvhj,"1540a Cambridge St, Cambridge, MA 02139, USA",42.374331,-71.1063363
+527,Middle East,b527,nvhj,"472 Massachusetts Ave, Cambridge, MA 02139, USA",42.363599,-71.10153199999999
+528,Middlesex Lounge,b528,nvhj,"315 Massachusetts Ave, Cambridge, MA 02139, USA",42.3625136,-71.09837399999999
+529,Midwest Grill,b529,nvhj,"1124 Cambridge St, Cambridge, MA 02139, USA",42.3729181,-71.0959475
+530,Mike's Monster Guitar,b530,nvhj,"896 Massachusetts Ave, Cambridge, MA 02139, USA",42.3679578,-71.1084352
+531,Mike's Pastry,b531,nvhj,"11 Dunster St, Cambridge, MA 02138, USA",42.3729986,-71.1191213
+532,Milk Bar,b532,nvhj,"1 Brattle St, Cambridge, MA 02138, USA",42.37325269999999,-71.12122910000001
+533,Million Year Picnic,b533,nvhj,"99 Mt Auburn St, Cambridge, MA 02138, USA",42.3728615,-71.12058549999999
+534,Mint Julep,b534,nvhj,"6 Church St, Cambridge, MA 02138, USA",42.3742832,-71.1192652
+535,Miracle of Science,b535,nvhj,"321 Massachusetts Ave, Cambridge, MA 02139, USA",42.3625781,-71.0985551
+536,Misrak Beauty Salon,b536,nvhj,"2368 Massachusetts Ave, Cambridge, MA 02140, USA",42.396622,-71.12983799999999
+537,MIT Coop,b537,nvhj,"80 Broadway, Cambridge, MA 02142, USA",42.3630202,-71.0863337
+538,MIT Museum,b538,nvhj,"MIT Museum Building, 265 Massachusetts Ave, Cambridge, MA 02139, USA",42.3622611,-71.09754459999999
+539,MIT Press Bookstore,b539,nvhj,"301 Massachusetts Ave, Cambridge, MA 02139, USA",42.3624535,-71.09824429999999
+540,Mit-It Restaurant,b540,nvhj,"1678 Massachusetts Ave, Cambridge, MA 02138, USA",42.3823964,-71.1199941
+541,MK Hair Studio,b541,nvhj,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",42.3673039,-71.09012129999999
+542,Mobile Gas Station,b542,nvhj,"2615 Massachusetts Ave, Cambridge, MA 02140, USA",42.4010983,-71.1352662
+543,Mobilia Gallery,b543,nvhj,"358 Huron Ave, Cambridge, MA 02138, USA",42.3810132,-71.1384691
+544,Modern Homebrew Emporium,b544,nvhj,"2304 Massachusetts Ave, Cambridge, MA 02140, USA",42.395134,-71.12804129999999
+545,Mohawk Shade and Blind,b545,nvhj,"2098 Massachusetts Ave, Cambridge, MA 02140, USA",42.3914257,-71.1237194
+546,Momi Nomi,b546,nvhj,"1128 Cambridge St, Cambridge, MA 02139, USA",42.3730251,-71.0961195
+547,Mona Lisa Pizza,b547,nvhj,"1625 Cambridge St, Cambridge, MA 02138, USA",42.3749008,-71.1091172
+548,Monella,b548,nvhj,"29 Brattle St, Cambridge, MA 02138, USA",42.3735893,-71.1207507
+549,Monica's Beauty Salon,b549,nvhj,"377 Walden St, Cambridge, MA 02138, USA",42.3837042,-71.1344447
+550,Montrose Spa,b550,nvhj,"1646 Massachusetts Ave, Cambridge, MA 02138, USA",42.381221,-71.1199939
+551,Moona,b551,nvhj,"243 Hampshire St, Cambridge, MA 02139, USA",42.3741762,-71.1010295
+552,Mother Juice,b552,nvhj,"625 W Kendall St, Cambridge, MA 02142, USA",42.36448619999999,-71.0819672
+553,Motto,b553,nvhj,"26 Church St, Cambridge, MA 02138, USA",42.374232,-71.1199941
+554,Mozi Foot Spa,b554,nvhj,"2348 Massachusetts Ave, Cambridge, MA 02140, USA",42.396085,-71.129025
+555,Mr. Bartley's Burger Cottage,b555,nvhj,"1246 Massachusetts Ave, Cambridge, MA 02138, USA",42.3724573,-71.1162294
+556,Mu Lan Restaurant,b556,nvhj,"228 Broadway, Cambridge, MA 02139, USA",42.3663317,-71.09432269999999
+557,Mucky Kids Art Studio,b557,nvhj,"2404 Massachusetts Ave, Cambridge, MA 02140, USA",42.3971994,-71.13040950000001
+558,Mudflat Gallery,b558,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+559,Multicultural Arts Center,b559,nvhj,"41 Second St, East Cambridge, MA 02141, USA",42.36982039999999,-71.07924729999999
+560,Muqueca,b560,nvhj,"1008 Cambridge St, Cambridge, MA 02141, USA",42.372644,-71.0939049
+561,Naco Taco,b561,nvhj,"297 Massachusetts Ave, Cambridge, MA 02139, USA",42.3624141,-71.09801329999999
+562,Nail and Spa Waxing,b562,nvhj,"2000 Massachusetts Ave, Cambridge, MA 02140, USA",42.3902413,-71.1215028
+563,Nails 159,b563,nvhj,"159 Hampshire St, Cambridge, MA 02139, USA",42.3717525,-71.0982403
+564,Nails by Porter,b564,nvhj,"7 Upland Rd, Cambridge, MA 02140, USA",42.38825,-71.1198316
+565,National Tire and Battery,b565,nvhj,"2501 Massachusetts Ave, Cambridge, MA 02140, USA",42.3994045,-71.1321794
+566,Natural Healing Center,b566,nvhj,"2032 Massachusetts Ave, Cambridge, MA 02140, USA",42.3906244,-71.12220409999999
+567,New City Microcreamery,b567,nvhj,"403 Massachusetts Ave, Cambridge, MA 02139, USA",42.363606,-71.1001362
+568,New Deal Fish Market,b568,nvhj,"622 Cambridge St, Cambridge, MA 02141, USA",42.3718096,-71.0867746
+569,New England Aikido,b569,nvhj,"2000 Massachusetts Ave, Cambridge, MA 02140, USA",42.3902413,-71.1215028
+570,New England Comics,b570,nvhj,"14A Eliot St, Cambridge, MA 02138, USA",42.37218499999999,-71.12154319999999
+571,Newbury Comics,b571,nvhj,"36 John F. Kennedy St, Cambridge, MA 02138, USA",42.3726743,-71.1198689
+572,Newtowne Grille,b572,nvhj,"1945 Massachusetts Ave, Cambridge, MA 02140, USA",42.3897425,-71.1200255
+573,907 Main,b573,nvhj,"907 Main St, Cambridge, MA 02139, USA",42.3636264,-71.0996514
+574,Nine Tastes,b574,nvhj,"50 John F. Kennedy St, Cambridge, MA 02138, USA",42.3720079,-71.120381
+575,Nirvana - Taste of India,b575,nvhj,"1680 Massachusetts Ave, Cambridge, MA 02138, USA",42.3824548,-71.1199013
+576,Noodle Stix,b576,nvhj,"11 Belmont St, Cambridge, MA 02138, USA",42.3749531,-71.1506306
+577,Noir,b577,nvhj,"1 Bennett St, Cambridge, MA 02138, USA",42.3722449,-71.123044
+578,Nomad,b578,nvhj,"1771 Massachusetts Ave, Cambridge, MA 02140, USA",42.3854946,-71.11890319999999
+579,Noor Oriental Rugs,b579,nvhj,"769 Concord Ave, Cambridge, MA 02138, USA",42.39079230000001,-71.1542975
+580,North Cambridge Laundromat,b580,nvhj,"2410 Massachusetts Ave, Cambridge, MA 02140, USA",42.3973485,-71.13067070000001
+581,Nu Do Society,b581,nvhj,"125 River St, Cambridge, MA 02139, USA",42.3640336,-71.1087137
+582,Nubar,b582,nvhj,"16 Garden St, Cambridge, MA 02138, USA",42.3773472,-71.1233596
+583,Nussli 118,b583,nvhj,"2259 Massachusetts Ave, Cambridge, MA 02140, USA",42.3944631,-71.1265667
+584,Nyx Gallery,b584,nvhj,"Oberon, 12 Arrow St, Cambridge, MA 02138, USA",42.3711736,-71.11500389999999
+585,Oath Pizza,b585,nvhj,"Novartis Global Research Headquarters, 181 Massachusetts Ave, Cambridge, MA 02139, USA",42.3614695,-71.09573859999999
+586,Oberon - American Repertory Theater,b586,nvhj,"2 Arrow St, Cambridge, MA 02138, USA",42.3708165,-71.1145363
+587,Oggi Gourmet,b587,nvhj,"30 Dunster St, Cambridge, MA 02138, USA",42.3724285,-71.1189815
+588,Ole/Olecito,b588,nvhj,"11 Springfield St, Cambridge, MA 02139, USA",42.3740611,-71.1001488
+589,Oleana,b589,nvhj,"134 Hampshire St, Cambridge, MA 02139, USA",42.3705339,-71.09720089999999
+590,Olympia Fencing Center,b590,nvhj,"127 Smith Pl, Cambridge, MA 02138, USA",42.3938542,-71.150421
+591,On the Spot Computer Repairs,b591,nvhj,"819b Cambridge St, Cambridge, MA 02141, USA",42.3725327,-71.0904253
+592,One Ramen,b592,nvhj,"1759 Massachusetts Ave, Cambridge, MA 02140, USA",42.385181,-71.1190773
+593,Ono Pokebar,b593,nvhj,"1923 Massachusetts Ave, Cambridge, MA 02140, USA",42.3893963,-71.1197045
+594,Orange Theory Fitness,b594,nvhj,"270 Third St, Cambridge, MA 02142, USA",42.3660585,-71.08195060000001
+595,Orient Sunshine Wellness Center,b595,nvhj,"91 Blanchard Rd, Cambridge, MA 02138, USA",42.3941872,-71.1579813
+596,Orinoco,b596,nvhj,"56 John F. Kennedy St, Cambridge, MA 02138, USA",42.3717355,-71.1204815
+597,Otto,b597,nvhj,"1432 Massachusetts Ave, Cambridge, MA 02138, USA",42.374173,-71.1191529
+598,Outpost 186,b598,nvhj,"186 1/2 Hampshire St, Cambridge, MA 02139, USA",42.37247199999999,-71.0996201
+599,Pacheco Jewelers,b599,nvhj,"599 Cambridge St, Cambridge, MA 02141, USA",42.3720413,-71.0861288
+600,Pacific Street Cafe,b600,nvhj,"NW86, 70 Pacific St, Cambridge, MA 02139, USA",42.3598002,-71.1019621
+601,Paddy's Lunch,b601,nvhj,"260 Walden St, Cambridge, MA 02138, USA",42.3859706,-71.1311813
+602,Pagu,b602,nvhj,"310 Massachusetts Ave, Cambridge, MA 02139, USA",42.3624211,-71.09908349999999
+603,Paine Senior Services,b603,nvhj,"3 Church St, Cambridge, MA 02138, USA",42.3745528,-71.1193763
+604,Pammy's,b604,nvhj,"928 Massachusetts Ave, Cambridge, MA 02139, USA",42.3683959,-71.10915469999999
+605,Pandemonium Books & Games,b605,nvhj,"4 Pleasant St, Cambridge, MA 02139, USA",42.3660936,-71.1056
+606,Panera Bread,b606,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+607,Paper Source,b607,nvhj,"1802 Massachusetts Ave, Cambridge, MA 02140, USA",42.3864303,-71.1194836
+608,Parise Cleaners,b608,nvhj,"14 Warren St, Cambridge, MA 02141, USA",42.37264039999999,-71.088009
+609,PARK Restaurant & Bar,b609,nvhj,"59 John F. Kennedy St, Cambridge, MA 02138, USA",42.37180559999999,-71.12096269999999
+610,Parrelli Optical,b610,nvhj,"Porter Square, Cambridge, MA 02140, USA",42.3888566,-71.11939819999999
+611,Passage to India,b611,nvhj,"1900 Massachusetts Ave, Cambridge, MA 02140, USA",42.3887627,-71.1199013
+612,Pavement Coffeehouse,b612,nvhj,"1350 Massachusetts Ave, Cambridge, MA 02138, USA",42.3770019,-71.1166599
+613,Pearce Law,b613,nvhj,"2067 Massachusetts Ave, Cambridge, MA 02140, USA",42.3915915,-71.12289539999999
+614,Peet's Coffee,b614,nvhj,"100 Mt Auburn St, Cambridge, MA 02138, USA",42.3726508,-71.12068180000001
+615,Pemberton Market,b615,nvhj,"2225 Massachusetts Ave, Cambridge, MA 02140, USA",42.39382850000001,-71.1257731
+616,People's Republik,b616,nvhj,"878 Massachusetts Ave, Cambridge, MA 02139, USA",42.3676773,-71.1078781
+617,Pepper Sky's,b617,nvhj,"20 Pearl St, Cambridge, MA 02139, USA",42.3642108,-71.1029152
+618,Petali Flowers,b618,nvhj,"90 Mount Auburn Street, 92 Mt Auburn St, Cambridge, MA 02138, USA",42.3722476,-71.1198555
+619,PetSmart,b619,nvhj,"160 Alewife Brook Pkwy, Cambridge, MA 02138, USA",42.39064,-71.1401814
+620,Phoenix Landing,b620,nvhj,"512 Massachusetts Ave, Cambridge, MA 02139, USA",42.3639709,-71.1020289
+621,Phyllis R. Stein Career Counseling and Coaching,b621,nvhj,"59 Parker St, Cambridge, MA 02138, USA",42.3796514,-71.129429
+622,Pierre Barber Shop,b622,nvhj,"274 Broadway, Cambridge, MA 02139, USA",42.3678443,-71.0975627
+623,Pill Hardware,b623,nvhj,"743 Massachusetts Ave, Cambridge, MA 02139, USA",42.3665346,-71.1050928
+624,Pino Brothers Link,b624,nvhj,"1132 Cambridge St, Cambridge, MA 02139, USA",42.3729947,-71.0961796
+625,Pinocchio's PIzza,b625,nvhj,"74 Winthrop St, Cambridge, MA 02138, USA",42.3719941,-71.1203655
+626,Pita Cambridge,b626,nvhj,"12 Springfield St, Cambridge, MA 02139, USA",42.3740435,-71.1005898
+627,Plan B Salon,b627,nvhj,"99 Mt Auburn St, Cambridge, MA 02138, USA",42.3728615,-71.12058549999999
+628,Planet Fitness,b628,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+629,Plough and Stars,b629,nvhj,"912 Massachusetts Ave, Cambridge, MA 02139, USA",42.36822189999999,-71.1088414
+630,Pod,b630,nvhj,"35 Sacramento St, Cambridge, MA 02138, USA",42.3827184,-71.1160019
+631,Pokeworks,b631,nvhj,"1440 Massachusetts Ave, Cambridge, MA 02138, USA",42.3742998,-71.119164
+632,Porter Square Books,b632,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+633,Porter Square Hotel,b633,nvhj,"1924 Massachusetts Ave, Cambridge, MA 02140, USA",42.3892499,-71.1203655
+634,Porter Square Wine & Spirits,b634,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+635,Portugalia,b635,nvhj,"723 Cambridge St, Cambridge, MA 02141, USA",42.37233639999999,-71.0887286
+636,Pressed Juicery,b636,nvhj,"1380 Massachusetts Ave, Cambridge, MA 02138, USA",42.373312,-71.119062
+637,Primo Cambridge,b637,nvhj,"783 Main St, Cambridge, MA 02139, USA",42.3633422,-71.0969081
+638,Professional Geeks,b638,nvhj,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",42.3708466,-71.1135184
+639,Psychic Spiritual New Age Boutique,b639,nvhj,"163 Hampshire St, Cambridge, MA 02139, USA",42.3718042,-71.0982416
+640,Pull-Up Truck,b640,nvhj,"1 Oxford St, Cambridge, MA 02138, USA",42.37665000000001,-71.11603099999999
+641,Punjabi Dhaba,b641,nvhj,"225 Hampshire St, Cambridge, MA 02139, USA",42.3738823,-71.10078709999999
+642,Puritan & Company,b642,nvhj,"1166 Cambridge St, Cambridge, MA 02139, USA",42.3729571,-71.0968295
+643,Pyara Spa and Salon,b643,nvhj,"1050 Massachusetts Ave, Cambridge, MA 02138, USA",42.3697867,-71.1129613
+644,Q Audio,b644,nvhj,"5 Brookline St, Cambridge, MA 02139, USA",42.3638508,-71.1017075
+645,Q Ballroom,b645,nvhj,"26 New St, Cambridge, MA 02138, USA",42.3878553,-71.1404605
+646,Qi Foot Spa,b646,nvhj,"1168 Massachusetts Ave, Cambridge, MA 02138, USA",42.3713418,-71.1147369
+647,Qingdao Garden,b647,nvhj,"2382 Massachusetts Ave, Cambridge, MA 02140, USA",42.3968057,-71.1299583
+648,Quick Food Mart,b648,nvhj,"1253 Cambridge St, Cambridge, MA 02139, USA",42.3735224,-71.0983275
+649,Rangzen Tibet Place,b649,nvhj,"24 Pearl St, Cambridge, MA 02139, USA",42.3641529,-71.1029549
+650,Raspberry Beret,b650,nvhj,"2302 Massachusetts Ave, Cambridge, MA 02140, USA",42.3950642,-71.12802479999999
+651,Raven Used Books,b651,nvhj,"23 Church St, Cambridge, MA 02138, USA",42.3745052,-71.11985489999999
+652,Rebekah Brooks Jewlery,b652,nvhj,"17 Brattle St, Cambridge, MA 02138, USA",42.3735308,-71.1204412
+653,Red House Restaurant,b653,nvhj,"98 Winthrop St, Cambridge, MA 02138, USA",42.3723006,-71.1212939
+654,Redemption Tattoo,b654,nvhj,"2096 Massachusetts Ave, Cambridge, MA 02140, USA",42.3913661,-71.1236961
+655,Regattabar,b655,nvhj,"1 Bennett St, Cambridge, MA 02138, USA",42.3722449,-71.123044
+656,ReSide,b656,nvhj,"266 Concord Ave, Cambridge, MA 02138, USA",42.3833124,-71.1332238
+657,Revela Salon,b657,nvhj,"614 Main St, Cambridge, MA 02139, USA",42.3628772,-71.0944051
+658,Revival Café and Kitchen,b658,nvhj,"125 Cambridge Park Dr, Cambridge, MA 02140, USA",42.3951805,-71.14573349999999
+659,Richards,b659,nvhj,"1193 Cambridge St, Cambridge, MA 02139, USA",42.3733995,-71.0972474
+660,Riverside Tattoo Company,b660,nvhj,"1700 Massachusetts Ave, Cambridge, MA 02138, USA",42.3831227,-71.1199013
+661,"Robin Bledsoe, Bookseller",b661,nvhj,"1640 Massachusetts Ave, Cambridge, MA 02138, USA",42.3811692,-71.1201578
+662,Rockler Woodworking & Hardware,b662,nvhj,"2154 Massachusetts Ave, Cambridge, MA 02140, USA",42.3922044,-71.12475220000002
+663,Rodney's Bookstore,b663,nvhj,"698 Massachusetts Ave, Cambridge, MA 02139, USA",42.3657859,-71.1049256
+664,Roxy's Central / A4Cade,b664,nvhj,"292 Massachusetts Ave, Cambridge, MA 02139, USA",42.3620629,-71.09839389999999
+665,Royal East,b665,nvhj,"782 Main St, Cambridge, MA 02139, USA",42.3630749,-71.0969901
+666,Royal Pastry Shop,b666,nvhj,"738 Cambridge St, Cambridge, MA 02141, USA",42.372059,-71.08916959999999
+667,Royal Punjab,b667,nvhj,"251 Cambridge St, Cambridge, MA 02141, USA",42.371206,-71.0801445
+668,Rumba Y Timbal Dance Studio,b668,nvhj,"7 Temple St, Cambridge, MA 02139, USA",42.3665411,-71.1040634
+669,Russell House Tavern,b669,nvhj,"14 John F. Kennedy St, Cambridge, MA 02138, USA",42.373158,-71.11945899999999
+670,S + H Construction,b670,nvhj,"26 New St, Cambridge, MA 02138, USA",42.3878553,-71.1404605
+671,S&S Restaurant,b671,nvhj,"1334 Cambridge St, Cambridge, MA 02139, USA",42.3735007,-71.09977049999999
+672,Sakana Sushi,b672,nvhj,"983 Massachusetts Ave, Cambridge, MA 02138, USA",42.3693183,-71.11075629999999
+673,Salon at Huron Village,b673,nvhj,"366 Huron Ave, Cambridge, MA 02138, USA",42.3809808,-71.13893329999999
+674,Salon Bellamar,b674,nvhj,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",42.3708466,-71.1135184
+675,Salon Bellissima,b675,nvhj,"202 Hampshire St, Cambridge, MA 02139, USA",42.3730862,-71.1002532
+676,Salon Luna,b676,nvhj,"1871 Massachusetts Ave, Cambridge, MA 02140, USA",42.3883603,-71.11937619999999
+677,Salon Michael Domenic,b677,nvhj,"1426 Cambridge St, Cambridge, MA 02139, USA",42.373695,-71.1020289
+678,Saloniki Greek,b678,nvhj,"Novartis Global Research Headquarters, 181 Massachusetts Ave, Cambridge, MA 02139, USA",42.3614695,-71.09573859999999
+679,Saloniki Greek,b679,nvhj,"24 Dunster St, Cambridge, MA 02138, USA",42.3726084,-71.1189777
+680,Sanctuary by VIM,b680,nvhj,"350 Massachusetts Ave, Cambridge, MA 02139, USA",42.3624617,-71.0996316
+681,Santouka Harvard Square,b681,nvhj,"1 Bow St, Cambridge, MA 02138, USA",42.3721851,-71.1159449
+682,Sapporo Ramen,b682,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+683,Sapporo Ramen Central,b683,nvhj,"581 Massachusetts Ave, Cambridge, MA 02139, USA",42.3650455,-71.1025628
+684,Sarah's Market and Café,b684,nvhj,"200 Concord Ave, Cambridge, MA 02138, USA",42.3822049,-71.13106239999999
+685,Sarchioni's,b685,nvhj,"51 Plymouth St, Cambridge, MA 02141, USA",42.3691564,-71.09260499999999
+686,Sasha Salon and Spa,b686,nvhj,"23 Arrow St, Cambridge, MA 02138, USA",42.3716949,-71.11532919999999
+687,Sav-More Spirits,b687,nvhj,"233 Alewife Brook Pkwy, Cambridge, MA 02138, USA",42.3891258,-71.1436215
+688,Savenor's Market,b688,nvhj,"92 Kirkland St, Cambridge, MA 02138, USA",42.3778373,-71.1073953
+689,Savvy Hair Design,b689,nvhj,"1232 Cambridge St, Cambridge, MA 02139, USA",42.3732656,-71.0979971
+690,Season to Taste Catering,b690,nvhj,"2447 Massachusetts Ave, Cambridge, MA 02140, USA",42.3983313,-71.1309957
+691,Sebastians,b691,nvhj,"415 Main St, Cambridge, MA 02142, USA",42.3629651,-71.0887548
+692,Second Street Café,b692,nvhj,"89 Second St, Cambridge, MA 02141, USA",42.3685242,-71.0793276
+693,See,b693,nvhj,"1276 Massachusetts Ave, Cambridge, MA 02138, USA",42.3726446,-71.1167449
+694,Senses,b694,nvhj,"650 E Kendall St, Cambridge, MA 02142, USA",42.364514,-71.0811022
+695,Seven Stars,b695,nvhj,"731 Massachusetts Ave, Cambridge, MA 02139, USA",42.3664792,-71.1047679
+696,Sewing and Vacuum Center,b696,nvhj,"89 Blanchard Rd, Cambridge, MA 02138, USA",42.3941266,-71.1580091
+697,Shabu and Mein,b697,nvhj,"148 First St, Cambridge, MA 02142, USA",42.3664178,-71.07769789999999
+698,Shaking Crab,b698,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+699,Shanghai Fresh,b699,nvhj,"735 Massachusetts Ave, Cambridge, MA 02139, USA",42.36653210000001,-71.1048607
+700,Shanti,b700,nvhj,"7 Broad Canal Way, Cambridge, MA 02142, USA",42.3634412,-71.08292550000002
+701,Shay's Pub & Wine Bar,b701,nvhj,"58 John F. Kennedy St, Cambridge, MA 02138, USA",42.3717355,-71.1204815
+702,Shaynedoro Pet Beauty Salon,b702,nvhj,"31 Belmont St, Cambridge, MA 02138, USA",42.3750331,-71.15146589999999
+703,Shegar Café and Ethiopian Restaurant,b703,nvhj,"2376 Massachusetts Ave, Cambridge, MA 02140, USA",42.3966757,-71.12976859999999
+704,Sherman Williams Paint,b704,nvhj,"93 First St, Cambridge, MA 02141, USA",42.368123,-71.0777298
+705,Shine Pub,b705,nvhj,"2046 Massachusetts Ave, Cambridge, MA 02140, USA",42.3908879,-71.1225638
+706,Shop Fog Linen,b706,nvhj,"35 Sacramento St, Cambridge, MA 02138, USA",42.3827184,-71.1160019
+707,Shy Bird,b707,nvhj,"390 Third St, Cambridge, MA 02142, USA",42.3626649,-71.0840797
+708,Sign of the Dove,b708,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+709,Signet Education,b709,nvhj,"1132 Massachusetts Ave, Cambridge, MA 02138, USA",42.3708331,-71.1142096
+710,Silk Road Uyghur Cuisine,b710,nvhj,"645 Cambridge St, Cambridge, MA 02141, USA",42.3721312,-71.08711939999999
+711,Similans,b711,nvhj,"145 First St, Cambridge, MA 02142, USA",42.3663154,-71.0782366
+712,Simons Coffee Shop,b712,nvhj,"1736 Massachusetts Ave, Cambridge, MA 02138, USA",42.3844799,-71.1198084
+713,Simply Erinn's Unisex Shop,b713,nvhj,"268 Brookline St, Cambridge, MA 02139, USA",42.3573938,-71.1077621
+714,Sinclair,b714,nvhj,"52 Church St, Cambridge, MA 02138, USA",42.3739749,-71.1205932
+715,Sinclair Kitchen,b715,nvhj,"52 Church St, Cambridge, MA 02138, USA",42.3739749,-71.1205932
+716,Skampa,b716,nvhj,"424 Cambridge St, Cambridge, MA 02141, USA",42.3713434,-71.0833433
+717,Skenderian Apothecary,b717,nvhj,"1613 Cambridge St, Cambridge, MA 02138, USA",42.3749567,-71.10895479999999
+718,Skin Art Studio,b718,nvhj,"528 Cambridge St, Cambridge, MA 02141, USA",42.3715702,-71.08510749999999
+719,Sly's Barbershop,b719,nvhj,"321 Western Ave, Cambridge, MA 02139, USA",42.3646681,-71.1133095
+720,Smoke Shop,b720,nvhj,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",42.3673039,-71.09012129999999
+721,Smoke Shop,b721,nvhj,"8 Holyoke St, Cambridge, MA 02138, USA",42.3726782,-71.1179154
+722,Social Wines,b722,nvhj,"196 Massachusetts Ave, Cambridge, MA 02139, USA",42.3611158,-71.0967955
+723,Sofra Bakery and Cafe,b723,nvhj,"1 Belmont St, Cambridge, MA 02138, USA",42.3748978,-71.15030569999999
+724,Sonia Music Venue,b724,nvhj,"10 Brookline St, Cambridge, MA 02139, USA",42.36347680000001,-71.1016343
+725,Spa Lapis,b725,nvhj,"1776 Massachusetts Ave, Cambridge, MA 02140, USA",42.3857469,-71.1196228
+726,Sparkle Cleaners,b726,nvhj,"373 Walden St, Cambridge, MA 02138, USA",42.3838434,-71.1344132
+727,Spices,b727,nvhj,"24 Holyoke St, Cambridge, MA 02138, USA",42.3721825,-71.1183777
+728,Spindler Confections,b728,nvhj,"2257 Massachusetts Ave, Cambridge, MA 02140, USA",42.394428,-71.1265833
+729,Spira Yoga Shala,b729,nvhj,"151 Cambridge St, Cambridge, MA 02141, USA",42.3709795,-71.0782467
+730,Staples Connect,b730,nvhj,"186 Alewife Brook Pkwy, Cambridge, MA 02138, USA",42.390252,-71.14079629999999
+731,Star Variety,b731,nvhj,"4 Central Square, Cambridge, MA 02139, USA",42.3649394,-71.1039316
+732,Starbucks,b732,nvhj,"750 Memorial Dr, Cambridge, MA 02139, USA",42.3580785,-71.1150503
+733,Starbucks,b733,nvhj,"120 Broadway, Cambridge, MA 02142, USA",42.3638965,-71.0881488
+734,Starbucks,b734,nvhj,"1662 Massachusetts Ave, Cambridge, MA 02138, USA",42.3819279,-71.1199757
+735,Starbucks,b735,nvhj,"468 Broadway, Cambridge, MA 02138, USA",42.3737524,-71.11314700000001
+736,Starbucks Central Square,b736,nvhj,"655 Massachusetts Ave, Cambridge, MA 02139, USA",42.3657234,-71.1034912
+737,Starbucks Harvard Square,b737,nvhj,"1380 Massachusetts Ave, Cambridge, MA 02138, USA",42.373312,-71.119062
+738,State Park,b738,nvhj,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",42.3673039,-71.09012129999999
+739,Stereo Jacks,b739,nvhj,"1686 Massachusetts Ave, Cambridge, MA 02138, USA",42.3826561,-71.1199941
+740,Suds-zo Laundromat,b740,nvhj,"562 Cambridge St, Cambridge, MA 02141, USA",42.3717501,-71.0855315
+741,Sugar and Spice,b741,nvhj,"1933 Massachusetts Ave, Cambridge, MA 02140, USA",42.3896291,-71.1199121
+742,Sulmona,b742,nvhj,"608 Main St, Cambridge, MA 02139, USA",42.3622991,-71.0941459
+743,Sumiao Hunan Kitchen,b743,nvhj,"270 Third St, Cambridge, MA 02142, USA",42.3660585,-71.08195060000001
+744,Summer Shack,b744,nvhj,"149 Alewife Brook Pkwy, Cambridge, MA 02140, USA",42.3937407,-71.1410313
+745,Sun Garden Healing Center,b745,nvhj,"740 Cambridge St, Cambridge, MA 02141, USA",42.3720749,-71.0892625
+746,Sunny Nails,b746,nvhj,"846A Massachusetts Ave, Cambridge, MA 02139, USA",42.3673625,-71.107119
+747,Super Cuts,b747,nvhj,"2150 Massachusetts Ave, Cambridge, MA 02140, USA",42.3921994,-71.1247563
+748,Super Nails,b748,nvhj,"389 Cambridge St, Cambridge, MA 02141, USA",42.3715543,-71.08260659999999
+749,Super Roll Up Café,b749,nvhj,"726 Cambridge St, Cambridge, MA 02141, USA",42.3720115,-71.0888911
+750,Surya Indian Kitchen,b750,nvhj,"114 Magazine St, Cambridge, MA 02139, USA",42.3598669,-71.1099671
+751,Susan's Beauty Salon,b751,nvhj,"408 Cambridge St, Cambridge, MA 02141, USA",42.3713178,-71.08290889999999
+752,Susanna,b752,nvhj,"1776 Massachusetts Ave, Cambridge, MA 02140, USA",42.3857469,-71.1196228
+753,Susi's Gallery for Children,b753,nvhj,"348 Huron Ave, Cambridge, MA 02138, USA",42.3811026,-71.13804809999999
+754,Suvaai,b754,nvhj,"2378 Massachusetts Ave, Cambridge, MA 02140, USA",42.3967207,-71.1297998
+755,Sweet Touch Café,b755,nvhj,"241 Cambridge St, Cambridge, MA 02141, USA",42.3711355,-71.07995780000002
+756,Sweetgreen,b756,nvhj,"39 John F. Kennedy St, Cambridge, MA 02138, USA",42.37269939999999,-71.1202186
+757,Swiss Watchmaker,b757,nvhj,"58 Church St, Cambridge, MA 02138, USA",42.3740292,-71.1209906
+758,TAGS Hardware,b758,nvhj,"37 White St #1, Cambridge, MA 02140, USA",42.3893884,-71.1185346
+759,Tahaza Hummus Kitchen,b759,nvhj,"First St, Cambridge, MA 02141, USA",42.3702166,-71.0768705
+760,Talulla,b760,nvhj,"377 Walden St, Cambridge, MA 02138, USA",42.3837042,-71.1344447
+761,Tampopo,b761,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+762,Tanjore,b762,nvhj,"18 Eliot St, Cambridge, MA 02138, USA",42.3720772,-71.1213765
+763,Tapiocarias House of Flavors,b763,nvhj,"204 Hampshire St, Cambridge, MA 02139, USA",42.3731166,-71.1003229
+764,Tasty Burger,b764,nvhj,"40 John F. Kennedy St, Cambridge, MA 02138, USA",42.3725821,-71.1198316
+765,Tatte,b765,nvhj,"318 Third St, Cambridge, MA 02142, USA",42.3649073,-71.0826451
+766,Tatte,b766,nvhj,"1288 Massachusetts Ave, Cambridge, MA 02138, USA",42.3726897,-71.1169437
+767,Teddy's Shoes,b767,nvhj,"548 Massachusetts Ave, Cambridge, MA 02139, USA",42.3643785,-71.1023611
+768,Temple Bar,b768,nvhj,"1688 Massachusetts Ave, Cambridge, MA 02138, USA",42.3827224,-71.1199477
+769,Temple of Groom,b769,nvhj,"908 Massachusetts Ave, Cambridge, MA 02139, USA",42.3681689,-71.1087486
+770,Tess,b770,nvhj,"52 Brattle St, Cambridge, MA 02138, USA",42.3743053,-71.1220598
+771,Thazar Hair Studio,b771,nvhj,"962 Cambridge St, Cambridge, MA 02141, USA",42.3725757,-71.0930692
+772,Thistle and Shamrock,b772,nvhj,"62 Walden St, Cambridge, MA 02140, USA",42.388955,-71.1248385
+773,Thread and Shape,b773,nvhj,"2 Bow St, Cambridge, MA 02138, USA",42.3719861,-71.1155477
+774,Toad,b774,nvhj,"1912 Massachusetts Ave, Cambridge, MA 02140, USA",42.3889796,-71.11992710000001
+775,Toaki Japanese Gifts,b775,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+776,Tocco Classico,b776,nvhj,"1638 Massachusetts Ave, Cambridge, MA 02138, USA",42.38098189999999,-71.12007299999999
+777,"Today's Insurance Agency, Inc.",b777,nvhj,"777 Cambridge St, Cambridge, MA 02141, USA",42.3724047,-71.0895642
+778,Tommy's Value,b778,nvhj,"49 Mt Auburn St, Cambridge, MA 02138, USA",42.3714067,-71.1166982
+779,Top Cleaners,b779,nvhj,"1300 Cambridge St, Cambridge, MA 02139, USA",42.3733833,-71.0992203
+780,Top Drawer,b780,nvhj,"5 Brattle St, Cambridge, MA 02138, USA",42.3736038,-71.11969289999999
+781,Toscanini's Ice Cream,b781,nvhj,"159 First St, Cambridge, MA 02142, USA",42.3660952,-71.0784687
+782,Toscano,b782,nvhj,"52 Brattle St, Cambridge, MA 02138, USA",42.3743053,-71.1220598
+783,Trattoria Pulcinella,b783,nvhj,"147 Huron Ave, Cambridge, MA 02138, USA",42.3827605,-71.1307984
+784,Tropical Dimension Food Store,b784,nvhj,"1262 Cambridge St, Cambridge, MA 02139, USA",42.3732287,-71.09864
+785,Tunc Tanin - Financial Services,b785,nvhj,"45 Prospect St, Cambridge, MA 02139, USA",42.3664974,-71.1036769
+786,TurnStyle,b786,nvhj,"One Kendall Square, 1 Kendall Square, Cambridge, MA 02139, USA",42.3673039,-71.09012129999999
+787,Two Little Owls Schoolouse,b787,nvhj,"501 Cambridge St, Cambridge, MA 02141, USA",42.3717987,-71.0842718
+788,U-Haul,b788,nvhj,"844 Main St, Cambridge, MA 02139, USA",42.3629738,-71.0984749
+789,University Market,b789,nvhj,"1105 Massachusetts Ave, Cambridge, MA 02138, USA",42.3708466,-71.1135184
+790,University Stationery,b790,nvhj,"296 Massachusetts Ave, Cambridge, MA 02139, USA",42.3622228,-71.098672
+791,University Wine Shop,b791,nvhj,"1737 Massachusetts Ave, Cambridge, MA 02138, USA",42.38436919999999,-71.1191585
+792,Unyamanee Thai Spa,b792,nvhj,"1034 Cambridge St, Cambridge, MA 02141, USA",42.3726367,-71.09432919999999
+793,Upper Crust Pizza,b793,nvhj,"1782 Massachusetts Ave, Cambridge, MA 02140, USA",42.3858656,-71.1196111
+794,UPS Store,b794,nvhj,"1770 Massachusetts Ave, Cambridge, MA 02138, USA",42.38548720000001,-71.1196228
+795,Upward Spiral Studio,b795,nvhj,"7 Temple St, Cambridge, MA 02139, USA",42.3665411,-71.1040634
+796,Urban Hearth,b796,nvhj,"2263 Massachusetts Ave, Cambridge, MA 02140, USA",42.3945285,-71.1266902
+797,Valvoline Instant Oil Change,b797,nvhj,"2485 Massachusetts Ave, Cambridge, MA 02140, USA",42.399157,-71.131924
+798,Vasquez Barber Shop,b798,nvhj,"1052 Cambridge St, Cambridge, MA 02141, USA",42.372781,-71.0949262
+799,Veggie Galaxy,b799,nvhj,"450 Massachusetts Ave, Cambridge, MA 02139, USA",42.3634198,-71.1012291
+800,Veggie Grill,b800,nvhj,"57 John F. Kennedy St, Cambridge, MA 02138, USA",42.3720507,-71.12077239999999
+801,Vester,b801,nvhj,"75 Ames St, Cambridge, MA 02142, USA",42.3635904,-71.08878179999999
+802,Viale,b802,nvhj,"502 Massachusetts Ave, Cambridge, MA 02139, USA",42.3639393,-71.1018432
+803,Village Kitchen,b803,nvhj,"359 Huron Ave, Cambridge, MA 02138, USA",42.3813843,-71.1384691
+804,VIM Fitness,b804,nvhj,"579 Massachusetts Ave, Cambridge, MA 02139, USA",42.3650684,-71.1025856
+805,Violette Gluten Free Bakery,b805,nvhj,"1786 Massachusetts Ave, Cambridge, MA 02140, USA",42.3859348,-71.1195046
+806,Vitality Massage Therapy,b806,nvhj,"2326 Massachusetts Ave, Cambridge, MA 02140, USA",42.3956361,-71.12867469999999
+807,Ward Maps,b807,nvhj,"1735 Massachusetts Ave, Cambridge, MA 02138, USA",42.3842804,-71.11918179999999
+808,Wasabi at Porter,b808,nvhj,"2088 Massachusetts Ave, Cambridge, MA 02140, USA",42.39126359999999,-71.1234757
+809,Wash and Dry,b809,nvhj,"73 River St, Cambridge, MA 02139, USA",42.36444609999999,-71.1073734
+810,Waxing the City,b810,nvhj,"2166 Massachusetts Ave, Cambridge, MA 02140, USA",42.3922911,-71.1248799
+811,Waypoint,b811,nvhj,"1030 Massachusetts Ave, Cambridge, MA 02138, USA",42.3694825,-71.112265
+812,Weltkuche Bistro,b812,nvhj,"3 Glassworks Ave, Cambridge, MA 02141, USA",42.3708883,-71.0746348
+813,Western Market,b813,nvhj,"317 Western Ave, Cambridge, MA 02139, USA",42.3646894,-71.1132166
+814,Whitneys,b814,nvhj,"37 John F. Kennedy St, Cambridge, MA 02138, USA",42.3727581,-71.120155
+815,Whole Heart Provisions,b815,nvhj,"298 Massachusetts Ave, Cambridge, MA 02139, USA",42.3622842,-71.0987146
+816,Whole Heart Provisions,b816,nvhj,"1350 Massachusetts Ave, Cambridge, MA 02138, USA",42.3770019,-71.1166599
+817,Wholesome Fresh,b817,nvhj,"60 Church St, Cambridge, MA 02138, USA",42.3740155,-71.12105310000001
+818,Wismic Unisex Salon,b818,nvhj,"270 Broadway, Cambridge, MA 02139, USA",42.3676478,-71.0972827
+819,Wrapro,b819,nvhj,"1670 Massachusetts Ave, Cambridge, MA 02138, USA",42.3820929,-71.1201118
+820,WTPhelan,b820,nvhj,"1812 Massachusetts Ave, Cambridge, MA 02140, USA",42.3868407,-71.1194141
+821,Wu Dao King Fu & Tai Chi,b821,nvhj,"130 Smith Pl, Cambridge, MA 02138, USA",42.3939438,-71.1501943
+822,Yayla Tribal Rugs,b822,nvhj,"283 Broadway, Cambridge, MA 02139, USA",42.3684003,-71.09829189999999
+823,YBlank,b823,nvhj,"766 Cambridge St, Cambridge, MA 02141, USA",42.3721308,-71.08969239999999
+824,Yoki Express,b824,nvhj,"1871 Massachusetts Ave, Cambridge, MA 02140, USA",42.3883603,-71.11937619999999
+825,Your Hair Salon,b825,nvhj,"27 Mt Auburn St, Cambridge, MA 02138, USA",42.3709444,-71.1152101
+826,Yume Ga Arukara,b826,nvhj,"1815 Massachusetts Ave, Cambridge, MA 02140, USA",42.3872124,-71.1185319
+827,Yume Wo Katare,b827,nvhj,"1923 Massachusetts Ave, Cambridge, MA 02140, USA",42.3893963,-71.1197045
+828,Yummy Thai Cuisine,b828,nvhj,"2261 Massachusetts Ave, Cambridge, MA 02140, USA",42.3944835,-71.1266438
+829,Za Cambridge,b829,nvhj,"350 Third St, Cambridge, MA 02142, USA",42.363582,-71.0832289
+830,Zina's Hair Salon,b830,nvhj,"450 Cambridge St, Cambridge, MA 02141, USA",42.3713292,-71.08374959999999
+831,Zinneken's,b831,nvhj,"1 Arrow St, Cambridge, MA 02138, USA",42.3711639,-71.11459599999999
+832,Zinnia Jewelry,b832,nvhj,"1300 Massachusetts Ave, Cambridge, MA 02138, USA",42.3727516,-71.1173161

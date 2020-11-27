@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
 /**
  * sign in as business
  * @name POST/api/business/signin
- * @return {User} - the signed in business
+ * @return {Business} - the signed in Business
  * 
  * @throws {401} - if username / password combo is incorrect
  * @throws {400} - if user is already signed in 
@@ -140,7 +140,7 @@ router.patch('/:property?', async (req, res) => {
 /**
  * delete business from database 
  * @name DELETE/api/business
- * @return {User} - the deleted User
+ * @return {Business} - the deleted Business
  * 
  * @throws {200} - if business is deleted
  * @throws {401} - if business is not signed in 
@@ -163,8 +163,8 @@ router.delete('/', async (req, res) => {
 });
 
 /**
- * @name GET/api/business/id?
- * @returns {User[]} Array of all businesss 
+ * @name GET/api/business/:id?
+ * @returns {Business[]} Array of all businesss 
  */
 router.get('/:id?', async (req, res) => {
   try{
@@ -213,7 +213,7 @@ router.get('/account/:accountName', async (req, res) => {
 /**
  * get badges that belong to a specified business
  * @name GET/api/business/:id/badges
- * @returns {User[]} Array of all businesss 
+ * @returns {Badge[]} Array of badges 
  */
 router.get('/:id/badges', async (req, res) => {
   if (!correctInput(req, res,[],['id'])
@@ -228,9 +228,9 @@ router.get('/:id/badges', async (req, res) => {
 });
 
 /**
- * get badges that belong to a specified business
- * @name GET/api/business/:id/badges
- * @returns {User[]} Array of all businesss 
+ * get reviews that belong to a specified business
+ * @name GET/api/business/:id/reviews
+ * @returns {Review[]} Array of reviews 
  */
 router.get('/:id/reviews', async (req, res) => {
   if (!correctInput(req, res,[],['id'])
