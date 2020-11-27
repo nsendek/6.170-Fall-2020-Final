@@ -1,5 +1,5 @@
 <template>
-  <div class="zelp-alert">
+  <div app class="zelp-alert">
     <v-alert 
     prominent
     v-for="(alert,idx) in alerts.slice().reverse()"
