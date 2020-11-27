@@ -40,6 +40,7 @@ export default {
       })
       .then((response) => {
         eventBus.$emit("success-message", response.data.message);
+        window.console.log("on logging in " + response.data.username); 
         this.$state.username = response.data.username; 
         this.$state.isBusiness = this.isBusiness;
         this.$router.push('/');

@@ -44,9 +44,11 @@ export default {
         name: this.name,
         address: this.address
       })
-      .then((response) => { // TODO change to "signin-success"?
+      .then((response) => {
+        window.console.log("heyyyyyyy"); 
         eventBus.$emit("success-message", response.data.message); 
-        this.$state.username = response.data.username; 
+        window.console.log(response.data); 
+        this.$state.username = response.data.business.name; 
         this.$state.isBusiness = true;
         this.$router.push('/');
       })

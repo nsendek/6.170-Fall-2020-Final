@@ -256,6 +256,8 @@ export default {
         axios.delete('api/business')
         .then(() => {
           eventBus.$emit("success-message", "Account deleted successfully");
+          this.$state.username = ""; 
+          this.$state.isBusiness = false;
           this.$router.push('/');
         })
         .catch((error) => {
