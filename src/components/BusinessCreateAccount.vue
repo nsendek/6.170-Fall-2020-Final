@@ -1,21 +1,21 @@
 <template>
-  <div>
-    <div> <h1> WELCOME TO ZELP </h1> </div>
-        <p>
+  <div class="login-container">
+    <div class="big-title">WELCOME TO ZELP</div>
+        <p class="zelp-description">
         Zelp is a platform designed by students in the Cambridge community to keep users 
         informed on local businesses and their practices in the Covid Era.
         Signing your business up for Zelp helps keep the community informed on your 
         business’s safety precauations. The community gives feedback on the policies you 
         display here, and the better you do the safer your customers will feel!
         </p>
-    <div>
-      <div><input type="text" v-model="name" placeholder="business name" /></div>
-      <div><input type="text" v-model="address" placeholder="address" /></div>
-      <div><input type="text" v-model="accountName" placeholder="account username" /></div>
-      <div><input type="text" v-model="password" placeholder="password" /></div>
+    <div class="login-container">
+      <div class="text-input"><v-text-field v-model="name" label="business name" placeholder="business name" filled/></div>
+      <div class="text-input"><v-text-field v-model="address" label="address" placeholder="address" filled/></div>
+      <div class="text-input"><v-text-field v-model="accountName" label="account username" placeholder="account username" filled/></div>
+      <div class="text-input"><v-text-field v-model="password" label="password" placeholder="password" filled/></div>
 
-      <div><button v-on:click="createAccount">Create Account</button> </div>
-      <div><button v-on:click="goUserLogin"> already have an account? </button></div>
+      <div><v-btn v-on:click="createAccount" class="wide-button">Create Account</v-btn></div>
+      <div class="alt-option"><button v-on:click="goUserLogin"> already have an account? </button></div>
     </div> 
   </div>
 </template>

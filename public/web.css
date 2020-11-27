@@ -62,12 +62,23 @@
 }
 
 .alt-option{
-  margin: 30px; 
   font-size : 12px;
   color: grey; 
   border-bottom:1px solid lightgrey;
+  margin: 30px;
 }
 
 .wide-button {
   width : 20vw; 
+}
+
+.smaller-margin {
+  margin: -25px;
+}
+
+.zelp-description{
+  padding-left: 50px;
+  padding-right: 50px; 
+  text-align: center;
+  font-size: 14px;
 }

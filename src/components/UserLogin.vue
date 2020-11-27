@@ -8,7 +8,7 @@
         <v-btn class="wide-button" v-if="isBusiness" v-on:click="BusinessLogin">Log In</v-btn>
         <v-btn class="wide-button" v-else v-on:click="UserLogin">Log In</v-btn>
          </div>
-      <div class="alt-option"><button v-on:click="goUserCreateAccount"> don't have an account? </button></div>
+      <div class="bigger-margin"><div class="alt-option"><button v-on:click="goUserCreateAccount"> don't have an account? </button></div></div>
       <div>
         <input type="checkbox"  v-model="isBusiness">
         <label for="checkbox"> Signing in as a business? </label>
