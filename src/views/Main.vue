@@ -75,10 +75,10 @@ export default {
       window.console.log(b.name, b.address);
     },
     label(b) {
-      return ""+this.businesses.indexOf(b);
+      return ""+b.id;
     },
     icon() {
-      return {url: "https://cdn.pixabay.com/photo/2020/04/29/10/06/mouth-guard-5108188_1280.png", scaledSize: {width:70, height:70}};
+      return {url: "https://cdn.pixabay.com/photo/2020/04/29/10/06/mouth-guard-5108188_1280.png", scaledSize: {width:40, height:40}};
     },
     panTo(lat,lng){
       this.$refs.map.$mapPromise.then((map) => {
