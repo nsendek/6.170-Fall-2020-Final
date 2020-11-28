@@ -21,6 +21,8 @@
             v-bind:business="business"
         />
     </Feed>
+
+    <v-pagination v-model="page" :length="totalPages" :total-visible="7" @input="next"></v-pagination>
 </div>
 </template>
 
@@ -39,6 +41,8 @@ export default {
             success:"",
             businesses: [],
             allBadges: [],
+            page : 1, 
+            totalPages: 1
         }
 
     },
@@ -55,12 +59,19 @@ export default {
           for (var idx = 0; idx < this.allBadges.length; idx++) 
             this.allBadges[idx].checked = false; 
         
-          axios.get("/api/business")
+          axios.get("/api/business", { params: { page: this.page } })
           .then((res) => {
-              this.businesses = res.data ? res.data : [];
-              eventBus.$emit('businesses', res.data)
+              this.businesses = res.data.results ? res.data.results : [];
+              this.totalPages = res.data.totalPages; 
+              window.console.log(this.totalPages); 
+              eventBus.$emit('businesses', res.data.results)
           })
         },
+
+        next: function() { 
+            this.loadBusinesses();
+        }, 
+
         // Loads all badge types
         loadBadges: function() {
             axios.get("/api/badge")
