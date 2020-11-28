@@ -5,7 +5,7 @@ import Vuetify from 'vuetify/lib';
 import App from './App.vue'
 import router from './router'
 import * as VueGoogleMaps from 'vue2-google-maps'
-
+import "./assets/styles/web.css";
 
 Vue.use(Vuetify);
 const vuetify = new Vuetify({});
