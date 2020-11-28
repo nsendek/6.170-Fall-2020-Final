@@ -6,8 +6,7 @@ async function createUsersTable() {
   await db.run(`CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT, 
       username TEXT NOT NULL UNIQUE, 
-      password TEXT NOT NULL,
-      timestamp INTEGER
+      password TEXT NOT NULL
       )`);
       
   db.close();
@@ -25,7 +24,8 @@ async function createBusinessTable() {
       
       address TEXT,
       lat INTEGER,
-      lng INTEGER
+      lng INTEGER,
+      timestamp INTEGER
       )`);
 
   db.close();
@@ -66,7 +66,7 @@ async function createBadgeTables() {
   await db.run(`CREATE TABLE IF NOT EXISTS badge_templates (
       label TEXT NOT NULL UNIQUE,
       description TEXT NOT NULL,
-      CHECK(label <> '')
+      CHECK(label NOT IN ('label', ''))
     )`);
 
   await db.run(`CREATE TABLE IF NOT EXISTS badges (
