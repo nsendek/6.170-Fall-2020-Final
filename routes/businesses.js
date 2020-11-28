@@ -169,8 +169,7 @@ router.delete('/', async (req, res) => {
 router.get('/:id?', async (req, res) => {
   try{
     if (req.params.id) {
-      if (!correctInput(req, res,[],['id'])
-      || !isID(res,req.params.id)
+      if (!isID(res,req.params.id)
       || !(await dataExists(res, req.params.id, Businesses))) return;
 
       let business = await Businesses.get(req.params.id);
