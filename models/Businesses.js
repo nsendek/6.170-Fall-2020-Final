@@ -56,11 +56,25 @@ class Businesses {
    * Return an array of all of the Businesses.
    * @return {Business[]}
    */
-  static async getAll() {
+  static async getAll(page) {
+    let pageLength = 10; 
+
     let db = await SQL.getDB();
-    let business = await db.all(`SELECT id,name,address,lat,lng FROM businesses ORDER BY id DESC`);
+    let numRows = await db.get(`SELECT COUNT(*) FROM businesses`); 
+    numRows = numRows["COUNT(*)"];
+    let totalPages = Math.ceil(numRows / pageLength); 
+
+    if(page <= 0){
+      page = 1;
+    }
+    if(page > totalPages){
+      page = totalPages; 
+    }
+    let offset = (page - 1) * pageLength; 
+
+    let business = await db.all(`SELECT id,name,address,lat,lng FROM businesses ORDER BY id DESC limit $1 offset $2`, [pageLength, offset]);
     db.close();
-    return business;
+    return {"results" : business, "page" : page, "totalPages" : totalPages};
   }
 
   /**

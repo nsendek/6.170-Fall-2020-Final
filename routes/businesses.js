@@ -180,7 +180,11 @@ router.get('/:id?', async (req, res) => {
         res.status(404).send({error: "business does not exist"});
       }
     } else {
-      res.status(200).send(await Businesses.getAll());
+      let page = 1; 
+      if (req.query.page) {
+        page = req.query.page; 
+      }
+      res.status(200).send(await Businesses.getAll(page));
     }
 
   } catch (error) {
