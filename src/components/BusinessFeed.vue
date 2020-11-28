@@ -16,10 +16,12 @@
 
     <Feed dataType="Businesses">
         <BusinessFeedItem
-            v-for="business in businesses"
+            v-for="(business,idx) in businesses"
             v-bind:key="business.id"
             v-bind:business="business"
-        />
+            v-bind:idx="idx"
+        >
+        </BusinessFeedItem>
     </Feed>
 
     <v-pagination v-model="page" :length="totalPages" :total-visible="7" @input="next"></v-pagination>
