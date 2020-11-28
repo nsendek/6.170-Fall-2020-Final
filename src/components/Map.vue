@@ -50,7 +50,7 @@ export default {
           // console.log(minlat,minlng,maxlat,maxlng)
           // console.log(minlat.lat,minlng.lng,maxlat.lat,maxlng.lng)
           let bounds = ({south:minlat.lat,west:minlng.lng, north:maxlat.lat,east:maxlng.lng})
-          this.$refs.map.$mapObject.fitBounds(bounds,0);
+          this.$refs.map.$mapObject.fitBounds(bounds,40);
       }
         })
       }

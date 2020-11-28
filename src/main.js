@@ -15,7 +15,7 @@ Vue.use(VueCookie);
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyDKOlyw5FKzfofKtyQ5jfKFuleqelf1nhQ',
-    // libraries: 'places',
+    libraries: 'places,drawing,visualization'
   },
   installComponents: true
 })
