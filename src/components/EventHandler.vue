@@ -38,9 +38,11 @@ export default {
       if (response.data.user) {
         this.$state.username = response.data.user.username;
         this.$state.id = response.data.user.id;
+        this.$state.isBusiness = false;
       } else if (response.data.business) {
         this.$state.username = response.data.business.accountName;
         this.$state.id = response.data.business.id;
+        this.$state.isBusiness = true;
       }
     } else {
       this.$state.username = "";

@@ -38,7 +38,7 @@
 
 .nav-login-button {
   text-decoration: none;
-  color: #000000; 
+  cursor: pointer;
 }
 
 /* LOG IN PAGES */
