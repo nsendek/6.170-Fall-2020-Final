@@ -10,10 +10,9 @@
         v-for="(b, index) in businesses"
         :position="{lat : Number(b.lat), lng: Number(b.lng)}"
         :clickable="true"
-        @click="log(b); panTo(b.lat,b.lng)"
+        @click="clicked(b)"
         :label="label(b)"
         :icon = icon()
-        :ref="'marker'+b.id"
       />
     </GmapMap>
 </template>
@@ -27,6 +26,8 @@ export default {
     return {
       center : {lat:42.3601, lng:-71.0943},
       businesses : [],
+      infoWindow : null,
+      infoBusiness: null,
     }
   },
   computed: {
@@ -55,11 +56,14 @@ export default {
         })
       }
     })
+  }, created(){
+      eventBus.$on('clicked', (b) => {
+        this.clicked(b);
+      })
   },
   methods: {
-    log(b) {
-      this.$refs.map.$mapPromise.then((map) => {
-      axios.get(`/api/business/${b.id}/badges`)
+    markerSelected(b,map){
+            axios.get(`/api/business/${b.id}/badges`)
             .then((res) => {
                 this.badges = res.data ? res.data.map(badge => badge.label) : [];
       let vuebadges = "";
@@ -74,14 +78,30 @@ export default {
                 `+vuebadges+`
             </div>
           </v-card>`
-      
-      // let infowindow = new window.google.maps.InfoWindow({content:"<iframe height = 800 width = 500 src=business/"+b.id+"/>"});
-      let infowindow = new window.google.maps.InfoWindow({content:content, options:{pixelOffset: {width: 0,height: -35}}});
-      infowindow.setPosition({lat:b.lat,lng:b.lng});
-      infowindow.open(map);
+      this.infoWindow = new window.google.maps.InfoWindow({content:content, options:{pixelOffset: {width: 0,height: -35}}});
+      this.infoWindow.setPosition({lat:b.lat,lng:b.lng});
+      // console.log(this.infoWindow);
+      this.infoWindow.open(map);
             })
-      })
-      window.console.log(b.name, b.address);
+    },
+    markerUnselected(){
+      this.infoWindow.close();
+      this.infoWindow = null;
+    },
+    clicked(b) {
+      this.panTo(b.lat,b.lng);
+      this.$refs.map.$mapPromise.then((map) => {
+
+      // let infowindow = new window.google.maps.InfoWindow({content:"<iframe height = 800 width = 500 src=business/"+b.id+"/>"});
+      if (this.infoWindow) {
+        this.markerUnselected();
+        if (this.infoBusiness && b.id != this.infoBusiness.id) this.markerSelected(b,map);
+      }
+      else{
+        this.markerSelected(b,map);
+        this.infoBusiness = b;
+      }
+            })
     },
     label(b) {
       return{text:String(1+this.businesses.indexOf(b)), fontSize: "25px", fontWeight:"800", color: "black"};
