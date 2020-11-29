@@ -26,7 +26,8 @@ export default {
 </script>
 <style scoped>
 header {
-  /* DON'T delete forces navbar to not auto grow/shrink or be absolute*/
+  /* DON'T delete, forces navbar to not auto grow/shrink or be absolute. also makes sure navbar is above overlay*/
+  z-index : 10 !important;
   position: relative !important;
   max-height: var(--navbar-height) !important;
   min-height: var(--navbar-height) !important;
