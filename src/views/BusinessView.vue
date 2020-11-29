@@ -2,7 +2,7 @@
     <div class = "main">
       
       <div class = "business-col">
-        <v-btn style="width:33%;"> Submit Review </v-btn>
+        <v-btn style="width:33%;" @click="openReview"> Submit Review </v-btn>
         <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
           <div class = "secondary-header"> <b>{{business.name}}</b> </div>
           <div class = "quarternary-header"> {{business.address}} </div>
@@ -31,7 +31,7 @@
 </template>
 <script>
 import axios from "axios";
-// import { eventBus } from "../main.js"
+import { eventBus } from "../main.js"
 import Feed from "../components/Feed.vue"
 
 export default {
@@ -50,9 +50,13 @@ export default {
     if (await this.loadBusiness()) {
        this.loadBadges();
        this.loadReviews();  
+       eventBus.$emit("businesses", [this.business]);
     }
   },
 	methods : {
+    openReview() {
+      this.$router.push({ name: 'review', params: { id: this.business.id }})
+    },
     async loadBusiness() {
       this.business = null;
       let response = await axios.get(`/api/business/${this.$route.params.id}`)
