@@ -18,6 +18,15 @@
     flex-direction: column;
     flex-basis: auto;
   }
+.business-count {
+  margin-top: 5px; 
+  color: white; 
+  background: gray; 
+  border-radius: 50%; 
+  width: 35px; 
+  height: 35px; 
+  text-align: center;
+  }
 
 
 .account-options {
@@ -29,7 +38,6 @@
 /* NAV BAR */
 .zelp-logo {
   text-decoration: none;
-  /* ITS NOT FUCKING BLACK AND IDK WHY */
   color: #000000; 
   font-size : 40px;
   font-weight : 500; 

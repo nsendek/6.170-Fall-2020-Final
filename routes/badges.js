@@ -32,7 +32,11 @@ router.get('/', async (req, res) => {
 router.get('/filter', async (req, res) => {
   if (!correctInput(req, res, [],[],['badges'])) return; 
     try{
-      let businessesWithBadge = await Badges.filterBusinessByBadges(req.query.badges)
+      let page = 1; 
+      if (req.query.page) {
+        page = req.query.page; 
+      }
+      let businessesWithBadge = await Badges.filterBusinessByBadges(req.query.badges, page)
       if (businessesWithBadge) {
         res.status(200).send(businessesWithBadge);
       } else {

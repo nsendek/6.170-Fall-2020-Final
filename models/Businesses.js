@@ -57,7 +57,7 @@ class Businesses {
    * @return {Business[]}
    */
   static async getAll(page) {
-    let pageLength = 10; 
+    let pageLength = 10;
 
     let db = await SQL.getDB();
     let numRows = await db.get(`SELECT COUNT(*) FROM businesses`); 
@@ -72,7 +72,7 @@ class Businesses {
     }
     let offset = (page - 1) * pageLength; 
 
-    let business = await db.all(`SELECT id,name,address,lat,lng FROM businesses ORDER BY id DESC limit $1 offset $2`, [pageLength, offset]);
+    let business = await db.all(`SELECT id,name,address,lat,lng FROM businesses ORDER BY name ASC limit $1 offset $2`, [pageLength, offset]);
     db.close();
     return {"results" : business, "page" : page, "totalPages" : totalPages};
   }

@@ -77,23 +77,38 @@ const SQL = require('../db/index');
      * @param {String[]} labels - list of badge labels
      * @returns {Business []} - the businesses who have all the specified badges
     */
-    static async filterBusinessByBadges(labels = []) {
+    static async filterBusinessByBadges(labels = [], page) {
         let db = await SQL.getDB();
 
         // you can combine two sql commands into one with JOIN, so you can query based on info from two tables
         // GROUP BY creates 'groups' of rows with the same businessId 
         // COUNT(label) applies to those groups not the whole table
-        let out = await db.all(`
-            SELECT businesses.id, name, address, businesses.lat, businesses.lng
-            FROM businesses 
-            INNER JOIN badges ON badges.businessId = businesses.id AND badges.label IN ${SQL.list(labels.length)}
-            GROUP BY businesses.id
-            HAVING COUNT(label) = ${labels.length}`,
-            labels)
-        .catch(SQL.parseError);
+
+        let filterQuery = `
+          SELECT businesses.id, name, address, businesses.lat, businesses.lng
+          FROM businesses 
+          INNER JOIN badges ON badges.businessId = businesses.id AND badges.label IN ${SQL.list(labels.length)}
+          GROUP BY businesses.id
+          HAVING COUNT(label) = ${labels.length}`; 
+
+        let pageLength = 10;
+        let numRows = await db.get(`SELECT COUNT(*) FROM ( ${filterQuery} )`, [...labels]);
+        numRows = numRows["COUNT(*)"];
+        let totalPages = Math.ceil(numRows / pageLength); 
+        if(page <= 0){
+          page = 1;
+        }
+        if(page > totalPages){
+          page = totalPages; 
+        }
+        let offset = (page - 1) * pageLength; 
+
+        let business = await db.all(`${filterQuery} limit ${pageLength} offset ${offset}`, [...labels]);
       
         db.close();
-        return out;
+
+        console.log("I am crying");
+        return {"results" : business, "page" : page, "totalPages" : totalPages};
     }
 
   /**
