@@ -30,7 +30,7 @@
 </template>
 <script>
 import axios from "axios";
-// import { eventBus } from "../main.js"
+import { eventBus } from "../main.js"
 import Feed from "../components/Feed.vue"
 
 export default {
@@ -50,6 +50,7 @@ export default {
        this.loadBadges();
        this.loadReviews();  
     }
+    eventBus.$emit("clicked", this.business); 
   },
 	methods : {
     async loadBusiness() {
