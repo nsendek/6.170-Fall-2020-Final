@@ -2,15 +2,25 @@
 <div>
     <h1>Businesses</h1>
     <div class= "filter-bar">
-        Filter By: 
-       <div v-for='(badge,index) in allBadges' v-bind:key="badge.id">
-            <input type="checkbox" v-bind:id="index" v-model="allBadges[index].checked" value="badge" v-on:click="toggleCheck(index)" >
-            <label for="badge"> {{badge.label}} </label>
-       </div>
+        Filter By Badge: 
+        <div class="pa-4">
+          <v-chip-group v-model="selectedBadges" @change="applyFilter" column active-class="primary--text" multiple>
+            <v-tooltip 
+              max-width="200px" top 
+              v-for='(badge,index) in allBadges' v-bind:key="index"
+              open-delay="1000"
+            >
+              <template v-slot:activator="{ on }">
+                <v-chip v-on="on" filter >
+                    {{badge.label}}
+                </v-chip>
+              </template>
+              <div style="text-align:center;">{{badge.description}}</div>
+            </v-tooltip>
+          </v-chip-group>
+        </div>
 
-        <v-btn v-on:click= "filterBusinessesByBadges" type="button">Apply Filters</v-btn>
-        <v-btn v-on:click= "loadBusinesses" type="button">Reset Filters</v-btn>
-
+        <v-btn v-on:click= "resetFilter" type="button">Reset Filters</v-btn>
     </div>
 
 
@@ -43,6 +53,7 @@ export default {
             success:"",
             businesses: [],
             allBadges: [],
+            selectedBadges : [],
             page : 1, 
             totalPages: 1
         }
@@ -55,75 +66,72 @@ export default {
 
 
     methods: {
-        // Loads all businesses
-        loadBusinesses: function() {
-          for (var idx = 0; idx < this.allBadges.length; idx++) 
-            this.allBadges[idx].checked = false; 
-        
-          axios.get("/api/business", { params: { page: this.page } })
+      applyFilter() { 
+        if (this.selectedBadges.length > 0) {
+          this.filterBusinessesByBadges();
+        } else {
+          this.loadBusinesses();
+        }
+      },
+      resetFilter() {
+        this.selectedBadges = [];
+        this.loadBusinesses();
+      },
+      // Loads all businesses
+      loadBusinesses: function() {
+      
+        axios.get("/api/business", { params: { page: this.page } })
+        .then((res) => {
+            this.businesses = res.data.results ? res.data.results : [];
+            this.totalPages = res.data.totalPages; 
+            eventBus.$emit('businesses', res.data.results)
+        })
+      },
+
+      next: function() { 
+          let badgeFilters = this.selectedBadges.map((idx) => this.allBadges[idx].label);
+
+          if(badgeFilters.length > 0){
+              this.filterBusinessesByBadges(true); 
+          }
+          else{
+              this.loadBusinesses();
+          }
+      }, 
+
+      // Loads all badge types
+      loadBadges: function() {
+          axios.get("/api/badge")
+          .then((res) => {
+              this.allBadges = res.data ? res.data : [];
+          })
+      },
+
+      // Filters businesses by one or more badges
+      filterBusinessesByBadges: function(nextPage = false) {
+          if(nextPage !== true) {
+              window.console.log("i am resetting the page"); 
+              this.page = 1; 
+          }
+
+          let badgeFilters = this.selectedBadges.map((idx) => this.allBadges[idx].label);
+
+          if (badgeFilters.length === 0) {
+              eventBus.$emit('error-message',"Please choose one or more badges to filter by");
+          } else {
+
+          window.console.log(badgeFilters); 
+          axios.get(`api/badge/filter`, {params : {badges : badgeFilters, page: this.page}})
           .then((res) => {
               this.businesses = res.data.results ? res.data.results : [];
               this.totalPages = res.data.totalPages; 
               eventBus.$emit('businesses', res.data.results)
           })
-        },
-
-        next: function() { 
-            let badgeFilters = this.allBadges.filter((badgeObject) => badgeObject.checked)
-                                .map((badgeObject) => badgeObject.label);
-
-            if(badgeFilters.length > 0){
-                this.filterBusinessesByBadges(true); 
-            }
-            else{
-                this.loadBusinesses();
-            }
-        }, 
-
-        // Loads all badge types
-        loadBadges: function() {
-            axios.get("/api/badge")
-            .then((res) => {
-                // res = list of {id: , label: } badge objects
-                this.allBadges = res.data ? res.data : [];
-                this.allBadges.forEach((badgeObject) => badgeObject.checked = false)
-            })
-        },
-
-        // Filters businesses by one or more badges
-        filterBusinessesByBadges: function(nextPage = false) {
-            if(nextPage !== true) {
-                window.console.log("i am resetting the page"); 
-                this.page = 1; 
-            }
-            let badgeFilters = this.allBadges.filter((badgeObject) => badgeObject.checked)
-                                .map((badgeObject) => badgeObject.label);
-
-            if (badgeFilters.length === 0) {
-                eventBus.$emit('error-message',"Please choose one or more badges to filter by");
-            } else {
-
-            window.console.log(badgeFilters); 
-            axios.get(`api/badge/filter`, {params : {badges : badgeFilters, page: this.page}})
-            .then((res) => {
-                this.businesses = res.data.results ? res.data.results : [];
-                this.totalPages = res.data.totalPages; 
-                eventBus.$emit('businesses', res.data.results)
-            })
-            .catch((err) => {
-                eventBus.$emit('error-message', err);
-            })
-            }
-        },
-
-        toggleCheck: function(itemId) {
-          if (this.allBadges[itemId].checked) {
-            this.allBadges[itemId].checked = false;
-          } else {
-            this.allBadges[itemId].checked = true;
-
+          .catch((err) => {
+              eventBus.$emit('error-message', err);
+          })
           }
-        },
+      }
     }
     
 }
