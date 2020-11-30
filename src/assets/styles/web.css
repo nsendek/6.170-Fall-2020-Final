@@ -88,6 +88,7 @@
   padding-right: 50px; 
   text-align: center;
   font-size: 14px;
+  max-width: 50vw;
 }
 
 .primary-header {

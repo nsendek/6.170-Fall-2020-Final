@@ -62,13 +62,15 @@ export default {
     },
 
     submitReview : function() {
-      axios.post("/api/review", {
+      let review = {
         businessId : this.$route.params.business.id, 
         rating : this.rating, 
         content: this.reviewContent
-      })
+      };
+      axios.post("/api/review",review )
       .then((response) => {
         eventBus.$emit("success-message", response.data.message);
+        eventBus.$emit("review-posted", review);
       }).catch((error) => { 
         eventBus.$emit("error-message", error.response.data.error); 
       });

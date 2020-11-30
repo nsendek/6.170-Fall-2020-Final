@@ -32,7 +32,7 @@ export default {
       ligthId:"e492156a263e3bf5",
       darkId:"4bd99df653a8171b",
       options:
-      {mapId: "4bd99df653a8171b" }
+      {mapId: "e492156a263e3bf5" }
     }
   },
   computed: {

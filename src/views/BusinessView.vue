@@ -57,6 +57,13 @@ export default {
     }
     eventBus.$emit("clicked", this.business, true); 
   },
+  updated(){
+    eventBus.$on(("review-posted"), () => {
+      this.loadBadges();
+      this.loadReviews();  
+      this.loadRating();
+    });
+  },
 	methods : {
     openReview() {
       this.$router.push({ name: 'review', params: { business: this.business }})
