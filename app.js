@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const cors = require('cors');
-// const history = require("connect-history-api-fallback");
+const history = require("connect-history-api-fallback");
 
 require('dotenv').config(); // This allows us to use variables in .env file through process.env
 const isProduction = process.env.NODE_ENV === 'production';
@@ -32,8 +32,8 @@ app.use(session({
 if (!isProduction) app.use(cors());
 if (!isProduction) app.use(logger('dev'));
 
-// adding this so vue router can correctly go to /404 not found
-// app.use(history()); // prevents /debug for some reason
+// adding this so vue router can correctly go to /notfound
+app.use(history());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

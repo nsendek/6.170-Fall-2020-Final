@@ -2,7 +2,7 @@
   <Overlay>
     <v-card class = "review" >
 
-      <div> {{this.$route.params.business.name}} </div>
+      <div> {{business.name}} </div>
 
       <div> How would you rate your overall experience in terms of COVID-19 safety? </div>
 
@@ -19,7 +19,7 @@
         </v-chip>
       </div>
 
-      <div><v-text-field v-model="reviewContent" label="comments" filled/></div>
+      <div><v-textarea style="width:400px;" width v-model="reviewContent" label="comments" filled/></div>
 
       <v-btn @click="submitReview"> SUBMIT </v-btn> 
       
@@ -36,6 +36,7 @@ export default {
   name : "UserProfileVue",
   data() {
     return {
+      business : {},
       rating : 3,
       badges : [],
       badgeReacts : [], 
@@ -45,18 +46,25 @@ export default {
   components : {
     Overlay 
   },
-  created() {
+  beforeMount() {
+    if (this.$route.params.business) this.business = this.$route.params.business;
+    else this.loadBusiness();
+    
     this.loadBadges();
   },
   methods : {
-    async postReview() {
-
+    async loadBusiness() {
+      let response = await axios.get(`/api/business/${this.$route.params.id}`)
+        .catch(err => err.response);
+          
+      if (response.status == 200) this.business = response.data;
+      else this.$router.push({name : "notfound"});
     },
     async postBadgeReact() {
 
     },
     async loadBadges() {
-      let response = await axios.get(`/api/business/${this.$route.params.business.id}/badges`)
+      let response = await axios.get(`/api/business/${this.$route.params.id}/badges`)
           .catch(err => err.response);
       this.badges =  (response.status == 200) ? response.data : [];
     },
