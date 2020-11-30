@@ -247,4 +247,22 @@ router.get('/:id/reviews', async (req, res) => {
   }
 });
 
+/**
+ * get the rating of a business
+ * @name GET/api/business/:id/rating
+ * @returns {Number} The average rating
+ */
+router.get('/:id/rating', async (req, res) => {
+  if (!correctInput(req, res,[],['id'])
+  || !isID(res,req.params.id)
+  || !(await dataExists(res, req.params.id, Businesses))) return;
+
+  try {
+    let rating = await Reviews.getBusinessRating(req.params.id);
+    res.status(200).send(rating);
+  } catch (error) {
+    res.status(503).send({ error: "could not fetch rating"});
+  }
+});
+
 module.exports = router;
