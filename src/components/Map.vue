@@ -4,6 +4,7 @@
       :zoom="15"
       map-type-id="roadmap"
       ref="map"
+      :options="options"
     >
     <GmapMarker
         :key="index"
@@ -28,6 +29,10 @@ export default {
       businesses : [],
       infoWindow : null,
       infoBusiness: null,
+      ligthId:"e492156a263e3bf5",
+      darkId:"4bd99df653a8171b",
+      options:
+      {mapId: "4bd99df653a8171b" }
     }
   },
   computed: {
@@ -41,7 +46,8 @@ export default {
       if (businesses.length ===1){
         let lat = businesses[0].lat;
         let lng = businesses[0].lng;
-        map.panTo({lat,lng})
+        map.panTo({lat,lng});
+        map.zoom = 18;
       }
       else if(businesses.length > 1){
           let minlat = businesses.reduce((prev, curr) => (prev.lat && curr.lat && prev.lat < curr.lat) ? prev : curr)
@@ -51,14 +57,14 @@ export default {
           // console.log(minlat,minlng,maxlat,maxlng)
           // console.log(minlat.lat,minlng.lng,maxlat.lat,maxlng.lng)
           let bounds = ({south:minlat.lat,west:minlng.lng, north:maxlat.lat,east:maxlng.lng})
-          this.$refs.map.$mapObject.fitBounds(bounds,40);
+          this.$refs.map.$mapObject.fitBounds(bounds,10);
       }
         })
       }
     })
   }, created(){
-      eventBus.$on('clicked', (b) => {
-        this.clicked(b);
+      eventBus.$on('clicked', (b,bview) => {
+        this.clicked(b,bview);
       })
   },
   methods: {
@@ -82,24 +88,26 @@ export default {
       this.infoWindow.setPosition({lat:b.lat,lng:b.lng});
       // console.log(this.infoWindow);
       this.infoWindow.open(map);
+      this.infoBusiness = b;
             })
     },
     markerUnselected(){
       this.infoWindow.close();
       this.infoWindow = null;
     },
-    clicked(b) {
+    clicked(b,bview=false) {
       this.panTo(b.lat,b.lng);
       this.$refs.map.$mapPromise.then((map) => {
 
       // let infowindow = new window.google.maps.InfoWindow({content:"<iframe height = 800 width = 500 src=business/"+b.id+"/>"});
       if (this.infoWindow) {
+        if (!(bview && b.id == this.infoBusiness.id)){
         this.markerUnselected();
         if (this.infoBusiness && b.id != this.infoBusiness.id) this.markerSelected(b,map);
+        }
       }
       else{
         this.markerSelected(b,map);
-        this.infoBusiness = b;
       }
             })
     },

@@ -1,7 +1,7 @@
 <template>
 
 <div class="business-container">
-<div class = "business-count"><h2> {{1+idx}}</h2></div>
+<div class = "business-count"><h2 style="user-select: none"> {{1+idx}}</h2></div>
 <router-link :to="`/business/${business.id}`">
   <h3>{{business.name}}</h3>
 </router-link>

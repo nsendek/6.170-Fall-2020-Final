@@ -55,7 +55,7 @@ export default {
        this.loadRating();
        eventBus.$emit("businesses", [this.business]);
     }
-    eventBus.$emit("clicked", this.business); 
+    eventBus.$emit("clicked", this.business, true); 
   },
 	methods : {
     openReview() {
