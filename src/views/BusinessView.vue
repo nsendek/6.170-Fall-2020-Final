@@ -1,34 +1,31 @@
 <template >
-    <div class = "main">
-      
-      <div class = "business-col">
-        <v-btn style="width:33%;" @click="openReview"> Submit Review </v-btn>
-        <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
-          <div class = "secondary-header"> <b>{{business.name}}</b> </div>
-          <div class = "quarternary-header"> {{business.address}} </div>
-          <div class = "quarternary-header"> Rating: {{rating}} </div>
-          <div style="text-align:center;">
-            <v-chip style="margin: 5px;" :key="idx" v-for="(badge,idx) in badges">
-              {{badge.label}}
-            </v-chip>
-          </div>
-        </v-card>
-      </div>
-
-      <div >
-        <div class = "primary-header" style="text-align: center;"> REVIEWS </div>
-        <Feed>
-          <v-card style="padding:25px; margin-bottom: 10px;" :key="idx" v-for="(review,idx) in reviews">
-            <div class="flex-row" style="display:flex; flex-direction:row; align-items:center; ">
-              <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
-              <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
-            </div>
-            <div> {{review.content}} </div>
-          </v-card>
-        </Feed>
-      </div>
-
+  <div>
+    <div class = "business-col">
+      <v-btn style="width:33%;" @click="openReview"> Submit Review </v-btn>
+      <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
+        <div class = "secondary-header"> <b>{{business.name}}</b> </div>
+        <div class = "quarternary-header"> {{business.address}} </div>
+        <div class = "quarternary-header"> Rating: {{rating}} </div>
+        <div style="text-align:center;">
+          <v-chip style="margin: 5px;" :key="idx" v-for="(badge,idx) in badges">
+            {{badge.label}}
+          </v-chip>
+        </div>
+      </v-card>
     </div>
+
+    <div class = "primary-header" style="text-align: center;"> REVIEWS </div>
+    <Feed>
+      <v-card style="padding:25px; margin: 5px 10px;" :key="idx" v-for="(review,idx) in reviews">
+        <div class="flex-row" style="display:flex; flex-direction:row; align-items:center; ">
+          <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
+          <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
+        </div>
+        <div> {{review.content}} </div>
+      </v-card>
+    </Feed>
+
+  </div>
 </template>
 <script>
 import axios from "axios";
@@ -108,12 +105,6 @@ export default {
 <style scoped>
 .review-rating .v-icon {
   padding : 3px !important;
-}
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width : 100%;
 }
 
 .business-col {
