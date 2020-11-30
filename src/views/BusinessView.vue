@@ -50,7 +50,7 @@ export default {
        this.loadBadges();
        this.loadReviews();  
     }
-    eventBus.$emit("clicked", this.business); 
+    eventBus.$emit("clicked", this.business, true); 
   },
 	methods : {
     async loadBusiness() {

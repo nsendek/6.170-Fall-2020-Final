@@ -57,8 +57,8 @@ export default {
       }
     })
   }, created(){
-      eventBus.$on('clicked', (b) => {
-        this.clicked(b);
+      eventBus.$on('clicked', (b,bview) => {
+        this.clicked(b,bview);
       })
   },
   methods: {
@@ -82,24 +82,26 @@ export default {
       this.infoWindow.setPosition({lat:b.lat,lng:b.lng});
       // console.log(this.infoWindow);
       this.infoWindow.open(map);
+      this.infoBusiness = b;
             })
     },
     markerUnselected(){
       this.infoWindow.close();
       this.infoWindow = null;
     },
-    clicked(b) {
+    clicked(b,bview=false) {
       this.panTo(b.lat,b.lng);
       this.$refs.map.$mapPromise.then((map) => {
 
       // let infowindow = new window.google.maps.InfoWindow({content:"<iframe height = 800 width = 500 src=business/"+b.id+"/>"});
       if (this.infoWindow) {
+        if (!(bview && b.id == this.infoBusiness.id)){
         this.markerUnselected();
         if (this.infoBusiness && b.id != this.infoBusiness.id) this.markerSelected(b,map);
+        }
       }
       else{
         this.markerSelected(b,map);
-        this.infoBusiness = b;
       }
             })
     },
