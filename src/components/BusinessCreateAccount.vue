@@ -1,5 +1,6 @@
 <template>
   <div class="center-container">
+    
     <div class="big-title">Welcome To Zelp</div>
         <p class="zelp-description">
         Zelp is a platform designed by students in the Cambridge community to keep users 
@@ -10,7 +11,7 @@
         </p>
     <div class="center-container">
       <div class="text-input"><v-text-field v-model="name" label="business name" placeholder="business name" filled/></div>
-      <div class="text-input"><v-text-field v-model="address" label="address" placeholder="address" filled/></div>
+      <div class="text-input"><v-text-field @input="ac()" id="autocomplete" v-model="address" label="address" placeholder="address" filled/></div>
       <div class="text-input"><v-text-field v-model="accountName" label="account username" placeholder="account username" filled/></div>
       <div class="text-input"><v-text-field v-model="password" label="password" placeholder="password" filled/></div>
 
@@ -35,8 +36,12 @@ export default {
       name: ""
     }
   }, 
-
   methods : {
+    ac(){
+      var autocomplete = new window.google.maps.places.Autocomplete((event.target),{types: ['geocode']});
+      console.log(autocomplete);
+      console.log(event.target);
+    },
     createAccount : function(){
       axios.post("/api/business", {
         accountName : this.accountName, 

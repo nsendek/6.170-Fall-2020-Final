@@ -106,4 +106,66 @@ router.delete('/:id?', async (req, res) => {
   }
 })
 
+ /**
+ * Deny a Badge from a Business
+ * @name Put/api/badge/:id
+ * @param {number} id - id of the badge
+ * @return {Badge} - the removed Badge Instance
+ * 
+ * @throws {201} Badge is added 
+ * @throws {401} - if user is not signed in
+ * @throws {400} - if review is too long or not given
+ */
+router.put('/:id?/deny', async (req, res) => {
+  if (!signedIn(req, res, false) 
+  || !correctInput(req, res, [], ['id'])) return; 
+
+  try {
+    let owner = await Badges.authenticate(req.session.user.id, req.params.id);
+    
+    if (owner) {
+      let badge = await Badges.deny(req.params.id);
+      if (badge) res.status(200).send( badge );
+      else res.status(400).send({ error : "business does not have badge" });
+    } else {
+      res.status(400).send({ error : "business not associated with badge ID" });
+    }
+      
+  } catch (error) {
+      res.status(503).send({ error: "could not deny badge" });
+  }
+})
+
+ /**
+ * Approve a Badge from a Business
+ * @name Put/api/badge/:id
+ * @param {number} id - id of the badge
+ * @return {Badge} - the removed Badge Instance
+ * 
+ * @throws {201} Badge is added 
+ * @throws {401} - if user is not signed in
+ * @throws {400} - if review is too long or not given
+ */
+router.put('/:id?/affirm', async (req, res) => {
+  if (!signedIn(req, res, false) 
+  || !correctInput(req, res, [], ['id'])) return; 
+
+  try {
+    let owner = await Badges.authenticate(req.session.user.id, req.params.id);
+    
+    if (owner) {
+      let badge = await Badges.approve(req.params.id);
+      if (badge) res.status(200).send( badge );
+      else res.status(400).send({ error : "business does not have badge" });
+    } else {
+      res.status(400).send({ error : "business not associated with badge ID" });
+    }
+      
+  } catch (error) {
+      res.status(503).send({ error: "could not Approve badge" });
+  }
+})
+
+
+
  module.exports = router;
