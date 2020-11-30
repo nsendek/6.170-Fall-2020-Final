@@ -126,6 +126,17 @@ class Reviews {
   }
 
   /**
+   * Get an overall rating for a business
+   * @param {*} businessId 
+   */
+  static async getBusinessRating(businessId) {
+    let db = await SQL.getDB();
+    let ratingAvg = db.get(`SELECT ROUND(AVG(rating), 2) AS avg FROM reviews WHERE businessId = $1`, [businessId]);
+    db.close();
+    return ratingAvg;
+  }
+
+  /**
    * Add a Review if it contains <= 140 characters
    * @param {number} userId - id of Review creator
    * @param {number} businessId - id of business reviewed

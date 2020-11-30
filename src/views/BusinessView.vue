@@ -6,6 +6,7 @@
         <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
           <div class = "secondary-header"> <b>{{business.name}}</b> </div>
           <div class = "quarternary-header"> {{business.address}} </div>
+          <div class = "quarternary-header"> Rating: {{rating}} </div>
           <div style="text-align:center;">
             <v-chip style="margin: 5px;" :key="idx" v-for="(badge,idx) in badges">
               {{badge.label}}
@@ -43,13 +44,15 @@ export default {
 		return {
       reviews : [],
       badges : [],
-			business : null
+      business : null,
+      rating: 0,
 		}
   },
   created : async function () {
     if (await this.loadBusiness()) {
        this.loadBadges();
        this.loadReviews();  
+       this.loadRating();
        eventBus.$emit("businesses", [this.business]);
     }
     eventBus.$emit("clicked", this.business, true); 
@@ -58,6 +61,17 @@ export default {
     openReview() {
       this.$router.push({ name: 'review', params: { id: this.business.id }})
     },
+
+    async loadRating() {
+      axios.get(`/api/business/${this.business.id}/rating`)
+      .then((response) => {
+        this.rating = response.data.avg;
+      })
+      .catch((error) => {
+        window.console.log(error.response);
+      })
+    },
+
     async loadBusiness() {
       this.business = null;
       let response = await axios.get(`/api/business/${this.$route.params.id}`)
