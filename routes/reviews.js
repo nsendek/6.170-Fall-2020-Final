@@ -82,7 +82,7 @@ router.post('/', async (req, res) => {
             req.body.rating,
             req.body.content
           );
-        if (review) res.status(201).send( review );
+        if (review) res.status(201).send({message : "review submitted"});
         else res.status(409).send({ error : "a review already exists" });
 
     } catch (error) {

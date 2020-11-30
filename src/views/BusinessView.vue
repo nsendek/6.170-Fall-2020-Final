@@ -59,7 +59,7 @@ export default {
   },
 	methods : {
     openReview() {
-      this.$router.push({ name: 'review', params: { id: this.business.id }})
+      this.$router.push({ name: 'review', params: { business: this.business }})
     },
 
     async loadRating() {
