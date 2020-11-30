@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div>{{this.$state.username}} </div>
+    <div class="secondary-header">{{this.$state.username}} </div>
 
-    <div><v-btn v-on:click="signout"> SIGN OUT </v-btn></div>
+    <div><center><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></center></div>
 
     <div class="account-options">
       <router-link :to="`/business/${businessID}`">
