@@ -2,6 +2,7 @@
   <v-app id="zelp">
     <NavBar />
     <EventHandler /> 
+    <router-view name="overlay" />
     <v-main>
       <v-row >
         <v-col  class ="left-col">
@@ -17,7 +18,7 @@
 <script>
 import EventHandler from "./components/EventHandler.vue";
 import NavBar from "./components/NavBar";
-import Map from "./components/Map"
+import Map from "./components/Map";
 
 export default {
   components : {
@@ -38,6 +39,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: lavender;
+  /* z-index: 0;  */
 }
 
 .left-col {

@@ -1,7 +1,8 @@
 <template >
     <div class = "main">
       
-      <div >
+      <div class = "business-col">
+        <v-btn style="width:33%;" @click="openReview"> Submit Review </v-btn>
         <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
           <div class = "secondary-header"> <b>{{business.name}}</b> </div>
           <div class = "quarternary-header"> {{business.address}} </div>
@@ -49,10 +50,14 @@ export default {
     if (await this.loadBusiness()) {
        this.loadBadges();
        this.loadReviews();  
+       eventBus.$emit("businesses", [this.business]);
     }
     eventBus.$emit("clicked", this.business, true); 
   },
 	methods : {
+    openReview() {
+      this.$router.push({ name: 'review', params: { id: this.business.id }})
+    },
     async loadBusiness() {
       this.business = null;
       let response = await axios.get(`/api/business/${this.$route.params.id}`)
@@ -67,35 +72,36 @@ export default {
       return true;
     },
 		async loadReviews() {
-      this.reviews = [];
       let response = await axios.get(`/api/business/${this.$route.params.id}/reviews`)
           .catch(err => err.response);
-      
-      if (response.status == 200) {
-        this.reviews = response.data;
-      }
+      this.reviews = (response.status == 200) ? response.data : [];
     },
     async loadBadges() {
-      this.badges = [];
       let response = await axios.get(`/api/business/${this.$route.params.id}/badges`)
           .catch(err => err.response);
-      
-      if (response.status == 200) {
-        this.badges = response.data;
-      }
+      this.badges =  (response.status == 200) ? response.data : [];
     },
 	},
 }
 </script>
-<style>
+<style scoped>
 .review-rating .v-icon {
   padding : 3px !important;
 }
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width : 100%;
+}
+
+.business-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.business-col > .v-btn {
+  margin: 10px;
 }
 </style>
