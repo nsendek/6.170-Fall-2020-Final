@@ -13,7 +13,43 @@
     </div>
 
     <div><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></div>
-    <div><v-btn v-on:click="deleteAccount" class="wide-button" color="red"> delete account </v-btn></div>
+    <div>
+          <v-dialog
+              v-model="dialog"
+              max-width="290"
+              persistent>
+          <template v-slot:activator='{ on, attrs }'>
+            <v-btn
+                color='red'
+                v-bind='attrs'
+                v-on='on'
+                >Delete Account </v-btn>
+          </template>
+            <v-card>
+              <v-card-title class="headline">
+                Are you sure you want delete your account?
+              </v-card-title>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click.stop="dialog = false"
+                >
+                  No
+                </v-btn>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click.stop="dialog = false"
+                  v-on:click="deleteAccount"
+                >
+                  Yes
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+    </div>
   </div>
 </template>
 
@@ -27,7 +63,8 @@ export default {
   data: function(){
     return {
       username : "", 
-      password : ""
+      password : "",
+      dialog: false,
     }
   }, 
 
@@ -75,7 +112,7 @@ export default {
     deleteAccount : function() {
       axios.delete("/api/user/")
       .then((response) => {
-        eventBus.$emit("success-message", "account successfully deleted");
+        eventBus.$emit("success-message",  "Account deleted successfully");
         window.console.log(response.data); 
         this.$state.username = ""; 
         this.$router.push('/');
