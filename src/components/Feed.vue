@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-column" >
+  <div>
 		<slot> 
       <div class = "load">
         <v-progress-circular
@@ -43,9 +43,5 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
-  }
-  .flex-column {
-    display: flex;
-    flex-direction: column;
   }
 </style>
