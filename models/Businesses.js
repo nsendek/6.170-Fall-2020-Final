@@ -210,7 +210,7 @@ class Businesses {
     let data = await axios.get("https://maps.googleapis.com/maps/api/geocode/json", { 
       params : { 
           address : address,
-          key : "AIzaSyDKOlyw5FKzfofKtyQ5jfKFuleqelf1nhQ"
+          key : "AIzaSyDKOlyw5FKzfofKtyQ5jfKFuleqelf1nhQ",
         }
     })
       .then(data => data.data)

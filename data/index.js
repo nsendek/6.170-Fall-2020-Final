@@ -100,7 +100,7 @@ async function processRowData(row) {
   let data = await axios.get("https://maps.googleapis.com/maps/api/geocode/json", { 
       params : { 
           address : `${row.Address}, Cambridge, MA, USA`,
-          key : "AIzaSyDKOlyw5FKzfofKtyQ5jfKFuleqelf1nhQ"
+          key : "AIzaSyDKOlyw5FKzfofKtyQ5jfKFuleqelf1nhQ",
         }
     }).catch(err => err.response ? err.response : err)
 

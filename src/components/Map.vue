@@ -4,6 +4,7 @@
       :zoom="15"
       map-type-id="roadmap"
       ref="map"
+      :options="options"
     >
     <GmapMarker
         :key="index"
@@ -28,6 +29,10 @@ export default {
       businesses : [],
       infoWindow : null,
       infoBusiness: null,
+      ligthId:"e492156a263e3bf5",
+      darkId:"4bd99df653a8171b",
+      options:
+      {mapId: "4bd99df653a8171b" }
     }
   },
   computed: {
@@ -41,7 +46,8 @@ export default {
       if (businesses.length ===1){
         let lat = businesses[0].lat;
         let lng = businesses[0].lng;
-        map.panTo({lat,lng})
+        map.panTo({lat,lng});
+        map.zoom = 18;
       }
       else if(businesses.length > 1){
           let minlat = businesses.reduce((prev, curr) => (prev.lat && curr.lat && prev.lat < curr.lat) ? prev : curr)
@@ -51,7 +57,7 @@ export default {
           // console.log(minlat,minlng,maxlat,maxlng)
           // console.log(minlat.lat,minlng.lng,maxlat.lat,maxlng.lng)
           let bounds = ({south:minlat.lat,west:minlng.lng, north:maxlat.lat,east:maxlng.lng})
-          this.$refs.map.$mapObject.fitBounds(bounds,40);
+          this.$refs.map.$mapObject.fitBounds(bounds,10);
       }
         })
       }
