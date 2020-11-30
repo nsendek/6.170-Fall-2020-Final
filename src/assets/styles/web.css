@@ -9,23 +9,23 @@
   }
 
 
-.business-container {
+/* .business-container {
     display: flex;
     border: 2px solid black;
-    /* margin: 0.5rem;
-    padding: 0.5rem; */
     align-items: center;
     flex-direction: column;
     flex-basis: auto;
-  }
+  } */
+
 .business-count {
-  margin-top: 5px; 
+  float: right;
   color: white; 
   background: gray; 
   border-radius: 50%; 
   width: 35px; 
   height: 35px; 
   text-align: center;
+  user-select: none;
   }
 
 

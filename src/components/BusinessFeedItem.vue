@@ -1,14 +1,17 @@
 <template>
 
-<div class="business-container">
-<div class = "business-count"><h2 style="user-select: none"> {{1+idx}}</h2></div>
-<router-link :to="`/business/${business.id}`">
-  <h3>{{business.name}}</h3>
-</router-link>
-<i>Address: {{business.address}}</i>
+<v-card style="padding:25px; margin: 5px 10px;">
+  <div> <h2 class="business-count">{{1+idx}}</h2> </div>
+  <router-link :to="`/business/${business.id}`">
+    <h3>{{business.name}}</h3>
+  </router-link>
+  <div> <i>Address: {{business.address}}</i> </div>
 
-Badges: {{this.badges}}
-</div>
+   <v-chip small style="margin: 2.5px;" :key="idx" v-for="(badge,idx) in badges">
+    {{badge}}
+  </v-chip>
+
+</v-card>
 
 </template>
 
