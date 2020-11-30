@@ -106,4 +106,43 @@ router.delete('/:id?', async (req, res) => {
   }
 })
 
+
+/**
+ * Affirm a badge
+ * @name POST/api/badge/affirm
+ * @param badgeId - the id of the badge
+ * @param userId - the id of the user
+ */
+router.post("/affirm", async (req, res) => {
+  if (!correctInput(req, res, [], ['userId', 'badgeId'])) return;
+
+  try {
+    let affirm = Badges.affirm(req.body.userId, req.body.badgeId);
+    if (affirm) {
+      res.status(200).send();
+    }
+  } catch (error) {
+    res.status(503).send({ error: "could not affirm badge"});
+  }
+});
+
+/**
+ * Deny a badge
+ * @name POST/api/badge/deny
+ * @param badgeId - the id of the badge
+ * @param userId - the id of the user
+ */
+router.post("/deny", async (req, res) => {
+  if (!correctInput(req, res, [], ['userId', 'badgeId'])) return;
+
+  try {
+    let denY = Badges.deny(req.body.userId, req.body.badgeId);
+    if (deny) {
+      res.status(200).send();
+    }
+  } catch (error) {
+    res.status(503).send({ error: "could not deny badge"});
+  }
+});
+
  module.exports = router;

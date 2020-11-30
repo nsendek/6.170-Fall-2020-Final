@@ -2,9 +2,10 @@
   <Overlay>
     <v-card class = "review" >
 
-      <div> {{business.name}} </div>
 
-      <div> How would you rate your overall experience in terms of COVID-19 safety? </div>
+      <div class="secondary-header"> {{business.name}} </div>
+
+      <div class="quarternary-header"> How would you rate your overall experience in terms of COVID-19 safety? </div>
 
       <v-rating
         v-model="rating"
@@ -14,9 +15,43 @@
       ></v-rating>
      
       <div>
-        <v-chip style="margin: 5px;" :key="idx" v-for="(badge,idx) in badges">
-          {{badge.label}}
-        </v-chip>
+        <center> Affirm Badges </center>
+        <v-spacer></v-spacer>
+
+        <v-chip-group
+        column 
+        multiple 
+        active-class="affirmed">
+
+          <v-chip style="margin: 5px;"
+          :key="idx"
+            v-for="(badge,idx) in badges"
+            v-on:click = 'toggleAffirm(idx)'
+            filter
+            >
+            {{badge.label}}
+          </v-chip>
+        </v-chip-group>
+      </div>
+
+      <div>
+        <center> Deny Badges </center>
+        <v-spacer></v-spacer>
+
+        <v-chip-group
+        column 
+        multiple 
+        active-class="denied">
+
+          <v-chip style="margin: 5px;"
+            :key="idx"
+            v-for="(badge,idx) in badges"
+            v-on:click = 'toggleDeny(idx)'
+            filter
+            >
+            {{badge.label}}
+          </v-chip>
+        </v-chip-group>
       </div>
 
       <div><v-textarea style="width:400px;" width v-model="reviewContent" label="comments" filled/></div>
@@ -40,7 +75,8 @@ export default {
       rating : 3,
       badges : [],
       badgeReacts : [], 
-      reviewContent : ""
+      reviewContent : "",
+      userId: "",
     }
   },
   components : {
@@ -51,7 +87,9 @@ export default {
     else this.loadBusiness();
     
     this.loadBadges();
+    this.getUserId();
   },
+
   methods : {
     async loadBusiness() {
       let response = await axios.get(`/api/business/${this.$route.params.id}`)
@@ -59,16 +97,72 @@ export default {
           
       if (response.status == 200) this.business = response.data;
       else this.$router.push({name : "notfound"});
-    },
-    async postBadgeReact() {
 
     },
-    async loadBadges() {
-      let response = await axios.get(`/api/business/${this.$route.params.id}/badges`)
-          .catch(err => err.response);
-      this.badges =  (response.status == 200) ? response.data : [];
+    loadBadges: function() {
+      axios.get(`/api/business/${this.$route.params.business.id}/badges`)
+        .then((response) => {
+          this.badges = response.data ? response.data : [];
+          this.badges.forEach((badge) => {
+            badge.denied = false;
+            badge.affirmed = false
+            });
+        })
+        .catch(err => err.response);
     },
 
+
+    getUserId: function() {
+      axios.get(`/api/user/${this.$state.username}/search`)
+      .then((response) => {
+        this.userId = response.data.id;
+      })
+      .catch((error) => {
+        window.console.log(error.response);
+      })
+    },
+
+
+    toggleAffirm: function(idx) {
+      this.badges[idx].affirmed = this.badges[idx].affirmed ?
+                                    false : true;
+    },
+
+    toggleDeny: function(idx) {
+      this.badges[idx].denied = this.badges[idx].denied ?
+                                    false : true;
+    },
+
+    affirmBadges: function() {
+      this.badges.filter((badge) => badge.affirmed).forEach((badge) => {
+        axios.post(`api/badge/affirm`, {
+          userId: this.userId,
+          badgeId: badge.id
+        })
+        .then(() => {
+          console.log("Affirm successful");
+        })
+        .catch((error) => {
+          console.log(error.response);
+        })
+      })
+    },
+
+    denyBadges: function() {
+      this.badges.filter((badge) => badge.denied).forEach((badge) => {
+        axios.post(`api/badge/deny`, {
+          userId: this.userId,
+          badgeId: badge.id
+        })
+        .then(() => {
+          console.log("Deny successful");
+        })
+        .catch((error) => {
+          console.log(error.response);
+        })
+      })
+    },
+    
     submitReview : function() {
       let review = {
         businessId : this.$route.params.business.id, 
@@ -79,10 +173,11 @@ export default {
       .then((response) => {
         eventBus.$emit("success-message", response.data.message);
         eventBus.$emit("review-posted", review);
+        this.affirmBadges();
+        this.denyBadges();
       }).catch((error) => { 
         eventBus.$emit("error-message", error.response.data.error); 
       });
-
       this.$router.go(-1);
     }
   }
@@ -94,4 +189,13 @@ export default {
   flex-direction: column;
   align-items: center;
 }
+
+.v-chip.affirmed {
+  background: rgb(73, 214, 73);
+}
+
+.v-chip.denied {
+  background: rgb(240, 19, 19);
+}
+
 </style>

@@ -176,4 +176,22 @@ router.get('/:id?', async (req, res) => {
   }
 });
 
+/**
+ * Search for a user by username
+ * @name GET/api/user/:username/search
+ * @param username - the username of the user
+ */
+router.get("/:username/search", async (req,res) => {
+  try{
+    if (req.params.username) {
+      let user = Users.search(req.params.username);
+      if (user) {
+        res.status(200).send(user)
+      }
+    }
+  } catch (error) {
+    res.status(503).json({ error: "could not find this user"}).end();
+  }
+});
+
 module.exports = router;

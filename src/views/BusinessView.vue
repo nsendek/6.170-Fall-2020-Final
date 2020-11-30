@@ -1,7 +1,8 @@
 <template >
+
   <div>
     <div class = "business-col">
-      <v-btn style="width:33%;" @click="openReview"> Submit Review </v-btn>
+      <v-btn v-if="this.$state.username && !this.$state.isBusiness" style="width:33%;" @click="openReview"> Submit Review </v-btn>
       <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
         <div class = "secondary-header"> <b>{{business.name}}</b> </div>
         <div class = "quarternary-header"> {{business.address}} </div>
