@@ -4,33 +4,14 @@ import Router from 'vue-router';
 import Main from './views/Main.vue';
 import BusinessView from './views/BusinessView.vue';
 
+// overlay components
 import LoginPage from './views/LoginPage.vue';
 import UserProfilePage from './views/UserProfilePage.vue';
 import BusinessProfilePage from './views/BusinessProfilePage.vue';
 import ReviewPage from './views/ReviewPage.vue';
+import NotFound from './views/NotFound.vue';
 
 Vue.use(Router)
-
-/**
- * Vue Router doesn't have a simple way to dynamically 
- * change the the default vue component for a route 
- * (i.e. i want default to be the last viewed component: either Main or BusinessView)
- * This function manually sets it (if called in beforeEnter)
- */
-function setDefault(to, from, next) {
-  let routes = router.options.routes;
-  let components;
-  routes.forEach((route,idx) => {
-    if (route.name == to.name) components = routes[idx].components
-  })
-  if (!components) return;
-
-  // pick either Main or just last viewed component (BusinessView for now but there could be more) 
-  if (from.name == "business") components.default = BusinessView;
-  else components.default = Main;
-
-  next();
-}
 
 const router =  new Router({
   mode: 'history',
@@ -76,8 +57,37 @@ const router =  new Router({
         overlay : BusinessProfilePage,
       },
       beforeEnter: setDefault
-    }
+    },
+    {
+      path: '*',
+      name: 'notfound',
+      components: {
+        overlay: NotFound
+      },
+      beforeEnter: setDefault
+    },
   ],
 })
+
+/**
+ * Vue Router doesn't have a simple way to dynamically 
+ * change the the default vue component for a route 
+ * (i.e. i want default to be the last viewed component: either Main or BusinessView)
+ * This function manually sets it (if called in beforeEnter)
+ */
+function setDefault(to, from, next) {
+  let routes = router.options.routes;
+  let components;
+  routes.forEach((route,idx) => {
+    if (route.name == to.name) components = routes[idx].components
+  })
+  if (!components) return;
+
+  // pick last viewed component (BusinessView or Main for now but there could be more) 
+  if (from.name == "business") components.default = BusinessView;
+  else if (from.name == "main") components.default = Main;
+
+  next();
+}
 
 export default router;
