@@ -64,7 +64,6 @@
 
 <script>
 import axios from "axios";
-import Overlay from '../components/Overlay.vue'
 import { eventBus } from "../main";
 
 export default {
@@ -80,7 +79,7 @@ export default {
     }
   },
   components : {
-    Overlay 
+    Overlay : () => import('../components/Overlay.vue') 
   },
   beforeMount() {
     if (this.$route.params.business) this.business = this.$route.params.business;

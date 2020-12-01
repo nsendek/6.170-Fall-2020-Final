@@ -31,12 +31,11 @@
 <script>
 import axios from "axios";
 import { eventBus } from "../main.js"
-import Feed from "../components/Feed.vue"
 
 export default {
 	name: "BusinessView",
 	components : {
-    Feed
+    Feed : () => import("../components/Feed.vue")
 	},
 	data () {
 		return {

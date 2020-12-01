@@ -35,38 +35,57 @@
         <div class="badges">
 
           <div class="badges" v-for="(badge,idx) in badges" :key="idx">
-            <v-menu
-              v-model="badge.menu"
-              :close-on-content-click="false"
-              :nudge-width="200"
-              :key="idx"
-              bottom
-              offset-y
+            <v-dialog
+              v-model="deleteBadgeDialog"
+              max-width="290"
             >
-              <template v-slot:activator='{on, attrs}'>
-                <v-chip 
-                  style="margin: 5px;" 
-                  :key="idx"
-                  v-on = 'on'
-                  v-bind='attrs'>
-                    {{badge.label}}
-                </v-chip>
+              <template v-slot:activator='{on: dialog, attrs}'>
+                <v-tooltip bottom>
+                  <template v-slot:activator='{on:tooltip}'>
+                    <v-chip 
+                      style="margin: 5px;" 
+                      :key="idx"
+                      v-on = "{...tooltip, ...dialog }"
+                      v-bind='attrs'
+                      input-value="active"
+                      filter
+                      filter-icon="mdi-minus">
+                      {{badge.label}}
+                    </v-chip>
+                  </template>
+                <!-- <span>{{badge.description}}</span> -->
+                <v-card
+                  
+                >
+                  <v-card-title class="headline">Badge Information</v-card-title>
+                  <v-card-subtitle> Affirm / Deny Ratio: TBD </v-card-subtitle>
+                </v-card> 
+                </v-tooltip>
               </template>
               <v-card>
-                <v-list>
-                  <v-list-item-content>
-                    <v-list-item-title>Badge Information</v-list-item-title>
-                    <v-list-item-title>Affirm / Deny Ratio: TBD</v-list-item-title>
-                  </v-list-item-content>
-
-                  <v-btn
-                   color="red"
-                   v-on:click="deleteBadge(idx)"
-                  > Delete Badge </v-btn>
-                </v-list>
-
+                <v-card-title class="headline">
+                  Are you sure you want to delete this badge?
+                </v-card-title>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      color="green darken-1"
+                      text
+                      @click.stop="deleteBadgeDialog = false"
+                    >
+                      No
+                    </v-btn>
+                    <v-btn
+                      color="green darken-1"
+                      text
+                      @click.stop="deleteBadgeDialog = false"
+                      v-on:click="deleteBadge(idx)"
+                    >
+                      Yes
+                    </v-btn>
+                  </v-card-actions>
               </v-card>
-            </v-menu>
+            </v-dialog>
           </div>
         </div>
 
@@ -74,47 +93,96 @@
         <div class="badges">
 
           <div class="badges" v-for="(badge,idx) in otherBadges" :key="idx">
-            <v-menu
-              v-model="badge.menu"
-              :close-on-content-click="false"
-              :nudge-width="50"
-              :key="idx"
-              bottom
-              offset-y
+            
+            <v-dialog
+              v-model="addBadgeDialog"
+              max-width="290"
             >
-              <template v-slot:activator='{on, attrs}'>
-                <v-chip 
-                  style="margin: 5px;" 
-                  :key="idx"
-                  v-on = 'on'
-                  v-bind='attrs'>
-                    {{badge.label}}
-                </v-chip>
+              <template v-slot:activator='{on: dialog, attrs}'>
+                <v-tooltip bottom>
+                  <template v-slot:activator='{on:tooltip}'>
+                    <v-chip 
+                      style="margin: 5px;" 
+                      :key="idx"
+                      v-on = "{...tooltip, ...dialog }"
+                      v-bind='attrs'
+                      input-value="active"
+                      filter
+                      filter-icon="mdi-plus">
+                      {{badge.label}}
+                    </v-chip>
+                  </template>
+                <span>{{badge.description}}</span>
+                </v-tooltip>
               </template>
               <v-card>
-                <v-list>
-                  <v-list-item-title>Badge Description</v-list-item-title>
-                  <v-list-item-title>{{badge.description}}</v-list-item-title> 
-                  <v-btn
-                   color="green"
-                   v-on:click="addBadge(idx)"
-                  > Add Badge </v-btn>
-                </v-list>
-
+                <v-card-title class="headline">
+                  Are you sure you want to add this badge?
+                </v-card-title>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      color="green darken-1"
+                      text
+                      @click.stop="addBadgeDialog = false"
+                    >
+                      No
+                    </v-btn>
+                    <v-btn
+                      color="green darken-1"
+                      text
+                      @click.stop="addBadgeDialog = false"
+                      v-on:click="addBadge(idx)"
+                    >
+                      Yes
+                    </v-btn>
+                  </v-card-actions>
               </v-card>
-            </v-menu>
+            </v-dialog>
           </div>
         </div>
-        <br><br><br><br>
-        <v-btn
-          color="red"
-          v-on:click="deleteAccount()"
-        > Delete Account </v-btn>
-
+        <div>
+          <br><br><br><br>
+          <v-dialog
+              v-model="deleteAccountDialog"
+              max-width="290"
+              persistent>
+          <template v-slot:activator='{ on, attrs }'>
+            <v-btn
+                color='red'
+                v-bind='attrs'
+                v-on='on'
+                >Delete Account </v-btn>
+          </template>
+            <v-card>
+              <v-card-title class="headline">
+                Are you sure you want delete your account?
+              </v-card-title>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click.stop="deleteAccountDialog = false"
+                >
+                  No
+                </v-btn>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click.stop="deleteAccountDialog = false"
+                  v-on:click="deleteAccount()"
+                >
+                  Yes
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </div>
+      
     </div>
-    
-
   </div>
+  
 </template>
 
 <script>
@@ -133,6 +201,10 @@ export default {
       // businessID: null,
       badges: [],
       otherBadges: [],
+      // binders for dialogue boxes
+      addBadgeDialog:false,
+      deleteBadgeDialog:false,
+      deleteAccountDialog:false,
     }
   }, 
 
@@ -162,8 +234,8 @@ export default {
       axios.get('/api/badge')
       .then((response) => {
         let badgesOwned = this.badges.map((badgeObject) => badgeObject.label);
+
         this.otherBadges = response.data.filter((badgeObject) => !(badgesOwned.includes(badgeObject.label)));
-        this.otherBadges.forEach((badgeObject) => badgeObject.menu = false);
       })
       .catch((error) => {
         window.console.log(error.response);
@@ -200,31 +272,27 @@ export default {
     },
 
     deleteBadge: function(idx) {
-      if (confirm("Are you sure you want to delete this badge?")) {
-        let badgeDeleted = this.badges[idx];
-        axios.delete(`api/badge/${badgeDeleted.id}`)
-        .then(() => {
-          eventBus.$emit("success-message", "Badge deleted successfully");
-          this.badges = this.badges.filter((badge,index) => index !== idx);
-          badgeDeleted.menu = false;
-          this.otherBadges.push(badgeDeleted);
-        })
-        .catch((error) => {
-          console.log(error);
-          eventBus.$emit("error-message", "Unable to delete badge");
-        })
-      }
+      let badgeDeleted = this.badges[idx];
+      axios.delete(`api/badge/${badgeDeleted.id}`)
+      .then(() => {
+        eventBus.$emit("success-message", "Badge deleted successfully");
+        this.badges = this.badges.filter((badge,index) => index !== idx);
+        this.getOtherBadges();
+      })
+      .catch((error) => {
+        console.log(error);
+        eventBus.$emit("error-message", "Unable to delete badge");
+      })
+      
     },
 
     addBadge: function(idx) {
-      if (confirm("Are you sure you want to add this badge?")) {
         let badgeLabel = this.otherBadges[idx].label;
         axios.post('api/badge' , {label : badgeLabel})
         .then((response) => {
           eventBus.$emit("success-message", "Badge added successfully");
           this.otherBadges = this.otherBadges.filter((badgeObject, index) => index != idx);
           let badgeAdded = response.data;
-          badgeAdded.menu = false;
           this.badges.push(badgeAdded);
 
         })
@@ -232,7 +300,7 @@ export default {
           console.log(error);
           eventBus.$emit("error-message", "Unable to add badge");
         });
-      }
+      
 
     },
 
@@ -252,21 +320,19 @@ export default {
 
 
     deleteAccount: function() {
-      if (confirm("Are you sure you want to delete your account? This cannot be undone.")) {
-        axios.delete('api/business')
-        .then(() => {
-          eventBus.$emit("success-message", "Account deleted successfully");
-          this.$state.username = ""; 
-          this.$state.isBusiness = false;
-          this.$router.push('/');
-        })
-        .catch((error) => {
-          console.log(error.response.data.error);
-          eventBus.$emit("error-message", "Unable to delete this account"); 
-        })
+      axios.delete('api/business')
+      .then(() => {
+        eventBus.$emit("success-message", "Account deleted successfully");
+        this.$state.username = ""; 
+        this.$state.isBusiness = false;
+        this.$router.push('/');
+      })
+      .catch((error) => {
+        console.log(error.response.data.error);
+        eventBus.$emit("error-message", "Unable to delete this account"); 
+      })
       }
     }
-  }
 }
 </script>
 
@@ -277,7 +343,6 @@ export default {
   flex-direction:row;
   flex-wrap: wrap;
   justify-content: center;
-
-
 }
+
 </style>

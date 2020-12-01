@@ -9,19 +9,14 @@
 <script>
 import { eventBus } from "../main";
 
-import UserCreateAccount from '../components/UserCreateAccount.vue'
-import BusinessCreateAccount from '../components/BusinessCreateAccount.vue'
-import UserLogin from '../components/UserLogin.vue'
-import Overlay from '../components/Overlay.vue'
-
 export default {
   name : "LoginPage", 
 
   components : {
-    UserLogin,
-    BusinessCreateAccount,
-    UserCreateAccount, 
-    Overlay
+    UserLogin : () => import('../components/UserLogin.vue'),
+    BusinessCreateAccount : () => import('../components/BusinessCreateAccount.vue'),
+    UserCreateAccount : () => import('../components/UserCreateAccount.vue'), 
+    Overlay: () => import('../components/Overlay.vue')
   }, 
 
   data : function(){
