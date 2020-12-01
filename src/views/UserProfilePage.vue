@@ -5,15 +5,11 @@
 </template>
 
 <script>
-import UserProfile from '../components/UserProfile.vue'
-import Overlay from '../components/Overlay.vue'
-
 export default {
   name : "UserProfileVue",
-
   components : {
-    UserProfile, 
-    Overlay 
+    UserProfile : () => import('../components/UserProfile.vue'), 
+    Overlay : () => import('../components/Overlay.vue')
   }
 }
 </script>

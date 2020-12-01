@@ -18,18 +18,14 @@
   </v-app>
 </template>
 <script>
-import EventHandler from "./components/EventHandler.vue";
-import NavBar from "./components/NavBar";
-import Map from "./components/Map";
-
 import { Splitpanes, Pane } from 'splitpanes'
 import 'splitpanes/dist/splitpanes.css'
 
 export default {
   components : {
-    EventHandler,
-    NavBar,
-    Map,
+    EventHandler : () => import("./components/EventHandler.vue"),
+    NavBar : () => import("./components/NavBar"),
+    Map : () => import("./components/Map"),
     Splitpanes,
     Pane
   }
