@@ -4,7 +4,8 @@
 ### Purpose and Functionality
 Describe the purpose and functionality of your application (~50 words) 
 
-At this stage, users will be able to filter businesses by the badges that they have added. Once populated with the businesses in Cambridge, it will allow users to narrow down establishments that follow any given set of safety precautions.
+At our MVP, users and businesses can interact with the Zelp platform with nearly all of the functionality. Users can create and edit accounts, filter businesses by badge, and leave reviews on businesses they've visited. Businesses can also create and edit their accounts, and they can manage the set of badges that represent the policies that they are upholding.
+
 
 ### Instructions to Run Locally:
 In command line:
@@ -21,12 +22,27 @@ then you will find the application at `localhost:8080` in the browser
 ### Authorship:
 * **Howard DaCosta**:
   * src
-    * BusinessFeed.vue
-    * BusinessFeedItem.vue
+    * BusinessCreateAccount.vue
+    * BusinessProfile.vue
+    * UserLogin.vue (business logic)
+    * BusinessProfilePage.vue
+    * Review Page (affirm / deny badges)
   * models:
     * Badge.js
+      * `affirm`
+      * `deny`
+    * Businesses.js
+      * `create (added address creation)`
   * routes:
+    * businesses.js
+      * `POST/api/business/signin`
+      * `POST/api/business/signout`
+      * `POST/api/business/:id/rating`
     * badges.js
+      * `POST/api/badge/affirm`
+      * `POST/api/badge/deny`
+    * users.js
+      * `GET/api/user/:username/search`
 * **Niko Sendek**:
   * db
     * sqlite.js 
