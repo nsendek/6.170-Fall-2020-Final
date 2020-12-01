@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import VueCookie from 'vue-cookie'
 import Vuetify from 'vuetify/lib';
 
 import App from './App.vue'
@@ -30,9 +29,10 @@ const vuetify = new Vuetify({
   //     }
   //   },
   // },
+  options: {
+    customProperties: true
+  }
 });
-
-Vue.use(VueCookie);
 
 Vue.use(VueGoogleMaps, {
   load: {
