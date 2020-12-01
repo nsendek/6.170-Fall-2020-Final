@@ -55,6 +55,7 @@ router.post('/signin', async (req, res) => {
         req.session.business = business;
         res.status(201).send({
            username: req.body.username,
+           id : req.session.business.id,
            message : `signed in as ${req.body.username}`,
           });
       } else {
@@ -191,25 +192,25 @@ router.get('/:id?', async (req, res) => {
   }
 });
 
-/**
- * @name GET/api/business/account/:accountName
- * @returns {Business} - Business associated with accountName
- */
-router.get('/account/:accountName', async (req, res) => {
-  try {
-    if (req.params.accountName && Businesses.exists(req.params.accountName)) {
-      let businessID = await Businesses.getIDFromAccount(req.params.accountName);
-      if (businessID) {
-        res.status(200).send(businessID);
-      }
-    } 
-    else {
-      res.status(404).send({error: "There are no businesses associated with this account"});
-    }
-  } catch (error) {
-    res.status(503).send({ error: "could not get businesses associated with this account" });
-  }
-});
+// /**
+//  * @name GET/api/business/account/:accountName
+//  * @returns {Business} - Business associated with accountName
+//  */
+// router.get('/account/:accountName', async (req, res) => {
+//   try {
+//     if (req.params.accountName && Businesses.exists(req.params.accountName)) {
+//       let businessID = await Businesses.getIDFromAccount(req.params.accountName);
+//       if (businessID) {
+//         res.status(200).send(businessID);
+//       }
+//     } 
+//     else {
+//       res.status(404).send({error: "There are no businesses associated with this account"});
+//     }
+//   } catch (error) {
+//     res.status(503).send({ error: "could not get businesses associated with this account" });
+//   }
+// });
 
 // BADGE & REVIEW RELATED ROUTES -----------------------------------------------
 

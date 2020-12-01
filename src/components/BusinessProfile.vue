@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="secondary-header">{{this.$state.username}} </div>
+    <div class="secondary-header">{{$state.username}} </div>
 
     <div><center><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></center></div>
 
     <div class="account-options">
-      <router-link :to="`/business/${businessID}`">
+      <router-link :to="`/business/${$state.id}`">
         <h3>View Your Public Page</h3>
       </router-link>
         <h1> Change Account Information </h1>
@@ -130,7 +130,7 @@ export default {
       password : "",
       name: "",
       address: "",
-      businessID: null,
+      // businessID: null,
       badges: [],
       otherBadges: [],
     }
@@ -143,19 +143,19 @@ export default {
   methods : {
 
     getBadges: function() {
-      axios.get(`/api/business/account/${this.$state.username}`)
+      // axios.get(`/api/business/account/${this.$state.username}`)
+      // .then((response) => {
+      //   this.businessID = response.data.id;
+      axios.get(`/api/business/${this.$state.id}/badges`)
       .then((response) => {
-        this.businessID = response.data.id;
-        axios.get(`/api/business/${this.businessID}/badges`)
-        .then((response) => {
-          this.badges = response.data;
-          this.badges.forEach((badgeObject) => badgeObject.menu = false);
-          this.getOtherBadges();
-        })
+        this.badges = response.data;
+        this.badges.forEach((badgeObject) => badgeObject.menu = false);
+        this.getOtherBadges();
       })
-      .catch((error) => {
-        window.console.log(error.response); 
-      })
+      // })
+      // .catch((error) => {
+      //   window.console.log(error.response); 
+      // })
     },
 
     getOtherBadges: function() {

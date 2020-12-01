@@ -42,6 +42,7 @@ export default {
         eventBus.$emit("success-message", response.data.message);
         window.console.log("on logging in " + response.data.username); 
         this.$state.username = response.data.username; 
+        this.$state.id = response.data.id;
         this.$state.isBusiness = this.isBusiness;
         this.$router.push('/');
       })
@@ -62,6 +63,7 @@ export default {
       .then((response) => {
         eventBus.$emit("success-message", response.data.message);
         this.$state.username = response.data.username; 
+        this.$state.id = response.data.id;
         this.$state.isBusiness = this.isBusiness;
         this.$router.push('/');
       })

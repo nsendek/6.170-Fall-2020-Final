@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const Businesses = require('../models/Businesses');
 const Users = require('../models/Users');
 
 const { signedIn, correctInput , isID , dataExists } = require('./validators');
@@ -53,6 +52,7 @@ router.post('/signin', async (req, res) => {
       req.session.user = user;
       res.status(201).send({ 
         username: req.body.username,
+        id : req.session.user.id,
         message : `signed in as ${req.body.username}`,
       });
     }
