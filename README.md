@@ -68,6 +68,15 @@ then you will find the application at `localhost:8080` in the browser
     * Main.Vue (Added Google Maps functionality)
   
 * **Violetta Jusiega**:
+  * db
+    * generate_data.py
+  * src
+    * NavBar.vue
+    * UserCreateAccount.vue
+    * UserLogin.vue
+    * UserProfile.vue
+    * LoginPage.vue
+    * BusinessFeed.vue (implemented pagination) 
   * web.css
     * g-map
     * map-pane
