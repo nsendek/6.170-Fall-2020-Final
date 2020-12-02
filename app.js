@@ -1,9 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 const session = require('express-session');
-const cors = require('cors');
 const history = require("connect-history-api-fallback");
 
 require('dotenv').config(); // This allows us to use variables in .env file through process.env
@@ -29,8 +27,9 @@ app.use(session({
   }));
 
 // allows us to make requests from POSTMAN
-if (!isProduction) app.use(cors());
-if (!isProduction) app.use(logger('dev'));
+if (!isProduction) app.use(require('cors')());
+// log requests to backend
+if (!isProduction) app.use(require('morgan')('dev'));
 
 // adding this so vue router can correctly go to /notfound
 app.use(history());

@@ -1,5 +1,5 @@
 
-# [Zelp](https://nvhj-zelp.herokuapp.com/)
+# [Zelp](https://nvhj-zelp-v2.herokuapp.com/)
 ## [NVHJ]
 ### Purpose and Functionality
 Describe the purpose and functionality of your application (~50 words) 
@@ -61,6 +61,8 @@ then you will find the application at `localhost:8080` in the browser
     * Feed.vue
     * BusinessView.vue
     * EventHandler.vue
+    * Overlay.vue
+    * router.js
 * **Josh Verdejo**:
   * src
     * Main.Vue (Added Google Maps functionality)
