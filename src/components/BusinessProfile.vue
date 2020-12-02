@@ -11,7 +11,7 @@
         <h1> Change Account Information </h1>
         <div> 
             <input type="text" v-model="username" placeholder="new username" />
-            <v-btn v-on:click="updateBusinessInfo('username')" >update username</v-btn>
+            <v-btn v-on:click="updateBusinessInfo('accountName')" >update username</v-btn>
         </div>
 
         <div> 
@@ -251,7 +251,7 @@ export default {
     updateBusinessInfo: function(patchType) {
         let content;
         switch (patchType) {
-            case 'username':
+            case 'accountName':
                 content = this.username;
                 break;
             case 'password':
@@ -267,8 +267,8 @@ export default {
         axios.patch(`/api/business/${patchType}`, {[patchType] : content})
         .then((response) => {
             eventBus.$emit("success-message", `${patchType} successfully changed`);
-            if (patchType == 'username') {
-                this.$state.username = response.data.username;  
+            if (patchType == 'accountName') {
+                this.$state.username = response.data.accountName;  
             } 
         })
         .catch((error) => { 
