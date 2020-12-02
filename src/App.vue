@@ -18,6 +18,7 @@
   </v-app>
 </template>
 <script>
+import Map from "./components/Map"; // only component that needs to be preloaded
 import { Splitpanes, Pane } from 'splitpanes'
 import 'splitpanes/dist/splitpanes.css'
 
@@ -25,7 +26,7 @@ export default {
   components : {
     EventHandler : () => import("./components/EventHandler.vue"),
     NavBar : () => import("./components/NavBar"),
-    Map : () => import("./components/Map"),
+    Map,
     Splitpanes,
     Pane
   }
@@ -58,22 +59,6 @@ body::-webkit-scrollbar {
 .splitpanes--vertical > .splitpanes__splitter {
   min-width: 10px;
 }
-
-/* DON'T DELETE BELOW (in case splitpanes becomes a problem*/
-/* .left-col {
-  padding-top: 0px ; 
-  padding-right:0px ;
-  padding-bottom:0px ;
-}
-.right-col {
-  padding-top: 0px ;  
-  padding-left:0px ; 
-  padding-bottom:0px ;
-} 
- .split-pane {
-  height : calc(100vh - var(--navbar-height)); 
-  height : 100%;
-} */
 </style>
 
 

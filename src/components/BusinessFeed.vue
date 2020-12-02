@@ -42,11 +42,12 @@
 <script>
 import axios from "axios";
 import { eventBus } from "../main";
-import BusinessFeedItem from "./BusinessFeedItem";
-import Feed from "./Feed"
 export default {
     name: "BusinessFeed",
-    components: {BusinessFeedItem, Feed},
+    components: {
+      BusinessFeedItem : () => import("./BusinessFeedItem"), 
+      Feed : () => import("../components/Feed.vue")
+    },
     data() {
         return {
             error:"",

@@ -4,6 +4,12 @@ import Router from 'vue-router';
 import Main from './views/Main.vue';
 import BusinessView from './views/BusinessView.vue';
 
+const NotFound = () => import('./views/NotFound.vue')
+const BusinessProfilePage = () => import('./views/BusinessProfilePage.vue');
+const UserProfilePage = () => import('./views/UserProfilePage.vue');
+const LoginPage = () => import('./views/LoginPage.vue');
+const ReviewPage = () => import('./views/ReviewPage.vue');
+
 Vue.use(Router)
 
 const router =  new Router({
@@ -12,26 +18,30 @@ const router =  new Router({
     {
       path: '/',
       name: 'main',
-      component: Main
+      components: { 
+        default : Main
+      }
     },
     {
       path: '/business/:id',
       name: 'business', 
-      component: BusinessView
+      components: {
+        default : BusinessView
+      }
     },
     {
       path: '/business/:id/review',
       name: 'review', 
       components: {
         default : BusinessView,
-        overlay : () => import('./views/ReviewPage.vue')
+        overlay : ReviewPage
       }
     },
     {
       path: '/login',
       name: 'login', 
       components: {
-        overlay: () => import('./views/LoginPage.vue')
+        overlay: LoginPage
       },
       beforeEnter: setDefault
     }, 
@@ -39,7 +49,7 @@ const router =  new Router({
       path: '/user-profile',
       name: 'user-profile',
       components: {
-        overlay: () => import('./views/UserProfilePage.vue')
+        overlay: UserProfilePage
       },
       beforeEnter: setDefault
     },
@@ -47,7 +57,7 @@ const router =  new Router({
       path: '/business-profile',
       name: 'business-profile',
       components: {
-        overlay : () => import('./views/BusinessProfilePage.vue')
+        overlay : BusinessProfilePage
       },
       beforeEnter: setDefault
     },
@@ -55,7 +65,7 @@ const router =  new Router({
       path: '*',
       name: 'notfound',
       components: {
-        overlay: () => import('./views/NotFound.vue')
+        overlay: NotFound
       },
       beforeEnter: setDefault
     },
