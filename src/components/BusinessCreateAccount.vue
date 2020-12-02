@@ -49,6 +49,7 @@ export default {
         eventBus.$emit("success-message", response.data.message); 
         window.console.log(response.data); 
         this.$state.username = response.data.business.name; 
+        this.$state.id = response.data.business.id; 
         this.$state.isBusiness = true;
         this.$router.push('/');
       })
