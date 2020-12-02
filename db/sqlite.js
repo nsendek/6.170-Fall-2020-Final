@@ -3,7 +3,7 @@ const Database = require('sqlite-async');
 async function createUsersTable() {
   let db = await getDB();
 
-  await db.run(`CREATE TABLE IF NOT EXISTS users (
+  await db.table(`CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT, 
       username TEXT NOT NULL UNIQUE, 
       password TEXT NOT NULL
@@ -15,7 +15,7 @@ async function createUsersTable() {
 async function createBusinessTable() {
   let db = await getDB();
 
-  await db.run(`CREATE TABLE IF NOT EXISTS businesses (
+  await db.table(`CREATE TABLE IF NOT EXISTS businesses (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       
       name TEXT,
@@ -34,7 +34,7 @@ async function createBusinessTable() {
 async function createReviewTables() {
   let db = await getDB();
 
-  await db.run(`CREATE TABLE IF NOT EXISTS reviews (
+  await db.table(`CREATE TABLE IF NOT EXISTS reviews (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       userId INTEGER NOT NULL,
       businessId INTEGER NOT NULL,
@@ -48,7 +48,7 @@ async function createReviewTables() {
       CONSTRAINT business_check FOREIGN KEY(businessId) REFERENCES businesses(id) ON DELETE CASCADE
       )`);
 
-  await db.run(`CREATE TABLE IF NOT EXISTS review_likes (
+  await db.table(`CREATE TABLE IF NOT EXISTS review_likes (
     userId INTEGER NOT NULL,
     reviewId INTEGER NOT NULL,
 
@@ -63,13 +63,13 @@ async function createReviewTables() {
 async function createBadgeTables() {
   let db = await getDB();
 
-  await db.run(`CREATE TABLE IF NOT EXISTS badge_templates (
+  await db.table(`CREATE TABLE IF NOT EXISTS badge_templates (
       label TEXT NOT NULL UNIQUE,
       description TEXT NOT NULL,
       CHECK(label NOT IN ('label', ''))
     )`);
 
-  await db.run(`CREATE TABLE IF NOT EXISTS badges (
+  await db.table(`CREATE TABLE IF NOT EXISTS badges (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       label TEXT NOT NULL,
       businessId INTEGER NOT NULL,
@@ -78,7 +78,7 @@ async function createBadgeTables() {
       CONSTRAINT business_check FOREIGN KEY(businessId) REFERENCES businesses(id) ON DELETE CASCADE
     )`);
 
-  await db.run(`CREATE TABLE IF NOT EXISTS badge_reacts (
+  await db.table(`CREATE TABLE IF NOT EXISTS badge_reacts (
       userId INTEGER NOT NULL,
       badgeId INTEGER NOT NULL,
       value INTEGER,
@@ -103,6 +103,7 @@ async function getDB() {
     const SQLiteFormat = (q) => q.replace(/\$[0-9]+/gi,'?');
 
     return {
+      table : (query,values) => db.run(SQLiteFormat(query),values),
       run : (query,values) => db.run(SQLiteFormat(query),values),
       get : (query,values) => db.get(SQLiteFormat(query),values),
       all : (query,values) => db.all(SQLiteFormat(query),values),
@@ -126,7 +127,6 @@ function parseError(err) {
 async function initDB() {
     await createUsersTable();
     await createBusinessTable();
-
     createReviewTables();
     createBadgeTables();
 }
