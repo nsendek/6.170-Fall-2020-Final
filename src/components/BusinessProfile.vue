@@ -281,6 +281,7 @@ export default {
       axios.delete(`api/badge/${badgeDeleted.id}`)
       .then(() => {
         eventBus.$emit("success-message", "Badge deleted successfully");
+        eventBus.$emit("edit-badge-success");
         this.badges = this.badges.filter((badge,index) => index !== idx);
         this.getOtherBadges();
       })
@@ -296,6 +297,7 @@ export default {
         axios.post('api/badge' , {label : badgeLabel})
         .then((response) => {
           eventBus.$emit("success-message", "Badge added successfully");
+          eventBus.$emit("edit-badge-success");
           this.otherBadges = this.otherBadges.filter((badgeObject, index) => index != idx);
           let badgeAdded = response.data;
           this.badges.push(badgeAdded);

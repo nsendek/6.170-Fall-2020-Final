@@ -60,6 +60,9 @@ export default {
       this.loadReviews();  
       this.loadRating();
     });
+    eventBus.$on(("edit-badge-success"), () => {
+      this.loadBadges();
+    });
   },
 	methods : {
     openReview() {
