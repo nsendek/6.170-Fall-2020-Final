@@ -7,6 +7,9 @@
 | `/user/`       | POST          | Create user and store username and password.  **Require variables `username`, `password` in body**     
 | `/user/`       | PATCH         | Updates user information (username or password) (must have an active user session)
 | `/user/`       | DELETE        | Delete user from database (must have an active user session)
+|`/user/signin`  | POST          | Sign in as a user
+|`/user/signout` | POST          | Sign out of a user account
+|`/user/:username/search` | GET  | Search for a user by username
 
 ## /api/business
 | **URL**                | **HTTP Verb** |  **Action**|
@@ -14,9 +17,12 @@
 | `/business/:id?`       | GET           | Gets business specified by ID. if no ID given, returns all businesses.
 | `/business/:id/reviews`| GET           | Gets all reviews of a specified business
 | `/business/:id/badges` | GET           | Gets all badges of a specified business
+| `/business/:id/rating` | GET           | Get the rating of a business
 | `/business/`           | POST          | Create business and store accountName and password. **Require variables `name`, `accountName`, `password` in body**   
 | `/business/:property`  | PATCH         | Updates business information (name, address, acountName, or password) (must have an active business session).  **Require variable named after `:property` value (i.e. `business/address` needs `address` variable  in the body** 
 | `/business/`           | DELETE        | Delete business from database (must have an active business session)
+| `/business/signin`     | POST | Sign in as a business
+|`/business/signout`     | POST | Sign out from a business account
 
 ## /api/session
 | **URL**              | **HTTP Verb** |  **Action**|
@@ -36,8 +42,8 @@
 | `/review/`           | DELETE        | Delete business from database
 | `/review/:id`        | PATCH         | update review information (must have an active user session). **Require variables `rating`, `content` in body** 
 | `/review/:id/likes`  | GET           | Gets likes of a specified review 
-| `/review/:id/likes`  | POST          | like a freet (must have an active user session)
-| `/review/:id/likes`  | DELETE        | unlike a freet (must have an active user session)
+| `/review/:id/likes`  | POST          | like a review (must have an active user session)
+| `/review/:id/likes`  | DELETE        | unlike a review (must have an active user session)
 
 ## /api/badge
 | **URL**             | **HTTP Verb** |  **Action**|
@@ -47,8 +53,8 @@
 | `/badge/`           | POST          | Add a badge to a business (must have an active business session). **Requires string variable `label` in body.**
 | `/badge/:id`        | DELETE        | Delete a specified badge (must have an active business session and badge must belong to business)
 | `/badge/:id/affirm` | POST          | Affirm a badge (must have an active user session)  
-| `/badge/:id/affirm` | DELETE        | Remove a previous Affirm of badge (must have an active user session)
-| `/badge/:id/deny`   | POST          | Deny a badge (must have an active user session)
+| `/badge/affirm` | DELETE        | Remove a previous Affirm of badge (must have an active user session) **Requires int variable `id` in body.**
+| `/badge/deny`   | POST          | Deny a badge (must have an active user session) **Requires int variable `id` in body.**
 | `/badge/:id/deny`   | DELETE        | Remove a previous Deny of badge (must have an active user session)
 
 ## /api/search
