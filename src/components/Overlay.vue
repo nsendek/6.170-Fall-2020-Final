@@ -3,7 +3,7 @@
     id='overlay'
     :dark="false"
     opacity="0"
-    @click.native="$router.go(-1)"
+    @click.native="hasHistory() ? $router.go(-1) : $router.push('/')"
   >
     <div @click="(e) => {e.stopPropagation();}">
       <slot> </slot>
@@ -13,6 +13,9 @@
 <script>
 export default {
   name : "Overlay",
+  methods: {
+    hasHistory() { return window.history.length > 2 }
+  }
 }
 </script>
 <style scoped>
@@ -26,7 +29,8 @@ export default {
 /* backdrop-filter not supported on some browsers */
 @supports not (backdrop-filter: blur( 15px )) {
   #overlay {
-    background-color: rgba(255,255,255,0.9) !important;
+    background-color: white !important;
+    opacity: 0.9 !important;
   }
 }
 </style>
