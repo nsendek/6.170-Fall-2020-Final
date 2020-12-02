@@ -38,6 +38,7 @@
             <v-dialog
               v-model="deleteBadgeDialog"
               max-width="290"
+              :retain-focus = "false"
             >
               <template v-slot:activator='{on: dialog, attrs}'>
                 <v-tooltip bottom>
@@ -49,7 +50,8 @@
                       v-bind='attrs'
                       input-value="active"
                       filter
-                      filter-icon="mdi-minus">
+                      filter-icon="mdi-minus"
+                      @click.stop="badgeIndex=idx">
                       {{badge.label}}
                     </v-chip>
                   </template>
@@ -79,7 +81,7 @@
                       color="green darken-1"
                       text
                       @click.stop="deleteBadgeDialog = false"
-                      v-on:click="deleteBadge(idx)"
+                      v-on:click="deleteBadge(badgeIndex)"
                     >
                       Yes
                     </v-btn>
@@ -97,6 +99,7 @@
             <v-dialog
               v-model="addBadgeDialog"
               max-width="290"
+              :retain-focus = "false"
             >
               <template v-slot:activator='{on: dialog, attrs}'>
                 <v-tooltip bottom>
@@ -108,7 +111,8 @@
                       v-bind='attrs'
                       input-value="active"
                       filter
-                      filter-icon="mdi-plus">
+                      filter-icon="mdi-plus"
+                      @click.stop="badgeIndex=idx">
                       {{badge.label}}
                     </v-chip>
                   </template>
@@ -132,7 +136,7 @@
                       color="green darken-1"
                       text
                       @click.stop="addBadgeDialog = false"
-                      v-on:click="addBadge(idx)"
+                      v-on:click="addBadge(badgeIndex)"
                     >
                       Yes
                     </v-btn>
@@ -146,6 +150,7 @@
           <v-dialog
               v-model="deleteAccountDialog"
               max-width="290"
+              :retain-focus = "false"
               persistent>
           <template v-slot:activator='{ on, attrs }'>
             <v-btn
@@ -205,6 +210,7 @@ export default {
       addBadgeDialog:false,
       deleteBadgeDialog:false,
       deleteAccountDialog:false,
+      badgeIndex: 0
     }
   }, 
 
