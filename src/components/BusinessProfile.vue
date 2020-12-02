@@ -258,8 +258,7 @@ export default {
                 content = this.address;
                 break;
         }
-
-        axios.patch(`/api/business/${patchType}`, {patchType : content})
+        axios.patch(`/api/business/${patchType}`, {[patchType] : content})
         .then((response) => {
             eventBus.$emit("success-message", `${patchType} successfully changed`);
             if (patchType == 'username') {
