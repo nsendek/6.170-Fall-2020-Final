@@ -2,6 +2,7 @@ import pandas as pd
 import csv
 import random
 from random import choice
+from random_username.generate import generate_username
 import lorem
 import time
 
@@ -28,13 +29,14 @@ def generate_business_badges():
 def generate_users():
   fakeUsers = []
   for i in range(100):
-    fakeUsers.append({'username' : 'user' + str(i), 'password' : 'p', 'id' : 5 + i})
-  pd.DataFrame(fakeUsers).to_csv('./fake_users.csv', index=False)
+    username = generate_username(1)[0]
+    fakeUsers.append({'username' : username, 'password' : 'p', 'id' : 5 + i})
+  pd.DataFrame(fakeUsers).to_csv('./users.csv', index=False, columns= ['id', 'username', 'password'])
   
 # have users affirm / deny businesses 
 def random_affirm_deny(): 
   badges = pd.read_csv('./badges.csv')
-  users = pd.read_csv('./fake_users.csv')
+  users = pd.read_csv('./users.csv')
   reviewId = 0
   affirmations = []
   reviews = []
@@ -74,4 +76,4 @@ def review_text():
     
 # generate_business_badges()
 generate_users()
-random_affirm_deny()
+# random_affirm_deny()
