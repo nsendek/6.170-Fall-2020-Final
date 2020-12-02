@@ -12,7 +12,7 @@
       <div class="text-input"><v-text-field v-model="name" label="business name" placeholder="business name" filled/></div>
       <div class="text-input"><v-text-field v-model="address" label="address" placeholder="address" filled/></div>
       <div class="text-input"><v-text-field v-model="accountName" label="account username" placeholder="account username" filled/></div>
-      <div class="text-input"><v-text-field v-model="password" label="password" placeholder="password" filled/></div>
+      <div class="text-input"><v-text-field type="password" v-model="password" label="password" placeholder="password" filled/></div>
 
       <div><v-btn v-on:click="createAccount" class="wide-button">Create Account</v-btn></div>
       <div class="alt-option"><button v-on:click="goUserLogin"> already have an account? </button></div>

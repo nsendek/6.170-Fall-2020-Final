@@ -13,7 +13,7 @@
     </div> 
     <div class="center-container">
       <div class="text-input"><v-text-field v-model="username" label="username" placeholder="username" filled /></div>
-      <div class="text-input"><v-text-field v-model="password" label="password" placeholder="password" filled /></div>
+      <div class="text-input"><v-text-field type="password" v-model="password" label="password" placeholder="password" filled /></div>
 
       <div><v-btn v-on:click="createAccount" class="wide-button">Create Account</v-btn> </div>
       <div class="alt-option"><button v-on:click="goUserLogin"> already have an account? </button></div>

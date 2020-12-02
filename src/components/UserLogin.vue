@@ -3,7 +3,7 @@
     <div class="big-title"> Login to Zelp </div>
     <div class="center-container">
       <div class="text-input"><v-text-field v-model="username" label="username" placeholder="username" filled/></div>
-      <div class="text-input"><v-text-field v-model="password" label="password" placeholder="password" filled/></div>
+      <div class="text-input"><v-text-field type="password" v-model="password" label="password" placeholder="password" filled/></div>
       <div>
         <input type="checkbox"  v-model="isBusiness">
         <label for="checkbox"> Signing in as a business? </label>

@@ -25,7 +25,7 @@ class Users {
   static async authenticate ( username, password ) {
       let db = await SQL.getDB();
       let user = await db.get(`
-          SELECT username, id, timestamp
+          SELECT username, id
           FROM users 
           WHERE username = $1 AND password = $2`, [username, password]);
       db.close();
@@ -45,7 +45,7 @@ class Users {
    */
   static async getAll() {
       let db = await SQL.getDB();
-      let users = await db.all(`SELECT username, id, timestamp FROM users ORDER BY id DESC`);    
+      let users = await db.all(`SELECT username, id FROM users ORDER BY id DESC`);    
       db.close();
       return users;
   }
@@ -56,7 +56,7 @@ class Users {
    */
   static async get(id) {
       let db = await SQL.getDB();
-      let user = await db.get(`SELECT username, id, timestamp FROM users WHERE id = $1`,[id]);
+      let user = await db.get(`SELECT username, id FROM users WHERE id = $1`,[id]);
       db.close();
       return user;
   }
@@ -70,8 +70,8 @@ class Users {
   static async create( username,  password) {
       let db = await SQL.getDB();
       let res = await db.run(`
-          INSERT INTO users (username, password, timestamp) 
-          VALUES ($1, $2, ${SQL.UNIX()})`
+          INSERT INTO users (username, password) 
+          VALUES ($1, $2)`
           ,[username, password])
         .catch(SQL.parseError);
 
@@ -139,7 +139,7 @@ class Users {
   static async search(query) {
     let db = await SQL.getDB();
     return await db.all(`
-      SELECT username, id, timestamp
+      SELECT username, id
       FROM users 
       WHERE username LIKE '%${query}%'
       ORDER BY id DESC`);
