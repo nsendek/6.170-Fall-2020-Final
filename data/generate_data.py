@@ -57,7 +57,7 @@ def random_reviews():
       else: 
         prev_review = -1 
   pd.DataFrame(affirmations).to_csv('./badge_reacts.csv', index=False)
-  pd.DataFrame(reviews).to_csv('./reviews.csv', index=False)
+  pd.DataFrame(reviews).to_csv('./reviews.csv', index=False, columns = ['id', 'userId', 'businessId', 'content', 'rating', 'timestamp'])
 
 
 def generate_review(userId, businessId, reviewId):
@@ -76,7 +76,9 @@ def generate_review(userId, businessId, reviewId):
   else: 
     rating = 1
 
-  return {'id' : reviewId, 'userId' : userId, 'businessId' : businessId, 'content' : content, 'rating' : rating, 'timestamp' : time.time()}
+  timestamp = random.randrange(1601510400, 1606867200, 1)
+
+  return {'id' : reviewId, 'userId' : userId, 'businessId' : businessId, 'content' : content, 'rating' : rating, 'timestamp' : timestamp}
 
 
 def review_text():

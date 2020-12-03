@@ -26,6 +26,8 @@
       </v-card>
     </Feed>
 
+    <v-pagination v-model="page" :length="totalPages" :total-visible="7" @input="next"></v-pagination>
+
   </div>
 </template>
 <script>
@@ -33,18 +35,23 @@ import axios from "axios";
 import { eventBus } from "../main.js"
 
 export default {
-	name: "BusinessView",
+  name: "BusinessView",
+  
 	components : {
     Feed : () => import("../components/Feed.vue")
-	},
+  },
+  
 	data () {
 		return {
       reviews : [],
       badges : [],
       business : null,
       rating: 0,
+      page : 1,
+      totalPages: 1
 		}
   },
+
   created : async function () {
     if (await this.loadBusiness()) {
        this.loadBadges();
@@ -54,6 +61,7 @@ export default {
     }
     eventBus.$emit("clicked", this.business, true); 
   },
+
   updated(){
     eventBus.$on(("review-posted"), () => {
       this.loadBadges();
@@ -64,6 +72,7 @@ export default {
       this.loadBadges();
     });
   },
+
 	methods : {
     openReview() {
       this.$router.push({ name: 'review', params: { business: this.business }})
@@ -92,16 +101,30 @@ export default {
       }
       return true;
     },
+
 		async loadReviews() {
-      let response = await axios.get(`/api/business/${this.$route.params.id}/reviews`)
+      let response = await axios.get(`/api/business/${this.$route.params.id}/reviews`, { params: { page: this.page } })
           .catch(err => err.response);
-      this.reviews = (response.status == 200) ? response.data : [];
+          
+      if(response.status == 200){
+        this.reviews = response.data.results; 
+        window.console.log(this.reviews); 
+        this.totalPages = response.data.totalPages; 
+      }
+      else{
+        this.reviews = []; 
+      }
     },
+
     async loadBadges() {
       let response = await axios.get(`/api/business/${this.$route.params.id}/badges`)
           .catch(err => err.response);
       this.badges =  (response.status == 200) ? response.data : [];
     },
+
+    next: function(){
+      this.loadReviews(); 
+    }
 	},
 }
 </script>

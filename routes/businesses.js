@@ -237,12 +237,17 @@ router.get('/:id/badges', async (req, res) => {
  * @returns {Review[]} Array of reviews 
  */
 router.get('/:id/reviews', async (req, res) => {
+  console.log("FUCKS"); 
   if (!correctInput(req, res,[],['id'])
   || !isID(res,req.params.id)
   || !(await dataExists(res, req.params.id, Businesses))) return;
   try {
-    let badges = await Reviews.getByBusiness(req.params.id)
-    res.status(200).send(badges);
+    let page = 1; 
+    if (req.query.page) {
+      page = req.query.page; 
+    }
+    let reviews = await Reviews.getByBusiness(req.params.id, page)
+    res.status(200).send(reviews);
   } catch (error) {
     res.status(503).send({ error: "could not get badges" });
   }
