@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-btn @click="geolocate()">Go To Current Location</v-btn>
+  <v-btn @click="geolocate()" >Go To Current Location</v-btn>
     <GmapMap class = "g-map"
       :center="center"
       :zoom="15"
@@ -49,7 +49,6 @@ export default {
       }
     })
   }, created(){
-      this.geolocate();
       eventBus.$on('clicked', (b,bview) => {
         this.clicked(b,bview);
       })
