@@ -51,11 +51,18 @@
 }
 
 /* LOG IN PAGES */
+.login-card{
+  padding-left : 70px; 
+  padding-right : 70px; 
+  padding-top: 5px; 
+  padding-bottom: 20px; 
+}
+
 .center-container{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top : 50px; 
+  margin-top : 40px; 
 }
 
 .big-title { 
@@ -64,7 +71,7 @@
 }
 
 .text-input {
-  width : 20vw; 
+  width : 100%; 
   margin-top: -20px;
 }
 
@@ -80,7 +87,7 @@
 }
 
 .smaller-margin {
-  margin: -25px;
+  margin-top: -25px;
 }
 
 .zelp-description{

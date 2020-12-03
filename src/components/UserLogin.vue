@@ -47,6 +47,8 @@ export default {
         this.$router.push('/');
       })
       .catch((error) => { 
+        window.console.log("here i am"); 
+        window.console.log(error.response); 
         eventBus.$emit("error-message", error.response.data.error); 
       });
     }, 
