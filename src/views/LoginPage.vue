@@ -1,6 +1,6 @@
 <template>
   <Overlay>
-    <v-card class="login-card">
+    <v-card class="overlay-card">
       <UserLogin v-if="userLogin"/>
       <UserCreateAccount v-else-if="userCreateAccount" />
       <BusinessCreateAccount v-else-if="businessCreateAccount" />

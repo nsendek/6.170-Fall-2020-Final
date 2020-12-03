@@ -1,6 +1,8 @@
 <template>
   <Overlay>
-    <UserProfile />
+    <v-card class="overlay-card">
+      <UserProfile />
+    </v-card>
   </Overlay>
 </template>
 
