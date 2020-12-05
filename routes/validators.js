@@ -84,7 +84,9 @@ function correctInput(req, res, body = [], params = [], query = [] ) {
         }
     });
 
-    if (!correct) res.status(400).send({ error : `missing request variables: ${returnString}` }); 
+    // replaced with a more general / readable message for users
+    // if (!correct) res.status(400).send({ error : `missing request variables: ${returnString}` }); 
+    if (!correct) res.status(400).send({ error : `please fill in all fields` });
 
     return correct;
 }

@@ -1,4 +1,6 @@
 <template>
+<div>
+  <v-btn @click="geolocate()" >Go To Current Location</v-btn>
     <GmapMap class = "g-map"
       :center="center"
       :zoom="15"
@@ -16,6 +18,7 @@
         :icon = icon()
       />
     </GmapMap>
+</div>
 </template>
 <script>
 import {eventBus } from "../main";
@@ -42,24 +45,7 @@ export default {
     eventBus.$on('businesses', (businesses) => {
       this.businesses = businesses;
       if(this && this.$refs && this.$refs.map && this.$refs.map.$mapPromise){
-      this.$refs.map.$mapPromise.then((map) => {
-      if (businesses.length ===1){
-        let lat = businesses[0].lat;
-        let lng = businesses[0].lng;
-        map.panTo({lat,lng});
-        map.zoom = 18;
-      }
-      else if(businesses.length > 1){
-          let minlat = businesses.reduce((prev, curr) => (prev.lat && curr.lat && prev.lat < curr.lat) ? prev : curr)
-          let minlng = businesses.reduce((prev, curr) => (prev.lng && curr.lng && prev.lng < curr.lng) ? prev : curr)
-          let maxlat = businesses.reduce((prev, curr) => (prev.lat && curr.lat && prev.lat > curr.lat) ? prev : curr)
-          let maxlng = businesses.reduce((prev, curr) => (prev.lng && curr.lng && prev.lng > curr.lng) ? prev : curr)
-          // console.log(minlat,minlng,maxlat,maxlng)
-          // console.log(minlat.lat,minlng.lng,maxlat.lat,maxlng.lng)
-          let bounds = ({south:minlat.lat,west:minlng.lng, north:maxlat.lat,east:maxlng.lng})
-          this.$refs.map.$mapObject.fitBounds(bounds,10);
-      }
-        })
+          this.boundBox(businesses,10);
       }
     })
   }, created(){
@@ -68,6 +54,16 @@ export default {
       })
   },
   methods: {
+    boundBox(l,b){
+      let minlat = l.reduce((prev, curr) => (prev.lat && curr.lat && prev.lat < curr.lat) ? prev : curr)
+      let minlng = l.reduce((prev, curr) => (prev.lng && curr.lng && prev.lng < curr.lng) ? prev : curr)
+      let maxlat = l.reduce((prev, curr) => (prev.lat && curr.lat && prev.lat > curr.lat) ? prev : curr)
+      let maxlng = l.reduce((prev, curr) => (prev.lng && curr.lng && prev.lng > curr.lng) ? prev : curr)
+      // console.log(minlat,minlng,maxlat,maxlng)
+      // console.log(minlat.lat,minlng.lng,maxlat.lat,maxlng.lng)
+      let bounds = ({south:minlat.lat,west:minlng.lng, north:maxlat.lat,east:maxlng.lng})
+      this.$refs.map.$mapObject.fitBounds(bounds,b);
+    },
     markerSelected(b,map){
             axios.get(`/api/business/${b.id}/badges`)
             .then((res) => {
@@ -87,9 +83,27 @@ export default {
       this.infoWindow = new window.google.maps.InfoWindow({content:content, options:{pixelOffset: {width: 0,height: -35}}});
       this.infoWindow.setPosition({lat:b.lat,lng:b.lng});
       // console.log(this.infoWindow);
+      this.boundBox(this.businesses,10);
       this.infoWindow.open(map);
       this.infoBusiness = b;
             })
+    }, geolocate() {
+        console.log("here!");
+      navigator.geolocation.getCurrentPosition(position => {
+        let lat = parseFloat(position.coords.latitude);
+        let lng = parseFloat(position.coords.longitude);
+        if(this && this.$refs && this.$refs.map && this.$refs.map.$mapPromise){
+          this.$refs.map.$mapPromise.then((map) => {
+            new window.google.maps.Marker({
+              position: {lat: lat, lng: lng },
+                map,
+                title: "Your Location",
+              });
+              this.boundBox(this.businesses.concat([{lat: lat, lng: lng }]),80);
+              // console.log(lat,lng);
+        })
+        }
+        })
     },
     markerUnselected(){
       this.infoWindow.close();

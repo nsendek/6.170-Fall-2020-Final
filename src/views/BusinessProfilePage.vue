@@ -1,6 +1,8 @@
 <template>
     <Overlay>
-    <BusinessProfile/>
+        <v-card class="overlay-card">
+          <BusinessProfile/>
+        </v-card>
     </Overlay>
 </template>
 

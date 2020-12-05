@@ -111,8 +111,24 @@ class Reviews {
    * @param {number} businessId - id of business reviewed
    * @return {Review[]]} - found Reviews
    */
-  static async getByBusiness(businessId) {
+  static async getByBusiness(businessId, page) {
+    let pageLength = 10;
+
     let db = await SQL.getDB();
+    let numRows = await db.get(`
+        SELECT COUNT(*) FROM reviews
+        WHERE businessId = $1`, [businessId]); 
+    numRows = numRows["COUNT(*)"];
+    let totalPages = Math.ceil(numRows / pageLength); 
+    if(page <= 0){
+      page = 1;
+    }
+    if(page > totalPages){
+      page = totalPages; 
+    }
+    let offset = (page - 1) * pageLength; 
+
+
     let data =  await db.all(`
         SELECT reviews.id, users.username, userId, businessId, 
         businesses.name AS businessName,rating, content, reviews.timestamp
@@ -120,9 +136,12 @@ class Reviews {
         JOIN users ON users.id=userId
         JOIN businesses ON businesses.id=businessId 
         WHERE businessId = $1
-        ORDER BY reviews.timestamp DESC`,[businessId]);
+        ORDER BY reviews.timestamp DESC
+        limit $2 offset $3`,[businessId, pageLength, offset]);
 
-    return data.map(mapReview);
+    db.close(); 
+
+    return {"results" : data.map(mapReview), "page" : page, "totalPages" : totalPages};
   }
 
   /**

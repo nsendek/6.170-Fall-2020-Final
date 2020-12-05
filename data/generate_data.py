@@ -34,7 +34,7 @@ def generate_users():
   pd.DataFrame(fakeUsers).to_csv('./users.csv', index=False, columns= ['id', 'username', 'password'])
   
 # have users affirm / deny businesses 
-def random_affirm_deny(): 
+def random_reviews(): 
   badges = pd.read_csv('./badges.csv')
   users = pd.read_csv('./users.csv')
   reviewId = 0
@@ -57,13 +57,28 @@ def random_affirm_deny():
       else: 
         prev_review = -1 
   pd.DataFrame(affirmations).to_csv('./badge_reacts.csv', index=False)
-  pd.DataFrame(reviews).to_csv('./reviews.csv', index=False)
+  pd.DataFrame(reviews).to_csv('./reviews.csv', index=False, columns = ['id', 'userId', 'businessId', 'content', 'rating', 'timestamp'])
 
 
 def generate_review(userId, businessId, reviewId):
   content = review_text()
-  rating = random.randrange(1, 5, 1)
-  return {'id' : reviewId, 'userId' : userId, 'businessId' : businessId, 'content' : content, 'rating' : rating, 'timestamp' : time.time()}
+
+  randomNum = random.random()
+  rating = 5
+  if randomNum > 0.75: 
+    rating = 5
+  elif randomNum > 0.3:
+    rating = 4
+  elif randomNum > 0.2: 
+    rating = 3
+  elif randomNum > 0.05: 
+    rating = 2
+  else: 
+    rating = 1
+
+  timestamp = random.randrange(1601510400, 1606867200, 1)
+
+  return {'id' : reviewId, 'userId' : userId, 'businessId' : businessId, 'content' : content, 'rating' : rating, 'timestamp' : timestamp}
 
 
 def review_text():
@@ -75,5 +90,5 @@ def review_text():
   return text
     
 # generate_business_badges()
-generate_users()
-# random_affirm_deny()
+# generate_users()
+random_reviews()
