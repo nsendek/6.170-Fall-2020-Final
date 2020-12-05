@@ -60,7 +60,10 @@
                   
                 >
                   <v-card-title class="headline">Badge Information</v-card-title>
-                  <v-card-subtitle> Affirm / Deny Ratio: TBD </v-card-subtitle>
+                  <v-card-subtitle> Affirms: TBD </v-card-subtitle>
+                  <v-card-subtitle> Denies: TBD </v-card-subtitle>
+                  <v-card-subtitle> Affirm Percentage: {{badge.ratio}}%</v-card-subtitle>
+
                 </v-card> 
                 </v-tooltip>
               </template>
@@ -214,26 +217,24 @@ export default {
     }
   }, 
 
-  mounted: function() {
+  created: function() {
     this.getBadges();
   },
 
   methods : {
 
     getBadges: function() {
-      // axios.get(`/api/business/account/${this.$state.username}`)
-      // .then((response) => {
-      //   this.businessID = response.data.id;
       axios.get(`/api/business/${this.$state.id}/badges`)
       .then((response) => {
         this.badges = response.data;
-        this.badges.forEach((badgeObject) => badgeObject.menu = false);
+        this.badges.forEach((badge)=> this.getBadgeRatio(badge))
         this.getOtherBadges();
+       
       })
-      // })
-      // .catch((error) => {
-      //   window.console.log(error.response); 
-      // })
+      .catch((error) => {
+        console.log(error.response);
+        window.console.log("Unable to get your badges"); 
+      })
     },
 
     getOtherBadges: function() {
@@ -247,6 +248,18 @@ export default {
         window.console.log(error.response);
       })
     },
+
+    getBadgeRatio: function(badge) {
+      axios.get(`/api/badge/${badge.id}/ratio`)
+      .then((response) => {
+        badge.ratio = response.data.ratio;
+      })
+      .catch((error) => {
+        console.log(error.response);
+        badge.ratio = 0;
+      });
+    },
+
 
     updateBusinessInfo: function(patchType) {
         let content;

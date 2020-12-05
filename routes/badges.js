@@ -106,6 +106,28 @@ router.delete('/:id?', async (req, res) => {
   }
 })
 
+/** 
+ * Get affirmation ratio of a badge
+ * @name GET/api/badge/:badgeId/ratio
+ * @param badgeId - the id of the badge
+ */
+router.get("/:badgeId/ratio", async (req, res) => {
+  if (!correctInput(req, res, [], ['badgeId'])) return;
+  try {
+    let affirms = await Badges.getAffirms(req.params.badgeId);
+    console.log("num affirms:", affirms);
+    let denies = await Badges.getDenies(req.params.badgeId);
+    console.log("num denies:", denies);
+    if (affirms !== 0) {
+      res.status(200).send({ ratio: (affirms/(affirms + denies)).toFixed(2) * 100 });
+    } else {
+      res.status(200).send({ ratio: 0 });
+    }
+    
+  } catch (error) {
+    res.status(503).send({ error: "could not get badge affirmation ratio"});
+  }
+})
 
 /**
  * Affirm a badge
@@ -144,5 +166,6 @@ router.post("/deny", async (req, res) => {
     res.status(503).send({ error: "could not deny badge"});
   }
 });
+
 
  module.exports = router;
