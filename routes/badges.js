@@ -119,9 +119,15 @@ router.get("/:badgeId/ratio", async (req, res) => {
     let denies = await Badges.getDenies(req.params.badgeId);
     console.log("num denies:", denies);
     if (affirms !== 0) {
-      res.status(200).send({ ratio: (affirms/(affirms + denies)).toFixed(2) * 100 });
+      res.status(200).send({
+        affirms: affirms,
+        denies : denies,
+        ratio: (affirms/(affirms + denies)).toFixed(2) * 100 });
     } else {
-      res.status(200).send({ ratio: 0 });
+      res.status(200).send({
+        affirms: affirms,
+        denies: denies,
+        ratio: 0 });
     }
     
   } catch (error) {
