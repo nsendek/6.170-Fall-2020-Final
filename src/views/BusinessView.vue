@@ -1,6 +1,6 @@
 <template >
 
-  <div>
+  <v-container>
     <div class = "business-col">
       <v-btn v-if="this.$state.username && !this.$state.isBusiness" style="width:33%;" @click="openReview"> Submit Review </v-btn>
       <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
@@ -17,7 +17,7 @@
 
     <div class = "primary-header" style="text-align: center;"> REVIEWS </div>
     <Feed>
-      <v-card style="padding:25px; margin: 5px 10px;" :key="idx" v-for="(review,idx) in reviews">
+      <v-card style="padding:25px; margin: 5px 0px;" :key="idx" v-for="(review,idx) in reviews">
         <div class="flex-row" style="display:flex; flex-direction:row; align-items:center; ">
           <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
           <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
@@ -28,7 +28,7 @@
 
     <v-pagination v-model="page" :length="totalPages" :total-visible="7" @input="next"></v-pagination>
 
-  </div>
+  </v-container>
 </template>
 <script>
 import axios from "axios";

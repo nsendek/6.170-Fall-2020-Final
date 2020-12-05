@@ -11,27 +11,33 @@ import "./assets/styles/web.css";
 Vue.use(VueCookie);
 Vue.use(Vuetify);
 const vuetify = new Vuetify({
-  // theme: {
-  //   dark : true,
-  //   themes: {
-  //     light: {
-  //       primary: "#fff",
-  //       accent: "#fff",
-  //       secondary: "#fff",
-  //       success: "#0f0",
-  //       info: "#00f",
-  //       warning: "#ff0",
-  //       error: "#f00"
-  //     },
-  //     dark : {
-  //       primary: "#121212",
-  //       accent: "#121212",
-  //       secondary: "#000",
-  //     }
-  //   },
-  // },
-  options: {
-    customProperties: true
+  theme: {
+    options: {
+      customProperties: true
+    },
+    themes: {
+      light: {
+        nav : "#fff",
+        background : "#fff",
+        splitter : "#eee",
+        'splitter-handle' : "#424242"
+        // primary: "#fff",
+        // background : "#ff0",
+        // accent: "#0f0",
+        // secondary: "#f00",
+        // anchor :  "#00f", 
+        // success: "#0f0",
+        // info: "#00f",
+        // warning: "#ff0",
+        // error: "#f00"
+      },
+      dark : {
+        nav : "#121212",
+        background : "#121212",
+        splitter : "#424242",
+        'splitter-handle' : "#aaa"
+      }
+    }
   }
 });
 

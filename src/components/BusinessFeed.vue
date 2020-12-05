@@ -1,7 +1,7 @@
 <template>
-<div>
-    <h1>Businesses</h1>
-    <div class= "filter-bar">
+<v-container>
+    <h1 >Businesses</h1>
+    <div>
         Filter By Badge: 
         <div class="pa-4">
           <v-chip-group v-model="selectedBadges" @change="applyFilter" column active-class="primary--text" multiple>
@@ -35,7 +35,7 @@
     </Feed>
 
     <v-pagination v-model="page" :length="totalPages" :total-visible="7" @input="next"></v-pagination>
-</div>
+</v-container>
 </template>
 
 
