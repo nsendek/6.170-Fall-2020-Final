@@ -56,11 +56,14 @@ export default {
             allBadges: [],
             selectedBadges : [],
             page : 1, 
-            totalPages: 1
+            totalPages: 1,
+            userBadges : [],
         }
     },
 
     mounted: function() {
+        //needs to go before loadBusinesses, becuase it's what businesses will sort by
+        this.loadUserBadges();
         this.loadBusinesses();
         this.loadBadges();
     },
@@ -80,10 +83,10 @@ export default {
       },
       // Loads all businesses
       loadBusinesses: function() {
-      
         axios.get("/api/business", { params: { page: this.page } })
         .then((res) => {
-            this.businesses = res.data.results ? res.data.results : [];
+            this.businesses = res.data.results ? res.data.results.sort(this.sortBusinesses) : [];
+            // this.businesses = res.data.results ? res.data.results : [];
             this.totalPages = res.data.totalPages; 
             eventBus.$emit('businesses', res.data.results)
         })
@@ -106,6 +109,11 @@ export default {
           .then((res) => {
               this.allBadges = res.data ? res.data : [];
           })
+      },
+
+      // #TODO Loads all userBadges
+      loadUserBadges: function() {
+          this.userBadges = [1];
       },
 
       // Filters businesses by one or more badges
@@ -132,7 +140,37 @@ export default {
               eventBus.$emit('error-message', err);
           })
           }
-      }
+      },
+
+        
+        getBusinessBadges(business) {
+              axios.get(`/api/business/${business.id}/badges`)
+              .then((res) => {
+                const badges = res.data ? res.data.map(badge => badge.id) : [];
+                return badges;
+              }).catch(err =>{
+                console.log(err);
+                return [];
+              })
+              return ["no"];
+          },
+
+
+      //sort 2 business items based on user badges, ordered by ranking. Most important badge first
+      async sortBusinesses(a, b){
+        let aBadges = await this.getBusinessBadges(a);
+        let bBadges =  await this.getBusinessBadges(b);
+
+        // console.log("going in", a,b)
+        // console.log("coming out", aBadges,bBadges)
+        this.userBadges.forEach(badge => {
+          // console.log("this.getBusinessBadges(a)");
+          if (!aBadges.includes(badge) && bBadges.includes(badge)) return 1;
+          if (aBadges.includes(badge) && !bBadges.includes(badge)) return -1;
+        });
+        return 0;
+      },
+
     }
     
 }
