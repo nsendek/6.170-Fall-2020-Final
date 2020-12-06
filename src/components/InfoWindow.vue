@@ -9,7 +9,7 @@
       {{business.address}}
     </div>
     <div style="text-align:center;">
-      <v-chip small v-for="(badge,idx) in badges" :key="idx">
+      <v-chip x-small v-for="(badge,idx) in badges" :key="idx">
           {{badge}}
       </v-chip>
     </div>
