@@ -30,7 +30,7 @@
         </div>
 
 
-        <h1> Your Badges </h1>
+        <h1> Your Safety Policies </h1>
 
         <div class="badges">
 
@@ -94,7 +94,7 @@
           </div>
         </div>
 
-        <h1> Add Badges </h1>
+        <h1> Add Safety Policies </h1>
         <div class="badges">
 
           <div class="badges" v-for="(badge,idx) in otherBadges" :key="idx">

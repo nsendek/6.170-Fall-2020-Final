@@ -5,7 +5,7 @@
 
       <div class="secondary-header"> {{business.name}} </div>
 
-      <div class="quarternary-header"> How would you rate your overall experience in terms of COVID-19 safety? </div>
+      <div class="quarternary-header review-spacing smaller-width"> How would you rate your overall experience in terms of COVID-19 safety? </div>
 
       <v-rating
         v-model="rating"
@@ -14,8 +14,8 @@
         large
       ></v-rating>
      
-      <div>
-        <center> Affirm Badges </center>
+      <div class="review-spacing">
+        <center> Affirm Safety Policies </center>
         <v-spacer></v-spacer>
 
         <v-chip-group
@@ -34,8 +34,8 @@
         </v-chip-group>
       </div>
 
-      <div>
-        <center> Deny Badges </center>
+      <div class="review-spacing">
+        <center> Deny Safety Policies </center>
         <v-spacer></v-spacer>
 
         <v-chip-group
@@ -54,7 +54,7 @@
         </v-chip-group>
       </div>
 
-      <div><v-textarea style="width:400px;" width v-model="reviewContent" label="comments" filled/></div>
+      <div class="review-spacing"><v-textarea style="width:400px;" width v-model="reviewContent" label="comments" filled/></div>
 
       <v-btn @click="submitReview"> SUBMIT </v-btn> 
       
@@ -186,7 +186,17 @@ export default {
 .review {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;  
+  padding: 50px; 
+}
+
+.review-spacing{
+  margin-top: 20px; 
+}
+
+.smaller-width{
+  width: 70%; 
+  text-align: center;
 }
 
 .v-chip.affirmed {
