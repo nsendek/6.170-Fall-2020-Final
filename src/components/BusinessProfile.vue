@@ -316,6 +316,7 @@ export default {
           this.otherBadges = this.otherBadges.filter((badgeObject, index) => index != idx);
           let badgeAdded = response.data;
           this.badges.push(badgeAdded);
+          this.getBadgeRatio(badgeAdded);
 
         })
         .catch((error) => {
