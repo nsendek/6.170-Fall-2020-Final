@@ -41,6 +41,7 @@
 
 <script>
 import axios from "axios";
+import qs from "qs"; 
 import { eventBus } from "../main";
 export default {
     name: "BusinessFeed",
@@ -84,7 +85,10 @@ export default {
       },
       // Loads all businesses
       loadBusinesses: function() {
-        axios.get("/api/business", { params: { page: this.page } })
+        // added a paramsSerializer so that it can interpret an array as a parameter
+        axios.get("/api/business", { params: { page: this.page, userBadges : this.userBadges }, paramsSerializer: params => {
+          return qs.stringify(params)
+        } })
         .then(async (res) => {
             // .forEach doesn't await between iterations
             for (let index = 0; index < res.data.results.length; index++) {
@@ -93,7 +97,12 @@ export default {
               this.businessBadges[b.id] = badges;
             }
             // sort function can't be async so you have to laod all badges beforehand
-            this.businesses = res.data.results.sort(this.sortBusinesses);
+            
+            
+            // this.businesses = res.data.results.sort(this.sortBusinesses);
+            this.businesses = res.data.results; 
+            
+            
             // this.businesses = res.data.results ? res.data.results : [];
             this.totalPages = res.data.totalPages; 
             eventBus.$emit('businesses', res.data.results)
