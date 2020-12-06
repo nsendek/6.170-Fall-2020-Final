@@ -25,6 +25,7 @@ async function createBusinessTable() {
       address TEXT,
       lat INTEGER,
       lng INTEGER,
+      
       timestamp INTEGER
       )`);
 
@@ -87,6 +88,17 @@ async function createBadgeTables() {
       CHECK (value=1 OR value=-1)
       CONSTRAINT user_check FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
       CONSTRAINT badge_check FOREIGN KEY(badgeId) REFERENCES badges(id) ON DELETE CASCADE
+    )`);
+
+  await db.table(`CREATE TABLE IF NOT EXISTS user_ranks (
+      userId INTEGER NOT NULL,
+      label TEXT NOT NULL,
+      value INTEGER NOT NULL,
+  
+      UNIQUE (userId, label)
+      UNIQUE (userId, value)
+      FOREIGN KEY(userId) REFERENCES users(id) ON DELETE CASCADE
+      FOREIGN KEY(label) REFERENCES badge_templates(label) ON DELETE CASCADE
     )`);
 
   db.close();

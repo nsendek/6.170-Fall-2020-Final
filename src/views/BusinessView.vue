@@ -82,10 +82,8 @@ export default {
        eventBus.$emit("businesses", [this.business]);
     }
     eventBus.$emit("clicked", this.business, true); 
-  },
-
-  updated(){
     eventBus.$on(("review-posted"), () => {
+      console.log('got here')
       this.loadBadges();
       this.loadReviews();  
       this.loadRating();
@@ -130,7 +128,6 @@ export default {
           
       if(response.status == 200){
         this.reviews = response.data.results; 
-        window.console.log(this.reviews); 
         this.totalPages = response.data.totalPages; 
       }
       else{

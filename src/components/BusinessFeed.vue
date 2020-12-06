@@ -2,7 +2,7 @@
 <v-container>
     <h1 >Businesses</h1>
     <div>
-        Filter By Badge: 
+        Filter By Safety Policy: 
         <div class="pa-4">
           <v-chip-group v-model="selectedBadges" @change="applyFilter" column active-class="primary--text" multiple>
             <v-tooltip 
