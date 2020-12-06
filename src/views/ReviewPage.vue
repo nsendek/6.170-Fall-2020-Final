@@ -5,7 +5,7 @@
 
       <div class="secondary-header"> {{business.name}} </div>
 
-      <div class="quarternary-header"> How would you rate your overall experience in terms of COVID-19 safety? </div>
+      <div class="quarternary-header review-spacing smaller-width"> How would you rate your overall experience in terms of COVID-19 safety? </div>
 
       <v-rating
         v-model="rating"
@@ -14,8 +14,8 @@
         large
       ></v-rating>
      
-      <div>
-        <center> Affirm Badges </center>
+      <div class="review-spacing">
+        <center> Affirm Safety Policies </center>
         <v-spacer></v-spacer>
 
         <v-chip-group
@@ -34,8 +34,8 @@
         </v-chip-group>
       </div>
 
-      <div>
-        <center> Deny Badges </center>
+      <div class="review-spacing">
+        <center> Deny Safety Policies </center>
         <v-spacer></v-spacer>
 
         <v-chip-group
@@ -54,7 +54,7 @@
         </v-chip-group>
       </div>
 
-      <div><v-textarea style="width:400px;" width v-model="reviewContent" label="comments" filled/></div>
+      <div class="review-spacing"><v-textarea style="width:400px;" width v-model="reviewContent" label="comments" filled/></div>
 
       <v-btn @click="submitReview"> SUBMIT </v-btn> 
       
@@ -75,7 +75,6 @@ export default {
       badges : [],
       badgeReacts : [], 
       reviewContent : "",
-      userId: "",
     }
   },
   components : {
@@ -86,7 +85,6 @@ export default {
     else this.loadBusiness();
     
     this.loadBadges();
-    this.getUserId();
   },
 
   methods : {
@@ -110,18 +108,6 @@ export default {
         .catch(err => err.response);
     },
 
-
-    getUserId: function() {
-      axios.get(`/api/user/${this.$state.username}/search`)
-      .then((response) => {
-        this.userId = response.data.id;
-      })
-      .catch((error) => {
-        window.console.log(error.response);
-      })
-    },
-
-
     toggleAffirm: function(idx) {
       this.badges[idx].affirmed = this.badges[idx].affirmed ?
                                     false : true;
@@ -134,30 +120,28 @@ export default {
 
     affirmBadges: function() {
       this.badges.filter((badge) => badge.affirmed).forEach((badge) => {
-        axios.post(`api/badge/affirm`, {
-          userId: this.userId,
+        axios.post(`/api/badge/affirm`, {
           badgeId: badge.id
         })
         .then(() => {
           console.log("Affirm successful");
         })
         .catch((error) => {
-          console.log(error.response);
+          eventBus.$emit("success-message", error.response.error);
         })
       })
     },
 
     denyBadges: function() {
       this.badges.filter((badge) => badge.denied).forEach((badge) => {
-        axios.post(`api/badge/deny`, {
-          userId: this.userId,
+        axios.post(`/api/badge/deny`, {
           badgeId: badge.id
         })
         .then(() => {
           console.log("Deny successful");
         })
         .catch((error) => {
-          console.log(error.response);
+          eventBus.$emit("success-message", error.response.error);
         })
       })
     },
@@ -186,7 +170,17 @@ export default {
 .review {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;  
+  padding: 50px; 
+}
+
+.review-spacing{
+  margin-top: 20px; 
+}
+
+.smaller-width{
+  width: 70%; 
+  text-align: center;
 }
 
 .v-chip.affirmed {

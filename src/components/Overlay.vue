@@ -1,7 +1,8 @@
 <template>
   <v-overlay 
     id='overlay'
-    :dark="false"
+    :light="$vuetify.theme.light"
+    :dark="$vuetify.theme.dark"
     opacity="0"
     @click.native="hasHistory() ? $router.go(-1) : $router.push('/')"
   >
@@ -29,8 +30,8 @@ export default {
 /* backdrop-filter not supported on some browsers */
 @supports not (backdrop-filter: blur( 15px )) {
   #overlay {
-    background-color: white !important;
-    opacity: 0.9 !important;
+    background-color: var(--v-background-base)!important;
+    opacity: 0.95 !important;
   }
 }
 </style>

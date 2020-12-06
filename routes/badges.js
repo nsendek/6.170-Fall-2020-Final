@@ -106,6 +106,34 @@ router.delete('/:id?', async (req, res) => {
   }
 })
 
+/** 
+ * Get affirmation ratio of a badge
+ * @name GET/api/badge/:badgeId/ratio
+ * @param badgeId - the id of the badge
+ */
+router.get("/:badgeId/ratio", async (req, res) => {
+  if (!correctInput(req, res, [], ['badgeId'])) return;
+  try {
+    let affirms = await Badges.getAffirms(req.params.badgeId);
+    console.log("num affirms:", affirms);
+    let denies = await Badges.getDenies(req.params.badgeId);
+    console.log("num denies:", denies);
+    if (affirms !== 0) {
+      res.status(200).send({
+        affirms: affirms,
+        denies : denies,
+        ratio: (affirms/(affirms + denies)).toFixed(2) * 100 });
+    } else {
+      res.status(200).send({
+        affirms: affirms,
+        denies: denies,
+        ratio: 0 });
+    }
+    
+  } catch (error) {
+    res.status(503).send({ error: "could not get badge affirmation ratio"});
+  }
+})
 
 /**
  * Affirm a badge
@@ -114,10 +142,11 @@ router.delete('/:id?', async (req, res) => {
  * @param userId - the id of the user
  */
 router.post("/affirm", async (req, res) => {
-  if (!correctInput(req, res, [], ['userId', 'badgeId'])) return;
-
+  if (!signedIn(req, res) 
+      || !correctInput(req, res, ['badgeId'])) return;
+  console.log("GOT HERE affirm")
   try {
-    let affirm = Badges.affirm(req.body.userId, req.body.badgeId);
+    let affirm = Badges.affirm(req.session.user.id, req.body.badgeId);
     if (affirm) {
       res.status(200).send();
     }
@@ -133,10 +162,11 @@ router.post("/affirm", async (req, res) => {
  * @param userId - the id of the user
  */
 router.post("/deny", async (req, res) => {
-  if (!correctInput(req, res, [], ['userId', 'badgeId'])) return;
-
+  if (!signedIn(req, res) 
+      || !correctInput(req, res, ['badgeId'])) return;
+  console.log("GOT HERE deny")
   try {
-    let denY = Badges.deny(req.body.userId, req.body.badgeId);
+    let deny = Badges.deny(req.session.user.id, req.body.badgeId);
     if (deny) {
       res.status(200).send();
     }
@@ -144,5 +174,6 @@ router.post("/deny", async (req, res) => {
     res.status(503).send({ error: "could not deny badge"});
   }
 });
+
 
  module.exports = router;

@@ -1,12 +1,12 @@
 <template>
-<div>
-  <v-btn @click="geolocate()" >Go To Current Location</v-btn>
+<div class = "map-container" >
     <GmapMap class = "g-map"
       :center="center"
       :zoom="15"
       map-type-id="roadmap"
       ref="map"
-      :options="options"
+      :key="mapId"
+      :options="{ mapId }"
     >
     <GmapMarker
         :key="index"
@@ -18,12 +18,14 @@
         :icon = icon()
       />
     </GmapMap>
+     <v-btn class="location-btn" @click="geolocate()" >Go To Current Location</v-btn>
 </div>
 </template>
 <script>
+import Vue from 'vue';
 import {eventBus } from "../main";
 import {gmapApi}from 'vue2-google-maps';
-import axios from "axios";
+import InfoWindow from "./InfoWindow"
 
 export default {
   data() {
@@ -34,8 +36,8 @@ export default {
       infoBusiness: null,
       ligthId:"e492156a263e3bf5",
       darkId:"4bd99df653a8171b",
-      options:
-      {mapId: "e492156a263e3bf5" }
+      mapId : "",
+      // lastBounds : null
     }
   },
   computed: {
@@ -48,46 +50,91 @@ export default {
           this.boundBox(businesses,10);
       }
     })
-  }, created(){
-      eventBus.$on('clicked', (b,bview) => {
-        this.clicked(b,bview);
-      })
+  }, 
+  created(){
+    this.mapId = this.$vuetify.theme.isDark ? this.darkId : this.ligthId;
+    eventBus.$on('clicked', (b,bview) => {
+      this.clicked(b,bview);
+    })
+    eventBus.$on('theme-change', (dark) => {
+      this.mapId = dark ? this.darkId : this.ligthId;
+      // this.lastBounds = this.$refs.map.$mapObject.getBounds();
+    })
+  },
+  updated() {
+    this.boundBox(this.businesses, 0);
   },
   methods: {
-    boundBox(l,b){
+    async boundBox(l,b){ 
+      // if (this.lastBounds) { 
+      //   let map = await this.$refs.map.$mapPromise;  
+      //   map.fitBounds(this.lastBounds, 0);
+      //   this.lastBounds = null;
+      // } else {
       let minlat = l.reduce((prev, curr) => (prev.lat && curr.lat && prev.lat < curr.lat) ? prev : curr)
       let minlng = l.reduce((prev, curr) => (prev.lng && curr.lng && prev.lng < curr.lng) ? prev : curr)
       let maxlat = l.reduce((prev, curr) => (prev.lat && curr.lat && prev.lat > curr.lat) ? prev : curr)
       let maxlng = l.reduce((prev, curr) => (prev.lng && curr.lng && prev.lng > curr.lng) ? prev : curr)
-      // console.log(minlat,minlng,maxlat,maxlng)
-      // console.log(minlat.lat,minlng.lng,maxlat.lat,maxlng.lng)
+
       let bounds = ({south:minlat.lat,west:minlng.lng, north:maxlat.lat,east:maxlng.lng})
-      this.$refs.map.$mapObject.fitBounds(bounds,b);
+      let map = await this.$refs.map.$mapPromise;
+
+      map.fitBounds(bounds,b);
+      // }
     },
     markerSelected(b,map){
-            axios.get(`/api/business/${b.id}/badges`)
-            .then((res) => {
-                this.badges = res.data ? res.data.map(badge => badge.label) : [];
-      let vuebadges = "";
-      for (let badge in this.badges){
-        vuebadges += "<v-chip style=\"margin: 5px;\" :key=" + badge + "> " + this.badges[badge] + " </v-chip>\n"
+      //       axios.get(`/api/business/${b.id}/badges`)
+      //       .then((res) => {
+      //           this.badges = res.data ? res.data.map(badge => badge.label) : [];
+      // let vuebadges = "";
+      // for (let badge in this.badges){
+      //   vuebadges += "<v-chip style=\"margin: 5px;\" :key=" + badge + "> " + this.badges[badge] + " </v-chip>\n"
+      // }
+      // let content = `
+      //     <v-card  v-if="business" style = "padding: 5px; display:flex; flex-direction:column; align-items:center;">
+      //       <div class = "secondary-header"> <a href = "/business/`+ b.id +`">`+b.name+`</a> </div>
+      //       <div class = "quarternary-header"> `+b.address+`</div>
+      //       <div style="text-align:center;">
+      //           `+vuebadges+`
+      //       </div>
+      //     </div>`
+
+      // if (this.infoWindow) this.infoWindow.close(map);
+      
+      // this.infoWindow = new window.google.maps.InfoWindow({content:content, options:{pixelOffset: {width: 0,height: -35}}});
+      // this.infoWindow.setPosition({lat:b.lat,lng:b.lng});
+      // // console.log(this.infoWindow);
+      // this.boundBox(this.businesses,10);
+      // this.infoWindow.open(map);
+      
+      // this.infoBusiness = b;
+      //       })
+
+      if (this.infoWindow) {
+        this.infoWindow.close(map);
       }
-      let content = `
-          <v-card  v-if="business" style = "padding: 5px; display:flex; flex-direction:column; align-items:center;">
-            <div class = "secondary-header"> <a href = "/business/`+ b.id +`">`+b.name+`</a> </div>
-            <div class = "quarternary-header"> `+b.address+`</div>
-            <div style="text-align:center;">
-                `+vuebadges+`
-            </div>
-          </v-card>`
-      this.infoWindow = new window.google.maps.InfoWindow({content:content, options:{pixelOffset: {width: 0,height: -35}}});
+
+      let InfoWindowComponent = Vue.extend(InfoWindow);
+      let instance = new InfoWindowComponent({
+          router : this.$router,
+          propsData: {
+              business: b
+          }
+      });
+      instance.$mount();
+
+      this.infoWindow = new window.google.maps.InfoWindow({content: instance.$el, options:{pixelOffset: {width: 0,height: -35}}});
       this.infoWindow.setPosition({lat:b.lat,lng:b.lng});
-      // console.log(this.infoWindow);
+
+      window.google.maps.event.addListener(this.infoWindow,'closeclick',() => {
+        this.markerUnselected();
+      });
+
       this.boundBox(this.businesses,10);
       this.infoWindow.open(map);
       this.infoBusiness = b;
-            })
-    }, geolocate() {
+    }, 
+    geolocate() {
         console.log("here!");
       navigator.geolocation.getCurrentPosition(position => {
         let lat = parseFloat(position.coords.latitude);
@@ -106,8 +153,10 @@ export default {
         })
     },
     markerUnselected(){
-      this.infoWindow.close();
-      this.infoWindow = null;
+      if (this.infoWindow) {
+        this.infoWindow.close();
+        this.infoWindow = null;
+      }
     },
     clicked(b,bview=false) {
       this.panTo(b.lat,b.lng);
@@ -136,6 +185,11 @@ export default {
       map.panTo({lat, lng})
     })
     }
+  },
+  watch : {
+    $vuetify : function() {
+      window.console.log("CHANGED");
+    }
   }
 }
 </script>
@@ -143,5 +197,18 @@ export default {
 .g-map{
   /* DON'T delete below */
   height : calc(100vh - var(--navbar-height));
+}
+
+.map-container {
+  align-items: center; 
+  position: relative;
+}
+
+.location-btn {
+  text-align: center; 
+  position: absolute; 
+  bottom:0;
+  color: white !important;
+  background-color: var(--v-secondary-base) !important;
 }
 </style>

@@ -1,6 +1,6 @@
 <template >
 
-  <div>
+  <v-container>
     <div class = "business-col">
       <v-btn v-if="this.$state.username && !this.$state.isBusiness" style="width:33%;" @click="openReview"> Submit Review </v-btn>
       <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
@@ -17,22 +17,43 @@
 
     <div class = "primary-header" style="text-align: center;"> REVIEWS </div>
     <Feed>
-      <v-card style="padding:25px; margin: 5px 10px;" :key="idx" v-for="(review,idx) in reviews">
+      <v-card class = "review-card" :key="idx" v-for="(review,idx) in reviews">
         <div class="flex-row" style="display:flex; flex-direction:row; align-items:center; ">
           <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
           <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
         </div>
         <div> {{review.content}} </div>
+        <div> <b> {{timeFormat(review.timestamp)}} </b> </div>
       </v-card>
     </Feed>
 
     <v-pagination v-model="page" :length="totalPages" :total-visible="7" @input="next"></v-pagination>
 
-  </div>
+  </v-container>
 </template>
 <script>
 import axios from "axios";
 import { eventBus } from "../main.js"
+
+const timeFormat = (timestamp) => {
+  let created = new Date(timestamp * 1000);
+  let diff = (new Date()) - created; // milliseconds
+  if (diff > 3.154e+10) {
+    let month = created.toLocaleString('default', { month: 'short'});
+    let year = created.getFullYear();
+    return `${month} ${created.getDate()}, ${year}`;
+  } else if (diff > 8.64e+7) {
+    let month = created.toLocaleString('default', { month: 'short' });
+    return `${month} ${created.getDate()}`;
+  } else {
+    let hour =  diff / 3.6e+6;
+    return (hour < 1)
+      ? (60*hour < 1) 
+        ? "Now"
+        : `${Math.round(60*hour)}m`
+      : `${Math.round(hour)}h`
+  }
+}
 
 export default {
   name: "BusinessView",
@@ -43,6 +64,7 @@ export default {
   
 	data () {
 		return {
+      timeFormat,
       reviews : [],
       badges : [],
       business : null,
@@ -60,10 +82,8 @@ export default {
        eventBus.$emit("businesses", [this.business]);
     }
     eventBus.$emit("clicked", this.business, true); 
-  },
-
-  updated(){
     eventBus.$on(("review-posted"), () => {
+      console.log('got here')
       this.loadBadges();
       this.loadReviews();  
       this.loadRating();
@@ -108,7 +128,6 @@ export default {
           
       if(response.status == 200){
         this.reviews = response.data.results; 
-        window.console.log(this.reviews); 
         this.totalPages = response.data.totalPages; 
       }
       else{
@@ -141,5 +160,13 @@ export default {
 
 .business-col > .v-btn {
   margin: 10px;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px 25px; 
+  margin: 5px 0px;
 }
 </style>
