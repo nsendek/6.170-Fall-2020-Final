@@ -8,15 +8,6 @@
     height: 10vh;
   }
 
-
-/* .business-container {
-    display: flex;
-    border: 2px solid black;
-    align-items: center;
-    flex-direction: column;
-    flex-basis: auto;
-  } */
-
 .business-count {
   float: right;
   color: white; 
@@ -33,21 +24,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* NAV BAR */
-.zelp-logo {
-  text-decoration: none;
-  color: #000000; 
-  font-size : 40px;
-  font-weight : 500; 
-  letter-spacing: 2px; 
-}
-
-.nav-login-button {
-  text-decoration: none;
-  cursor: pointer;
-  color: #000;
 }
 
 /* LOG IN PAGES */

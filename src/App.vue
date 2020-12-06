@@ -5,30 +5,33 @@
     <router-view name="overlay" />
     <v-main>
 
-      <splitpanes class = "default-theme">
-        <pane min-size="30"> 
+     <Panes>
+       <template v-slot:left> 
           <router-view class = "scroll-box"/>  
-        </pane>
-        <pane min-size="30"> 
+       </template>
+       <template v-slot:right> 
           <Map />
-        </pane>
-      </splitpanes>
-      
+       </template>
+     </Panes>
+
     </v-main>
   </v-app>
 </template>
 <script>
 import Map from "./components/Map"; // only component that needs to be preloaded
-import { Splitpanes, Pane } from 'splitpanes'
-import 'splitpanes/dist/splitpanes.css'
+// import Panes from "./components/Panes"
 
 export default {
   components : {
     EventHandler : () => import("./components/EventHandler.vue"),
     NavBar : () => import("./components/NavBar"),
+    Panes : () => import("./components/Panes"),
     Map,
-    Splitpanes,
-    Pane
+    // Panes
+  },
+  beforeCreate() { // light and dark mode preference is saved using cookies
+    let theme = this.$cookie.get("theme");
+    this.$vuetify.theme.dark = theme == "dark" ? true : false;
   }
 }
 </script>
@@ -42,7 +45,7 @@ body {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: lavender;
+  background-color: var(--v-background-base);
   overflow: hidden !important; /* DON'T delete, prevents bug in safari */
   z-index: 0; 
 }
@@ -56,9 +59,6 @@ body::-webkit-scrollbar {
   overflow-y: scroll; 
 }
 
-.splitpanes--vertical > .splitpanes__splitter {
-  min-width: 10px;
-}
 </style>
 
 
