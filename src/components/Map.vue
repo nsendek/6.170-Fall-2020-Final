@@ -126,6 +126,10 @@ export default {
       this.infoWindow = new window.google.maps.InfoWindow({content: instance.$el, options:{pixelOffset: {width: 0,height: -35}}});
       this.infoWindow.setPosition({lat:b.lat,lng:b.lng});
 
+      window.google.maps.event.addListener(this.infoWindow,'closeclick',() => {
+        this.markerUnselected();
+      });
+
       this.boundBox(this.businesses,10);
       this.infoWindow.open(map);
       this.infoBusiness = b;
@@ -149,8 +153,10 @@ export default {
         })
     },
     markerUnselected(){
-      this.infoWindow.close();
-      this.infoWindow = null;
+      if (this.infoWindow) {
+        this.infoWindow.close();
+        this.infoWindow = null;
+      }
     },
     clicked(b,bview=false) {
       this.panTo(b.lat,b.lng);
