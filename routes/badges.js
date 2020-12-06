@@ -142,10 +142,11 @@ router.get("/:badgeId/ratio", async (req, res) => {
  * @param userId - the id of the user
  */
 router.post("/affirm", async (req, res) => {
-  if (!correctInput(req, res, [], ['userId', 'badgeId'])) return;
-
+  if (!signedIn(req, res) 
+      || !correctInput(req, res, ['badgeId'])) return;
+  console.log("GOT HERE affirm")
   try {
-    let affirm = Badges.affirm(req.body.userId, req.body.badgeId);
+    let affirm = Badges.affirm(req.session.user.id, req.body.badgeId);
     if (affirm) {
       res.status(200).send();
     }
@@ -161,10 +162,11 @@ router.post("/affirm", async (req, res) => {
  * @param userId - the id of the user
  */
 router.post("/deny", async (req, res) => {
-  if (!correctInput(req, res, [], ['userId', 'badgeId'])) return;
-
+  if (!signedIn(req, res) 
+      || !correctInput(req, res, ['badgeId'])) return;
+  console.log("GOT HERE deny")
   try {
-    let denY = Badges.deny(req.body.userId, req.body.badgeId);
+    let deny = Badges.deny(req.session.user.id, req.body.badgeId);
     if (deny) {
       res.status(200).send();
     }
