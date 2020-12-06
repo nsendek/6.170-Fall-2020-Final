@@ -75,7 +75,6 @@ export default {
       badges : [],
       badgeReacts : [], 
       reviewContent : "",
-      userId: "",
     }
   },
   components : {
@@ -86,7 +85,6 @@ export default {
     else this.loadBusiness();
     
     this.loadBadges();
-    this.getUserId();
   },
 
   methods : {
@@ -110,18 +108,6 @@ export default {
         .catch(err => err.response);
     },
 
-
-    getUserId: function() {
-      axios.get(`/api/user/${this.$state.username}/search`)
-      .then((response) => {
-        this.userId = response.data.id;
-      })
-      .catch((error) => {
-        window.console.log(error.response);
-      })
-    },
-
-
     toggleAffirm: function(idx) {
       this.badges[idx].affirmed = this.badges[idx].affirmed ?
                                     false : true;
@@ -134,30 +120,28 @@ export default {
 
     affirmBadges: function() {
       this.badges.filter((badge) => badge.affirmed).forEach((badge) => {
-        axios.post(`api/badge/affirm`, {
-          userId: this.userId,
+        axios.post(`/api/badge/affirm`, {
           badgeId: badge.id
         })
         .then(() => {
           console.log("Affirm successful");
         })
         .catch((error) => {
-          console.log(error.response);
+          eventBus.$emit("success-message", error.response.error);
         })
       })
     },
 
     denyBadges: function() {
       this.badges.filter((badge) => badge.denied).forEach((badge) => {
-        axios.post(`api/badge/deny`, {
-          userId: this.userId,
+        axios.post(`/api/badge/deny`, {
           badgeId: badge.id
         })
         .then(() => {
           console.log("Deny successful");
         })
         .catch((error) => {
-          console.log(error.response);
+          eventBus.$emit("success-message", error.response.error);
         })
       })
     },
