@@ -34,7 +34,8 @@
 
         <div class="badges">
 
-          <div class="badges" v-for="(badge,idx) in badges" :key="idx">
+          <div class="badges"
+           v-for="(badge,idx) in badges" :key="idx">
             <v-dialog
               v-model="deleteBadgeDialog"
               max-width="290"
@@ -57,12 +58,11 @@
                   </template>
                 <!-- <span>{{badge.description}}</span> -->
                 <v-card
-                  
                 >
                   <v-card-title class="headline">Badge Information</v-card-title>
-                  <v-card-subtitle> Affirms: {{badge.affirms}} </v-card-subtitle>
-                  <v-card-subtitle> Denies: {{badge.denies}} </v-card-subtitle>
-                  <v-card-subtitle> Affirm Percentage: {{badge.ratio}}%</v-card-subtitle>
+                  <v-card-subtitle> Affirms: {{ badge.affirms }} </v-card-subtitle>
+                  <v-card-subtitle> Denies: {{  badge.denies }} </v-card-subtitle>
+                  <v-card-subtitle> Affirm Percentage: {{ badge.ratio }}%</v-card-subtitle>
 
                 </v-card> 
                 </v-tooltip>
@@ -252,10 +252,9 @@ export default {
     getBadgeRatio: function(badge) {
       axios.get(`/api/badge/${badge.id}/ratio`)
       .then((response) => {
-        console.log("what is reponse:", response.data);
-        badge.ratio = response.data.ratio;
-        badge.affirms = response.data.affirms;
-        badge.denies = response.data.denies;
+        this.$set(badge, 'ratio', response.data.ratio);
+        this.$set(badge, 'affirms', response.data.affirms);
+        this.$set(badge, 'denies', response.data.denies);
       })
       .catch((error) => {
         console.log(error.response);
