@@ -98,9 +98,9 @@ export default {
         this.open = false;
         let searchQuery = `?search=${this.query}`;
         this.query = "";
-        if (this.$route.path != `/search${searchQuery}`) this.$router.push(`/search${searchQuery}`);
+        if (this.$route.name != `/search${searchQuery}`) this.$router.push(`/search${searchQuery}`);
       } else {
-        eventBus.$emit("error-message", "can't search empty query");
+        eventBus.$emit("error-message", "can't search empty query"); 
       }
     }
   }
