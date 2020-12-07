@@ -87,7 +87,6 @@ class Businesses {
       return {"results" : business, "page" : page, "totalPages" : totalPages};
     } 
     else{
-      console.log("I AM HERE"); 
       let business = await db.all(`
         SELECT id,name,address,lat,lng 
         FROM businesses 
@@ -95,68 +94,37 @@ class Businesses {
 
 
       let businessBadgeDictionary = {};
-      console.log("wtfffff"); 
-      console.log(business.length); 
       for (let bIdx = 0; bIdx < business.length; bIdx++){
-        console.log("why is this so dumb"); 
         let b = business[bIdx]; 
-        console.log("are you kidding me"); 
         let subBadgeDictionary = {};
-
-        console.log("what is user badges");
-        console.log(userBadges);  
 
         for (let idx = 0; idx < userBadges.length; idx++) {
           let badge = userBadges[idx]; 
-          // TODO I thought that we look up by label instead??????
-          console.log("wtf");
-          console.log(b.id);
-          console.log(badge);   
           let containsBadge =  await db.get(`SELECT COUNT(*) FROM badges WHERE businessId = $1 AND label = $2`, [b.id, badge]);
-          console.log("bitch 1"); 
           containsBadge = containsBadge["COUNT(*)"];
           console.log(containsBadge); 
-          console.log("bitch 2"); 
 
           subBadgeDictionary[badge] = containsBadge; 
-          console.log("bitch 3"); 
         }
-        console.log("bitch 4");
         businessBadgeDictionary[b.id] = subBadgeDictionary; 
-        console.log("bitch 5");
       }
-
-      console.log("i made the table heh"); 
-      console.log(businessBadgeDictionary); 
   
       business = business.sort(this.sortBusinesses(userBadges, businessBadgeDictionary)); 
 
-      console.log("i sorted shit"); 
-
       db.close();
-
-      console.log("FUCK"); 
       return {"results" : business.slice(offset, offset + pageLength), "page" : page, "totalPages" : totalPages};
     }
   }
 
   static sortBusinesses(userBadges, businessBadgeDictionary){
-    console.log("i am apparently sorting something"); 
     return function(a, b){
-      // let aBadges = this.businessBadges[a.id];
-      // let bBadges = this.businessBadges[b.id];
-    
-      // console.log("going in", a,b)
-      // console.log("coming out", aBadges,bBadges)
-      // forEach does not return the surrounding function
+      // sort by badge importance 
       for (let idx = 0; idx < userBadges.length; idx++) {
         let badge = userBadges[idx];
 
         let abadge = businessBadgeDictionary[a.id][badge]; 
         let bbadge = businessBadgeDictionary[b.id][badge]; 
 
-        // if (!aBadges.includes(badge) && bBadges.includes(badge)) return 1;
-        // if (aBadges.includes(badge) && !bBadges.includes(badge)) return -1;
         if (abadge < bbadge) return 1; 
         if (abadge > bbadge) return -1;
       }

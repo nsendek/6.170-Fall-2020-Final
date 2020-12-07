@@ -241,7 +241,6 @@ router.get('/:id/badges', async (req, res) => {
  * @returns {Review[]} Array of reviews 
  */
 router.get('/:id/reviews', async (req, res) => {
-  console.log("FUCKS"); 
   if (!correctInput(req, res,[],['id'])
   || !isID(res,req.params.id)
   || !(await dataExists(res, req.params.id, Businesses))) return;

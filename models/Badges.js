@@ -107,7 +107,6 @@ const SQL = require('../db/index');
       
         db.close();
 
-        console.log("I am crying");
         return {"results" : business, "page" : page, "totalPages" : totalPages};
     }
 

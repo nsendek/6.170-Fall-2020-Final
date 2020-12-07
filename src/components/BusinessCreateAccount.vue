@@ -45,7 +45,6 @@ export default {
         address: this.address
       })
       .then((response) => {
-        window.console.log("heyyyyyyy"); 
         eventBus.$emit("success-message", response.data.message); 
         window.console.log(response.data); 
         this.$state.username = response.data.business.name; 
