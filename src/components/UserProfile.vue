@@ -71,13 +71,14 @@
     </div>
     <div v-if="!(editBadges)">
         <div v-for="(badge, index) in topBadges" :key="index">
-          <v-chip>{{badge.label}}</v-chip>
+          <span> {{index+1}}. <v-chip>{{badge.label}}</v-chip> </span>
           </div>
           <v-btn slot="footer" @click="editBadges = true">Edit Preferences</v-btn>
         </div>
     <div v-else>
       <draggable v-model="badges" group="people" @start="drag=true" @end="drag=false">
         <div v-for="(badge, index) in badges" :key="index">
+          <span> {{index+1}}.
           <v-tooltip right>
             <template v-slot:activator="{ on, attrs }">
             <v-chip
@@ -89,6 +90,7 @@
             </template>
             <span>{{badge.description}}</span>
           </v-tooltip>
+          </span>
         </div>
           <v-btn slot="footer" @click="editBadgePrefs">Done</v-btn>
       </draggable>   
