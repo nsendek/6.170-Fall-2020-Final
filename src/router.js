@@ -9,6 +9,7 @@ const BusinessProfilePage = () => import('./views/BusinessProfilePage.vue');
 const UserProfilePage = () => import('./views/UserProfilePage.vue');
 const LoginPage = () => import('./views/LoginPage.vue');
 const ReviewPage = () => import('./views/ReviewPage.vue');
+const SearchView = () => import('./views/SearchView.vue')
 
 Vue.use(Router)
 
@@ -60,6 +61,13 @@ const router =  new Router({
         overlay : BusinessProfilePage
       },
       beforeEnter: setDefault
+    },
+    {
+      path: '/search',
+      name: 'search',
+      components: { 
+        default : SearchView
+      }
     },
     {
       path: '*',

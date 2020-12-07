@@ -235,6 +235,22 @@ class Businesses {
 
     if (!res.error) return Businesses.get(id);
   }
+
+  /**
+   * searches Businesses database by a query
+   * @param {string} query - search query
+   * @return {Business[]} all Businesses whose name matches query.
+   */
+  static async search(query) {
+    let db = await SQL.getDB();
+    let data = await db.all(`
+        SELECT id,name,address,lat,lng 
+        FROM businesses 
+        WHERE name LIKE '%${query}%'
+        `);
+    db.close();
+    return data;
+  }
 }
 
 module.exports = Object.freeze(Businesses);
