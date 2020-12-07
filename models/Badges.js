@@ -183,9 +183,7 @@ const SQL = require('../db/index');
    */
   static async getAffirms(badgeID) {
     let db = await SQL.getDB();
-    console.log("queried badge:", badgeID);
     let affirms = await db.get(`SELECT SUM(value) AS a_num FROM badge_reacts WHERE badgeId= $1 AND value= 1`,[badgeID]); 
-    console.log( badgeID," a:" , affirms["a_num"]);
     // return affirms
     if (affirms["a_num"] === null) return 0;
     return affirms["a_num"];
@@ -200,7 +198,6 @@ const SQL = require('../db/index');
   static async getDenies(badgeID) {
     let db = await SQL.getDB();
     let denies = await db.get(`SELECT SUM(value) AS d_num FROM badge_reacts WHERE badgeId= $1 AND value = -1`, [badgeID]);
-    console.log( badgeID," d:" , denies["d_num"]);
     if (denies["d_num"] === null) return 0;
     return denies["d_num"] * -1;
   }
