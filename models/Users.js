@@ -132,17 +132,26 @@ class Users {
   }
 
   /**
-   * searches User database by username
-   * @param {string} query - search query
-   * @return {User[]} all users whose username matches query.
+   * get rankings of badges belonging to specified user
+   * @param {number} id - id of user
+   * @param {string} newPassword - new password
+   * @return {string[]} the rankings
    */
-  static async search(query) {
+  static async getRanks(id) {
     let db = await SQL.getDB();
-    return await db.all(`
-      SELECT username, id
-      FROM users 
-      WHERE username LIKE '%${query}%'
-      ORDER BY id DESC`);
+    let res = await db.all(`SELECT * FROM user_ranks WHERE userId = $1`,[id]);
+    db.close();
+    return res;
+  }
+
+  /**
+   * change persosnal rankings of badges
+   * @param {number} id - id of user
+   * @param {string[]} badges - badges (ordered is desc priority)
+   * @return {string[] | undefined} the altered rankings
+   */
+  static async postRanks(id,badges) {
+
   }
 }
 

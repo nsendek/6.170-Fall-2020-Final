@@ -177,21 +177,49 @@ router.get('/:id?', async (req, res) => {
 });
 
 /**
- * Search for a user by username
- * @name GET/api/user/:username/search
- * @param username - the username of the user
+ * Get ranks of a signed in user
  */
-router.get("/:username/search", async (req,res) => {
-  try{
-    if (req.params.username) {
-      let user = Users.search(req.params.username);
-      if (user) {
-        res.status(200).send(user)
-      }
-    }
+router.get("/rank", async (req,res) => {
+  if (!signedIn(req, res)) return;
+
+  try {
+    let ranks = await Users.getRanks(req.session.user.id);
+    res.status(200).send(ranks);
   } catch (error) {
-    res.status(503).json({ error: "could not find this user"}).end();
+    res.status(503).json({ error: "could not get rankings"}).end();
   }
-});
+})
+
+/**
+ * 
+ */
+router.post("/rank", async (req,res) => {
+  if (!signedIn(req, res)
+  || !correctInput(req, res,['badges'])) return;
+
+  try {
+    let ranks = await Users.postRanks(req.session.user.id, req.body.badges);
+    res.status(200).send(ranks);
+  } catch (error) {
+    res.status(503).json({ error: "could not add rankings"}).end();
+  }
+})
+// /**
+//  * Search for a user by username
+//  * @name GET/api/user/:username/search
+//  * @param username - the username of the user
+//  */
+// router.get("/:username/search", async (req,res) => {
+//   try{
+//     if (req.params.username) {
+//       let user = Users.search(req.params.username);
+//       if (user) {
+//         res.status(200).send(user)
+//       }
+//     }
+//   } catch (error) {
+//     res.status(503).json({ error: "could not find this user"}).end();
+//   }
+// });
 
 module.exports = router;
