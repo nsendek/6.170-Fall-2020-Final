@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       businesses : [],
+      query : ""
     }
   },
   created() {
@@ -34,16 +35,24 @@ export default {
   },
   methods : {
     async loadData() {
-      let response = await axios.get(`/api/search?search=${this.$route.query.search}`)
+      this.query = this.$route.query.search;
+      let response = await axios.get(`/api/search?search=${this.query}`)
         .catch(err => err.response);
 
       if (response.status == 200) {
-        this.businesses = response.data.businesses;     
-        eventBus.$emit("businesses", response.data.businesses);   
+        this.businesses = response.data.businesses;
+        eventBus.$emit("businesses", response.data.businesses);
       } else {
         eventBus.$emit("error-message", response.data.error);
       }
     },
+  },
+  watch: {
+    '$route' (to) {
+      if (to.query.search != this.query) {
+        this.loadData();
+      }
+    }
   }
 }
 </script>

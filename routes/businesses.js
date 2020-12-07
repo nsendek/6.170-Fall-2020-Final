@@ -180,11 +180,15 @@ router.get('/:id?', async (req, res) => {
         res.status(404).send({error: "business does not exist"});
       }
     } else {
+      let userBadges = [];
+      if(req.query.userBadges){
+        userBadges = req.query.userBadges; 
+      }
       let page = 1; 
       if (req.query.page) {
         page = req.query.page; 
       }
-      res.status(200).send(await Businesses.getAll(page));
+      res.status(200).send(await Businesses.getAll(page, userBadges));
     }
 
   } catch (error) {
@@ -237,7 +241,6 @@ router.get('/:id/badges', async (req, res) => {
  * @returns {Review[]} Array of reviews 
  */
 router.get('/:id/reviews', async (req, res) => {
-  console.log("FUCKS"); 
   if (!correctInput(req, res,[],['id'])
   || !isID(res,req.params.id)
   || !(await dataExists(res, req.params.id, Businesses))) return;
