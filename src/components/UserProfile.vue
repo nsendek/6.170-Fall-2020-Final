@@ -197,7 +197,7 @@ export default {
     
     updateUserPrefs: function() {
       const userPrefs = this.rankedBadges.map((badge)=>badge.label).reverse();
-      console.log("up:", userPrefs);
+      eventBus.$emit("edit-prefs-success");
       axios.post("api/user/rank", {badges : userPrefs})
       .then(() => {
         window.console.log("Policy preferences update successful");

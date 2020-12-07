@@ -68,6 +68,10 @@ export default {
         this.loadUserBadges();
       });
 
+      eventBus.$on("edit-prefs-success", () => {
+        this.loadUserBadges();
+      });
+
       eventBus.$on(("signout-success"), () => {
         this.userBadges = [];
       })
