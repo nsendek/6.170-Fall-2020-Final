@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib';
 import VueCookie from 'vue-cookie'
+import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
 import App from './App.vue'
 import router from './router'
@@ -10,6 +11,7 @@ import "./assets/styles/web.css";
 
 Vue.use(VueCookie);
 Vue.use(Vuetify);
+Vue.use(VueGoogleAutocomplete);
 const vuetify = new Vuetify({
   theme: {
     options: {

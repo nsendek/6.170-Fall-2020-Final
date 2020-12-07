@@ -10,12 +10,22 @@
         </p>
     <div class="center-container">
       <div class="text-input"><v-text-field v-model="name" label="business name" placeholder="business name" filled/></div>
-      <div class="text-input"><v-text-field v-model="address" label="address" placeholder="address" filled/></div>
       <div class="text-input"><v-text-field v-model="accountName" label="account username" placeholder="account username" filled/></div>
       <div class="text-input"><v-text-field type="password" v-model="password" label="password" placeholder="password" filled/></div>
-
+      <!-- <div class="text-input"><v-text-field v-model="address" label="address" placeholder="address" filled/></div> -->
+      <div class="text-input address-input">
+      <div class="address-title">address</div>
+      <vue-google-autocomplete 
+      id="input-78"
+      class = "v-text-field address-text" 
+      classname="form-control" 
+      placeholder="address" 
+      country="us" 
+      v-on:placechanged="getAddressData"/>
+      </div>
       <div><v-btn v-on:click="createAccount" class="wide-button">Create Account</v-btn></div>
       <div class="alt-option"><button v-on:click="goUserLogin"> already have an account? </button></div>
+
     </div> 
   </div>
 </template>
@@ -23,10 +33,11 @@
 <script>
 import axios from "axios";
 import { eventBus } from "../main";
+import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
 export default {
   name: "BusinessCreateAccount",
-
+  components: { VueGoogleAutocomplete },
   data: function(){
     return {
       accountName : "", 
@@ -35,8 +46,11 @@ export default {
       name: ""
     }
   }, 
-
   methods : {
+    getAddressData: function (addressData, placeResultData, id) {
+                this.address = placeResultData.formatted_address;
+                console.log(placeResultData.formatted_address,id);
+            },
     createAccount : function(){
       axios.post("/api/business", {
         accountName : this.accountName, 
