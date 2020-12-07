@@ -139,7 +139,7 @@ class Users {
    */
   static async getRanks(id) {
     let db = await SQL.getDB();
-    let res = await db.all(`SELECT * FROM user_ranks WHERE userId = $1`,[id]);
+    let res = await db.all(`SELECT * FROM user_ranks WHERE userId = $1 ORDER BY value DESC`,[id]);
     db.close();
     return res;
   }
@@ -147,10 +147,20 @@ class Users {
   /**
    * change persosnal rankings of badges
    * @param {number} id - id of user
-   * @param {string[]} badges - badges (ordered is desc priority)
+   * @param {string[]} badgeLabels - badges (ordered from most to least important ranking) (inc)
    * @return {string[] | undefined} the altered rankings
    */
-  static async postRanks(id,badges) {
+  static async postRanks(id,badgeLabels) {
+      let db = await SQL.getDB();
+      // first delete all user entries
+      let del = await db.run(`DELETE FROM user_ranks WHERE userId = $1`, [id]);
+      let res;
+      badgeLabels.forEach(async function(label, index) {
+        res = await db.run(`INSERT INTO user_ranks VALUES ($1, $2, $3)`,
+                                [id, label, index + 1]);
+      })
+      db.close();
+      return;
 
   }
 }
