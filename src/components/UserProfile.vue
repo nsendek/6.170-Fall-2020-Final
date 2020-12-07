@@ -50,34 +50,64 @@
             </v-card>
           </v-dialog>
     </div>
-      <v-spacer></v-spacer>     
-        <div>
-          <v-chip-group column active-class="primary--text" multiple>
-            <v-tooltip 
-              max-width="200px" top 
-              v-for='(badge,index) in badges' v-bind:key="index"
-              open-delay="1000"
-            >
-              <template v-slot:activator="{ on }">
-                <v-chip 
-                v-on="on"
-                 draggable >
-                    {{badge.label}}
-                </v-chip>
-              </template>
-              <div style="text-align:center;">{{badge.description}}</div>
-            </v-tooltip>
-          </v-chip-group>
+    <br><br>
+    <div class="secondary-header">
+      Policy Preferences
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-icon
+            color="primary"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            mdi-information-outline
+          </v-icon>
+        </template>
+        <span>Rank your 3 most important safety policies here,
+           and we will try to show you the businesses with the best ratings in those
+           categories whenever you apply filters!</span>
+      </v-tooltip>
+    </div>
+    <div v-if="!(editBadges)">
+        <div v-for="(badge, index) in topBadges" :key="index">
+          <v-chip>{{badge.label}}</v-chip>
+          </div>
+          <v-btn slot="footer" @click="editBadges = true">Edit Preferences</v-btn>
         </div>
+    <div v-else>
+      <draggable v-model="badges" group="people" @start="drag=true" @end="drag=false">
+        <div v-for="(badge, index) in badges" :key="index">
+          <v-tooltip right>
+            <template v-slot:activator="{ on, attrs }">
+            <v-chip
+             :key = "index"
+             v-on = "on"
+             v-bind ="attrs"
+             :color="(index < 3)? 'green' : '' "
+             >{{badge.label}}</v-chip>
+            </template>
+            <span>{{badge.description}}</span>
+          </v-tooltip>
+        </div>
+          <v-btn slot="footer" @click="editBadgePrefs">Done</v-btn>
+      </draggable>   
+    </div>
+
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import { eventBus } from "../main";
+import draggable from 'vuedraggable'
 
 export default {
   name : "UserProfile", 
+
+  components: {
+    draggable,
+  },
 
   data: function(){
     return {
@@ -85,6 +115,8 @@ export default {
       password : "",
       dialog: false,
       badges: [],
+      topBadges: [],
+      editBadges: false,
     }
   }, 
 
@@ -111,8 +143,15 @@ export default {
           axios.get("/api/badge")
           .then((res) => {
               this.badges = res.data ? res.data : [];
+              this.topBadges = this.badges.slice(0,3);
           })
       },
+
+    editBadgePrefs: function() {
+      this.editBadges = false;
+      console.log(this.badges.map((badge) => badge.label));
+      this.topBadges = this.badges.slice(0,3);
+    },
 
     updatePassword : function(){
       axios.patch("/api/user", {
