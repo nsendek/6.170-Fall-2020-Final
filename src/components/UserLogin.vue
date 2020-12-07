@@ -4,7 +4,7 @@
     <div class="center-container">
       <div class="text-input"><v-text-field v-model="username" label="username" placeholder="username" filled/></div>
       <div class="text-input"><v-text-field type="password" v-model="password" label="password" placeholder="password" filled/></div>
-      <div>
+      <div class="margin-above">
         <input type="checkbox"  v-model="isBusiness">
         <label for="checkbox"> Signing in as a business? </label>
       </div>
@@ -77,3 +77,9 @@ export default {
 
 }
 </script>
+<style scoped>
+.margin-above {
+  margin-bottom: 25px; 
+}
+
+</style>
