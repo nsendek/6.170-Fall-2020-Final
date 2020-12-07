@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Businesses = require('../models/Businesses');
-const Reviews = require('../models/Reviews');
-const Users = require('../models/Users');
+// const Reviews = require('../models/Reviews');
+// const Users = require('../models/Users');
 
 const { correctInput } = require('./validators');
 
@@ -22,10 +22,8 @@ router.get('/', async (req, res) => {
 
   try {
     let businesses = await Businesses.search(req.query.search);
-    let users = await Users.search(req.query.search);
-    let reviews = await Reviews.search(req.query.search);
 
-    res.status(200).send( {users, businesses, reviews});
+    res.status(200).send( {businesses});
     
   } catch (error) {
     res.status(503).json({ error: "could not search" }).end();
