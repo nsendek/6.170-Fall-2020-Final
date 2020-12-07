@@ -141,7 +141,7 @@ router.delete('/', async (req, res) => {
 
   try {
     let deleted = await Users.delete(req.session.user.id);
-    console.log(deleted)
+    // console.log(deleted)
     if (deleted) {
       req.session.user = null; // remove user from session
       res.status(200).send(deleted);

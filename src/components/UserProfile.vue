@@ -53,7 +53,7 @@
     <br><br>
     <div class="secondary-header">
       Policy Preferences
-      <v-tooltip bottom>
+      <v-tooltip right>
         <template v-slot:activator="{ on, attrs }">
           <v-icon
             color="primary"
@@ -64,39 +64,66 @@
             mdi-information-outline
           </v-icon>
         </template>
-        <span>Rank your 3 most important safety policies here,
-           and we will try to show you the businesses with the best ratings in those
-           categories whenever you apply filters!</span>
+        <span>This helps us organize your results when applying filters on the main page.</span>
       </v-tooltip>
     </div>
-    <div v-if="!(editBadges)">
-        <div v-for="(badge, index) in topBadges" :key="index">
-          <span> {{index+1}}. <v-chip>{{badge.label}}</v-chip> </span>
-          </div>
-          <v-btn slot="footer" @click="editBadges = true">Edit Preferences</v-btn>
-        </div>
-    <div v-else>
-      <draggable v-model="badges" group="people" @start="drag=true" @end="drag=false">
-        <div v-for="(badge, index) in badges" :key="index">
-          <span> {{index+1}}.
-          <v-tooltip right>
+    <div> <span> Rank your most important policies by dragging them here! </span> </div>
+
+    
+    
+    <div class='d-flex flex-row'>
+      <div class="d-inline flex p-2" style="border:2px solid grey"> Least Important</div>
+      <!-- Hidden spacers -->
+      <!-- <div class="d-inline flex p-2" style="visibility:hidden;">spacer</div> -->
+      <!--  -->
+      <draggable 
+      v-model="rankedBadges"
+        group="badges"
+        @start="drag=true" @end="drag=false"
+        v-on:change="updateUserPrefs">
+        <span class="p-2" v-for="(badge, index) in rankedBadges" :key="index">
+          <v-chip>{{badge.label}}</v-chip>
+        </span> 
+      </draggable>
+      <!-- Hidden spacers -->
+      <!-- <div class="d-inline flex p-2" style="visibility:hidden;">spacer</div> -->
+      <!--  -->
+      <div class="d-inline flex p-2" style="border:2px solid grey"> Most Important</div>
+    </div>
+    <br>
+    <div>
+      <v-tooltip right>
+        <template v-slot:activator="{ on, attrs }">
+          <v-icon
+            color="primary"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            mdi-information-outline
+          </v-icon>
+        </template>
+        <span>Drag these policies to the above section if you want to rank them.</span>
+      </v-tooltip>
+    </div>
+      <center>
+      <draggable v-model="badges" group="badges" @start="drag=true" @end="drag=false">
+        <span v-for="(badge, index) in badges" :key="index">
+          <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
             <v-chip
              :key = "index"
              v-on = "on"
              v-bind ="attrs"
-             :color="(index < 3)? 'green' : '' "
              >{{badge.label}}</v-chip>
             </template>
             <span>{{badge.description}}</span>
           </v-tooltip>
-          </span>
-        </div>
-          <v-btn slot="footer" @click="editBadgePrefs">Done</v-btn>
+        </span>
       </draggable>   
+      </center>
     </div>
 
-  </div>
 </template>
 
 <script>
@@ -117,8 +144,9 @@ export default {
       password : "",
       dialog: false,
       badges: [],
-      topBadges: [],
+      rankedBadges: [],
       editBadges: false,
+
     }
   }, 
 
@@ -145,14 +173,19 @@ export default {
           axios.get("/api/badge")
           .then((res) => {
               this.badges = res.data ? res.data : [];
-              this.topBadges = this.badges.slice(0,3);
+              // Done conditionally if user is not in user_badges db
+              this.badges = this.badges.slice(3, this.badges.length+1);
+              this.rankedBadges = this.badges.slice(0,3);
+              // else, get user prefs in db
+              // display those in reverse order
+              // splice rest of badges from this call
           })
       },
-
-    editBadgePrefs: function() {
-      this.editBadges = false;
-      console.log(this.badges.map((badge) => badge.label));
-      this.topBadges = this.badges.slice(0,3);
+    
+    updateUserPrefs: function() {
+      // to be posted to db
+      const userPrefs = this.rankedBadges.map((badge)=>badge.label).reverse();
+      console.log("PREFS:", userPrefs);
     },
 
     updatePassword : function(){

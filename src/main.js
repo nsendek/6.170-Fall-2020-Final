@@ -22,6 +22,7 @@ const vuetify = new Vuetify({
         nav : "#fff",
         background : "#fff",
         splitter : "#eee",
+        'splitter-hover' : "#ddd",
         'splitter-handle' : "#424242"
         // primary: "#fff",
         // background : "#ff0",
@@ -36,7 +37,8 @@ const vuetify = new Vuetify({
       dark : {
         nav : "#121212",
         background : "#121212",
-        splitter : "#424242",
+        splitter : "#323232",
+        'splitter-hover' : "#525252",
         'splitter-handle' : "#aaa"
       }
     }
