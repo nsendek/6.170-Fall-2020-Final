@@ -101,3 +101,18 @@
   align-items: baseline;
   justify-content: space-between;
 }
+
+.v-chip.gold {
+  border-style: solid;
+  border-color: #D4AF37;
+}
+
+.v-chip.silver {
+  border-style: solid;
+  border-color: silver;
+}
+
+.v-chip.bronze {
+  border-style: solid;
+  border-color: #B87333;
+}

@@ -47,6 +47,7 @@
                     <v-chip 
                       style="margin: 5px;" 
                       :key="idx"
+                      :class = 'getBadgeTier(badge)'
                       v-on = "{...tooltip, ...dialog }"
                       v-bind='attrs'
                       input-value="active"
@@ -56,7 +57,6 @@
                       {{badge.label}}
                     </v-chip>
                   </template>
-                <!-- <span>{{badge.description}}</span> -->
                 <v-card
                 >
                   <v-card-title class="headline">Badge Information</v-card-title>
@@ -258,10 +258,21 @@ export default {
       })
       .catch((error) => {
         console.log(error.response);
-        badge.ratio = 0;
+        this.$set(badge, 'ratio', "Not available");
+        this.$set(badge, 'affirms', "Not available");
+        this.$set(badge, 'denies', "Not available");
       });
     },
 
+    getBadgeTier(badge) {
+      if (badge.ratio > 80 && (badge.affirms + badge.denies >= 10)) {
+          return "gold";
+      } else if (badge.ratio > 50) {
+          return "silver";
+      } else {
+          return "bronze";
+      }
+    },
 
     updateBusinessInfo: function(patchType) {
         let content;

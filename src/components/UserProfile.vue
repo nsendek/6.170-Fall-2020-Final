@@ -50,6 +50,25 @@
             </v-card>
           </v-dialog>
     </div>
+      <v-spacer></v-spacer>     
+        <div>
+          <v-chip-group column active-class="primary--text" multiple>
+            <v-tooltip 
+              max-width="200px" top 
+              v-for='(badge,index) in badges' v-bind:key="index"
+              open-delay="1000"
+            >
+              <template v-slot:activator="{ on }">
+                <v-chip 
+                v-on="on"
+                 draggable >
+                    {{badge.label}}
+                </v-chip>
+              </template>
+              <div style="text-align:center;">{{badge.description}}</div>
+            </v-tooltip>
+          </v-chip-group>
+        </div>
   </div>
 </template>
 
@@ -65,8 +84,13 @@ export default {
       username : "", 
       password : "",
       dialog: false,
+      badges: [],
     }
   }, 
+
+  mounted: function() {
+    this.loadBadges();
+  },
 
   methods : {
     updateUsername : function(){
@@ -82,6 +106,13 @@ export default {
         eventBus.$emit("error-message", error.response.data.error); 
       });
     }, 
+    // Loads all badge types
+    loadBadges: function() {
+          axios.get("/api/badge")
+          .then((res) => {
+              this.badges = res.data ? res.data : [];
+          })
+      },
 
     updatePassword : function(){
       axios.patch("/api/user", {

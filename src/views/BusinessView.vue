@@ -8,7 +8,10 @@
         <div class = "quarternary-header"> {{business.address}} </div>
         <div class = "quarternary-header"> Rating: {{rating}} </div>
         <div style="text-align:center;">
-          <v-chip style="margin: 5px;" :key="idx" v-for="(badge,idx) in badges">
+          <v-chip style="margin: 5px;"
+           :key="idx"
+            v-for="(badge,idx) in badges"
+            :class="getBadgeTier(badge)">
             {{badge.label}}
           </v-chip>
         </div>
@@ -139,7 +142,33 @@ export default {
       let response = await axios.get(`/api/business/${this.$route.params.id}/badges`)
           .catch(err => err.response);
       this.badges =  (response.status == 200) ? response.data : [];
+      this.badges.forEach((badge) => this.getBadgeRatio(badge));
     },
+
+      getBadgeRatio: function(badge) {
+        axios.get(`/api/badge/${badge.id}/ratio`)
+        .then((response) => {
+            this.$set(badge, 'ratio', response.data.ratio);
+            this.$set(badge, 'affirms', response.data.affirms);
+            this.$set(badge, 'denies', response.data.denies);
+        })
+        .catch((error) => {
+            console.log(error.response);
+            this.$set(badge, 'ratio', "Not available");
+            this.$set(badge, 'affirms', "Not available");
+            this.$set(badge, 'denies', "Not available");
+        });
+      },
+
+      getBadgeTier(badge) {
+        if (badge.ratio > 80 && (badge.affirms + badge.denies >= 10)) {
+            return "gold";
+        } else if (badge.ratio > 50) {
+            return "silver";
+        } else {
+            return "bronze";
+        }
+      },
 
     next: function(){
       this.loadReviews(); 
