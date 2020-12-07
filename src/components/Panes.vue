@@ -72,12 +72,17 @@ export default {
   position: relative;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  min-width: 10px;
+  border-left: 2px solid var(--v-splitter-base);
+  margin-left: -1px;
 }
 
-.vue-theme.splitpanes--vertical>.splitpanes__splitter, 
-.vue-theme .splitpanes--vertical>.splitpanes__splitter {
-    min-width: 10px;
-    border-left: 2px solid var(--v-splitter-base);
-    margin-left: -1px;
+.splitpanes.vue-theme .splitpanes__splitter:hover {
+  background-color : var(--v-splitter-hover-base) !important;
+  border-left: 2px solid var(--v-splitter-hover-base);
 }
+
+/* .vue-theme.splitpanes--vertical>.splitpanes__splitter, 
+.vue-theme .splitpanes--vertical>.splitpanes__splitter {
+} */
 </style>
