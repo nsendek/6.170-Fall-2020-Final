@@ -72,7 +72,7 @@ class Businesses {
     }
     let offset = (page - 1) * pageLength; 
 
-    console.log(userBadges); 
+    // console.log(userBadges); 
 
 
     // I think this if-statement will be obsolete when we introduce sorting by overall metrics 
@@ -102,7 +102,7 @@ class Businesses {
           let badge = userBadges[idx]; 
           let containsBadge =  await db.get(`SELECT COUNT(*) FROM badges WHERE businessId = $1 AND label = $2`, [b.id, badge]);
           containsBadge = containsBadge["COUNT(*)"];
-          console.log(containsBadge); 
+          // console.log(containsBadge); 
 
           subBadgeDictionary[badge] = containsBadge; 
         }

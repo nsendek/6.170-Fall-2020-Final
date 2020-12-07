@@ -58,7 +58,7 @@ router.get('/filter', async (req, res) => {
  * @throws {400} - if review is too long or not given
  */
 router.post('/', async (req, res) => {
-  console.log("body?:", req.body);
+  // console.log("body?:", req.body);
   if (!signedIn(req, res, false) 
    || !correctInput(req, res, ['label'])) return; 
 
@@ -115,9 +115,9 @@ router.get("/:badgeId/ratio", async (req, res) => {
   if (!correctInput(req, res, [], ['badgeId'])) return;
   try {
     let affirms = await Badges.getAffirms(req.params.badgeId);
-    console.log("num affirms:", affirms);
+    // console.log("num affirms:", affirms);
     let denies = await Badges.getDenies(req.params.badgeId);
-    console.log("num denies:", denies);
+    // console.log("num denies:", denies);
     if (affirms !== 0) {
       res.status(200).send({
         affirms: affirms,
@@ -144,7 +144,7 @@ router.get("/:badgeId/ratio", async (req, res) => {
 router.post("/affirm", async (req, res) => {
   if (!signedIn(req, res) 
       || !correctInput(req, res, ['badgeId'])) return;
-  console.log("GOT HERE affirm")
+  // console.log("GOT HERE affirm")
   try {
     let affirm = Badges.affirm(req.session.user.id, req.body.badgeId);
     if (affirm) {
@@ -164,7 +164,7 @@ router.post("/affirm", async (req, res) => {
 router.post("/deny", async (req, res) => {
   if (!signedIn(req, res) 
       || !correctInput(req, res, ['badgeId'])) return;
-  console.log("GOT HERE deny")
+  // console.log("GOT HERE deny")
   try {
     let deny = Badges.deny(req.session.user.id, req.body.badgeId);
     if (deny) {

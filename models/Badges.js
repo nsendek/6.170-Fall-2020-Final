@@ -147,14 +147,14 @@ const SQL = require('../db/index');
    * @param {number} badgeId
    */
   static async affirm(userId, badgeId) {
-    console.log("params:", userId, badgeId);
+    // console.log("params:", userId, badgeId);
     let db = await SQL.getDB();
     let res = await db.run(`
       INSERT INTO badge_reacts (userId,badgeId, value) 
       VALUES ($1, $2, 1)`,
       [userId, badgeId]).catch(SQL.parseError);
     db.close();
-    console.log(res.changes);
+    // console.log(res.changes);
     return Boolean(res.changes);
   }
 
