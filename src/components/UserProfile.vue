@@ -225,6 +225,7 @@ export default {
       axios.post("/api/user/signout")
       .then((response) => {
         eventBus.$emit("success-message", response.data.message);
+        eventBus.$emit("signout-success");
         this.$state.username = ""; 
         this.$router.push('/');
       })

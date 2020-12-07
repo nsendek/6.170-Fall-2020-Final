@@ -63,6 +63,16 @@ export default {
         }
     },
 
+    created: function() {
+      eventBus.$on(("signin-success"), () => {
+        this.loadUserBadges();
+      });
+
+      eventBus.$on(("signout-success"), () => {
+        this.userBadges = [];
+      })
+    },
+
     mounted: function() {
         //needs to go before loadBusinesses, becuase it's what businesses will sort by
         this.loadUserBadges();
@@ -130,7 +140,14 @@ export default {
 
       // #TODO Loads all userBadges
       loadUserBadges: function() {
-          this.userBadges = ["MASKS REQUIRED"];
+        axios.get("/api/user/rank")
+        .then((response) => {
+          console.log("res dat:", response);
+          this.userBadges = response.data.map((badge) => badge.label) ? response.data : [];
+        })
+        .catch((error) => {
+          console.log(error.response);
+        })
       },
 
       // Filters businesses by one or more badges
