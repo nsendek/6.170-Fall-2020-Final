@@ -56,7 +56,7 @@ class Businesses {
    * Return an array of all of the Businesses.
    * @return {Business[]}
    */
-  static async getAll(page) {
+  static async getAll(page, userBadges) {
     let pageLength = 10;
 
     let db = await SQL.getDB();
@@ -72,13 +72,64 @@ class Businesses {
     }
     let offset = (page - 1) * pageLength; 
 
-    let business = await db.all(`
+    console.log(userBadges); 
+
+
+    // I think this if-statement will be obsolete when we introduce sorting by overall metrics 
+    if(userBadges.length == 0){
+      let business = await db.all(`
         SELECT id,name,address,lat,lng 
         FROM businesses 
         ORDER BY name ASC 
         limit $1 offset $2`, [pageLength, offset]);
-    db.close();
-    return {"results" : business, "page" : page, "totalPages" : totalPages};
+
+      db.close(); 
+      return {"results" : business, "page" : page, "totalPages" : totalPages};
+    } 
+    else{
+      let business = await db.all(`
+        SELECT id,name,address,lat,lng 
+        FROM businesses 
+        ORDER BY name ASC`); 
+
+
+      let businessBadgeDictionary = {};
+      for (let bIdx = 0; bIdx < business.length; bIdx++){
+        let b = business[bIdx]; 
+        let subBadgeDictionary = {};
+
+        for (let idx = 0; idx < userBadges.length; idx++) {
+          let badge = userBadges[idx]; 
+          let containsBadge =  await db.get(`SELECT COUNT(*) FROM badges WHERE businessId = $1 AND label = $2`, [b.id, badge]);
+          containsBadge = containsBadge["COUNT(*)"];
+          console.log(containsBadge); 
+
+          subBadgeDictionary[badge] = containsBadge; 
+        }
+        businessBadgeDictionary[b.id] = subBadgeDictionary; 
+      }
+  
+      business = business.sort(this.sortBusinesses(userBadges, businessBadgeDictionary)); 
+
+      db.close();
+      return {"results" : business.slice(offset, offset + pageLength), "page" : page, "totalPages" : totalPages};
+    }
+  }
+
+  static sortBusinesses(userBadges, businessBadgeDictionary){
+    return function(a, b){
+      // sort by badge importance 
+      for (let idx = 0; idx < userBadges.length; idx++) {
+        let badge = userBadges[idx];
+
+        let abadge = businessBadgeDictionary[a.id][badge]; 
+        let bbadge = businessBadgeDictionary[b.id][badge]; 
+
+        if (abadge < bbadge) return 1; 
+        if (abadge > bbadge) return -1;
+      }
+      return 0;
+    }
   }
 
   /**

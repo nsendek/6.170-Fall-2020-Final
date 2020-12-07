@@ -41,6 +41,7 @@
 
 <script>
 import axios from "axios";
+import qs from "qs"; 
 import { eventBus } from "../main";
 export default {
     name: "BusinessFeed",
@@ -56,11 +57,15 @@ export default {
             allBadges: [],
             selectedBadges : [],
             page : 1, 
-            totalPages: 1
+            totalPages: 1,
+            userBadges : [],
+            businessBadges : {}
         }
     },
 
     mounted: function() {
+        //needs to go before loadBusinesses, becuase it's what businesses will sort by
+        this.loadUserBadges();
         this.loadBusinesses();
         this.loadBadges();
     },
@@ -80,10 +85,25 @@ export default {
       },
       // Loads all businesses
       loadBusinesses: function() {
-      
-        axios.get("/api/business", { params: { page: this.page } })
-        .then((res) => {
-            this.businesses = res.data.results ? res.data.results : [];
+        // added a paramsSerializer so that it can interpret an array as a parameter
+        axios.get("/api/business", { params: { page: this.page, userBadges : this.userBadges }, paramsSerializer: params => {
+          return qs.stringify(params)
+        } })
+        .then(async (res) => {
+            // .forEach doesn't await between iterations
+            for (let index = 0; index < res.data.results.length; index++) {
+              let b = res.data.results[index];
+              let badges = await this.getBusinessBadges(b);
+              this.businessBadges[b.id] = badges;
+            }
+            // sort function can't be async so you have to laod all badges beforehand
+            
+            
+            // this.businesses = res.data.results.sort(this.sortBusinesses);
+            this.businesses = res.data.results; 
+            
+            
+            // this.businesses = res.data.results ? res.data.results : [];
             this.totalPages = res.data.totalPages; 
             eventBus.$emit('businesses', res.data.results)
         })
@@ -106,6 +126,11 @@ export default {
           .then((res) => {
               this.allBadges = res.data ? res.data : [];
           })
+      },
+
+      // #TODO Loads all userBadges
+      loadUserBadges: function() {
+          this.userBadges = ["MASKS REQUIRED"];
       },
 
       // Filters businesses by one or more badges
@@ -132,7 +157,36 @@ export default {
               eventBus.$emit('error-message', err);
           })
           }
-      }
+      },
+
+        
+        async getBusinessBadges(business) {
+          return axios.get(`/api/business/${business.id}/badges`)
+              .then((res) => {
+                const badges = res.data ? res.data.map(badge => badge.label) : [];
+                return badges;
+              }).catch(err =>{
+                console.log(err);
+                return [];
+              })
+          },
+
+
+      //sort 2 business items based on user badges, ordered by ranking. Most important badge first
+       sortBusinesses(a, b){
+        let aBadges = this.businessBadges[a.id];
+        let bBadges = this.businessBadges[b.id];
+
+        // console.log("going in", a,b)
+        // console.log("coming out", aBadges,bBadges)
+        // forEach does not return the surrounding function
+        for (let idx = 0; idx < this.userBadges.length; idx++) {
+          let badge = this.userBadges[idx]  
+          if (!aBadges.includes(badge) && bBadges.includes(badge)) return 1;
+          if (aBadges.includes(badge) && !bBadges.includes(badge)) return -1;
+        }
+        return 0;
+      },
     }
     
 }
