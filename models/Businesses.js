@@ -73,7 +73,6 @@ class Businesses {
     }
     let offset = (page - 1) * pageLength; 
 
-    // console.log(userBadges); 
 
     // // I think this if-statement will be obsolete when we introduce sorting by overall metrics 
     // if(userBadges.length == 0){

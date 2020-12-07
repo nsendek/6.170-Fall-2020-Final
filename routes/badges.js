@@ -115,9 +115,9 @@ router.get("/:badgeId/ratio", async (req, res) => {
   if (!correctInput(req, res, [], ['badgeId'])) return;
   try {
     let affirms = await Badges.getAffirms(req.params.badgeId);
-    // console.log("num affirms:", affirms);
+    //console.log("num affirms:", affirms);
     let denies = await Badges.getDenies(req.params.badgeId);
-    // console.log("num denies:", denies);
+    //console.log("num denies:", denies);
     if (affirms !== 0) {
       res.status(200).send({
         affirms: affirms,
