@@ -46,7 +46,6 @@ app.use('/api/business', businessRouter);
 app.use('/api/review', reviewRouter);
 app.use('/api/session', sessionRouter);
 app.use('/api/badge', badgeRouter);
-
 app.use('/api/search', searchRouter);
 
 // no page handler

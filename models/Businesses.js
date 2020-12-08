@@ -119,7 +119,6 @@ class Businesses {
   static sortBusinesses(userBadges, businessBadgeDictionary){
     return function(a, b){
       // sort by badge importance 
-      // console.log("sorting"); 
       for (let idx = 0; idx < userBadges.length; idx++) {
         let badge = userBadges[idx];
 
@@ -137,12 +136,9 @@ class Businesses {
         if (a_badge < b_badge) return 1; 
         if (a_badge > b_badge) return -1;
 
-        if(a_badge && b_badge){ // if they both contain the badge sort by badge ratio
-          // console.log("i am comparing ratios"); 
+        if(a_badge && b_badge){ // if they both contain the badge sort by badge ratio 
           let a_ratio = businessBadgeDictionary[a.id][badge]["ratio"]; 
           let b_ratio = businessBadgeDictionary[b.id][badge]["ratio"]; 
-          // console.log(a_ratio);
-          // console.log(b_ratio); 
           if ((a_ratio - b_ratio) < -5) return 1; 
           if ((a_ratio - b_ratio) > 5) return -1;
         }
@@ -152,7 +148,7 @@ class Businesses {
       if (a.rating > b.rating) return -1;
 
       // sort the rest of the list randomly so that it's not always alphabetical
-      return 0; // Math.round(Math.random()) == 1 ? 1 : -1; 
+      return 0;
     }
   }
 
@@ -167,16 +163,16 @@ class Businesses {
     return out;
   }
 
-  /**
-   * Return the business ID assoicated with a user account
-   * @param {*} accountName 
-   */
-  static async getIDFromAccount(accountName) {
-    let db = await SQL.getDB();
-    let out = await db.get(`SELECT id FROM businesses WHERE accountName = $1`,[accountName]);
-    db.close();
-    return out;
-  }
+  // /**
+  //  * Return the business ID assoicated with a user account
+  //  * @param {*} accountName 
+  //  */
+  // static async getIDFromAccount(accountName) {
+  //   let db = await SQL.getDB();
+  //   let out = await db.get(`SELECT id FROM businesses WHERE accountName = $1`,[accountName]);
+  //   db.close();
+  //   return out;
+  // }
 
   /**
    * create a business account
