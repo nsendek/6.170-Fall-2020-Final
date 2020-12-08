@@ -13,8 +13,8 @@
      disabled
      text
      depressed
-      v-for="(badge,idx) in badges"
-      :class="getBadgeTier(badge)">
+     v-for="(badge,idx) in badges"
+     :class="getBadgeTier(badge)">
     <BadgeIcon :badgeLabel = badge.label :height=40 />
   </v-btn>
 

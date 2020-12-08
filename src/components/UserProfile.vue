@@ -83,7 +83,6 @@
             <v-btn
               text
               depressed
-              filter
               > 
               <div class="icon-button"> 
               <BadgeIcon :badgeLabel=badge.label :height=80 />
@@ -123,8 +122,7 @@
             text
             depressed
             v-on="on"
-            v-bind="attrs"
-              filter > 
+            v-bind="attrs">
             <div class="icon-button"> 
               <BadgeIcon :badgeLabel=badge.label :height=80 />
               {{badge.label}}
