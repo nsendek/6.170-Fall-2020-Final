@@ -8,11 +8,12 @@
   <div> <i>Address: {{business.address}}</i> </div>
 
    <v-chip
-    small style="margin: 2.5px;"
+     style="margin: 2.5px;"
      :key="idx"
       v-for="(badge,idx) in badges"
       :class="getBadgeTier(badge)">
-    {{badge.label}}
+    <BadgeIcon :badgeLabel = badge.label :height=40 />
+    <!-- {{badge.label}} -->
   </v-chip>
 
 </v-card>
@@ -26,6 +27,9 @@ import axios from "axios";
 
 export default {
     name: "BusinessItem",
+    components: {
+        BadgeIcon: () => import("./BadgeIcon"),
+    },
     props: {
         business: Object,
         idx : Number

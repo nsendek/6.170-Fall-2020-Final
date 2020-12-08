@@ -1,23 +1,38 @@
 <template>
 <v-container>
+
     <h1 >Businesses</h1>
     <div>
         Filter By Safety Policy: 
         <div class="pa-4">
-          <v-chip-group v-model="selectedBadges" @change="applyFilter" column active-class="primary--text" multiple>
+          <v-btn-toggle
+           v-model="selectedBadges"
+            @change="applyFilter"
+            active-class="primary--text"
+            center
+            multiple>
             <v-tooltip 
               max-width="200px" top 
               v-for='(badge,index) in allBadges' v-bind:key="index"
               open-delay="1000"
             >
               <template v-slot:activator="{ on }">
-                <v-chip v-on="on" filter >
-                    {{badge.label}}
-                </v-chip>
+                <!-- v chip also works here -->
+                <v-btn
+                text
+                depressed
+                v-on="on"
+                 filter > 
+                <BadgeIcon :badgeLabel=badge.label :height=50 />
+                <!-- <img class="mr-3" 
+                  :src="require('../assets/icons/masks_required.png')"
+                   height="40"/> -->
+                    <!-- {{badge.label}} -->
+                </v-btn>
               </template>
               <div style="text-align:center;">{{badge.description}}</div>
             </v-tooltip>
-          </v-chip-group>
+          </v-btn-toggle>
         </div>
 
         <v-btn v-on:click= "resetFilter" type="button">Reset Filters</v-btn>
@@ -47,7 +62,8 @@ export default {
     name: "BusinessFeed",
     components: {
       BusinessFeedItem : () => import("./BusinessFeedItem"), 
-      Feed : () => import("../components/Feed.vue")
+      Feed : () => import("../components/Feed.vue"),
+      BadgeIcon: () => import("./BadgeIcon"),
     },
     data() {
         return {
