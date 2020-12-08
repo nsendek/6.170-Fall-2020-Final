@@ -128,7 +128,7 @@ header {
 
 .zelp-logo {
   text-decoration: none;
-  font-size : 40px;
+  font-size : 45px;
   font-weight : 500; 
   letter-spacing: 2px; 
 }
