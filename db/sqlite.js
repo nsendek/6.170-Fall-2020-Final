@@ -90,6 +90,14 @@ async function createBadgeTables() {
       CONSTRAINT badge_check FOREIGN KEY(badgeId) REFERENCES badges(id) ON DELETE CASCADE
     )`);
 
+  await db.table(`CREATE TABLE IF NOT EXISTS badge_stats (
+      badgeId INTEGER PRIMARY KEY,
+      affirms INTEGER,
+      denies INTEGER,
+
+      FOREIGN KEY(badgeId) REFERENCES badges(id) ON DELETE CASCADE
+    )`);
+
   await db.table(`CREATE TABLE IF NOT EXISTS user_ranks (
       userId INTEGER NOT NULL,
       label TEXT NOT NULL,
