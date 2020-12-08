@@ -23,8 +23,8 @@
 </template>
 <script>
 import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
-import {eventBus } from "../main";
+// import Vuetify from 'vuetify';
+import {eventBus, vuetify} from "../main";
 import {gmapApi}from 'vue2-google-maps';
 import InfoWindow from "./InfoWindow"
 
@@ -46,6 +46,7 @@ export default {
   },
   mounted() {
     eventBus.$on('businesses', (businesses) => {
+      this.markerUnselected();
       this.businesses = businesses;
       if(this && this.$refs && this.$refs.map && this.$refs.map.$mapPromise){
           this.boundBox(businesses,10);
@@ -117,45 +118,12 @@ export default {
 
       let InfoWindowComponent = Vue.extend(InfoWindow);
       let instance = new InfoWindowComponent({
-          propsData: {
-            business: b
-          },
           router : this.$router,
-          vuetify : new Vuetify({
-          icons : {
-            values: {
-              '6_ft_apart' : {
-                component: () => import("../assets/icons/6_ft_apart.vue")
-              },
-              'adequate_supplies' : {
-                component: () => import("../assets/icons/adequate_supplies.vue")
-              },
-              'curbside_pickup' : {
-                component: () => import("../assets/icons/curbside_pickup.vue")
-              },
-              'disinfection' : {
-                component: () => import("../assets/icons/disinfection.vue")
-              },
-              'indoor_dining' : {
-                component: () => import("../assets/icons/indoor_dining.vue")
-              },
-              'low_density' : {
-                component: () => import("../assets/icons/low_density.vue")
-              },
-              'masks_required' : {
-                component: () => import("../assets/icons/masks_required.vue")
-              },
-              'outdoor_dining' : {
-                component: () => import("../assets/icons/outdoor_dining.vue")
-              },
-              'trained_workers' : {
-                component: () => import("../assets/icons/trained_workers.vue")
-              },
-            }
+          vuetify,
+          propsData: {
+              business: b
           }
-        })
       });
-
       instance.$mount();
 
       this.infoWindow = new window.google.maps.InfoWindow({content: instance.$el, options:{pixelOffset: {width: 0,height: -35}}});
@@ -232,6 +200,19 @@ export default {
 .g-map{
   /* DON'T delete below */
   height : calc(100vh - var(--navbar-height));
+}
+
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track, 
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
+.gm-style .gm-style-iw,
+.gm-style .gm-style-iw-t:after 
+{
+  background-color: var(--v-info-window-base) !important;
+}
+
+.gm-style .gm-style-iw-t:after  {
+  background: var(--v-info-window-base) !important;
+  box-shadow: none;
 }
 
 .map-container {

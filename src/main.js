@@ -12,7 +12,8 @@ import "./assets/styles/web.css";
 Vue.use(VueCookie);
 Vue.use(Vuetify);
 Vue.use(VueGoogleAutocomplete);
-const vuetify = new Vuetify({
+
+export const vuetify = new Vuetify({
   theme: {
     options: {
       customProperties: true
@@ -27,6 +28,7 @@ const vuetify = new Vuetify({
         'splitter-hover' : "#ddd",
         'splitter-handle' : "#424242",
         'button-group' : "#eee",
+        'info-window' : "#fff"
       },
       dark : {
         primary: "#0464CC",
@@ -37,6 +39,7 @@ const vuetify = new Vuetify({
         'splitter-hover' : "#525252",
         'splitter-handle' : "#aaa",
         'button-group' : "#222",
+        'info-window' : "#323232"
       }
     }
   },
@@ -94,3 +97,4 @@ new Vue({
   vuetify,
   render: h => h(App)
 }).$mount('#app')
+
