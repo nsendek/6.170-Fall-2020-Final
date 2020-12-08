@@ -4,7 +4,7 @@
     <h1 >Businesses</h1>
     <div>
         Filter By Safety Policy: 
-        <div class="pa-4">
+        <div>
           <v-btn-toggle
            v-model="selectedBadges"
             @change="applyFilter"
@@ -15,16 +15,13 @@
               max-width="200px" top 
               v-for='(badge,index) in allBadges' v-bind:key="index"
               open-delay="1000"
+              z-index="20"
             >
               <template v-slot:activator="{ on }">
                 <!-- v chip also works here -->
-                <v-btn
-                text
-                depressed
-                v-on="on"
-                 filter > 
-                <BadgeIcon :badgeLabel=badge.label :height=50 />
-                </v-btn>
+                <div v-on="on"> 
+                  <BadgeIcon button v-on="on" :badgeLabel=badge.label :height=50 />
+                </div>
               </template>
               <div style="text-align:center;">{{badge.description}}</div>
             </v-tooltip>

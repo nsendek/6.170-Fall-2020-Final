@@ -13,7 +13,7 @@
       v-for="(badge,idx) in badges"
       :class="getBadgeTier(badge)">
     <BadgeIcon :badgeLabel = badge.label :height=40 />
-    <!-- {{badge.label}} -->
+    {{isNaN(badge.ratio) ? null : `${Math.round(badge.ratio)}%`}}
   </v-chip>
 
 </v-card>
