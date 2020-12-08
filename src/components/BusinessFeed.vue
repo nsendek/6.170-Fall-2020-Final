@@ -1,9 +1,9 @@
 <template>
-<v-container>
+<v-container class="no-scroll">
 
     <h1 >Businesses</h1>
-    <div>
-        Filter By Safety Policy: 
+    <div class="filter-div">
+        <div class="small-help-text">Filter By Safety Policy : </div>
         <div>
           <v-btn-toggle
             style="margin: 10px;"
@@ -13,7 +13,8 @@
             center
             background-color="button-group"
             borderless
-            multiple>
+            multiple
+            >
             <v-tooltip 
               max-width="200px" top 
               v-for='(badge,index) in allBadges' v-bind:key="index"
@@ -31,7 +32,9 @@
           </v-btn-toggle>
         </div>
 
+        <div class="reset-button">
         <v-btn v-on:click= "resetFilter" type="button">Reset Filters</v-btn>
+        </div>
     </div>
 
 
@@ -229,20 +232,32 @@ export default {
 </script>
 
 <style>
-  .why{ 
-    margin: 7px; 
-    display: flex; 
-    align-content: center;
-    justify-content: center;
-  }
-  .please{
-    background: transparent !important;
-    color: transparent; 
-  }
-
   .v-btn-toggle {
     /* border-radius: 100px; */
     margin: 10px 0px; 
     overflow: scroll;
   }
+
+  .small-help-text{
+    padding-top: 7px; 
+    margin-left: 12px; 
+    margin-bottom: -10px; 
+    opacity: 50%; 
+  }
+
+  .filter-div{
+    background: var(--v-button-group-base); 
+    border-radius: 5px; 
+    margin: 10px; 
+    /* background : #button-group;  */
+  }
+
+  .reset-button{
+    display: flex; 
+    width: 97%;
+    justify-content: flex-end;
+    padding-bottom: 10px; 
+  }
+
+
 </style>
