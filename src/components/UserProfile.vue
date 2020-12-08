@@ -173,19 +173,39 @@ export default {
           axios.get("/api/badge")
           .then((res) => {
               this.badges = res.data ? res.data : [];
-              // Done conditionally if user is not in user_badges db
-              this.badges = this.badges.slice(3, this.badges.length+1);
-              this.rankedBadges = this.badges.slice(0,3);
-              // else, get user prefs in db
-              // display those in reverse order
-              // splice rest of badges from this call
+              axios.get("/api/user/rank")
+              .then((res) => {
+                // Done conditionally if user is not in user_badges db
+                // console.log("what is response?", res.data);
+                if (res.data === []) {
+                  // default ranking --> not stored in db
+                  // signals better where to drag? can be set empty here as well.
+                  this.badges = this.badges.slice(3, this.badges.length+1);
+                  this.rankedBadges = this.badges.slice(0,3).map((badge) => badge.label);
+                } else {
+                  this.rankedBadges = res.data;
+                  this.badges = this.badges.filter((badge) => !this.rankedBadges.includes(badge.label));
+                }
+              })
+              .catch((error) => {
+                console.log(error);
+                this.rankedBadges = [];
+              })
+
           })
       },
     
     updateUserPrefs: function() {
-      // to be posted to db
       const userPrefs = this.rankedBadges.map((badge)=>badge.label).reverse();
-      console.log("PREFS:", userPrefs);
+      eventBus.$emit("edit-prefs-success");
+      axios.post("api/user/rank", {badges : userPrefs})
+      .then(() => {
+        window.console.log("Policy preferences update successful");
+      })
+      .catch((error) => {
+        console.log(error.response);
+        window.console.log("Unable to update preferences");
+      });
     },
 
     updatePassword : function(){
@@ -205,6 +225,7 @@ export default {
       axios.post("/api/user/signout")
       .then((response) => {
         eventBus.$emit("success-message", response.data.message);
+        eventBus.$emit("signout-success");
         this.$state.username = ""; 
         this.$router.push('/');
       })
