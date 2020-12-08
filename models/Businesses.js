@@ -105,10 +105,8 @@ class Businesses {
 
         if(subBadgeDictionary[badge].containsBadge){
           let badgeId =  labelToID[badge];
-
-          let ad = await Badges.getStats(badgeId);
-          
-          subBadgeDictionary[badge]["ratio"] = ad.ratio;
+          let stats = await Badges.getStats(badgeId);
+          subBadgeDictionary[badge]["ratio"] = stats.ratio;
         }
       }))
 
@@ -153,7 +151,7 @@ class Businesses {
       // if (a_rating > b_rating) return -1;
 
       // sort the rest of the list randomly so that it's not always alphabetical
-      return Math.round(Math.random()) == 1 ? 1 : -1; 
+      return 0; // Math.round(Math.random()) == 1 ? 1 : -1; 
     }
   }
 
