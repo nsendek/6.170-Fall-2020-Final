@@ -88,9 +88,9 @@ class Businesses {
       businesses = await db.all(`
       SELECT 
       businesses.id,  name, address, lat, lng, 
-      ROUND(AVG(reviews.rating), 2) as rating
+      ROUND(AVG(reviews.rating), 2) AS rating
       FROM businesses 
-      JOIN reviews WHERE reviews.businessId = businesses.id
+      JOIN reviews ON reviews.businessId = businesses.id
       GROUP BY businesses.id`);
     }
 
