@@ -86,17 +86,15 @@ class Businesses {
     }
     const loadBusinesses = async () => {
       businesses = await db.all(`
-      SELECT id,name,address,lat,lng 
+      SELECT 
+      businesses.id,  name, address, lat, lng, 
+      ROUND(AVG(reviews.rating), 2) as rating
       FROM businesses 
-      ORDER BY name ASC`);
+      JOIN reviews WHERE reviews.businessId = businesses.id
+      GROUP BY businesses.id`);
     }
 
     await Promise.all([Promise.resolve(loadBadges()),Promise.resolve(loadBusinesses())]);
-
-    // let businesses = await db.all(`
-    //   SELECT id,name,address,lat,lng 
-    //   FROM businesses 
-    //   ORDER BY name ASC`); 
 
     let businessBadgeDictionary = {};
 
@@ -111,26 +109,6 @@ class Businesses {
         ratio : stats.ratio
       };
     }
-
-    // let processBusiness = async (b) => {
-    //   let subBadgeDictionary = {};
-    //   let badges = await db.all(`SELECT id,label FROM badges WHERE businessId = $1`, [b.id]);
-    //   let labelToID = {};
-    //   badges.forEach( badge => {labelToID[badge.label] = badge.id;})
-
-    //   await Promise.all(userBadges.map(async (badge) => { 
-    //     subBadgeDictionary[badge] = {};
-    //     subBadgeDictionary[badge].containsBadge = Boolean(labelToID[badge]);
-
-    //     if(subBadgeDictionary[badge].containsBadge){
-    //       let badgeId =  labelToID[badge];
-    //       let stats = await Badges.getStats(badgeId);
-    //       subBadgeDictionary[badge]["ratio"] = stats.ratio;
-    //     }
-    //   }))
-
-    //   businessBadgeDictionary[b.id] = subBadgeDictionary; 
-    // }
 
     await Promise.all(badges.map(b => Promise.resolve(processBadge(b))));
     db.close();
@@ -170,10 +148,8 @@ class Businesses {
         }
       }
       // if neither of them contain any of the badges then compare overall business rating
-      // let a_rating = businessBadgeDictionary[a.id]["businessRating"]; 
-      // let b_rating = businessBadgeDictionary[b.id]["businessRating"]; 
-      // if (a_rating < b_rating) return 1; 
-      // if (a_rating > b_rating) return -1;
+      if (a.rating < b.rating) return 1; 
+      if (a.rating > b.rating) return -1;
 
       // sort the rest of the list randomly so that it's not always alphabetical
       return 0; // Math.round(Math.random()) == 1 ? 1 : -1; 
