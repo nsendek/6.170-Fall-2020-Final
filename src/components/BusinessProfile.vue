@@ -29,9 +29,8 @@
             <v-btn v-on:click="updateBusinessInfo('address')">update address</v-btn>
         </div>
 
-
         <h1> Your Safety Policies </h1>
-
+        <br><br>
         <div class="badges">
 
           <div class="badges"
@@ -44,22 +43,19 @@
               <template v-slot:activator='{on: dialog, attrs}'>
                 <v-tooltip bottom>
                   <template v-slot:activator='{on:tooltip}'>
-                    <v-chip 
-                      style="margin: 5px;" 
-                      :key="idx"
-                      :class = 'getBadgeTier(badge)'
-                      v-on = "{...tooltip, ...dialog }"
-                      v-bind='attrs'
-                      input-value="active"
-                      filter
-                      filter-icon="mdi-minus"
-                      @click.stop="badgeIndex=idx">
-                      {{badge.label}}
-                    </v-chip>
+                    <v-icon color="red" > mdi-minus </v-icon>
+                    <div
+                     v-on="{...tooltip, ...dialog }"
+                     v-bind="attrs"
+                     style="margin: 5px 5px;">  
+                      <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" :color="getBadgeTier(badge)"/>
+                    </div>
                   </template>
                 <v-card
                 >
-                  <v-card-title class="headline">Badge Information</v-card-title>
+                  <v-card-title class="headline">Policy Stats</v-card-title>
+                  <v-card-subtitle> {{badge.label}} </v-card-subtitle>
+                  <v-card-subtitle> Total Reviews: {{badge.affirms + badge.denies}} </v-card-subtitle>
                   <v-card-subtitle> Affirms: {{ badge.affirms }} </v-card-subtitle>
                   <v-card-subtitle> Denies: {{  badge.denies }} </v-card-subtitle>
                   <v-card-subtitle> Affirm Percentage: {{ badge.ratio }}%</v-card-subtitle>
@@ -93,8 +89,9 @@
             </v-dialog>
           </div>
         </div>
-
+        <br><br>
         <h1> Add Safety Policies </h1>
+        <br>
         <div class="badges">
 
           <div class="badges" v-for="(badge,idx) in otherBadges" :key="idx">
@@ -107,19 +104,17 @@
               <template v-slot:activator='{on: dialog, attrs}'>
                 <v-tooltip bottom>
                   <template v-slot:activator='{on:tooltip}'>
-                    <v-chip 
-                      style="margin: 5px;" 
-                      :key="idx"
-                      v-on = "{...tooltip, ...dialog }"
-                      v-bind='attrs'
-                      input-value="active"
-                      filter
-                      filter-icon="mdi-plus"
-                      @click.stop="badgeIndex=idx">
-                      {{badge.label}}
-                    </v-chip>
+                    <v-icon color="green" > mdi-plus </v-icon>
+                    <div
+                     v-on="{...tooltip, ...dialog }"
+                     v-bind="attrs"
+                     style="margin: 5px 5px;">  
+                      <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" />
+                    </div>
+                    
                   </template>
-                <span>{{badge.description}}</span>
+                  <div style="text-align:center;"><b><u>{{badge.label}}</u></b></div>
+                  <div style="text-align:center;">{{badge.description}}</div>
                 </v-tooltip>
               </template>
               <v-card>
@@ -199,6 +194,10 @@ import { eventBus } from "../main";
 
 export default {
   name : "BusinessProfile", 
+
+  components: {
+    BadgeIcon: () => import("./BadgeIconAlt"),
+  },
 
   data: function(){
     return {
@@ -379,4 +378,21 @@ export default {
   justify-content: center;
 }
 
+  .why{ 
+    margin: 7px; 
+    display: flex; 
+    align-content: center;
+    justify-content: center;
+  }
+  .please{
+    background: transparent !important;
+    color: transparent; 
+  }
+
+  .v-btn-toggle {
+    /* border-radius: 100px; */
+    margin: 10px 0px; 
+    overflow: scroll;
+  }
 </style>
+
