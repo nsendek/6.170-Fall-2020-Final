@@ -82,7 +82,13 @@
         @start="drag=true" @end="drag=false"
         v-on:change="updateUserPrefs">
         <span class="p-2" v-for="(badge, index) in rankedBadges" :key="index">
-          <v-chip>{{badge.label}}</v-chip>
+          <!-- <v-chip>{{badge.label}}</v-chip> -->
+            <v-btn
+              text
+              depressed
+              filter > 
+              <BadgeIcon :badgeLabel=badge.label :height=50 />
+            </v-btn>
         </span> 
       </draggable>
       <!-- Hidden spacers -->
@@ -111,11 +117,20 @@
         <span v-for="(badge, index) in badges" :key="index">
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
-            <v-chip
-             :key = "index"
-             v-on = "on"
-             v-bind ="attrs"
-             >{{badge.label}}</v-chip>
+              <!-- <v-chip
+                v-on='on'
+                v-bind="attrs"
+                filter> {{badge.label}}
+              </v-chip> -->
+              
+            <v-btn
+            text
+            depressed
+            v-on="on"
+            v-bind="attrs"
+              filter > 
+            <BadgeIcon :badgeLabel=badge.label :height=50 />
+            </v-btn>
             </template>
             <span>{{badge.description}}</span>
           </v-tooltip>
@@ -136,6 +151,7 @@ export default {
 
   components: {
     draggable,
+    BadgeIcon: () => import("./BadgeIcon"),
   },
 
   data: function(){
@@ -181,10 +197,10 @@ export default {
                   // default ranking --> not stored in db
                   // signals better where to drag? can be set empty here as well.
                   this.badges = this.badges.slice(3, this.badges.length+1);
-                  this.rankedBadges = this.badges.slice(0,3).map((badge) => badge.label);
+                  this.rankedBadges = this.badges.slice(0,3);
                 } else {
                   this.rankedBadges = res.data;
-                  this.badges = this.badges.filter((badge) => !this.rankedBadges.includes(badge.label));
+                  this.badges = this.badges.filter((badge) => !this.rankedBadges.map((badge) => badge.label).includes(badge.label));
                 }
               })
               .catch((error) => {
@@ -196,6 +212,7 @@ export default {
       },
     
     updateUserPrefs: function() {
+      console.log("calling this my g");
       const userPrefs = this.rankedBadges.map((badge)=>badge.label).reverse();
       eventBus.$emit("edit-prefs-success");
       axios.post("api/user/rank", {badges : userPrefs})
