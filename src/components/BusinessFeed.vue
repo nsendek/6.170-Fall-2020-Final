@@ -26,10 +26,6 @@
                 v-on="on"
                  filter > 
                 <BadgeIcon :badgeLabel=badge.label :height=50 />
-                <!-- <img class="mr-3" 
-                  :src="require('../assets/icons/masks_required.png')"
-                   height="40"/> -->
-                    <!-- {{badge.label}} -->
                 </v-btn>
               </template>
               <div style="text-align:center;">{{badge.description}}</div>
@@ -84,10 +80,12 @@ export default {
     created: function() {
       eventBus.$on(("signin-success"), () => {
         this.loadUserBadges();
+        this.loadBusinesses();
       });
 
       eventBus.$on("edit-prefs-success", () => {
         this.loadUserBadges();
+        this.loadBusinesses();
       });
 
       eventBus.$on(("signout-success"), () => {
@@ -162,15 +160,15 @@ export default {
 
       // #TODO Loads all userBadges
       loadUserBadges: function() {
-        this.userBadges = ["MASKS REQUIRED"]
-        // axios.get("/api/user/rank")
-        // .then((response) => {
-        //   console.log("res dat:", response);
-        //   this.userBadges = response.data.map((badge) => badge.label) ? response.data : [];
-        // })
-        // .catch((error) => {
-        //   console.log(error.response);
-        // })
+        // this.userBadges = ["MASKS REQUIRED"]
+        axios.get("/api/user/rank")
+        .then((response) => {
+          console.log("res dat:", response);
+          this.userBadges = response.data.map((badge) => badge.label) ? response.data : [];
+        })
+        .catch((error) => {
+          console.log(error.response);
+        })
       },
 
       // Filters businesses by one or more badges
