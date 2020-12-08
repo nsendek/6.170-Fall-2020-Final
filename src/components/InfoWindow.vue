@@ -10,8 +10,8 @@
     </div>
     <div class="badges-container" style="justify-content: center;">
     <div :key="idx" v-for="(badge,idx) in badges" style="margin: 2.5px 5px;"> 
-    <BadgeIcon :color="getBadgeTier(badge)" :badgeLabel="badge.label" :size="20" :border="7" />
-    {{isNaN(badge.ratio) ? null : `${Math.round(badge.ratio)}%`}}
+    <BadgeIcon :color="getBadgeTier(badge)" :badgeLabel="badge.label" :size="28" :border="7" />
+        <!--if we want % {{isNaN(badge.ratio) ? null : `${Math.round(badge.ratio)}%`}} -->
     </div>
   </div>
   </v-card>
