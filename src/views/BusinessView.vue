@@ -1,6 +1,6 @@
 <template >
 
-  <v-container>
+  <v-container  class="pa-4">
     <div class = "business-col">
       <v-btn v-if="this.$state.username && !this.$state.isBusiness" style="width:33%;" @click="openReview"> Submit Review </v-btn>
       <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
@@ -26,8 +26,8 @@
 
     <div class = "primary-header" style="text-align: center;"> REVIEWS </div>
     <Feed>
-      <v-card class = "review-card" :key="idx" v-for="(review,idx) in reviews">
-        <div class="flex-row" style="display:flex; flex-direction:row; align-items:center; ">
+      <v-card class = "review-card" :key="idx" v-for="(review,idx) in reviews" style="margin: 10px 0px;">
+        <div class="flex-row" style="display:flex; flex-direction:row; align-items:center;">
           <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
           <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
         </div>

@@ -60,7 +60,7 @@ export default {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     width: 1px;
-    height: 50px;
+    height: 35px;
 }
 
 

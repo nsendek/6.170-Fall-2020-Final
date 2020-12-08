@@ -54,14 +54,14 @@ export default {
     })
   }, 
   created(){
-    this.mapId = this.$vuetify.theme.isDark ? this.darkId : this.ligthId;
+    this.mapId = this.$vuetify.theme.dark ? this.darkId : this.ligthId;
     eventBus.$on('clicked', (b,bview) => {
       this.clicked(b,bview);
     })
-    eventBus.$on('theme-change', (dark) => {
-      this.mapId = dark ? this.darkId : this.ligthId;
-      // this.lastBounds = this.$refs.map.$mapObject.getBounds();
-    })
+    // eventBus.$on('theme-change', (dark) => {
+    //   this.mapId = dark ? this.darkId : this.ligthId;
+    //   this.lastBounds = this.$refs.map.$mapObject.getBounds();
+    // })
   },
   updated() {
     this.boundBox(this.businesses, 0);
@@ -190,8 +190,11 @@ export default {
     }
   },
   watch : {
-    $vuetify : function() {
-      window.console.log("CHANGED");
+    '$vuetify' : {
+      handler(){
+       this.mapId = this.$vuetify.theme.dark ? this.darkId : this.ligthId;
+     },
+     deep: true
     }
   }
 }

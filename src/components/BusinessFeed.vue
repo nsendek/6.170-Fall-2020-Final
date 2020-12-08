@@ -1,12 +1,11 @@
 <template>
-<v-container>
+<v-container class="pa-4">
 
     <h1 >Businesses</h1>
     <div>
         Filter By Safety Policy: 
         <div>
           <v-btn-toggle
-            style="margin: 10px;"
             class="badges-container"
             v-model="selectedBadges"
             @change="applyFilter"
@@ -21,7 +20,7 @@
               z-index="20"
             >
               <template v-slot:activator="{ on }">
-                <div v-on="on" style="margin: 5px 5px;">  
+                <div v-on="on" style="margin: 10px 5px;">  
                   <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10"/>
                 </div>
               </template>
