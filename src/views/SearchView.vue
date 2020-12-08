@@ -43,7 +43,7 @@ export default {
         this.businesses = response.data.businesses;
         eventBus.$emit("businesses", response.data.businesses);
       } else {
-        eventBus.$emit("error-message", response.data.error);
+        eventBus.$emit("error-message", response.data.error ? response.data.error : response.data);
       }
     },
   },

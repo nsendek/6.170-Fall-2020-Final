@@ -1,6 +1,6 @@
 <template>
   <!-- var(--navbar-height) is defined in web.css -->
-  <v-app-bar app color="nav" flat height="var(--navbar-height)"> 
+  <v-app-bar :group="false" app color="nav" flat height="var(--navbar-height)"> 
 
     <router-link to="/" class="zelp-logo"> <div> ZELP  </div></router-link>
     
@@ -42,7 +42,7 @@
           mdi-theme-light-dark
         </v-icon>
       </template>
-      Settings
+      {{ this.$vuetify.theme.dark ? "light mode" : "dark mode" }} 
     </v-tooltip>
 
     <div v-if="!$state.username"> 
