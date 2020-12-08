@@ -186,8 +186,8 @@ const SQL = require('../db/index');
   static async updateStats(badgeId) {
     let db = await SQL.getDB();
     await db.run(`
-    INSERT OR REPLACE INTO badge_stats (badgeId, affirms, denies) SELECT badgeId, affirms, denies
-      FROM (SELECT badgeId, COUNT(*) as affirms from badge_reacts WHERE badgeId = $1 AND value = 1) 
+    INSERT OR REPLACE INTO badge_stats (badgeId, affirms, denies) SELECT ${Number(badgeId)}, affirms, denies
+      FROM (SELECT COUNT(*) as affirms from badge_reacts WHERE badgeId = $1 AND value = 1) 
       JOIN (SELECT COUNT(*) as denies from badge_reacts WHERE badgeId = $2 AND value = -1)
     `,[badgeId, badgeId]);
     console.log('done: ', badgeId)
@@ -207,7 +207,7 @@ const SQL = require('../db/index');
       [badgeID]).catch(SQL.parseError); 
     db.close();
     
-    return ad;
+    return ad ? ad : {affirms : 0, denies : 0 , ratio : null };
   }
 
   static async updateAllStats() {
