@@ -19,20 +19,24 @@ const vuetify = new Vuetify({
     },
     themes: {
       light: {
+        primary: "#0464CC",
+        accent : "#C40CCC",
         nav : "#fff",
-        background : "#fff",
+        overlay : "#fff",
         splitter : "#eee",
         'splitter-hover' : "#ddd",
         'splitter-handle' : "#424242",
-        'button-group' : "#eee"
+        'button-group' : "#eee",
       },
       dark : {
+        primary: "#0464CC",
+        accent : "#C40CCC",
         nav : "#121212",
-        background : "#121212",
+        overlay : "#121212",
         splitter : "#323232",
         'splitter-hover' : "#525252",
         'splitter-handle' : "#aaa",
-        'button-group' : "#222"
+        'button-group' : "#222",
       }
     }
   },

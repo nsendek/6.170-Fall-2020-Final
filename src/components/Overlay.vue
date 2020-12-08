@@ -30,7 +30,7 @@ export default {
 /* backdrop-filter not supported on some browsers */
 @supports not (backdrop-filter: blur( 15px )) {
   #overlay {
-    background-color: var(--v-background-base)!important;
+    background-color: var(--v-overlay-base)!important;
     opacity: 0.95 !important;
   }
 }
