@@ -68,9 +68,7 @@
       </v-tooltip>
     </div>
     <div> <span> Rank your most important policies by dragging them here! </span> </div>
-
-    
-    
+    <br><br>
     <div class='d-flex flex-row'>
       <div class="d-inline flex p-2" style="border:2px solid grey"> Least Important</div>
       <!-- Hidden spacers -->
@@ -82,12 +80,15 @@
         @start="drag=true" @end="drag=false"
         v-on:change="updateUserPrefs">
         <span class="p-2" v-for="(badge, index) in rankedBadges" :key="index">
-          <!-- <v-chip>{{badge.label}}</v-chip> -->
             <v-btn
               text
               depressed
-              filter > 
-              <BadgeIcon :badgeLabel=badge.label :height=50 />
+              filter
+              > 
+              <div class="icon-button"> 
+              <BadgeIcon :badgeLabel=badge.label :height=80 />
+              {{badge.label}}
+              </div>
             </v-btn>
         </span> 
       </draggable>
@@ -96,7 +97,7 @@
       <!--  -->
       <div class="d-inline flex p-2" style="border:2px solid grey"> Most Important</div>
     </div>
-    <br>
+    <br><br>
     <div>
       <v-tooltip right>
         <template v-slot:activator="{ on, attrs }">
@@ -112,31 +113,30 @@
         <span>Drag these policies to the above section if you want to rank them.</span>
       </v-tooltip>
     </div>
-      <center>
+    <br><br>
+    <center>
       <draggable v-model="badges" group="badges" @start="drag=true" @end="drag=false">
         <span v-for="(badge, index) in badges" :key="index">
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
-              <!-- <v-chip
-                v-on='on'
-                v-bind="attrs"
-                filter> {{badge.label}}
-              </v-chip> -->
-              
             <v-btn
             text
             depressed
             v-on="on"
             v-bind="attrs"
               filter > 
-            <BadgeIcon :badgeLabel=badge.label :height=50 />
+            <div class="icon-button"> 
+              <BadgeIcon :badgeLabel=badge.label :height=80 />
+              {{badge.label}}
+            </div>
             </v-btn>
             </template>
             <span>{{badge.description}}</span>
           </v-tooltip>
         </span>
       </draggable>   
-      </center>
+    </center>
+    <br><br>
     </div>
 
 </template>

@@ -19,11 +19,16 @@
               <template v-slot:activator="{ on }">
                 <!-- v chip also works here -->
                 <v-btn
+                borderless
+                rounded
                 text
                 depressed
                 v-on="on"
-                 filter > 
-                <BadgeIcon :badgeLabel=badge.label :height=50 />
+                filter > 
+                <div class="icon-button">
+                    <BadgeIcon :badgeLabel = badge.label :height=80 />
+                    {{badge.label}}
+                </div>
                 </v-btn>
               </template>
               <div style="text-align:center;">{{badge.description}}</div>

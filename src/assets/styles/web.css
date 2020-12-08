@@ -91,6 +91,14 @@
   width : 20vw; 
 }
 
+.icon-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-between;
+}
+
+
 .smaller-margin {
   margin-top: -25px;
 }
@@ -131,17 +139,17 @@
   justify-content: space-between;
 }
 
-.v-chip.gold {
+.v-btn.gold {
   border-style: solid;
   border-color: #D4AF37;
 }
 
-.v-chip.silver {
+.v-btn.silver {
   border-style: solid;
   border-color: silver;
 }
 
-.v-chip.bronze {
+.v-btn.bronze {
   border-style: solid;
   border-color: #B87333;
 }

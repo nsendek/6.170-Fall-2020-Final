@@ -7,14 +7,16 @@
   </router-link>
   <div> <i>Address: {{business.address}}</i> </div>
 
-   <v-chip
+   <v-btn
      style="margin: 2.5px;"
      :key="idx"
+     disabled
+     text
+     depressed
       v-for="(badge,idx) in badges"
       :class="getBadgeTier(badge)">
     <BadgeIcon :badgeLabel = badge.label :height=40 />
-    <!-- {{badge.label}} -->
-  </v-chip>
+  </v-btn>
 
 </v-card>
 

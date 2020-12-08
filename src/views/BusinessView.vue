@@ -7,13 +7,20 @@
         <div class = "secondary-header"> <b>{{business.name}}</b> </div>
         <div class = "quarternary-header"> {{business.address}} </div>
         <div class = "quarternary-header"> Rating: {{rating}} </div>
+        <br><br>
         <div style="text-align:center;">
-          <v-chip style="margin: 5px;"
-           :key="idx"
+          <v-btn style="margin: 5px;"
+            :key="idx"
+            text
+            depressed
+            disabled
             v-for="(badge,idx) in badges"
             :class="getBadgeTier(badge)">
-            {{badge.label}}
-          </v-chip>
+            <div class="icon-button">
+              <BadgeIcon :badgeLabel = badge.label :height=80 />
+              {{badge.label}}
+            </div>
+          </v-btn>
         </div>
       </v-card>
     </div>
@@ -62,7 +69,8 @@ export default {
   name: "BusinessView",
   
 	components : {
-    Feed : () => import("../components/Feed.vue")
+    Feed : () => import("../components/Feed.vue"),
+    BadgeIcon: () => import("../components/BadgeIcon"),
   },
   
 	data () {
