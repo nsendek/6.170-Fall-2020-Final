@@ -1,5 +1,4 @@
 const SQL = require('../db/index');
-// const Businesses = require('./Businesses');
 
 /**
  * @typedef Badges
@@ -148,16 +147,14 @@ const SQL = require('../db/index');
    * @param {number} badgeId
    */
   static async affirm(userId, badgeId) {
-    // console.log("params:", userId, badgeId);
     let db = await SQL.getDB();
     let res = await db.run(`
       INSERT INTO badge_reacts (userId,badgeId, value) 
       VALUES ($1, $2, 1)`,
       [userId, badgeId]).catch(SQL.parseError);
 
-    await Badges.updateStats(db, badgeId);
-
     db.close();
+    await Badges.updateStats(badgeId);
     return Boolean(res.changes);
   }
 
@@ -190,7 +187,6 @@ const SQL = require('../db/index');
       FROM (SELECT badgeId, COUNT(*) as affirms from badge_reacts WHERE badgeId = $1 AND value = 1) 
       JOIN (SELECT COUNT(*) as denies from badge_reacts WHERE badgeId = $2 AND value = -1)
     `,[badgeId, badgeId]);
-    console.log('done: ', badgeId)
     await db.close();
   }
 
@@ -215,36 +211,10 @@ const SQL = require('../db/index');
     let badges = await db.all('SELECT id FROM badges');
     db.close();
 
-    console.log("starting");
+    console.log("updating all badge stats");
     await badges.reduce((p, badge) => p.then(async () => await Badges.updateStats(badge.id)), Promise.resolve())
     console.log("finished");
   }
-
-  // /**
-  //  * Get the number of affirms of a badge
-  //  * @param {number} badgeID
-  //  * @returns {number} - the percentage
-  //  */
-  // static async getAffirms(badgeID) {
-  //   let db = await SQL.getDB();
-  //   let affirms = await db.get(`SELECT SUM(value) AS a_num FROM badge_reacts WHERE badgeId= $1 AND value= 1`,[badgeID]); 
-  //   // return affirms
-  //   if (affirms["a_num"] === null) return 0;
-  //   return affirms["a_num"];
-  // }
-
-
-  // /**
-  //  * Get the number of denies of a badge
-  //  * @param {number} badgeID
-  //  * @returns {number} - the percentage
-  //  */
-  // static async getDenies(badgeID) {
-  //   let db = await SQL.getDB();
-  //   let denies = await db.get(`SELECT SUM(value) AS d_num FROM badge_reacts WHERE badgeId= $1 AND value = -1`, [badgeID]);
-  //   if (denies["d_num"] === null) return 0;
-  //   return denies["d_num"] * -1;
-  // }
 }
 
 // DON'T uncomment below if running with npm
