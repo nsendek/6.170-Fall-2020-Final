@@ -43,28 +43,19 @@
               <template v-slot:activator='{on: dialog, attrs}'>
                 <v-tooltip bottom>
                   <template v-slot:activator='{on:tooltip}'>
-                    <v-btn 
-                      :key="idx"
-                      :class = 'getBadgeTier(badge)'
-                      v-on = "{...tooltip, ...dialog }"
-                      v-bind='attrs'
-                      input-value="active"
-                      text
-                      depressed
-                      outlined
-                      @click.stop="badgeIndex=idx">
-                      <!-- <v-icon color="red" right > mdi-minus </v-icon> -->
-                      <div class="icon-button"> 
-                      <v-icon color="red" right > mdi-minus </v-icon>
-                      <BadgeIcon :badgeLabel=badge.label :height=50 />
-                      {{badge.label}}
-                      <!-- <v-icon color="red" right > mdi-minus </v-icon> -->
-                      </div>                 
-                    </v-btn>
+                    <v-icon color="red" > mdi-minus </v-icon>
+                    <div
+                     v-on="{...tooltip, ...dialog }"
+                     v-bind="attrs"
+                     style="margin: 5px 5px;">  
+                      <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" :color="getBadgeTier(badge)"/>
+                    </div>
                   </template>
                 <v-card
                 >
-                  <v-card-title class="headline">Badge Information</v-card-title>
+                  <v-card-title class="headline">Policy Stats</v-card-title>
+                  <v-card-subtitle> {{badge.label}} </v-card-subtitle>
+                  <v-card-subtitle> Total Reviews: {{badge.affirms + badge.denies}} </v-card-subtitle>
                   <v-card-subtitle> Affirms: {{ badge.affirms }} </v-card-subtitle>
                   <v-card-subtitle> Denies: {{  badge.denies }} </v-card-subtitle>
                   <v-card-subtitle> Affirm Percentage: {{ badge.ratio }}%</v-card-subtitle>
@@ -113,25 +104,17 @@
               <template v-slot:activator='{on: dialog, attrs}'>
                 <v-tooltip bottom>
                   <template v-slot:activator='{on:tooltip}'>
-                    <v-btn 
-                      style="margin: 5px;" 
-                      :key="idx"
-                      v-on = "{...tooltip, ...dialog }"
-                      v-bind='attrs'
-                      input-value="active"
-                      text
-                      depressed
-                      outlined
-                      @click.stop="badgeIndex=idx">
-                      <div class="icon-button"> 
-                      <v-icon color="green" right > mdi-plus </v-icon>
-                      <BadgeIcon :badgeLabel=badge.label :height=50 />
-                      {{badge.label}}
-                      <!-- <v-icon color="red" right > mdi-minus </v-icon> -->
-                      </div> 
-                    </v-btn>
+                    <v-icon color="green" > mdi-plus </v-icon>
+                    <div
+                     v-on="{...tooltip, ...dialog }"
+                     v-bind="attrs"
+                     style="margin: 5px 5px;">  
+                      <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" />
+                    </div>
+                    
                   </template>
-                <span>{{badge.description}}</span>
+                  <div style="text-align:center;"><b><u>{{badge.label}}</u></b></div>
+                  <div style="text-align:center;">{{badge.description}}</div>
                 </v-tooltip>
               </template>
               <v-card>
@@ -213,7 +196,7 @@ export default {
   name : "BusinessProfile", 
 
   components: {
-    BadgeIcon: () => import("./BadgeIcon"),
+    BadgeIcon: () => import("./BadgeIconAlt"),
   },
 
   data: function(){
