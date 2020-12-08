@@ -124,7 +124,7 @@
             v-on="on"
             v-bind="attrs">
             <div class="icon-button"> 
-              <BadgeIcon :badgeLabel=badge.label :height=80 />
+              <BadgeIcon :badgeLabel=badge.label :height=70 />
               {{badge.label}}
             </div>
             </v-btn>

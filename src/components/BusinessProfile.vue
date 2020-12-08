@@ -29,9 +29,8 @@
             <v-btn v-on:click="updateBusinessInfo('address')">update address</v-btn>
         </div>
 
-
         <h1> Your Safety Policies </h1>
-
+        <br><br>
         <div class="badges">
 
           <div class="badges"
@@ -44,18 +43,24 @@
               <template v-slot:activator='{on: dialog, attrs}'>
                 <v-tooltip bottom>
                   <template v-slot:activator='{on:tooltip}'>
-                    <v-chip 
-                      style="margin: 5px;" 
+                    <v-btn 
                       :key="idx"
                       :class = 'getBadgeTier(badge)'
                       v-on = "{...tooltip, ...dialog }"
                       v-bind='attrs'
                       input-value="active"
-                      filter
-                      filter-icon="mdi-minus"
+                      text
+                      depressed
+                      outlined
                       @click.stop="badgeIndex=idx">
+                      <!-- <v-icon color="red" right > mdi-minus </v-icon> -->
+                      <div class="icon-button"> 
+                      <v-icon color="red" right > mdi-minus </v-icon>
+                      <BadgeIcon :badgeLabel=badge.label :height=50 />
                       {{badge.label}}
-                    </v-chip>
+                      <!-- <v-icon color="red" right > mdi-minus </v-icon> -->
+                      </div>                 
+                    </v-btn>
                   </template>
                 <v-card
                 >
@@ -93,8 +98,9 @@
             </v-dialog>
           </div>
         </div>
-
+        <br><br>
         <h1> Add Safety Policies </h1>
+        <br>
         <div class="badges">
 
           <div class="badges" v-for="(badge,idx) in otherBadges" :key="idx">
@@ -107,17 +113,23 @@
               <template v-slot:activator='{on: dialog, attrs}'>
                 <v-tooltip bottom>
                   <template v-slot:activator='{on:tooltip}'>
-                    <v-chip 
+                    <v-btn 
                       style="margin: 5px;" 
                       :key="idx"
                       v-on = "{...tooltip, ...dialog }"
                       v-bind='attrs'
                       input-value="active"
-                      filter
-                      filter-icon="mdi-plus"
+                      text
+                      depressed
+                      outlined
                       @click.stop="badgeIndex=idx">
+                      <div class="icon-button"> 
+                      <v-icon color="green" right > mdi-plus </v-icon>
+                      <BadgeIcon :badgeLabel=badge.label :height=50 />
                       {{badge.label}}
-                    </v-chip>
+                      <!-- <v-icon color="red" right > mdi-minus </v-icon> -->
+                      </div> 
+                    </v-btn>
                   </template>
                 <span>{{badge.description}}</span>
                 </v-tooltip>
@@ -199,6 +211,10 @@ import { eventBus } from "../main";
 
 export default {
   name : "BusinessProfile", 
+
+  components: {
+    BadgeIcon: () => import("./BadgeIcon"),
+  },
 
   data: function(){
     return {
@@ -379,4 +395,21 @@ export default {
   justify-content: center;
 }
 
+  .why{ 
+    margin: 7px; 
+    display: flex; 
+    align-content: center;
+    justify-content: center;
+  }
+  .please{
+    background: transparent !important;
+    color: transparent; 
+  }
+
+  .v-btn-toggle {
+    /* border-radius: 100px; */
+    margin: 10px 0px; 
+    overflow: scroll;
+  }
 </style>
+
