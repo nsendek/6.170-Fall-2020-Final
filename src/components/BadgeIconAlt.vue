@@ -1,7 +1,7 @@
 <template>
     <v-btn :disabled="!button" :height="size+border" :width="size+border" :class="color" icon style ="padding: 10px;">
       <v-icon  elevation="13" :size="size"> 
-        ${{iconEnum[badgeLabel]}}
+        {{iconEnum[badgeLabel]}}
       </v-icon>
     </v-btn>
 </template>
@@ -22,15 +22,15 @@ export default {
     data() {
         return {
             iconEnum: {
-                "MASKS REQUIRED" : 'masks_required',
-                "6 FT APART": '6_ft_apart',
-                "OUTDOOR DINING": 'outdoor_dining',
-                "INDOOR DINING": 'indoor_dining',
-                "CURBSIDE PICKUP": 'curbside_pickup',
-                "DISINFECTION": 'disinfection',
-                "TRAINED WORKERS": 'trained_workers',
-                "LOW DENSITY": 'low_density',
-                "ADEQUATE SUPPLIES": 'adequate_supplies'
+                "MASKS REQUIRED" : '$masks_required',
+                "6 FT APART": '$6_ft_apart',
+                "OUTDOOR DINING": '$outdoor_dining',
+                "INDOOR DINING": '$indoor_dining',
+                "CURBSIDE PICKUP": '$curbside_pickup',
+                "DISINFECTION": '$disinfection',
+                "TRAINED WORKERS": '$trained_workers',
+                "LOW DENSITY": '$low_density',
+                "ADEQUATE SUPPLIES": '$adequate_supplies'
             },
         }
     }

@@ -23,8 +23,8 @@
 </template>
 <script>
 import Vue from 'vue';
-// import Vuetify from 'vuetify';
-import {eventBus, vuetify} from "../main";
+import { eventBus } from "../main";
+import vuetify from "../vuetify.js"
 import {gmapApi}from 'vue2-google-maps';
 import InfoWindow from "./InfoWindow"
 
