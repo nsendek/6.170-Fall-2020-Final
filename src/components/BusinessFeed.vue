@@ -1,16 +1,17 @@
 <template>
 <v-container>
+
     <h1 >Businesses</h1>
     <div>
         Filter By Safety Policy: 
         <div class="pa-4">
           <v-btn-toggle
-           borderless
-           rounded
            v-model="selectedBadges"
-           @change="applyFilter"
-            
+            @change="applyFilter"
+            active-class="primary--text"
             center
+            borderless
+            rounded
             multiple>
             <v-tooltip 
               max-width="200px" top 
@@ -18,10 +19,11 @@
               open-delay="1000"
             >
               <template v-slot:activator="{ on }">
-                <v-btn                
-                class="why please"
+                <!-- v chip also works here -->
+                <v-btn
                 v-on="on"
-                filter > 
+                class="why please"
+                 filter > 
                 <div class="icon-button">
                     <BadgeIcon :badgeLabel = badge.label :height=80 />
                     {{badge.label}}
@@ -230,14 +232,13 @@ export default {
 }
 </script>
 
-<style scoped>
-  .why {
+<style>
+  .why{ 
     margin: 7px; 
     display: flex; 
-    align-content: space-between;
+    align-content: center;
     justify-content: center;
   }
-
   .please{
     background: transparent !important;
     color: transparent; 
