@@ -48,7 +48,7 @@ def random_reviews():
         aff = 1
         if random.random() < 0.15 : 
           aff = -1
-        react = {'userId' : userID, 'badgeId' : badgeRow['id'], 'values' : aff}
+        react = {'userId' : userID, 'badgeId' : badgeRow['id'], 'value' : aff}
         affirmations.append(react) 
         if prev_review == -1:
           reviews.append(generate_review(userID, badgeRow["businessId"], reviewId))
@@ -56,8 +56,8 @@ def random_reviews():
         prev_review = badgeRow["businessId"]
       else: 
         prev_review = -1 
-  pd.DataFrame(affirmations).to_csv('./badge_reacts.csv', index=False)
-  pd.DataFrame(reviews).to_csv('./reviews.csv', index=False, columns = ['id', 'userId', 'businessId', 'content', 'rating', 'timestamp'])
+  pd.DataFrame(affirmations).to_csv('./badge_reacts.csv', index=False, columns = ['userId', 'badgeId', 'value'])
+  # pd.DataFrame(reviews).to_csv('./reviews.csv', index=False, columns = ['id', 'userId', 'businessId', 'content', 'rating', 'timestamp'])
 
 
 def generate_review(userId, businessId, reviewId):

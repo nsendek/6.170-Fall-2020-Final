@@ -1,6 +1,7 @@
 const SQL = require('../db');
 const axios = require('axios');
-const Badges = require('../models/Badges');
+const Badges = require('./Badges');
+// const Badges = require('../models/Badges');
 
 /**
  * @typedef Business
@@ -73,7 +74,6 @@ class Businesses {
     }
     let offset = (page - 1) * pageLength; 
 
-
     // // I think this if-statement will be obsolete when we introduce sorting by overall metrics 
     // if(userBadges.length == 0){
     //   let business = await db.all(`
@@ -92,64 +92,39 @@ class Businesses {
       ORDER BY name ASC`); 
 
     let businessBadgeDictionary = {};
-    for (let bIdx = 0; bIdx < business.length; bIdx++){
-      let b = business[bIdx]; 
+
+    let processBusiness = async (b) => {
       let subBadgeDictionary = {};
+      let badges = await db.all(`SELECT id,label FROM badges WHERE businessId = $1`, [b.id]);
+      let labelToID = {};
+      badges.forEach( badge => {labelToID[badge.label] = badge.id;})
 
-      for (let idx = 0; idx < userBadges.length; idx++) {
-        let badge = userBadges[idx]; 
-        let containsBadge =  await db.get(`SELECT COUNT(*) FROM badges WHERE businessId = $1 AND label = $2`, [b.id, badge]);
-        containsBadge = containsBadge["COUNT(*)"];
-
+      await Promise.all(userBadges.map(async (badge) => { 
         subBadgeDictionary[badge] = {};
-        subBadgeDictionary[badge]["containsBadge"] = containsBadge; 
-        if(containsBadge){
-          let badgeId =  await db.get(`SELECT id FROM badges WHERE businessId = $1 AND label = $2`, [b.id, badge]);
-          // console.log("*************************"); 
-          // console.log(badgeId); 
-          // console.log(badgeId.id); 
-          // let affirms = await Badges.getAffirms(badgeId.id);
-          // let denies = await Badges.getDenies(badgeId.id); 
-          //let affirms = await db.get(`SELECT SUM(value) AS a_num FROM badge_reacts WHERE badgeId= $1 AND value= 1`,[badgeId.id]);
-          let ad = await db.get(`SELECT CAST(affirms as REAL) / CAST(affirms + denies as REAL) * 100.0 as ratio
-                          FROM (SELECT COUNT(*) as affirms FROM badge_reacts WHERE badgeId= $1 AND value= 1)
-                          JOIN (SELECT COUNT(*) as denies FROM badge_reacts WHERE badgeId= $2 AND value= -1)`, [badgeId.id, badgeId.id]); 
-          
-          // let affirms = ad.affirms;
-          // let denies = ad.denies; 
-          // //affirms = affirms["a_num"] === null ? 0 : affirms["a_num"]; 
+        subBadgeDictionary[badge].containsBadge = Boolean(labelToID[badge]);
 
-          // // let denies = await db.get(`SELECT SUM(value) AS d_num FROM badge_reacts WHERE badgeId= $1 AND value = -1`, [badgeId.id]);
-          // //denies = denies["d_num"] === null ? 0 : denies["d_num"] * -1; 
-          // let ratio = 0; 
-          // if(affirms + denies != 0){
-          //   ratio = (affirms/(affirms + denies)).toFixed(2) * 100;
-          // }
-          subBadgeDictionary[badge]["ratio"] = ad.ratio;
+        if(subBadgeDictionary[badge].containsBadge){
+          let badgeId =  labelToID[badge];
+          let stats = await Badges.getStats(badgeId);
+          subBadgeDictionary[badge]["ratio"] = stats.ratio;
         }
-      }
-      // subBadgeDictionary["businessRating"] = await axios.get(`/api/business/${b.id}/rating`)
-      //   .then((response) => {
-      //     return response.data.avg;
-      //   })
-      //   .catch((error) => {
-      //     return 0; 
-      //   })
+      }))
+
       businessBadgeDictionary[b.id] = subBadgeDictionary; 
     }
 
-    business = business.sort(this.sortBusinesses(userBadges, businessBadgeDictionary)); 
+    await Promise.all(business.map(b => Promise.resolve(processBusiness(b))));
+
+    business.sort(this.sortBusinesses(userBadges, businessBadgeDictionary)); 
 
     db.close();
-    console.log("done"); 
     return {"results" : business.slice(offset, offset + pageLength), "page" : page, "totalPages" : totalPages};
-    // }
   }
 
   static sortBusinesses(userBadges, businessBadgeDictionary){
     return function(a, b){
       // sort by badge importance 
-      console.log("sorting"); 
+      // console.log("sorting"); 
       for (let idx = 0; idx < userBadges.length; idx++) {
         let badge = userBadges[idx];
 
@@ -163,8 +138,8 @@ class Businesses {
           // console.log("i am comparing ratios"); 
           let a_ratio = businessBadgeDictionary[a.id][badge]["ratio"]; 
           let b_ratio = businessBadgeDictionary[b.id][badge]["ratio"]; 
-          console.log(a_ratio);
-          console.log(b_ratio); 
+          // console.log(a_ratio);
+          // console.log(b_ratio); 
           if (a_ratio < b_ratio) return 1; 
           if (a_ratio > b_ratio) return -1;
         }
@@ -176,7 +151,7 @@ class Businesses {
       // if (a_rating > b_rating) return -1;
 
       // sort the rest of the list randomly so that it's not always alphabetical
-      return Math.round(Math.random()) == 1 ? 1 : -1; 
+      return 0; // Math.round(Math.random()) == 1 ? 1 : -1; 
     }
   }
 
