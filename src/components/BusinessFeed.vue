@@ -6,12 +6,13 @@
         Filter By Safety Policy: 
         <div>
           <v-btn-toggle
-           v-model="selectedBadges"
+            style="margin: 10px;"
+            class="badges-container"
+            v-model="selectedBadges"
             @change="applyFilter"
             center
             background-color="button-group"
             borderless
-            rounded
             multiple>
             <v-tooltip 
               max-width="200px" top 
@@ -20,7 +21,7 @@
               z-index="20"
             >
               <template v-slot:activator="{ on }">
-                <div v-on="on" style="margin: 5px 10px;">  
+                <div v-on="on" style="margin: 5px 5px;">  
                   <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10"/>
                 </div>
               </template>
@@ -240,7 +241,7 @@ export default {
   }
 
   .v-btn-toggle {
-    border-radius: 100px;
+    /* border-radius: 100px; */
     margin: 10px 0px; 
     overflow: scroll;
   }
