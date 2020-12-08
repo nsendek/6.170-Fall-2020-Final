@@ -8,19 +8,18 @@
         <div class = "quarternary-header"> {{business.address}} </div>
         <div class = "quarternary-header"> Rating: {{rating}} </div>
         <br><br>
-        <div style="text-align:center;">
-          <v-btn style="margin: 5px;"
+        <div class="badges-container">
+          <div
             :key="idx"
-            text
-            depressed
-            disabled
             v-for="(badge,idx) in badges"
-            :class="getBadgeTier(badge)">
-            <div class="icon-button">
-              <BadgeIcon :badgeLabel = badge.label :height=80 />
-              {{badge.label}}
-            </div>
-          </v-btn>
+            class="icon-button"
+            style="margin: 0px 10px"
+            >
+           
+            <BadgeIcon :color="getBadgeTier(badge)" :badgeLabel="badge.label" :size="50" :border="10" />
+            {{badge.label}}
+         
+          </div>
         </div>
       </v-card>
     </div>
@@ -70,7 +69,7 @@ export default {
   
 	components : {
     Feed : () => import("../components/Feed.vue"),
-    BadgeIcon: () => import("../components/BadgeIcon"),
+    BadgeIcon: () => import("../components/BadgeIconAlt"),
   },
   
 	data () {

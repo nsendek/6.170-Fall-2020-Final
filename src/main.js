@@ -23,24 +23,48 @@ const vuetify = new Vuetify({
         background : "#fff",
         splitter : "#eee",
         'splitter-hover' : "#ddd",
-        'splitter-handle' : "#424242"
-        // primary: "#fff",
-        // background : "#ff0",
-        // accent: "#0f0",
-        // secondary: "#f00",
-        // anchor :  "#00f", 
-        // success: "#0f0",
-        // info: "#00f",
-        // warning: "#ff0",
-        // error: "#f00"
+        'splitter-handle' : "#424242",
+        'button-group' : "#eee"
       },
       dark : {
         nav : "#121212",
         background : "#121212",
         splitter : "#323232",
         'splitter-hover' : "#525252",
-        'splitter-handle' : "#aaa"
+        'splitter-handle' : "#aaa",
+        'button-group' : "#222"
       }
+    }
+  },
+  icons : {
+    values: {
+      '6_ft_apart' : {
+        component: () => import("./assets/icons/6_ft_apart.vue")
+      },
+      'adequate_supplies' : {
+        component: () => import("./assets/icons/adequate_supplies.vue")
+      },
+      'curbside_pickup' : {
+        component: () => import("./assets/icons/curbside_pickup.vue")
+      },
+      'disinfection' : {
+        component: () => import("./assets/icons/disinfection.vue")
+      },
+      'indoor_dining' : {
+        component: () => import("./assets/icons/indoor_dining.vue")
+      },
+      'low_density' : {
+        component: () => import("./assets/icons/low_density.vue")
+      },
+      'masks_required' : {
+        component: () => import("./assets/icons/masks_required.vue")
+      },
+      'outdoor_dining' : {
+        component: () => import("./assets/icons/outdoor_dining.vue")
+      },
+      'trained_workers' : {
+        component: () => import("./assets/icons/trained_workers.vue")
+      },
     }
   }
 });

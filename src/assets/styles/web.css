@@ -153,3 +153,11 @@
   border-style: solid;
   border-color: #B87333;
 }
+
+.badges-container {
+  display: flex; 
+  flex-direction: row; 
+  text-align:center; 
+  flex-wrap: wrap !important; 
+  justify-content: center;
+}
