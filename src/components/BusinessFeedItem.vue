@@ -7,17 +7,14 @@
   </router-link>
   <div> <i>Address: {{business.address}}</i> </div>
 
-   <v-chip
-     style="margin: 2.5px;"
-     :key="idx"
-      v-for="(badge,idx) in badges"
-      :class="getBadgeTier(badge)">
-    <BadgeIcon :badgeLabel = badge.label :height=40 />
+  <div style="display:flex; flex-direction: row; ">
+    <div :key="idx" v-for="(badge,idx) in badges" style="margin: 2.5px 5px;"> 
+    <BadgeIcon :color="getBadgeTier(badge)" :badgeLabel="badge.label" :size="35" :border="7" />
     {{isNaN(badge.ratio) ? null : `${Math.round(badge.ratio)}%`}}
-  </v-chip>
+    </div>
+  </div>
 
-</v-card>
-
+  </v-card>
 </template>
 
 
@@ -28,7 +25,7 @@ import axios from "axios";
 export default {
     name: "BusinessItem",
     components: {
-        BadgeIcon: () => import("./BadgeIcon"),
+        BadgeIcon: () => import("./BadgeIconAlt"),
     },
     props: {
         business: Object,

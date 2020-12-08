@@ -8,21 +8,23 @@
           <v-btn-toggle
            v-model="selectedBadges"
             @change="applyFilter"
-            active-class="primary--text"
             center
+            background-color="button-group"
+            borderless
+            rounded
             multiple>
             <v-tooltip 
               max-width="200px" top 
               v-for='(badge,index) in allBadges' v-bind:key="index"
-              open-delay="1000"
+              open-delay="500"
               z-index="20"
             >
               <template v-slot:activator="{ on }">
-                <!-- v chip also works here -->
-                <div v-on="on"> 
-                  <BadgeIcon button v-on="on" :badgeLabel=badge.label :height=50 />
+                <div v-on="on" style="margin: 5px 10px;">  
+                  <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10"/>
                 </div>
               </template>
+              <div style="text-align:center;"><b><u>{{badge.label}}</u></b></div>
               <div style="text-align:center;">{{badge.description}}</div>
             </v-tooltip>
           </v-btn-toggle>
@@ -56,7 +58,7 @@ export default {
     components: {
       BusinessFeedItem : () => import("./BusinessFeedItem"), 
       Feed : () => import("../components/Feed.vue"),
-      BadgeIcon: () => import("./BadgeIcon"),
+      BadgeIcon: () => import("./BadgeIconAlt"),
     },
     data() {
         return {
@@ -224,3 +226,22 @@ export default {
     
 }
 </script>
+
+<style>
+  .why{ 
+    margin: 7px; 
+    display: flex; 
+    align-content: center;
+    justify-content: center;
+  }
+  .please{
+    background: transparent !important;
+    color: transparent; 
+  }
+
+  .v-btn-toggle {
+    border-radius: 100px;
+    margin: 10px 0px; 
+    overflow: scroll;
+  }
+</style>
