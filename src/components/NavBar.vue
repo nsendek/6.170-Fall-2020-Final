@@ -90,7 +90,7 @@ export default {
   methods : {
     toggleTheme() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
-      eventBus.$emit("theme-change", this.$vuetify.theme.dark);
+      // eventBus.$emit("theme-change", this.$vuetify.theme.dark);
       this.$cookie.set("theme", this.$vuetify.theme.dark ? "dark" : "light"); 
     },
     doSearch() {

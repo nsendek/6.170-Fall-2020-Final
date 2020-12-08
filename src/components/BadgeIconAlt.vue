@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import '../assets/icons/masks_required.png';
 export default {
     name: "BadgeIcon",
     props: {

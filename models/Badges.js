@@ -202,11 +202,11 @@ const SQL = require('../db/index');
     let db = await SQL.getDB();
     
     let ad = await db.get(`
-      SELECT affirms, denies, CAST(affirms as REAL) / CAST(affirms + denies as REAL) * 100.0 as ratio
+      SELECT affirms, denies, ROUND(CAST(affirms as REAL) / CAST(affirms + denies as REAL) * 100.0) as ratio
       FROM badge_stats WHERE badgeId = $1`, 
       [badgeID]).catch(SQL.parseError); 
     db.close();
-
+    
     return ad;
   }
 

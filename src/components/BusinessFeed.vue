@@ -1,12 +1,11 @@
 <template>
-<v-container class="no-scroll">
+<v-container class="no-scroll pa-4">
 
     <h1 >Businesses</h1>
     <div class="filter-div">
         <div class="small-help-text">Filter By Safety Policy : </div>
         <div>
           <v-btn-toggle
-            style="margin: 10px;"
             class="badges-container"
             v-model="selectedBadges"
             @change="applyFilter"
@@ -22,7 +21,7 @@
               z-index="20"
             >
               <template v-slot:activator="{ on }">
-                <div v-on="on" style="margin: 5px 5px;">  
+                <div v-on="on" style="margin: 10px 5px;">  
                   <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10"/>
                 </div>
               </template>
@@ -161,13 +160,18 @@ export default {
 
       // #TODO Loads all userBadges
       loadUserBadges: function() {
-        // this.userBadges = ["MASKS REQUIRED"]
-        axios.get("/api/user/rank")
+        // this.userBadges = [
+        //     "MASKS REQUIRED", 
+        //     "CURBSIDE PICKUP", "INDOOR DINING", 
+        //     "OUTDOOR DINING", "ADEQUATE SUPPLIES", "LOW DENSITY",
+        //     "TRAINED WORKERS", "DISINFECTION", "6 FT APART"
+        //     ]
+        axios.get("/api/user/rank") 
         .then((response) => {
           console.log("res dat:", response);
           this.userBadges = response.data.map((badge) => badge.label) ? response.data : [];
         })
-        .catch((error) => {
+        .catch((error) => { 
           console.log(error.response);
         })
       },
