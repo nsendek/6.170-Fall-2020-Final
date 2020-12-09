@@ -86,7 +86,7 @@ export default {
 .business-name{
     color: var(--v-accent-base); 
     text-decoration: none;
-    font-size: 25px; 
+    font-size: 20px; 
 }
 
 .some-space{
