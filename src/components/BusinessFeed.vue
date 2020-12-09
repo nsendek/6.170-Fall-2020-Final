@@ -255,8 +255,7 @@ export default {
   .small-help-text{
     padding-top: 12px; 
     margin-left: 12px; 
-    margin-bottom: -10px; 
-    opacity: 50%; 
+    opacity: 0.5; 
   }
 
   .filter-div{

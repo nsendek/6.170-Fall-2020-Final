@@ -271,7 +271,8 @@ export default {
 }
 
 .smaller-top{
-  margin-top: 10px; 
+  max-height : calc(99vh - (var(--navbar-height) + var(--navbar-height))) !important;
+  overflow: scroll;
 }
 
 .subtitle{

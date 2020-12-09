@@ -33,7 +33,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.quit = true; 
-    }, 3000)
+    }, 4000)
   }
 };
 </script>

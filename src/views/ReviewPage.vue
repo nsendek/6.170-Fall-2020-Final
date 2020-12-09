@@ -30,8 +30,8 @@
               z-index="20"
             >
               <template v-slot:activator="{ on }">
-                <div v-on="on" style="margin: 10px 5px;">  
-                  <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" :color="affirmedBadges.map((idx) => this.badges[idx].label).includes(badge.label) ? 'green' : null"/>
+                <div v-on="on" style="margin: 5px;">  
+                  <BadgeIcon button :badgeLabel=badge.label :size="40" :border="10" :color="affirmedBadges.map((idx) => this.badges[idx].label).includes(badge.label) ? 'green' : null"/>
                 </div>
               </template>
               <div style="text-align:center;"><b><u>{{badge.label}}</u></b></div>
@@ -39,39 +39,10 @@
             </v-tooltip>
           </v-btn-toggle>
 
-        <!-- <v-chip-group
-        column 
-        multiple 
-        active-class="affirmed">
-
-          <v-chip style="margin: 5px;"
-          :key="idx"
-            v-for="(badge,idx) in badges"
-            v-on:click = 'toggleAffirm(idx)'
-            filter
-            >
-            {{badge.label}}
-          </v-chip>
-        </v-chip-group> -->
       </div>
 
       <div class="review-spacing">
         <center> Deny Safety Policies </center>
-
-        <!-- <v-chip-group
-        column 
-        multiple 
-        active-class="denied">
-
-          <v-chip style="margin: 5px;"
-            :key="idx"
-            v-for="(badge,idx) in badges"
-            v-on:click = 'toggleDeny(idx)'
-            filter
-            >
-            {{badge.label}}
-          </v-chip>
-        </v-chip-group> -->
 
           <v-btn-toggle
             class="badges-container"
@@ -88,7 +59,7 @@
             >
               <template v-slot:activator="{ on }">
                 <div v-on="on" style="margin: 10px 5px;">  
-                  <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" :color="deniedBadges.map((idx) => this.badges[idx].label).includes(badge.label) ? 'red' : null"/>
+                  <BadgeIcon button :badgeLabel=badge.label :size="40" :border="10" :color="deniedBadges.map((idx) => this.badges[idx].label).includes(badge.label) ? 'red' : null"/>
                 </div>
               </template>
               <div style="text-align:center;"><b><u>{{badge.label}}</u></b></div>
@@ -99,7 +70,7 @@
 
       <div class="review-spacing"><v-textarea style="width:400px;" width v-model="reviewContent" label="comments" filled/></div>
 
-      <div style="margin-bottom:-20px;">
+      <div>
       <v-btn v-if="!this.edit" @click="submitReview"> SUBMIT </v-btn> 
       <v-btn v-else @click="submitEdit"> SUBMIT </v-btn> 
       </div>
@@ -158,7 +129,7 @@ export default {
 
     },
     loadBadges: function() {
-      axios.get(`/api/business/${this.$route.params.business.id}/badges`)
+      axios.get(`/api/business/${this.$route.params.id}/badges`)
         .then((response) => {
           this.badges = response.data ? response.data : [];
           this.badges.forEach((badge) => {
@@ -241,11 +212,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;  
-  padding: 50px; 
+  /* justify-content: center; */
+  padding: 30px; 
+  /* prevent getting covered by navbar */
+  max-height : calc(99vh - (var(--navbar-height) + var(--navbar-height))) !important;
+  overflow: scroll;
 }
 
 .review-spacing{
-  margin-top: 10px; 
+  /* margin-top: 10px;  */
 }
 
 .smaller-width{

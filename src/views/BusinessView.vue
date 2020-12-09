@@ -101,7 +101,16 @@ export default {
       foundReview : false
 		}
   },
-
+  watch:{
+    async '$route' (to, from) {
+      if (to.name == "business" && to.name != from.name) {
+        await this.loadBadges();
+        if (from.name == "review") {
+          this.loadUserReview(); 
+        }
+      }
+    }
+  },
   created : async function () {
     if (await this.loadBusiness()) {
        this.loadBadges();
@@ -118,9 +127,9 @@ export default {
       this.loadRating();
       this.loadUserReview(); 
     });
-    eventBus.$on(("edit-badge-success"), () => {
-      this.loadBadges();
-    });
+    // eventBus.$on(("edit-badge-success"), () => {
+    //   this.loadBadges();
+    // });
   },
 
 	methods : {
