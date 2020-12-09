@@ -68,6 +68,9 @@ then you will find the application at `localhost:8080` in the browser
     * UserProfile.vue
     * LoginPage.vue
     * BusinessFeed.vue (implemented pagination) 
+    * BusinessAccountInfo.vue
+    * UserAccount.vue
+    * Businesses.js (worked on sorting) 
+    * assets/icons
   * web.css
-    * g-map
-    * map-pane
+    * general styling throughout 
