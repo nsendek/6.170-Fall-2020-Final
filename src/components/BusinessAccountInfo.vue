@@ -3,12 +3,10 @@
     <div class="big-title more-top">{{this.business.name}} </div>
 
     <div class="account-options">
-      <router-link :to="`/business/${$state.id}`">
-        <h3>View Your Public Page</h3>
-      </router-link>
 
         <br> 
         <h1> Change Account Information </h1>
+        <br> 
         
         <div class="row-container"> 
             <v-text-field v-model="username" placeholder="new username" dense filled />
@@ -29,10 +27,6 @@
             <v-text-field v-model="address" placeholder="new address" dense filled />
             <v-btn v-on:click="updateBusinessInfo('address')">update address</v-btn>
         </div>
-
-        <br>
-        <div class="spacing"><center><v-btn v-on:click="backToProfile" class="wide-button"> back to profile </v-btn></center></div>
-        <div class="spacing"><center><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></center></div>
 
         <div>
           <br>
@@ -73,6 +67,10 @@
             </v-card>
           </v-dialog>
         </div>
+
+        <br>
+        <div class="spacing"><center><v-btn v-on:click="backToProfile" class="wide-button"> back to profile </v-btn></center></div>
+        <div class="spacing"><center><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></center></div>
       
     </div>
     <br>
