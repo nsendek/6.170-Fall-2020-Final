@@ -44,7 +44,7 @@ then you will find the application at `localhost:8080` in the browser
     * users.js
       * `GET/api/user/:username/search`
 * **Niko Sendek**:
-  * db
+  * db:
     * sqlite.js 
   * models:
     * Businesses.js
@@ -56,12 +56,16 @@ then you will find the application at `localhost:8080` in the browser
     * reviews.js
     * users.js
     * session.js
+    * search.js
     * validators.js
-  * src
+  * src:
     * Feed.vue
+    * Pane.vue
+    * SearchView.vue
     * BusinessView.vue
     * EventHandler.vue
     * Overlay.vue
+    * vuetify.js
     * router.js
 * **Josh Verdejo**:
   * src
