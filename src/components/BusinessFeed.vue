@@ -2,7 +2,7 @@
 <v-container class="no-scroll pa-4">
 
     <h1 >Businesses</h1>
-    <div class="filter-div">
+    <div class="filter-div no-scroll">
         <div class="small-help-text">Filter By Safety Policy : </div>
         <div>
           <v-btn-toggle

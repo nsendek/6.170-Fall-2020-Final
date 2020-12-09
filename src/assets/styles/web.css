@@ -140,3 +140,11 @@
   flex-wrap: wrap !important; 
   justify-content: center;
 }
+
+.badges-container::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scroll::-webkit-scrollbar {
+  display: none;
+}
