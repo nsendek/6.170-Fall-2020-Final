@@ -252,6 +252,8 @@ export default {
   .v-btn-toggle {
     /* border-radius: 100px; */
     margin: 10px 0px; 
+    width: 100%; 
+    height: 100%; 
     overflow: scroll;
   }
 

@@ -31,7 +31,7 @@
             >
               <template v-slot:activator="{ on }">
                 <div v-on="on" style="margin: 10px 5px;">  
-                  <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" :color="affirmedBadges.some(b => b.id == badge.id) ? 'green' : null"/>
+                  <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" :color="affirmedBadges.map((idx) => this.badges[idx].label).includes(badge.label) ? 'green' : null"/>
                 </div>
               </template>
               <div style="text-align:center;"><b><u>{{badge.label}}</u></b></div>
@@ -88,7 +88,7 @@
             >
               <template v-slot:activator="{ on }">
                 <div v-on="on" style="margin: 10px 5px;">  
-                  <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" :color="deniedBadges.includes(badge) ? 'red' : null"/>
+                  <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" :color="deniedBadges.map((idx) => this.badges[idx].label).includes(badge.label) ? 'red' : null"/>
                 </div>
               </template>
               <div style="text-align:center;"><b><u>{{badge.label}}</u></b></div>
