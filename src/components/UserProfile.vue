@@ -3,7 +3,7 @@
     <div class="big-title">{{this.$state.username}} </div>
     <div class="secondary-header">
       Policy Preferences
-      <v-tooltip right>
+      <v-tooltip open-delay="500" max-width="200px" right>
         <template v-slot:activator="{ on, attrs }">
           <v-icon
             color="primary"
@@ -169,7 +169,7 @@ export default {
     updateUserPrefs: function() {
       console.log("calling this my g");
       const userPrefs = this.rankedBadges.map((badge)=>badge.label).reverse();
-      eventBus.$emit("edit-prefs-success");
+      // eventBus.$emit("edit-prefs-success");
       axios.post("api/user/rank", {badges : userPrefs})
       .then(() => {
         window.console.log("Policy preferences update successful");

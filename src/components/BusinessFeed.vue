@@ -37,7 +37,7 @@
     </div>
 
 
-    <Feed dataType="Businesses">
+    <Feed :key="businesses" dataType="Businesses">
         <BusinessFeedItem
             v-for="(business,idx) in businesses"
             v-bind:key="business.id"
@@ -56,6 +56,16 @@
 import axios from "axios";
 import qs from "qs"; 
 import { eventBus } from "../main";
+
+function arraysEqual(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length !== b.length) return false;
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
 export default {
     name: "BusinessFeed",
     components: {
@@ -73,18 +83,25 @@ export default {
             page : 1, 
             totalPages: 1,
             userBadges : [],
+            prevUserBadges : [],
             businessBadges : {}
         }
     },
 
-    created: function() {
-      eventBus.$on(("signin-success"), () => {
-        this.loadUserBadges();
-        this.loadBusinesses();
-      });
+    watch:{
+      async '$route' (to, from) {
+        if (to.name == "main" && to.name != from.name) {
+          await this.loadUserBadges();
+          if (!arraysEqual(this.userBadges, this.prevUserBadges)) {
+            this.loadBusinesses();
+          }
+        }
+     }
+    },
 
-      eventBus.$on("edit-prefs-success", () => {
-        this.loadUserBadges();
+    created: function() {
+      eventBus.$on(("signin-success"), async () => {
+        await this.loadUserBadges();
         this.loadBusinesses();
       });
 
@@ -114,6 +131,7 @@ export default {
       },
       // Loads all businesses
       loadBusinesses: function() {
+        this.businesses = [];
         // added a paramsSerializer so that it can interpret an array as a parameter
         axios.get("/api/business", { params: { page: this.page, userBadges : this.userBadges }, paramsSerializer: params => {
           return qs.stringify(params)
@@ -159,12 +177,7 @@ export default {
 
       // #TODO Loads all userBadges
       loadUserBadges: async function() {
-        // this.userBadges = [
-        //     "MASKS REQUIRED", 
-        //     "CURBSIDE PICKUP", "INDOOR DINING", 
-        //     "OUTDOOR DINING", "ADEQUATE SUPPLIES", "LOW DENSITY",
-        //     "TRAINED WORKERS", "DISINFECTION", "6 FT APART"
-        //     ]
+        this.prevUserBadges = this.userBadges;
         await axios.get("/api/user/rank") 
           .then((response) => {
             let sortedBadges = response.data.sort((a,b) => a.value - b.value);
