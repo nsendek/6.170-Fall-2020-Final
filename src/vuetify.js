@@ -28,7 +28,7 @@ const vuetify = new Vuetify({
         splitter : "#323232",
         'splitter-hover' : "#525252",
         'splitter-handle' : "#aaa",
-        'button-group' : "#222",
+        'button-group' : "#2a2a2a",
         'info-window' : "#323232"
       }
     }

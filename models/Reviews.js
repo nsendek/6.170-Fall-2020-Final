@@ -261,22 +261,22 @@ class Reviews {
 
   // -----------------------------------------------------------
 
-  /**
-   * searches Review database by a query
-   * @param {string} query - search query
-   * @return {Review[]} all users whose username matches query.
-   */
-  static async search(query) {
-    let db = await SQL.getDB();
-    let data = await db.all(`
-        SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp 
-        FROM reviews 
-        JOIN users ON users.id=userId
-        WHERE content LIKE '%${query}%'
-        OR users.username LIKE '%${query}%'
-        ORDER BY reviews.timestamp DESC`);
-    return data.map(mapReview);
-  } 
+  // /**
+  //  * searches Review database by a query
+  //  * @param {string} query - search query
+  //  * @return {Review[]} all users whose username matches query.
+  //  */
+  // static async search(query) {
+  //   let db = await SQL.getDB();
+  //   let data = await db.all(`
+  //       SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp 
+  //       FROM reviews 
+  //       JOIN users ON users.id=userId
+  //       WHERE content LIKE '%${query}%'
+  //       OR users.username LIKE '%${query}%'
+  //       ORDER BY reviews.timestamp DESC`);
+  //   return data.map(mapReview);
+  // } 
 }
 
 module.exports = Object.freeze(Reviews);
