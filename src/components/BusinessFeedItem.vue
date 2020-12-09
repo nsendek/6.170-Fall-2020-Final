@@ -1,6 +1,6 @@
 <template>
 
-<v-card @mouseover="iconHover(idx)" @mouseout ="iconOff(idx)" style="padding:20px; margin: 10px 0px;">
+<v-card @click="itemClicked(business)" @mouseover="iconHover(idx)" @mouseout ="iconOff(idx)" style="padding:20px; margin: 10px 0px;">
   <div> <h2 class="business-count">{{1+idx}}</h2> </div>
 
   <div class="business-name"><router-link :to="`/business/${business.id}`" class="business-name">
@@ -81,6 +81,10 @@ export default {
         iconOff(index) {
             eventBus.$emit("feedOff", index);
         },
+        itemClicked(business){
+            console.log('yo');
+            eventBus.$emit("clicked", business, true);
+        }
     }
 
 
