@@ -1,34 +1,33 @@
 <template>
 
-<v-card style="padding:25px; margin: 5px 10px;">
+<v-card @mouseover="iconHover(idx)" @mouseout ="iconOff(idx)" style="padding:20px; margin: 10px 0px;">
   <div> <h2 class="business-count">{{1+idx}}</h2> </div>
-  <router-link :to="`/business/${business.id}`">
+
+  <div class="business-name"><router-link :to="`/business/${business.id}`" class="business-name">
     <h3>{{business.name}}</h3>
-  </router-link>
-  <div> <i>Address: {{business.address}}</i> </div>
+  </router-link></div>
+  <div class="some-space"> <i>{{business.address}}</i> </div>
 
-   <v-chip
-     style="margin: 2.5px;"
-     :key="idx"
-      v-for="(badge,idx) in badges"
-      :class="getBadgeTier(badge)">
-    <BadgeIcon :badgeLabel = badge.label :height=40 />
-    <!-- {{badge.label}} -->
-  </v-chip>
+  <div class="badges-container" style="justify-content: left;">
+    <div :key="idx" v-for="(badge,idx) in badges" style="margin: 2.5px 5px;"> 
+    <BadgeIcon :color="getBadgeTier(badge)" :badgeLabel="badge.label" :size="35" :border="8" />
+    {{badge.ratio === null ? "N/A" : `${badge.ratio}%`}}
+    </div>
+  </div>
 
-</v-card>
 
+  </v-card>
 </template>
 
 
 <script>
 import axios from "axios";
-// import {eventBus} from "../main"
+import {eventBus} from "../main"
 
 export default {
     name: "BusinessItem",
     components: {
-        BadgeIcon: () => import("./BadgeIcon"),
+        BadgeIcon: () => import("./BadgeIconAlt"),
     },
     props: {
         business: Object,
@@ -52,7 +51,6 @@ export default {
                 this.badges.forEach((badge) => this.getBadgeRatio(badge));
             })
         },
-
         getBadgeRatio: function(badge) {
             axios.get(`/api/badge/${badge.id}/ratio`)
             .then((response) => {
@@ -76,9 +74,28 @@ export default {
             } else {
                 return "bronze";
             }
-        }
+        },
+        iconHover(index) {  
+            eventBus.$emit("feedHover", index);
+        },
+        iconOff(index) {
+            eventBus.$emit("feedOff", index);
+        },
     }
 
 
 }
 </script>
+
+<style scoped>
+.business-name{
+    color: var(--v-accent-base); 
+    text-decoration: none;
+    font-size: 20px; 
+}
+
+.some-space{
+    margin: 3px; 
+    margin-bottom: 10px;
+}
+</style>

@@ -9,7 +9,8 @@
 | `/user/`       | DELETE        | Delete user from database (must have an active user session)
 |`/user/signin`  | POST          | Sign in as a user
 |`/user/signout` | POST          | Sign out of a user account
-|`/user/:username/search` | GET  | Search for a user by username
+|`/user/rank`    | GET           | get a list of badges user prioritizes in DESC order of priority (must have an active user session)
+|`/user/rank`    | POST          | sets a list of badges user prioritizes in DESC order of priority (must have an active user session)
 
 ## /api/business
 | **URL**                | **HTTP Verb** |  **Action**|
@@ -21,17 +22,13 @@
 | `/business/`           | POST          | Create business and store accountName and password. **Require variables `name`, `accountName`, `password` in body**   
 | `/business/:property`  | PATCH         | Updates business information (name, address, acountName, or password) (must have an active business session).  **Require variable named after `:property` value (i.e. `business/address` needs `address` variable  in the body** 
 | `/business/`           | DELETE        | Delete business from database (must have an active business session)
-| `/business/signin`     | POST | Sign in as a business
-|`/business/signout`     | POST | Sign out from a business account
+| `/business/signin`     | POST          | Sign in as a business
+|`/business/signout`     | POST          | Sign out from a business account
 
 ## /api/session
 | **URL**              | **HTTP Verb** |  **Action**|
 |----------------------|---------------|------------|
 | `/session/`          | GET           | Gets any active session between client and api (both user or business)
-<!-- | `/session/user`      | POST          | Validates password/username input and starts user session
-| `/session/user`      | DELETE        | Ends user session if it exists
-| `/session/business`  | POST          | Validates password/accountName input and starts business session
-| `/session/business`  | DELETE        | Ends business session if it exists -->
 
 ## /api/review
 | **URL**              | **HTTP Verb** |  **Action**|
@@ -53,11 +50,12 @@
 | `/badge/`           | POST          | Add a badge to a business (must have an active business session). **Requires string variable `label` in body.**
 | `/badge/:id`        | DELETE        | Delete a specified badge (must have an active business session and badge must belong to business)
 | `/badge/:id/affirm` | POST          | Affirm a badge (must have an active user session)  
-| `/badge/affirm` | DELETE        | Remove a previous Affirm of badge (must have an active user session) **Requires int variable `id` in body.**
-| `/badge/deny`   | POST          | Deny a badge (must have an active user session) **Requires int variable `id` in body.**
+| `/badge/affirm`     | DELETE        | Remove a previous Affirm of badge (must have an active user session) **Requires int variable `id` in body.**
+| `/badge/deny`       | POST          | Deny a badge (must have an active user session) **Requires int variable `id` in body.**
 | `/badge/:id/deny`   | DELETE        | Remove a previous Deny of badge (must have an active user session)
+| `/badge/:id/ratio`  | GET           | Get ratio, along with number of affirms and denies, of a specified badge
 
 ## /api/search
 | **URL**       | **HTTP Verb** |  **Action**|
 |---------------|---------------|------------|
-| `/search`     | GET           | Search for business by name, address, and other stuff?
+| `/search`     | GET           | Search for business by name, address, and other stuff? **Requires string variable `search` in query.**

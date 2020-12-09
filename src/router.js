@@ -4,13 +4,6 @@ import Router from 'vue-router';
 import Main from './views/Main.vue';
 import BusinessView from './views/BusinessView.vue';
 
-const NotFound = () => import('./views/NotFound.vue')
-const BusinessProfilePage = () => import('./views/BusinessProfilePage.vue');
-const UserProfilePage = () => import('./views/UserProfilePage.vue');
-const LoginPage = () => import('./views/LoginPage.vue');
-const ReviewPage = () => import('./views/ReviewPage.vue');
-const SearchView = () => import('./views/SearchView.vue')
-
 Vue.use(Router)
 
 const router =  new Router({
@@ -35,14 +28,14 @@ const router =  new Router({
       name: 'review', 
       components: {
         default : BusinessView,
-        overlay : ReviewPage
+        overlay : () => import('./views/ReviewPage.vue')
       }
     },
     {
       path: '/login',
       name: 'login', 
       components: {
-        overlay: LoginPage
+        overlay: () => import('./views/LoginPage.vue')
       },
       beforeEnter: setDefault
     }, 
@@ -50,7 +43,7 @@ const router =  new Router({
       path: '/user-profile',
       name: 'user-profile',
       components: {
-        overlay: UserProfilePage
+        overlay: () => import('./views/UserProfilePage.vue')
       },
       beforeEnter: setDefault
     },
@@ -58,7 +51,7 @@ const router =  new Router({
       path: '/business-profile',
       name: 'business-profile',
       components: {
-        overlay : BusinessProfilePage
+        overlay : () => import('./views/BusinessProfilePage.vue')
       },
       beforeEnter: setDefault
     },
@@ -66,14 +59,14 @@ const router =  new Router({
       path: '/search',
       name: 'search',
       components: { 
-        default : SearchView
+        default : () => import('./views/SearchView.vue')
       }
     },
     {
       path: '*',
       name: 'notfound',
       components: {
-        overlay: NotFound
+        overlay: () => import('./views/NotFound.vue')
       },
       beforeEnter: setDefault
     },

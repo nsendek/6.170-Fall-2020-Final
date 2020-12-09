@@ -149,7 +149,7 @@ const SQL = require('../db/index');
   static async affirm(userId, badgeId) {
     let db = await SQL.getDB();
     let res = await db.run(`
-      INSERT INTO badge_reacts (userId,badgeId, value) 
+      INSERT OR REPLACE INTO badge_reacts (userId,badgeId, value) 
       VALUES ($1, $2, 1)`,
       [userId, badgeId]).catch(SQL.parseError);
 
@@ -167,7 +167,7 @@ const SQL = require('../db/index');
   static async deny(userId, badgeId) {
     let db = await SQL.getDB();
     let res = await db.run(`
-      INSERT INTO badge_reacts (userId,badgeId, value) 
+      INSERT OR REPLACE INTO badge_reacts (userId,badgeId, value) 
       VALUES ($1, $2, -1)`,
       [userId, badgeId]).catch(SQL.parseError);
 
@@ -183,8 +183,8 @@ const SQL = require('../db/index');
   static async updateStats(badgeId) {
     let db = await SQL.getDB();
     await db.run(`
-    INSERT OR REPLACE INTO badge_stats (badgeId, affirms, denies) SELECT badgeId, affirms, denies
-      FROM (SELECT badgeId, COUNT(*) as affirms from badge_reacts WHERE badgeId = $1 AND value = 1) 
+    INSERT OR REPLACE INTO badge_stats (badgeId, affirms, denies) SELECT ${Number(badgeId)}, affirms, denies
+      FROM (SELECT COUNT(*) as affirms from badge_reacts WHERE badgeId = $1 AND value = 1) 
       JOIN (SELECT COUNT(*) as denies from badge_reacts WHERE badgeId = $2 AND value = -1)
     `,[badgeId, badgeId]);
     await db.close();
@@ -198,12 +198,12 @@ const SQL = require('../db/index');
     let db = await SQL.getDB();
     
     let ad = await db.get(`
-      SELECT affirms, denies, CAST(affirms as REAL) / CAST(affirms + denies as REAL) * 100.0 as ratio
+      SELECT affirms, denies, ROUND(CAST(affirms as REAL) / CAST(affirms + denies as REAL) * 100.0) as ratio
       FROM badge_stats WHERE badgeId = $1`, 
       [badgeID]).catch(SQL.parseError); 
     db.close();
-
-    return ad;
+    
+    return ad ? ad : {affirms : 0, denies : 0 , ratio : null };
   }
 
   static async updateAllStats() {
@@ -215,9 +215,17 @@ const SQL = require('../db/index');
     await badges.reduce((p, badge) => p.then(async () => await Badges.updateStats(badge.id)), Promise.resolve())
     console.log("finished");
   }
-}
 
-// DON'T uncomment below if running with npm
-// Badges.updateAllStats();
+  static async deleteAffirmations(userId, businessId){
+    let db = await SQL.getDB();
+    let badgeIds = await db.all(`SELECT id, label FROM badges WHERE businessId = ${businessId}`);
+    for(let i = 0; i < badgeIds.length; i++){
+      await db.run('DELETE FROM badge_reacts WHERE userId = $1 AND badgeId = $2', [userId, badgeIds[i].id]);
+    }
+    await db.close(); 
+    return true; 
+  }
+
+}
 
  module.exports = Object.freeze(Badges);

@@ -4,8 +4,9 @@
 ### Purpose and Functionality
 Describe the purpose and functionality of your application (~50 words) 
 
-At our MVP, users and businesses can interact with the Zelp platform with nearly all of the functionality. Users can create and edit accounts, filter businesses by badge, and leave reviews on businesses they've visited. Businesses can also create and edit their accounts, and they can manage the set of badges that represent the policies that they are upholding.
-
+For our final product, Zelp has a its full set of functionality. From our MVP, users can now
+ (1) post and edit reviews about businesses
+ (2) rank the safety policies most important to them. Zelp now sorts business results based on these preferences. Businesses, on the other hand, can view  metrics about each of their posted safety policies.
 
 ### Instructions to Run Locally:
 In command line:
@@ -24,27 +25,15 @@ then you will find the application at `localhost:8080` in the browser
   * src
     * BusinessCreateAccount.vue
     * BusinessProfile.vue
-    * UserLogin.vue (business logic)
     * BusinessProfilePage.vue
+    * UserProfile.vue
+    * UserProfilePage.vue
     * Review Page (affirm / deny badges)
   * models:
     * Badge.js
-      * `affirm`
-      * `deny`
-    * Businesses.js
-      * `create (added address creation)`
-  * routes:
-    * businesses.js
-      * `POST/api/business/signin`
-      * `POST/api/business/signout`
-      * `POST/api/business/:id/rating`
-    * badges.js
-      * `POST/api/badge/affirm`
-      * `POST/api/badge/deny`
-    * users.js
-      * `GET/api/user/:username/search`
+      * `ratio`
 * **Niko Sendek**:
-  * db
+  * db:
     * sqlite.js 
   * models:
     * Businesses.js
@@ -55,13 +44,15 @@ then you will find the application at `localhost:8080` in the browser
     * businesses.js
     * reviews.js
     * users.js
-    * session.js
     * validators.js
-  * src
+  * src:
     * Feed.vue
+    * Pane.vue
+    * SearchView.vue
     * BusinessView.vue
     * EventHandler.vue
     * Overlay.vue
+    * vuetify.js
     * router.js
 * **Josh Verdejo**:
   * src
@@ -77,6 +68,9 @@ then you will find the application at `localhost:8080` in the browser
     * UserProfile.vue
     * LoginPage.vue
     * BusinessFeed.vue (implemented pagination) 
+    * BusinessAccountInfo.vue
+    * UserAccount.vue
+    * Businesses.js (worked on sorting) 
+    * assets/icons
   * web.css
-    * g-map
-    * map-pane
+    * general styling throughout 

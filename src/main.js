@@ -1,49 +1,15 @@
 import Vue from 'vue'
-import Vuetify from 'vuetify/lib';
 import VueCookie from 'vue-cookie'
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
-
 import App from './App.vue'
 import router from './router'
+import vuetify from "./vuetify.js"
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 import "./assets/styles/web.css";
 
 Vue.use(VueCookie);
-Vue.use(Vuetify);
 Vue.use(VueGoogleAutocomplete);
-const vuetify = new Vuetify({
-  theme: {
-    options: {
-      customProperties: true
-    },
-    themes: {
-      light: {
-        nav : "#fff",
-        background : "#fff",
-        splitter : "#eee",
-        'splitter-hover' : "#ddd",
-        'splitter-handle' : "#424242"
-        // primary: "#fff",
-        // background : "#ff0",
-        // accent: "#0f0",
-        // secondary: "#f00",
-        // anchor :  "#00f", 
-        // success: "#0f0",
-        // info: "#00f",
-        // warning: "#ff0",
-        // error: "#f00"
-      },
-      dark : {
-        nav : "#121212",
-        background : "#121212",
-        splitter : "#323232",
-        'splitter-hover' : "#525252",
-        'splitter-handle' : "#aaa"
-      }
-    }
-  }
-});
 
 Vue.use(VueGoogleMaps, {
   load: {

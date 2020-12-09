@@ -10,7 +10,8 @@
     "lint": "vue-cli-service lint",
     "dev": "nodemon ./bin/www",
     "start": "node ./bin/www",
-    "data": "node ./data/index.js"
+    "data": "node ./data/index.js",
+    "calc-stats": "node -e 'require(\"./models/Badges.js\").updateAllStats()'"
   },
   "dependencies": {
     "axios": "^0.18.1",

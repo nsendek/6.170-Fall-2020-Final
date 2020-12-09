@@ -1,32 +1,54 @@
 <template >
 
-  <v-container>
+  <v-container  class="pa-4 no-scroll">
     <div class = "business-col">
-      <v-btn v-if="this.$state.username && !this.$state.isBusiness" style="width:33%;" @click="openReview"> Submit Review </v-btn>
-      <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
-        <div class = "secondary-header"> <b>{{business.name}}</b> </div>
-        <div class = "quarternary-header"> {{business.address}} </div>
-        <div class = "quarternary-header"> Rating: {{rating}} </div>
-        <div style="text-align:center;">
-          <v-chip style="margin: 5px;"
-           :key="idx"
+      <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center; width:100%;">
+        <div class = "big-title"> <b>{{business.name}}</b> </div>
+        <div class = "quarternary-header" style="margin-top: 5px; font-style: italic"> {{business.address}} </div>
+        <v-rating class = "review-rating" style="display:inline; margin-top:10px; margin-bottom:10px;" readonly size="35" :value="rating" half-increments></v-rating>
+        <br>
+        <div class="badges-container" style="display: flex; justify-content:center;">
+          <div
+            :key="idx"
             v-for="(badge,idx) in badges"
-            :class="getBadgeTier(badge)">
+            class="icon-button"
+            style="margin: 0px 10px"
+            >
+           
+            <BadgeIcon :color="getBadgeTier(badge)" :badgeLabel="badge.label" :size="50" :border="10" />
             {{badge.label}}
-          </v-chip>
+         
+          </div>
         </div>
       </v-card>
+      <v-btn v-if="this.$state.username && !this.$state.isBusiness && !this.userReview" style="width:33%;" @click="openReview"> Submit Review </v-btn>
+    </div>
+
+    <div v-if="this.foundReview">
+      <div class = "primary-header" style="text-align: center;"> YOUR REVIEW </div>
+      <v-card class = "review-card" style="margin: 10px 0px; padding-top:15px; padding-bottom:15px;">
+        <div class="flex-row" style="display:flex; flex-direction:row; align-items:center;">
+          <span class = "tertiary-header" > <b>@{{userReview.author.username}}</b> </span>
+          <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="userReview.rating"></v-rating>
+        </div>
+        <div style="margin-left:20px; margin-top:10px;"> {{userReview.content}} </div>
+        <div style="width: 100%; text-align: right;"> <b> {{timeFormat(userReview.timestamp)}} </b> </div>
+      </v-card>
+
+      <div style="display:flex; justify-content:center; ">
+      <v-btn style="width:33%;" @click="openReviewEditor"> Edit Review </v-btn>
+      </div>
     </div>
 
     <div class = "primary-header" style="text-align: center;"> REVIEWS </div>
     <Feed>
-      <v-card class = "review-card" :key="idx" v-for="(review,idx) in reviews">
-        <div class="flex-row" style="display:flex; flex-direction:row; align-items:center; ">
+      <v-card class = "review-card" :key="idx" v-for="(review,idx) in reviews" style="margin: 10px 0px; padding-top:15px; padding-bottom:15px;">
+        <div class="flex-row" style="display:flex; flex-direction:row; align-items:center;">
           <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
           <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
         </div>
-        <div> {{review.content}} </div>
-        <div> <b> {{timeFormat(review.timestamp)}} </b> </div>
+        <div style="margin-left:20px; margin-top:10px;"> {{review.content}} </div>
+        <div style="width: 100%; text-align: right;"> <b> {{timeFormat(review.timestamp)}} </b> </div>
       </v-card>
     </Feed>
 
@@ -62,7 +84,8 @@ export default {
   name: "BusinessView",
   
 	components : {
-    Feed : () => import("../components/Feed.vue")
+    Feed : () => import("../components/Feed.vue"),
+    BadgeIcon: () => import("../components/BadgeIconAlt"),
   },
   
 	data () {
@@ -73,7 +96,9 @@ export default {
       business : null,
       rating: 0,
       page : 1,
-      totalPages: 1
+      totalPages: 1, 
+      userReview : null, 
+      foundReview : false
 		}
   },
 
@@ -82,6 +107,7 @@ export default {
        this.loadBadges();
        this.loadReviews();  
        this.loadRating();
+       this.loadUserReview(); 
        eventBus.$emit("businesses", [this.business]);
     }
     eventBus.$emit("clicked", this.business, true); 
@@ -90,6 +116,7 @@ export default {
       this.loadBadges();
       this.loadReviews();  
       this.loadRating();
+      this.loadUserReview(); 
     });
     eventBus.$on(("edit-badge-success"), () => {
       this.loadBadges();
@@ -100,6 +127,10 @@ export default {
     openReview() {
       this.$router.push({ name: 'review', params: { business: this.business }})
     },
+
+    openReviewEditor() {
+      this.$router.push({ name: 'review', params: { business: this.business, review : this.userReview }})
+    }, 
 
     async loadRating() {
       axios.get(`/api/business/${this.business.id}/rating`)
@@ -135,6 +166,31 @@ export default {
       }
       else{
         this.reviews = []; 
+      }
+    },
+
+    async loadUserReview(){
+      if(this.$state.username && !this.$state.isBusiness){
+        let response = await axios.get(`/api/review/${this.$route.params.id}/author`)
+          .catch(err => err.response);
+          
+        if(response.status == 200){
+          if(response.data.length == 0){
+            this.foundReview = false;
+          }
+          else{
+            this.userReview = response.data[0];
+            this.foundReview = true; 
+          } 
+        }
+        else{
+          this.userReview = null; 
+          this.foundReview = false; 
+        }
+      }
+      else{
+        this.userReview = null; 
+        this.foundReview = false; 
       }
     },
 

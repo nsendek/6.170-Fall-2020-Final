@@ -1,6 +1,6 @@
 <template>
   <!-- var(--navbar-height) is defined in web.css -->
-  <v-app-bar app color="nav" flat height="var(--navbar-height)"> 
+  <v-app-bar :group="false" app color="nav" flat height="var(--navbar-height)"> 
 
     <router-link to="/" class="zelp-logo"> <div> ZELP  </div></router-link>
     
@@ -42,7 +42,7 @@
           mdi-theme-light-dark
         </v-icon>
       </template>
-      Settings
+      {{ this.$vuetify.theme.dark ? "light mode" : "dark mode" }} 
     </v-tooltip>
 
     <div v-if="!$state.username"> 
@@ -90,7 +90,7 @@ export default {
   methods : {
     toggleTheme() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
-      eventBus.$emit("theme-change", this.$vuetify.theme.dark);
+      // eventBus.$emit("theme-change", this.$vuetify.theme.dark);
       this.$cookie.set("theme", this.$vuetify.theme.dark ? "dark" : "light"); 
     },
     doSearch() {
@@ -128,7 +128,7 @@ header {
 
 .zelp-logo {
   text-decoration: none;
-  font-size : 40px;
+  font-size : 45px;
   font-weight : 500; 
   letter-spacing: 2px; 
 }

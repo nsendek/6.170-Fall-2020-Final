@@ -15,7 +15,10 @@
         :clickable="true"
         @click="clicked(b)"
         :label="label(b)"
-        :icon = icon()
+        :icon="{url: 'https://i.ibb.co/3Cz4TX7/pin2.png',scaledSize:{width:40,height:40}}"
+        @mouseover ="iconHover(index)"
+        @mouseout ="iconOff(index)"
+        ref="markers"
       />
     </GmapMap>
      <v-btn class="location-btn" @click="geolocate()" >Go To Current Location</v-btn>
@@ -23,7 +26,8 @@
 </template>
 <script>
 import Vue from 'vue';
-import {eventBus } from "../main";
+import { eventBus } from "../main";
+import vuetify from "../vuetify.js"
 import {gmapApi}from 'vue2-google-maps';
 import InfoWindow from "./InfoWindow"
 
@@ -45,21 +49,29 @@ export default {
   },
   mounted() {
     eventBus.$on('businesses', (businesses) => {
+      this.markerUnselected();
       this.businesses = businesses;
       if(this && this.$refs && this.$refs.map && this.$refs.map.$mapPromise){
           this.boundBox(businesses,10);
       }
-    })
+    }),
+    eventBus.$on("feedHover", (message) => {
+      this.iconHover(message);
+    });
+
+    eventBus.$on("feedOff", (message) => {
+      this.iconOff(message);
+    });
   }, 
   created(){
-    this.mapId = this.$vuetify.theme.isDark ? this.darkId : this.ligthId;
+    this.mapId = this.$vuetify.theme.dark ? this.darkId : this.ligthId;
     eventBus.$on('clicked', (b,bview) => {
       this.clicked(b,bview);
     })
-    eventBus.$on('theme-change', (dark) => {
-      this.mapId = dark ? this.darkId : this.ligthId;
-      // this.lastBounds = this.$refs.map.$mapObject.getBounds();
-    })
+    // eventBus.$on('theme-change', (dark) => {
+    //   this.mapId = dark ? this.darkId : this.ligthId;
+    //   this.lastBounds = this.$refs.map.$mapObject.getBounds();
+    // })
   },
   updated() {
     this.boundBox(this.businesses, 0);
@@ -117,6 +129,7 @@ export default {
       let InfoWindowComponent = Vue.extend(InfoWindow);
       let instance = new InfoWindowComponent({
           router : this.$router,
+          vuetify,
           propsData: {
               business: b
           }
@@ -175,10 +188,13 @@ export default {
             })
     },
     label(b) {
-      return{text:String(1+this.businesses.indexOf(b)), fontSize: "25px", fontWeight:"800", color: "black"};
+      return{text:String(1+this.businesses.indexOf(b)), fontSize: "25px", fontWeight:"700", color: "white"};
     },
-    icon() {
-      return {url: "https://cdn.pixabay.com/photo/2020/04/29/10/06/mouth-guard-5108188_1280.png", scaledSize: {width:40, height:40}};
+    iconHover(markerIndex) {  
+      this.$refs.markers[markerIndex].$markerObject.setIcon({url: "https://i.ibb.co/f9j1PkZ/pin1.png",scaledSize:{width:40,height:40}});
+    },
+    iconOff(markerIndex) {
+      this.$refs.markers[markerIndex].$markerObject.setIcon({url: 'https://i.ibb.co/3Cz4TX7/pin2.png',scaledSize:{width:40,height:40}});
     },
     panTo(lat,lng){
       this.$refs.map.$mapPromise.then((map) => {
@@ -187,8 +203,11 @@ export default {
     }
   },
   watch : {
-    $vuetify : function() {
-      window.console.log("CHANGED");
+    '$vuetify' : {
+      handler(){
+       this.mapId = this.$vuetify.theme.dark ? this.darkId : this.ligthId;
+     },
+     deep: true
     }
   }
 }
@@ -197,6 +216,19 @@ export default {
 .g-map{
   /* DON'T delete below */
   height : calc(100vh - var(--navbar-height));
+}
+
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track, 
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
+.gm-style .gm-style-iw,
+.gm-style .gm-style-iw-t:after 
+{
+  background-color: var(--v-info-window-base) !important;
+}
+
+.gm-style .gm-style-iw-t:after  {
+  background: var(--v-info-window-base) !important;
+  box-shadow: none;
 }
 
 .map-container {
