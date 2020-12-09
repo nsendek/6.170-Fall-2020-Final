@@ -107,6 +107,31 @@ class Reviews {
   }
 
   /**
+   * Get review for particular business made by user
+   * @param {number} businessId 
+   * @param {number} userID 
+   * 
+   * @return {Review} - review 
+   */
+  static async getByUserAndBusiness(userId, businessID) {
+    let db = await SQL.getDB();
+    let data =  await db.all(`
+        SELECT reviews.id, users.username, userId, businessId, 
+        businesses.name AS businessName,rating, content, reviews.timestamp
+        FROM reviews 
+        JOIN users ON users.id=userId
+        JOIN businesses ON businesses.id=businessId 
+        WHERE userId = $1 AND businessId = $2`,[userId, businessID]);
+
+    console.log("fuck"); 
+    console.log(userId); 
+    console.log(businessID); 
+    console.log(data); 
+
+    return data.map(mapReview);
+  }
+
+  /**
    * Get a Reviews by businessId.
    * @param {number} businessId - id of business reviewed
    * @return {Review[]]} - found Reviews
