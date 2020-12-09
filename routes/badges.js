@@ -162,21 +162,21 @@ router.post("/deny", async (req, res) => {
   }
 });
 
-/**
- * Remove all affirms and denies for a business by a user
- * @name DELETE/api/badges/affirmations
- * @param businessId - the id of the business
- */
-router.delete("/affirmations/:businessId?", async (req, res) => {
-  try {
-    let deleted = Badges.deleteAffirmations(req.session.user.id, req.params.businessId);
-    if (deleted) {
-      res.status(200).send();
-    }
-  } catch (error) {
-    res.status(503).send({ error : error});
-  }
-}); 
+// /**
+//  * Remove all affirms and denies for a business by a user
+//  * @name DELETE/api/badges/affirmations
+//  * @param businessId - the id of the business
+//  */
+// router.delete("/affirmations/:businessId?", async (req, res) => {
+//   try {
+//     let deleted = Badges.deleteAffirmations(req.session.user.id, req.params.businessId);
+//     if (deleted) {
+//       res.status(200).send();
+//     }
+//   } catch (error) {
+//     res.status(503).send({ error : error});
+//   }
+// }); 
 
 
  module.exports = router;
