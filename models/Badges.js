@@ -1,5 +1,4 @@
 const SQL = require('../db/index');
-// const Businesses = require('./Businesses');
 
 /**
  * @typedef Badges
@@ -148,16 +147,14 @@ const SQL = require('../db/index');
    * @param {number} badgeId
    */
   static async affirm(userId, badgeId) {
-    // console.log("params:", userId, badgeId);
     let db = await SQL.getDB();
     let res = await db.run(`
-      INSERT INTO badge_reacts (userId,badgeId, value) 
+      INSERT OR REPLACE INTO badge_reacts (userId,badgeId, value) 
       VALUES ($1, $2, 1)`,
       [userId, badgeId]).catch(SQL.parseError);
 
-    await Badges.updateStats(db, badgeId);
-
     db.close();
+    await Badges.updateStats(badgeId);
     return Boolean(res.changes);
   }
 
@@ -170,7 +167,7 @@ const SQL = require('../db/index');
   static async deny(userId, badgeId) {
     let db = await SQL.getDB();
     let res = await db.run(`
-      INSERT INTO badge_reacts (userId,badgeId, value) 
+      INSERT OR REPLACE INTO badge_reacts (userId,badgeId, value) 
       VALUES ($1, $2, -1)`,
       [userId, badgeId]).catch(SQL.parseError);
 
@@ -214,7 +211,7 @@ const SQL = require('../db/index');
     let badges = await db.all('SELECT id FROM badges');
     db.close();
 
-    console.log("starting");
+    console.log("updating all badge stats");
     await badges.reduce((p, badge) => p.then(async () => await Badges.updateStats(badge.id)), Promise.resolve())
     console.log("finished");
   }
@@ -228,6 +225,7 @@ const SQL = require('../db/index');
     await db.close(); 
     return true; 
   }
+
 }
 
  module.exports = Object.freeze(Badges);

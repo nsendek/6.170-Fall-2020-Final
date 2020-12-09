@@ -100,11 +100,6 @@ export default {
     },
 
     created: function() {
-      eventBus.$on(("signin-success"), async () => {
-        await this.loadUserBadges();
-        this.loadBusinesses();
-      });
-
       eventBus.$on(("signout-success"), () => {
         this.userBadges = [];
       })

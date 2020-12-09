@@ -15,7 +15,7 @@
         :clickable="true"
         @click="clicked(b)"
         :label="label(b)"
-        :icon="{url: 'https://i.ibb.co/3Cz4TX7/pin2.png',scaledSize:{width:30,height:30}}"
+        :icon="{url: 'https://i.ibb.co/3Cz4TX7/pin2.png',scaledSize:{width:40,height:40}}"
         @mouseover ="iconHover(index)"
         @mouseout ="iconOff(index)"
         ref="markers"
@@ -54,7 +54,14 @@ export default {
       if(this && this.$refs && this.$refs.map && this.$refs.map.$mapPromise){
           this.boundBox(businesses,10);
       }
-    })
+    }),
+    eventBus.$on("feedHover", (message) => {
+      this.iconHover(message);
+    });
+
+    eventBus.$on("feedOff", (message) => {
+      this.iconOff(message);
+    });
   }, 
   created(){
     this.mapId = this.$vuetify.theme.dark ? this.darkId : this.ligthId;
@@ -181,13 +188,13 @@ export default {
             })
     },
     label(b) {
-      return{text:String(1+this.businesses.indexOf(b)), fontSize: "25px", fontWeight:"700", color: "black"};
+      return{text:String(1+this.businesses.indexOf(b)), fontSize: "25px", fontWeight:"700", color: "white"};
     },
-    async iconHover(markerIndex) {  
-      this.$refs.markers[markerIndex].$markerObject.setIcon({url: "https://i.ibb.co/f9j1PkZ/pin1.png",scaledSize:{width:30,height:30}});
+    iconHover(markerIndex) {  
+      this.$refs.markers[markerIndex].$markerObject.setIcon({url: "https://i.ibb.co/f9j1PkZ/pin1.png",scaledSize:{width:40,height:40}});
     },
     iconOff(markerIndex) {
-      this.$refs.markers[markerIndex].$markerObject.setIcon({url: 'https://i.ibb.co/3Cz4TX7/pin2.png',scaledSize:{width:30,height:30}});
+      this.$refs.markers[markerIndex].$markerObject.setIcon({url: 'https://i.ibb.co/3Cz4TX7/pin2.png',scaledSize:{width:40,height:40}});
     },
     panTo(lat,lng){
       this.$refs.map.$mapPromise.then((map) => {
