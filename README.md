@@ -4,9 +4,9 @@
 ### Purpose and Functionality
 Describe the purpose and functionality of your application (~50 words) 
 
-For our final product, Zelp has a its full set of functionality. Aside from our MVP, users can now
+For our final product, Zelp has a its full set of functionality. From our MVP, users can now
  (1) post and edit reviews about businesses
- (2) rank the safety policies most important to them. Zelp now sorts business results based on these preferences. Businesses, on the other hand, can view review metrics about each of their posted safety policies.
+ (2) rank the safety policies most important to them. Zelp now sorts business results based on these preferences. Businesses, on the other hand, can view  metrics about each of their posted safety policies.
 
 ### Instructions to Run Locally:
 In command line:
