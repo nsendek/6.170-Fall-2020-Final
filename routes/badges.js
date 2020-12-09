@@ -168,8 +168,6 @@ router.post("/deny", async (req, res) => {
  * @param businessId - the id of the business
  */
 router.delete("/affirmations/:businessId?", async (req, res) => {
-  console.log("BITCHHHH"); 
-  console.log("inside of affirmation"); 
   try {
     let deleted = Badges.deleteAffirmations(req.session.user.id, req.params.businessId);
     if (deleted) {

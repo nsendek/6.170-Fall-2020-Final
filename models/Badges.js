@@ -221,14 +221,11 @@ const SQL = require('../db/index');
   }
 
   static async deleteAffirmations(userId, businessId){
-    console.log("here 1"); 
     let db = await SQL.getDB();
-    console.log("here 2"); 
     let badgeIds = await db.all(`SELECT id, label FROM badges WHERE businessId = ${businessId}`);
     for(let i = 0; i < badgeIds.length; i++){
       await db.run('DELETE FROM badge_reacts WHERE userId = $1 AND badgeId = $2', [userId, badgeIds[i].id]);
     }
-    console.log("here 4"); 
     await db.close(); 
     return true; 
   }
