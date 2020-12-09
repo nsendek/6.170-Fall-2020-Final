@@ -25,8 +25,8 @@
       <!--  -->
       <div class="drag-class">
       <draggable 
-       class="draggables"
-      v-model="rankedBadges"
+        class="draggables"
+        v-model="rankedBadges"
         group="badges"
         @start="drag=true" @end="drag=false"
         v-on:change="updateUserPrefs">
@@ -70,7 +70,7 @@
       <div class="drag-class">
       <draggable v-model="badges" group="badges" @start="drag=true" @end="drag=false" class="draggables">
         <span v-for="(badge, index) in badges" :key="index">
-          <v-tooltip bottom>
+          <v-tooltip open-delay="500" max-width="200px" bottom>
             <template v-slot:activator="{ on, attrs }">
             <div 
             class="icon-button" 
@@ -82,7 +82,7 @@
               {{badge.label}}
             </div>
             </template>
-            <span>{{badge.description}}</span>
+            <div style="text-align:center;" >{{badge.description}}</div>
           </v-tooltip>
         </span>
       </draggable>  
