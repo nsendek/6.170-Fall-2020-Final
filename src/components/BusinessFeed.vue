@@ -93,11 +93,10 @@ export default {
       })
     },
 
-    mounted: function() {
-        //needs to go before loadBusinesses, becuase it's what businesses will sort by
-        this.loadUserBadges();
-        this.loadBusinesses();
+    mounted: async function() {
         this.loadBadges();
+        await this.loadUserBadges(); // wait until this function finishes
+        this.loadBusinesses();
     },
 
 
@@ -159,21 +158,22 @@ export default {
       },
 
       // #TODO Loads all userBadges
-      loadUserBadges: function() {
+      loadUserBadges: async function() {
         // this.userBadges = [
         //     "MASKS REQUIRED", 
         //     "CURBSIDE PICKUP", "INDOOR DINING", 
         //     "OUTDOOR DINING", "ADEQUATE SUPPLIES", "LOW DENSITY",
         //     "TRAINED WORKERS", "DISINFECTION", "6 FT APART"
         //     ]
-        axios.get("/api/user/rank") 
-        .then((response) => {
-          console.log("res dat:", response);
-          this.userBadges = response.data.map((badge) => badge.label) ? response.data : [];
-        })
-        .catch((error) => { 
-          console.log(error.response);
-        })
+        await axios.get("/api/user/rank") 
+          .then((response) => {
+            let sortedBadges = response.data.sort((a,b) => a.value - b.value);
+            console.log("user ranks:", sortedBadges);
+            this.userBadges = sortedBadges.map((badge) => badge.label);
+          })
+          .catch((error) => { 
+            console.log(error.response);
+          })
       },
 
       // Filters businesses by one or more badges
