@@ -268,7 +268,6 @@ export default {
 
 .smaller-top{
   max-height : calc(99vh - (var(--navbar-height) + var(--navbar-height))) !important;
-  overflow-y: scroll;
 }
 
 .subtitle{
