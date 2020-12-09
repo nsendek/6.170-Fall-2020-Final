@@ -1,6 +1,6 @@
 <template>
 
-<v-card style="padding:20px; margin: 10px 0px;">
+<v-card @mouseover="iconHover(idx)" @mouseout ="iconOff(idx)" style="padding:20px; margin: 10px 0px;">
   <div> <h2 class="business-count">{{1+idx}}</h2> </div>
   <router-link :to="`/business/${business.id}`">
     <h3>{{business.name}}</h3>
@@ -20,7 +20,7 @@
 
 <script>
 import axios from "axios";
-// import {eventBus} from "../main"
+import {eventBus} from "../main"
 
 export default {
     name: "BusinessItem",
@@ -49,7 +49,6 @@ export default {
                 this.badges.forEach((badge) => this.getBadgeRatio(badge));
             })
         },
-
         getBadgeRatio: function(badge) {
             axios.get(`/api/badge/${badge.id}/ratio`)
             .then((response) => {
@@ -73,7 +72,13 @@ export default {
             } else {
                 return "bronze";
             }
-        }
+        },
+        iconHover(index) {  
+            eventBus.$emit("feedHover", index);
+        },
+        iconOff(index) {
+            eventBus.$emit("feedOff", index);
+        },
     }
 
 

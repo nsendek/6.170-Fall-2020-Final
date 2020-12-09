@@ -10,12 +10,6 @@
 
 .business-count {
   float: right;
-  color: white; 
-  background: gray; 
-  border-radius: 50%; 
-  width: 35px; 
-  height: 35px; 
-  text-align: center;
   user-select: none;
   }
 
@@ -160,12 +154,4 @@
   text-align:center; 
   flex-wrap: wrap !important; 
   justify-content: center;
-}
-
-.badges-container::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scroll::-webkit-scrollbar {
-  display: none;
 }
