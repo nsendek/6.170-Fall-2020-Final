@@ -1,5 +1,5 @@
 <template>
-    <v-btn :disabled="!button" :height="size+border" :width="size+border" :class="color" icon style ="padding: 10px;">
+    <v-btn :disabled="!button" :height="size+border" :width="size+border" :class="color" icon>
       <v-icon  elevation="13" :size="size"> 
         {{iconEnum[badgeLabel]}}
       </v-icon>
