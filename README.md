@@ -44,8 +44,6 @@ then you will find the application at `localhost:8080` in the browser
     * businesses.js
     * reviews.js
     * users.js
-    * session.js
-    * search.js
     * validators.js
   * src:
     * Feed.vue
