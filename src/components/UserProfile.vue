@@ -19,10 +19,6 @@
     </div>
     <div class="importance"> <span> least important </span> <span> most important </span></div>
     <div >
-      <!-- <div class="d-inline flex p-2" style="border:2px solid grey"> Least Important</div> -->
-      <!-- Hidden spacers -->
-      <!-- <div class="d-inline flex p-2" style="visibility:hidden;">spacer</div> -->
-      <!--  -->
       <div class="drag-class">
       <draggable 
         class="draggables"
@@ -272,7 +268,7 @@ export default {
 
 .smaller-top{
   max-height : calc(99vh - (var(--navbar-height) + var(--navbar-height))) !important;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .subtitle{
