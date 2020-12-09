@@ -31,15 +31,13 @@
         @start="drag=true" @end="drag=false"
         v-on:change="updateUserPrefs">
         <span class="p-2" v-for="(badge, index) in rankedBadges" :key="index">
-            <v-btn
-              text
-              depressed
-              > 
-              <div class="icon-button"> 
-              <BadgeIcon :badgeLabel=badge.label :size=50 :border="10" button/>
-              {{badge.label}}
-              </div>
-            </v-btn>
+          <div 
+          class="icon-button"
+          style ="margin: 0px 10px; white-space: nowrap;"
+          > 
+          <BadgeIcon :badgeLabel=badge.label :size="40" :border="10" button/>
+          {{badge.label}}
+          </div>
         </span> 
       </draggable>
       </div>
@@ -71,19 +69,18 @@
     <center>
       <div class="drag-class">
       <draggable v-model="badges" group="badges" @start="drag=true" @end="drag=false" class="draggables">
-        <span v-for="(badge, index) in badges" :key="index" class="gimme-space">
+        <span v-for="(badge, index) in badges" :key="index">
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
-            <v-btn
-            text
-            depressed
+            <div 
+            class="icon-button" 
+            style ="margin: 0px 10px; white-space: nowrap;"
             v-on="on"
-            v-bind="attrs">
-            <div class="icon-button"> 
-              <BadgeIcon :badgeLabel=badge.label :size="50" :border="10"/>
+            v-bind="attrs"
+            > 
+              <BadgeIcon :badgeLabel=badge.label :size="40" :border="10"/>
               {{badge.label}}
             </div>
-            </v-btn>
             </template>
             <span>{{badge.description}}</span>
           </v-tooltip>
