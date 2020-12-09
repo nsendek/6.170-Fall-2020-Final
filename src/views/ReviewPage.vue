@@ -16,7 +16,6 @@
      
       <div class="review-spacing">
         <center> Affirm Safety Policies </center>
-
           <v-btn-toggle
             class="badges-container"
             v-model="affirmedBadges"
@@ -113,6 +112,7 @@
 import axios from "axios";
 import { eventBus } from "../main";
 
+
 export default {
   name : "ReviewPage",
   data() {
@@ -129,7 +129,7 @@ export default {
     }
   },
   components : {
-    Overlay : () => import('../components/Overlay.vue') ,
+    Overlay : () => import('../components/Overlay.vue'),
     BadgeIcon: () => import("../components/BadgeIconAlt"),
   },
   beforeMount() {
@@ -167,16 +167,6 @@ export default {
             });
         })
         .catch(err => err.response);
-    },
-
-    toggleAffirm: function(idx) {
-      this.badges[idx].affirmed = this.badges[idx].affirmed ?
-                                    false : true;
-    },
-
-    toggleDeny: function(idx) {
-      this.badges[idx].denied = this.badges[idx].denied ?
-                                    false : true;
     },
 
     affirmBadges: function() {
@@ -261,14 +251,6 @@ export default {
 .smaller-width{
   width: 70%; 
   text-align: center;
-}
-
-.v-chip.affirmed {
-  background: rgb(73, 214, 73);
-}
-
-.v-chip.denied {
-  background: rgb(240, 19, 19);
 }
 
 </style>
