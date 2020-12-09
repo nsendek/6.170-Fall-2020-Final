@@ -9,7 +9,7 @@
 
   <div class="badges-container" style="justify-content: left;">
     <div :key="idx" v-for="(badge,idx) in badges" style="margin: 2.5px 5px;"> 
-    <BadgeIcon :color="getBadgeTier(badge)" :badgeLabel="badge.label" :size="35" :border="7" />
+    <BadgeIcon :color="getBadgeTier(badge)" :badgeLabel="badge.label" :size="35" :border="8" />
     {{badge.ratio === null ? "N/A" : `${badge.ratio}%`}}
     </div>
   </div>
