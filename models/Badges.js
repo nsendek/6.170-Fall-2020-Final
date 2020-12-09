@@ -190,7 +190,6 @@ const SQL = require('../db/index');
       FROM (SELECT COUNT(*) as affirms from badge_reacts WHERE badgeId = $1 AND value = 1) 
       JOIN (SELECT COUNT(*) as denies from badge_reacts WHERE badgeId = $2 AND value = -1)
     `,[badgeId, badgeId]);
-    console.log('done: ', badgeId)
     await db.close();
   }
 
@@ -220,15 +219,15 @@ const SQL = require('../db/index');
     console.log("finished");
   }
 
-  static async deleteAffirmations(userId, businessId){
-    let db = await SQL.getDB();
-    let badgeIds = await db.all(`SELECT id, label FROM badges WHERE businessId = ${businessId}`);
-    for(let i = 0; i < badgeIds.length; i++){
-      await db.run('DELETE FROM badge_reacts WHERE userId = $1 AND badgeId = $2', [userId, badgeIds[i].id]);
-    }
-    await db.close(); 
-    return true; 
-  }
+  // static async deleteAffirmations(userId, businessId){
+  //   let db = await SQL.getDB();
+  //   let badgeIds = await db.all(`SELECT id, label FROM badges WHERE businessId = ${businessId}`);
+  //   for(let i = 0; i < badgeIds.length; i++){
+  //     await db.run('DELETE FROM badge_reacts WHERE userId = $1 AND badgeId = $2', [userId, badgeIds[i].id]);
+  //   }
+  //   await db.close(); 
+  //   return true; 
+  // }
 
   // /**
   //  * Get the number of affirms of a badge
@@ -256,8 +255,5 @@ const SQL = require('../db/index');
   //   return denies["d_num"] * -1;
   // }
 }
-
-// DON'T uncomment below if running with npm
-// Badges.updateAllStats();
 
  module.exports = Object.freeze(Badges);
