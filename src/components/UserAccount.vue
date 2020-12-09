@@ -2,110 +2,66 @@
   <div class="center-container">
     <div class="big-title">{{this.$state.username}} </div>
 
-    <br><br>
-    <div class="secondary-header">
-      Policy Preferences
-      <v-tooltip right>
-        <template v-slot:activator="{ on, attrs }">
-          <v-icon
-            color="primary"
-            dark
-            v-bind="attrs"
-            v-on="on"
-          >
-            mdi-information-outline
-          </v-icon>
-        </template>
-        <span>This helps us organize your results when applying filters on the main page.</span>
-      </v-tooltip>
+    <div class="row-container"> 
+      <v-text-field v-model="username" placeholder="new username" dense filled/>
+      <v-btn v-on:click="updateUsername">update username</v-btn>
     </div>
-    <div> <span> Rank your most important policies by dragging them here! </span> </div>
-    <br><br>
-    <div class='d-flex flex-row'>
-      <div class="d-inline flex p-2" style="border:2px solid grey"> Least Important</div>
-      <!-- Hidden spacers -->
-      <!-- <div class="d-inline flex p-2" style="visibility:hidden;">spacer</div> -->
-      <!--  -->
-      <draggable 
-      v-model="rankedBadges"
-        group="badges"
-        @start="drag=true" @end="drag=false"
-        v-on:change="updateUserPrefs">
-        <span class="p-2" v-for="(badge, index) in rankedBadges" :key="index">
-            <v-btn
-              text
-              depressed
-              > 
-              <div class="icon-button"> 
-              <BadgeIcon :badgeLabel=badge.label :height=80 />
-              {{badge.label}}
-              </div>
-            </v-btn>
-        </span> 
-      </draggable>
-      <!-- Hidden spacers -->
-      <!-- <div class="d-inline flex p-2" style="visibility:hidden;">spacer</div> -->
-      <!--  -->
-      <div class="d-inline flex p-2" style="border:2px solid grey"> Most Important</div>
-    </div>
-    <br><br>
-    <div>
-      <v-tooltip right>
-        <template v-slot:activator="{ on, attrs }">
-          <v-icon
-            color="primary"
-            dark
-            v-bind="attrs"
-            v-on="on"
-          >
-            mdi-information-outline
-          </v-icon>
-        </template>
-        <span>Drag these policies to the above section if you want to rank them.</span>
-      </v-tooltip>
-    </div>
-    <br><br>
-    <center>
-      <draggable v-model="badges" group="badges" @start="drag=true" @end="drag=false">
-        <span v-for="(badge, index) in badges" :key="index">
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-            <v-btn
-            text
-            depressed
-            v-on="on"
-            v-bind="attrs">
-            <div class="icon-button"> 
-              <BadgeIcon :badgeLabel=badge.label :height=70 />
-              {{badge.label}}
-            </div>
-            </v-btn>
-            </template>
-            <span>{{badge.description}}</span>
-          </v-tooltip>
-        </span>
-      </draggable>   
-    </center>
-    <br><br>
 
-    <div><v-btn v-on:click="goUserAccount" class="wide-button"> edit personal info </v-btn></div>
-    <div><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></div>
+    <div class="row-container"> 
+      <v-text-field v-model="password" placeholder="new password" dense filled/>
+      <v-btn v-on:click="updatePassword">update password</v-btn>
     </div>
+
+    <div>
+          <v-dialog
+              v-model="dialog"
+              max-width="290"
+              persistent>
+          <template v-slot:activator='{ on, attrs }'>
+            <v-btn
+                color='red'
+                v-bind='attrs'
+                v-on='on'
+                >Delete Account </v-btn>
+          </template>
+            <v-card>
+              <v-card-title class="headline">
+                Are you sure you want delete your account?
+              </v-card-title>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click.stop="dialog = false"
+                >
+                  No
+                </v-btn>
+                <v-btn
+                  color="green darken-1"
+                  text
+                  @click.stop="dialog = false"
+                  v-on:click="deleteAccount"
+                >
+                  Yes
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+    </div>
+
+    <div><v-btn v-on:click="goUserProfile" class="wide-button"> back to profile </v-btn></div>
+    <div><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></div>
+  </div>
 
 </template>
 
 <script>
 import axios from "axios";
 import { eventBus } from "../main";
-import draggable from 'vuedraggable'
 
 export default {
   name : "UserProfile", 
-
-  components: {
-    draggable,
-    BadgeIcon: () => import("./BadgeIcon"),
-  },
 
   data: function(){
     return {
@@ -191,8 +147,8 @@ export default {
       });
     }, 
 
-    goUserAccount : function() {
-      eventBus.$emit("show-user-account"); 
+    goUserProfile : function() {
+      eventBus.$emit("show-user-profile"); 
     }, 
 
     signout : function(){
