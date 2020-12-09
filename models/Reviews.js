@@ -123,11 +123,6 @@ class Reviews {
         JOIN businesses ON businesses.id=businessId 
         WHERE userId = $1 AND businessId = $2`,[userId, businessID]);
 
-    console.log("fuck"); 
-    console.log(userId); 
-    console.log(businessID); 
-    console.log(data); 
-
     return data.map(mapReview);
   }
 

@@ -243,7 +243,7 @@ export default {
   }
 
   .small-help-text{
-    padding-top: 7px; 
+    padding-top: 12px; 
     margin-left: 12px; 
     margin-bottom: -10px; 
     opacity: 50%; 
@@ -252,7 +252,6 @@ export default {
   .filter-div{
     background: var(--v-button-group-base); 
     border-radius: 5px; 
-    margin: 10px; 
     /* background : #button-group;  */
   }
 
