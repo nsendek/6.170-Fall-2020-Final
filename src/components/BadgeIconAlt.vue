@@ -46,4 +46,10 @@ export default {
 .v-btn.bronze {
   background-color: #B87333;
 }
+.v-btn.red {
+  background-color: #e33d40;
+}
+.v-btn.green {
+  background-color: #7ae33d;
+}
 </style>
