@@ -1,8 +1,6 @@
 <template>
-  <div class="center-container">
+  <div class="center-container smaller-top">
     <div class="big-title">{{this.$state.username}} </div>
-
-    <br><br>
     <div class="secondary-header">
       Policy Preferences
       <v-tooltip right>
@@ -19,14 +17,15 @@
         <span>This helps us organize your results when applying filters on the main page.</span>
       </v-tooltip>
     </div>
-    <div> <span> Rank your most important policies by dragging them here! </span> </div>
-    <br><br>
-    <div class='d-flex flex-row'>
-      <div class="d-inline flex p-2" style="border:2px solid grey"> Least Important</div>
+    <div class="importance"> <span> least important </span> <span> most important </span></div>
+    <div >
+      <!-- <div class="d-inline flex p-2" style="border:2px solid grey"> Least Important</div> -->
       <!-- Hidden spacers -->
       <!-- <div class="d-inline flex p-2" style="visibility:hidden;">spacer</div> -->
       <!--  -->
+      <div class="drag-class">
       <draggable 
+       class="draggables"
       v-model="rankedBadges"
         group="badges"
         @start="drag=true" @end="drag=false"
@@ -37,19 +36,20 @@
               depressed
               > 
               <div class="icon-button"> 
-              <BadgeIcon :badgeLabel=badge.label :height=80 />
+              <BadgeIcon :badgeLabel=badge.label :size=50 :border="10" button/>
               {{badge.label}}
               </div>
             </v-btn>
         </span> 
       </draggable>
+      </div>
       <!-- Hidden spacers -->
       <!-- <div class="d-inline flex p-2" style="visibility:hidden;">spacer</div> -->
       <!--  -->
-      <div class="d-inline flex p-2" style="border:2px solid grey"> Most Important</div>
+      <!-- <div class="d-inline flex p-2" style="border:2px solid grey"> Most Important</div> -->
     </div>
     <br><br>
-    <div>
+    <!-- <div class="full-width">
       <v-tooltip right>
         <template v-slot:activator="{ on, attrs }">
           <v-icon
@@ -63,11 +63,15 @@
         </template>
         <span>Drag these policies to the above section if you want to rank them.</span>
       </v-tooltip>
-    </div>
-    <br><br>
+    </div> -->
+    <br><br> <br><br>
+    <!-- <div class="full-width"> <hr> </div> -->
+    <div class="subtitle"> other policies </div> 
+    <div class="slightly-opaque"> <span> Rank your most important policies by dragging them to the top row! </span> </div>
     <center>
-      <draggable v-model="badges" group="badges" @start="drag=true" @end="drag=false">
-        <span v-for="(badge, index) in badges" :key="index">
+      <div class="drag-class">
+      <draggable v-model="badges" group="badges" @start="drag=true" @end="drag=false" class="draggables">
+        <span v-for="(badge, index) in badges" :key="index" class="gimme-space">
           <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
             <v-btn
@@ -76,7 +80,7 @@
             v-on="on"
             v-bind="attrs">
             <div class="icon-button"> 
-              <BadgeIcon :badgeLabel=badge.label :height=70 />
+              <BadgeIcon :badgeLabel=badge.label :size="50" :border="10"/>
               {{badge.label}}
             </div>
             </v-btn>
@@ -84,12 +88,13 @@
             <span>{{badge.description}}</span>
           </v-tooltip>
         </span>
-      </draggable>   
+      </draggable>  
+      </div> 
     </center>
     <br><br>
 
-    <div><v-btn v-on:click="goUserAccount" class="wide-button"> edit personal info </v-btn></div>
-    <div><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></div>
+    <div class="space-above"><v-btn v-on:click="goUserAccount" class="wide-button"> edit personal info </v-btn></div>
+    <div class="space-below"><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></div>
     </div>
 
 </template>
@@ -104,7 +109,7 @@ export default {
 
   components: {
     draggable,
-    BadgeIcon: () => import("./BadgeIcon"),
+    BadgeIcon: () => import("./BadgeIconAlt"),
   },
 
   data: function(){
@@ -225,3 +230,95 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .full-width{
+    width: 110%;
+    margin-top: 50px;
+  }
+
+  .space-above{
+    margin-top: 120px; 
+  }
+
+  .space-below{
+    margin-top: 20px; 
+    margin-bottom: 10px; 
+  }
+
+  .drag-class{
+    /* width: 70%; 
+    overflow-x: scroll; 
+    margin: 0 auto; */
+    
+  }
+
+  .widee{
+    width: 200px; 
+  }
+
+  .draggables{
+    margin-top: -200px;
+    padding-top: 20px; 
+    margin: 20px; 
+    height: 100px; 
+    position:absolute;
+    display: flex; 
+    flex-direction: row;
+    left:0;
+    right:0;
+    float: left;
+    overflow-y: visible;
+    overflow-x: scroll; 
+    scrollbar-width: thin;
+  }
+
+.draggables::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: var(--v-info-window-base);
+}
+
+.draggables::-webkit-scrollbar
+{
+  height: 6px;
+  background-color: var(--v-info-window-base);
+}
+
+.draggables::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: var(--v-splitter-hover-base);
+}
+
+.smaller-top{
+  margin-top: 10px; 
+}
+
+.subtitle{
+  font-size: 25px; 
+  margin-top: 20px; 
+  margin-bottom: -20px; 
+}
+
+.slightly-opaque{
+  opacity: 50%; 
+  margin-top: 20px; 
+  margin-bottom: -10px; 
+  
+}
+
+.importance{
+  font-size: 14px; 
+  width: 120%; 
+  color: var(--v-accent-base); 
+  display: flex; 
+  justify-content: space-between;
+  margin-bottom: -20px; 
+  margin-top: 20px; 
+  font-style: italic;
+  font-weight: 700;
+}
+</style>

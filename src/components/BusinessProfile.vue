@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="secondary-header">{{this.business.name}} </div>
+    <div class="big-title">{{this.business.name}} </div>
 
     <div class="account-options">
       <router-link :to="`/business/${$state.id}`">
