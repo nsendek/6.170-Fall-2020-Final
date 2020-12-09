@@ -12,7 +12,7 @@
       <v-btn v-on:click="updatePassword">update password</v-btn>
     </div>
 
-    <div>
+    <div class="spacing">
           <v-dialog
               v-model="dialog"
               max-width="290"
@@ -50,8 +50,8 @@
           </v-dialog>
     </div>
 
-    <div><v-btn v-on:click="goUserProfile" class="wide-button"> back to profile </v-btn></div>
-    <div><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></div>
+    <div class="spacing"><v-btn v-on:click="goUserProfile" class="wide-button"> back to profile </v-btn></div>
+    <div class="spacing"><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></div>
   </div>
 
 </template>
@@ -181,3 +181,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .spacing{
+    margin: 10px; 
+  }
+</style>

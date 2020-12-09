@@ -19,7 +19,8 @@ const vuetify = new Vuetify({
         'splitter-hover' : "#ddd",
         'splitter-handle' : "#424242",
         'button-group' : "#eee",
-        'info-window' : "#fff"
+        'info-window' : "#fff",
+        'scroll-bar' : "#fff",
       },
       dark : {
         primary: "#0464CC",
@@ -31,7 +32,8 @@ const vuetify = new Vuetify({
         'splitter-hover' : "#525252",
         'splitter-handle' : "#aaa",
         'button-group' : "#2a2a2a",
-        'info-window' : "#323232"
+        'info-window' : "#323232",
+        'scroll-bar' : "#323232",
       }
     }
   },
