@@ -17,41 +17,62 @@
       <div class="review-spacing">
         <center> Affirm Safety Policies </center>
         <v-spacer></v-spacer>
-
-        <v-chip-group
-        column 
-        multiple 
-        active-class="affirmed">
-
-          <v-chip style="margin: 5px;"
-          :key="idx"
-            v-for="(badge,idx) in badges"
-            v-on:click = 'toggleAffirm(idx)'
-            filter
+        <div>
+          <v-btn-toggle
+            class="badges-container"
+            v-model="affirmedBadges"
+            center
+            background-color="button-group"
+            borderless
+            multiple
             >
-            {{badge.label}}
-          </v-chip>
-        </v-chip-group>
+            <v-tooltip 
+              max-width="200px" top 
+              v-for='(badge,index) in badges' v-bind:key="index"
+              open-delay="500"
+              z-index="20"
+            >
+              <template v-slot:activator="{ on }">
+                <div v-on="on" style="margin: 10px 5px;">  
+                  <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10"/>
+                </div>
+              </template>
+              <div style="text-align:center;"><b><u>{{badge.label}}</u></b></div>
+              <div style="text-align:center;">{{badge.description}}</div>
+            </v-tooltip>
+          </v-btn-toggle>
+        </div>
       </div>
 
       <div class="review-spacing">
         <center> Deny Safety Policies </center>
         <v-spacer></v-spacer>
 
-        <v-chip-group
-        column 
-        multiple 
-        active-class="denied">
-
-          <v-chip style="margin: 5px;"
-            :key="idx"
-            v-for="(badge,idx) in badges"
-            v-on:click = 'toggleDeny(idx)'
-            filter
+        <div>
+          <v-btn-toggle
+            class="badges-container"
+            v-model="deniedBadges"
+            center
+            background-color="button-group"
+            borderless
+            multiple
             >
-            {{badge.label}}
-          </v-chip>
-        </v-chip-group>
+            <v-tooltip 
+              max-width="200px" top 
+              v-for='(badge,index) in badges' v-bind:key="index"
+              open-delay="500"
+              z-index="20"
+            >
+              <template v-slot:activator="{ on }">
+                <div v-on="on" style="margin: 10px 5px;">  
+                  <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10"/>
+                </div>
+              </template>
+              <div style="text-align:center;"><b><u>{{badge.label}}</u></b></div>
+              <div style="text-align:center;">{{badge.description}}</div>
+            </v-tooltip>
+          </v-btn-toggle>
+        </div>
       </div>
 
       <div class="review-spacing"><v-textarea style="width:400px;" width v-model="reviewContent" label="comments" filled/></div>
@@ -67,6 +88,7 @@
 import axios from "axios";
 import { eventBus } from "../main";
 
+
 export default {
   name : "ReviewPage",
   data() {
@@ -74,6 +96,8 @@ export default {
       business : {},
       rating : 3,
       badges : [],
+      affirmedBadges : [],
+      deniedBadges: [],
       badgeReacts : [], 
       reviewContent : "",
       edit : false, 
@@ -81,7 +105,8 @@ export default {
     }
   },
   components : {
-    Overlay : () => import('../components/Overlay.vue') 
+    Overlay : () => import('../components/Overlay.vue'),
+    BadgeIcon: () => import("../components/BadgeIconAlt"),
   },
   beforeMount() {
     if (this.$route.params.business) this.business = this.$route.params.business;
@@ -120,20 +145,10 @@ export default {
         .catch(err => err.response);
     },
 
-    toggleAffirm: function(idx) {
-      this.badges[idx].affirmed = this.badges[idx].affirmed ?
-                                    false : true;
-    },
-
-    toggleDeny: function(idx) {
-      this.badges[idx].denied = this.badges[idx].denied ?
-                                    false : true;
-    },
-
     affirmBadges: function() {
-      this.badges.filter((badge) => badge.affirmed).forEach((badge) => {
+      this.affirmedBadges.forEach((badgeIdx) => {
         axios.post(`/api/badge/affirm`, {
-          badgeId: badge.id
+          badgeId: this.badges[badgeIdx].id
         })
         .then(() => {
           console.log("Affirm successful");
@@ -145,9 +160,9 @@ export default {
     },
 
     denyBadges: function() {
-      this.badges.filter((badge) => badge.denied).forEach((badge) => {
+      this.deniedBadges.forEach((badgeIdx) => {
         axios.post(`/api/badge/deny`, {
-          badgeId: badge.id
+          badgeId: this.badges[badgeIdx].id
         })
         .then(() => {
           console.log("Deny successful");
@@ -210,14 +225,6 @@ export default {
 .smaller-width{
   width: 70%; 
   text-align: center;
-}
-
-.v-chip.affirmed {
-  background: rgb(73, 214, 73);
-}
-
-.v-chip.denied {
-  background: rgb(240, 19, 19);
 }
 
 </style>

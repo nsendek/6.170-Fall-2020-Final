@@ -41,29 +41,9 @@
         </span> 
       </draggable>
       </div>
-      <!-- Hidden spacers -->
-      <!-- <div class="d-inline flex p-2" style="visibility:hidden;">spacer</div> -->
-      <!--  -->
-      <!-- <div class="d-inline flex p-2" style="border:2px solid grey"> Most Important</div> -->
     </div>
     <br><br>
-    <!-- <div class="full-width">
-      <v-tooltip right>
-        <template v-slot:activator="{ on, attrs }">
-          <v-icon
-            color="primary"
-            dark
-            v-bind="attrs"
-            v-on="on"
-          >
-            mdi-information-outline
-          </v-icon>
-        </template>
-        <span>Drag these policies to the above section if you want to rank them.</span>
-      </v-tooltip>
-    </div> -->
     <br><br> <br><br>
-    <!-- <div class="full-width"> <hr> </div> -->
     <div class="subtitle"> other policies </div> 
     <div class="slightly-opaque"> <span> Rank your most important policies by dragging them to the top row! </span> </div>
     <center>
