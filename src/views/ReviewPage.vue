@@ -56,7 +56,8 @@
 
       <div class="review-spacing"><v-textarea style="width:400px;" width v-model="reviewContent" label="comments" filled/></div>
 
-      <v-btn @click="submitReview"> SUBMIT </v-btn> 
+      <v-btn v-if="!this.edit" @click="submitReview"> SUBMIT </v-btn> 
+      <v-btn v-else @click="submitEdit"> SUBMIT </v-btn> 
       
     </v-card>
   </Overlay>
@@ -75,6 +76,8 @@ export default {
       badges : [],
       badgeReacts : [], 
       reviewContent : "",
+      edit : false, 
+      oldReview : {}
     }
   },
   components : {
@@ -83,6 +86,15 @@ export default {
   beforeMount() {
     if (this.$route.params.business) this.business = this.$route.params.business;
     else this.loadBusiness();
+
+    if (this.$route.params.review) {
+      let review = this.$route.params.review; 
+      console.log(review); 
+      this.rating = review.rating; 
+      this.reviewContent = review.content; 
+      this.edit = true; 
+      this.oldReview = this.$route.params.review; 
+    }
     
     this.loadBadges();
   },
@@ -152,7 +164,7 @@ export default {
         rating : this.rating, 
         content: this.reviewContent
       };
-      axios.post("/api/review",review )
+      axios.post("/api/review", review)
       .then((response) => {
         eventBus.$emit("success-message", response.data.message);
         eventBus.$emit("review-posted", review);
@@ -162,6 +174,23 @@ export default {
         eventBus.$emit("error-message", error.response.data.error); 
       });
       this.$router.go(-1);
+    }, 
+
+    submitEdit : function () {
+      // remove all previous affirms / denies 
+      axios.delete(`/api/badge/affirmations/${this.business.id}`).
+      then(() => {
+        //delete old review
+        axios.delete(`/api/review/${this.oldReview.id}`).then(() => {
+          // make new review 
+          this.submitReview(); 
+        }).catch((error) => {
+          eventBus.$emit("error-message", error + "uh-oh something went wrong"); 
+        });
+      }).catch((error) =>{
+        console.log("affirms broken"); 
+        eventBus.$emit("error-message", error + "delete affirms not working");
+      });
     }
   }
 }
