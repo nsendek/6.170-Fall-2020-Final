@@ -15,7 +15,10 @@
         :clickable="true"
         @click="clicked(b)"
         :label="label(b)"
-        :icon = icon()
+        :icon="{url: 'https://i.ibb.co/3Cz4TX7/pin2.png',scaledSize:{width:30,height:30}}"
+        @mouseover ="iconHover(index)"
+        @mouseout ="iconOff(index)"
+        ref="markers"
       />
     </GmapMap>
      <v-btn class="location-btn" @click="geolocate()" >Go To Current Location</v-btn>
@@ -23,7 +26,7 @@
 </template>
 <script>
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+import Vuetify from 'vuetify/lib';
 import {eventBus } from "../main";
 import {gmapApi}from 'vue2-google-maps';
 import InfoWindow from "./InfoWindow"
@@ -232,10 +235,13 @@ export default {
             })
     },
     label(b) {
-      return{text:String(1+this.businesses.indexOf(b)), fontSize: "25px", fontWeight:"800", color: "black"};
+      return{text:String(1+this.businesses.indexOf(b)), fontSize: "25px", fontWeight:"700", color: "black"};
     },
-    icon() {
-      return {url: "https://cdn.pixabay.com/photo/2020/04/29/10/06/mouth-guard-5108188_1280.png", scaledSize: {width:40, height:40}};
+    async iconHover(markerIndex) {  
+      this.$refs.markers[markerIndex].$markerObject.setIcon({url: "https://i.ibb.co/f9j1PkZ/pin1.png",scaledSize:{width:30,height:30}});
+    },
+    iconOff(markerIndex) {
+      this.$refs.markers[markerIndex].$markerObject.setIcon({url: 'https://i.ibb.co/3Cz4TX7/pin2.png',scaledSize:{width:30,height:30}});
     },
     panTo(lat,lng){
       this.$refs.map.$mapPromise.then((map) => {

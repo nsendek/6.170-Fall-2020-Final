@@ -139,7 +139,7 @@
   justify-content: space-between;
 }
 
-.v-btn.gold {
+/* .v-btn.gold {
   border-style: solid;
   border-color: #D4AF37;
 }
@@ -152,7 +152,7 @@
 .v-btn.bronze {
   border-style: solid;
   border-color: #B87333;
-}
+} */
 
 .badges-container {
   display: flex; 
