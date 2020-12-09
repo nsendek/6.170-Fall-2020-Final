@@ -151,7 +151,7 @@ const SQL = require('../db/index');
     // console.log("params:", userId, badgeId);
     let db = await SQL.getDB();
     let res = await db.run(`
-      INSERT INTO badge_reacts (userId,badgeId, value) 
+      INSERT OR REPLACE INTO badge_reacts (userId,badgeId, value) 
       VALUES ($1, $2, 1)`,
       [userId, badgeId]).catch(SQL.parseError);
 
@@ -170,7 +170,7 @@ const SQL = require('../db/index');
   static async deny(userId, badgeId) {
     let db = await SQL.getDB();
     let res = await db.run(`
-      INSERT INTO badge_reacts (userId,badgeId, value) 
+      INSERT OR REPLACE INTO badge_reacts (userId,badgeId, value) 
       VALUES ($1, $2, -1)`,
       [userId, badgeId]).catch(SQL.parseError);
 
