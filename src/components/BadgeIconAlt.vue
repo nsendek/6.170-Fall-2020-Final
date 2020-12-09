@@ -74,5 +74,13 @@ export default {
     #ca7345 84%,
     #732100
   );
+}
+
+  .v-btn.red {
+    background-color: #e33d40;
   }
+  .v-btn.green {
+    background-color: #7ae33d;
+  }
+
 </style>

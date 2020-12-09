@@ -133,21 +133,6 @@
   justify-content: space-between;
 }
 
-/* .v-btn.gold {
-  border-style: solid;
-  border-color: #D4AF37;
-}
-
-.v-btn.silver {
-  border-style: solid;
-  border-color: silver;
-}
-
-.v-btn.bronze {
-  border-style: solid;
-  border-color: #B87333;
-} */
-
 .badges-container {
   display: flex; 
   flex-direction: row; 

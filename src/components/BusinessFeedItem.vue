@@ -2,10 +2,11 @@
 
 <v-card @mouseover="iconHover(idx)" @mouseout ="iconOff(idx)" style="padding:20px; margin: 10px 0px;">
   <div> <h2 class="business-count">{{1+idx}}</h2> </div>
-  <router-link :to="`/business/${business.id}`">
+
+  <div class="business-name"><router-link :to="`/business/${business.id}`" class="business-name">
     <h3>{{business.name}}</h3>
-  </router-link>
-  <div> <i>Address: {{business.address}}</i> </div>
+  </router-link></div>
+  <div class="some-space"> <i>{{business.address}}</i> </div>
 
   <div class="badges-container" style="justify-content: left;">
     <div :key="idx" v-for="(badge,idx) in badges" style="margin: 2.5px 5px;"> 
@@ -13,6 +14,7 @@
     {{badge.ratio === null ? "N/A" : `${badge.ratio}%`}}
     </div>
   </div>
+
 
   </v-card>
 </template>
@@ -84,3 +86,16 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.business-name{
+    color: var(--v-accent-base); 
+    text-decoration: none;
+    font-size: 20px; 
+}
+
+.some-space{
+    margin: 3px; 
+    margin-bottom: 10px;
+}
+</style>

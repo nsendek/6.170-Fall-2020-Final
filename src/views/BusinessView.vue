@@ -2,12 +2,12 @@
 
   <v-container  class="pa-4 no-scroll">
     <div class = "business-col">
-      <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
-        <div class = "secondary-header"> <b>{{business.name}}</b> </div>
-        <div class = "quarternary-header"> {{business.address}} </div>
-        <div class = "quarternary-header"> Rating: {{rating}} </div>
-        <br><br>
-        <div class="badges-container">
+      <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center; width:100%;">
+        <div class = "big-title"> <b>{{business.name}}</b> </div>
+        <div class = "quarternary-header" style="margin-top: 5px; font-style: italic"> {{business.address}} </div>
+        <v-rating class = "review-rating" style="display:inline; margin-top:10px; margin-bottom:10px;" readonly size="35" :value="rating" half-increments></v-rating>
+        <br>
+        <div class="badges-container" style="display: flex; justify-content:center;">
           <div
             :key="idx"
             v-for="(badge,idx) in badges"
@@ -26,27 +26,29 @@
 
     <div v-if="this.foundReview">
       <div class = "primary-header" style="text-align: center;"> YOUR REVIEW </div>
-      <v-card class = "review-card" style="margin: 10px 0px;">
+      <v-card class = "review-card" style="margin: 10px 0px; padding-top:15px; padding-bottom:15px;">
         <div class="flex-row" style="display:flex; flex-direction:row; align-items:center;">
           <span class = "tertiary-header" > <b>@{{userReview.author.username}}</b> </span>
           <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="userReview.rating"></v-rating>
         </div>
-        <div> {{userReview.content}} </div>
-        <div> <b> {{timeFormat(userReview.timestamp)}} </b> </div>
+        <div style="margin-left:20px; margin-top:10px;"> {{userReview.content}} </div>
+        <div style="width: 100%; text-align: right;"> <b> {{timeFormat(userReview.timestamp)}} </b> </div>
       </v-card>
 
+      <div style="display:flex; justify-content:center; ">
       <v-btn style="width:33%;" @click="openReviewEditor"> Edit Review </v-btn>
+      </div>
     </div>
 
     <div class = "primary-header" style="text-align: center;"> REVIEWS </div>
     <Feed>
-      <v-card class = "review-card" :key="idx" v-for="(review,idx) in reviews" style="margin: 10px 0px;">
+      <v-card class = "review-card" :key="idx" v-for="(review,idx) in reviews" style="margin: 10px 0px; padding-top:15px; padding-bottom:15px;">
         <div class="flex-row" style="display:flex; flex-direction:row; align-items:center;">
           <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
           <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
         </div>
-        <div> {{review.content}} </div>
-        <div> <b> {{timeFormat(review.timestamp)}} </b> </div>
+        <div style="margin-left:20px; margin-top:10px;"> {{review.content}} </div>
+        <div style="width: 100%; text-align: right;"> <b> {{timeFormat(review.timestamp)}} </b> </div>
       </v-card>
     </Feed>
 

@@ -151,7 +151,7 @@ const SQL = require('../db/index');
     // console.log("params:", userId, badgeId);
     let db = await SQL.getDB();
     let res = await db.run(`
-      INSERT INTO badge_reacts (userId,badgeId, value) 
+      INSERT OR REPLACE INTO badge_reacts (userId,badgeId, value) 
       VALUES ($1, $2, 1)`,
       [userId, badgeId]).catch(SQL.parseError);
 
@@ -170,7 +170,7 @@ const SQL = require('../db/index');
   static async deny(userId, badgeId) {
     let db = await SQL.getDB();
     let res = await db.run(`
-      INSERT INTO badge_reacts (userId,badgeId, value) 
+      INSERT OR REPLACE INTO badge_reacts (userId,badgeId, value) 
       VALUES ($1, $2, -1)`,
       [userId, badgeId]).catch(SQL.parseError);
 
@@ -219,41 +219,15 @@ const SQL = require('../db/index');
     console.log("finished");
   }
 
-  // static async deleteAffirmations(userId, businessId){
-  //   let db = await SQL.getDB();
-  //   let badgeIds = await db.all(`SELECT id, label FROM badges WHERE businessId = ${businessId}`);
-  //   for(let i = 0; i < badgeIds.length; i++){
-  //     await db.run('DELETE FROM badge_reacts WHERE userId = $1 AND badgeId = $2', [userId, badgeIds[i].id]);
-  //   }
-  //   await db.close(); 
-  //   return true; 
-  // }
-
-  // /**
-  //  * Get the number of affirms of a badge
-  //  * @param {number} badgeID
-  //  * @returns {number} - the percentage
-  //  */
-  // static async getAffirms(badgeID) {
-  //   let db = await SQL.getDB();
-  //   let affirms = await db.get(`SELECT SUM(value) AS a_num FROM badge_reacts WHERE badgeId= $1 AND value= 1`,[badgeID]); 
-  //   // return affirms
-  //   if (affirms["a_num"] === null) return 0;
-  //   return affirms["a_num"];
-  // }
-
-
-  // /**
-  //  * Get the number of denies of a badge
-  //  * @param {number} badgeID
-  //  * @returns {number} - the percentage
-  //  */
-  // static async getDenies(badgeID) {
-  //   let db = await SQL.getDB();
-  //   let denies = await db.get(`SELECT SUM(value) AS d_num FROM badge_reacts WHERE badgeId= $1 AND value = -1`, [badgeID]);
-  //   if (denies["d_num"] === null) return 0;
-  //   return denies["d_num"] * -1;
-  // }
+  static async deleteAffirmations(userId, businessId){
+    let db = await SQL.getDB();
+    let badgeIds = await db.all(`SELECT id, label FROM badges WHERE businessId = ${businessId}`);
+    for(let i = 0; i < badgeIds.length; i++){
+      await db.run('DELETE FROM badge_reacts WHERE userId = $1 AND badgeId = $2', [userId, badgeIds[i].id]);
+    }
+    await db.close(); 
+    return true; 
+  }
 }
 
  module.exports = Object.freeze(Badges);
