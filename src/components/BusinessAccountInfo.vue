@@ -1,40 +1,41 @@
 <template>
-  <div>
-    <div class="secondary-header">{{this.business.name}} </div>
+  <div class="centered">
+    <div class="big-title more-top">{{this.business.name}} </div>
 
     <div class="account-options">
       <router-link :to="`/business/${$state.id}`">
         <h3>View Your Public Page</h3>
       </router-link>
 
+        <br> 
         <h1> Change Account Information </h1>
         
-        <div> 
-            <input type="text" v-model="username" placeholder="new username" />
+        <div class="row-container"> 
+            <v-text-field v-model="username" placeholder="new username" dense filled />
             <v-btn v-on:click="updateBusinessInfo('accountName')" >update username</v-btn>
         </div>
 
-        <div> 
-            <input type="text" v-model="password" placeholder="new password" />
+        <div class="row-container"> 
+            <v-text-field v-model="password" placeholder="new password" dense filled />
             <v-btn v-on:click="updateBusinessInfo('password')">update password</v-btn>
         </div>
 
-        <div>
-            <input  type="text" v-model="name" placeholder="new name" />
+        <div class="row-container">
+            <v-text-field v-model="name" placeholder="new name" dense filled />
             <v-btn v-on:click="updateBusinessInfo('name')">update name</v-btn>
         </div>
 
-        <div>
-            <input type="text" v-model="address" placeholder="new address" />
+        <div class="row-container">
+            <v-text-field v-model="address" placeholder="new address" dense filled />
             <v-btn v-on:click="updateBusinessInfo('address')">update address</v-btn>
         </div>
 
-
-        <div><center><v-btn v-on:click="backToProfile" class="wide-button"> back to profile </v-btn></center></div>
-        <div><center><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></center></div>
+        <br>
+        <div class="spacing"><center><v-btn v-on:click="backToProfile" class="wide-button"> back to profile </v-btn></center></div>
+        <div class="spacing"><center><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></center></div>
 
         <div>
-          <br><br><br>
+          <br>
           <v-dialog
               v-model="deleteAccountDialog"
               max-width="290"
@@ -74,6 +75,7 @@
         </div>
       
     </div>
+    <br>
   </div>
   
 </template>
@@ -277,6 +279,24 @@ export default {
     /* border-radius: 100px; */
     margin: 10px 0px; 
     overflow: scroll;
+  }
+
+  .more-top{
+    text-align: center;
+    margin-top: 20px; 
+  }
+
+  .centered{
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .spacing{
+    margin: 5px; 
+    display: flex; 
+    flex-direction: row;
   }
 </style>
 

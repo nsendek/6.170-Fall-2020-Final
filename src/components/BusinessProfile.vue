@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <div class="big-title">{{this.business.name}} </div>
+  <div class="centered"> 
+    <div class="big-title more-top">{{this.business.name}} </div>
 
     <div class="account-options">
       <router-link :to="`/business/${$state.id}`">
         <h3>View Your Public Page</h3>
       </router-link>
 
-        <h1> Your Safety Policies </h1>
+        <h1 class="smaller-margin"> Your Safety Policies </h1>
         <br><br>
         <div class="badges">
 
@@ -123,8 +123,8 @@
         </div>
       
     </div>
-    <div><center><v-btn v-on:click="goBusinessAccount" class="wide-button"> change account information </v-btn></center></div>
-    <div><center><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></center></div>
+    <div><center><v-btn v-on:click="goBusinessAccount" class="wide-button marginss more-margin"> change account information </v-btn></center></div>
+    <div><center><v-btn v-on:click="signout" class="wide-button marginss"> SIGN OUT </v-btn></center></div>
   </div>
   
 </template>
@@ -347,6 +347,31 @@ export default {
     /* border-radius: 100px; */
     margin: 10px 0px; 
     overflow: scroll;
+  }
+
+  .marginss{
+    margin: 10px; 
+  }
+
+  .more-margin{
+    margin-top: 30px; 
+  }
+
+  .smaller-margin{
+    margin-top: 30px; 
+    margin-bottom: -20px; 
+  }
+
+  .more-top{
+    text-align: center;
+    margin-top: 20px; 
+  }
+
+  .centered{
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
   }
 </style>
 
