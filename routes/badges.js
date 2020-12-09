@@ -144,7 +144,7 @@ router.post("/affirm", async (req, res) => {
 
 /**
  * Deny a badge
- * @name POST/api/badge/deny
+ * @name POST/api/badges/deny
  * @param badgeId - the id of the badge
  * @param userId - the id of the user
  */
@@ -161,6 +161,22 @@ router.post("/deny", async (req, res) => {
     res.status(503).send({ error: "could not deny badge"});
   }
 });
+
+// /**
+//  * Remove all affirms and denies for a business by a user
+//  * @name DELETE/api/badges/affirmations
+//  * @param businessId - the id of the business
+//  */
+// router.delete("/affirmations/:businessId?", async (req, res) => {
+//   try {
+//     let deleted = Badges.deleteAffirmations(req.session.user.id, req.params.businessId);
+//     if (deleted) {
+//       res.status(200).send();
+//     }
+//   } catch (error) {
+//     res.status(503).send({ error : error});
+//   }
+// }); 
 
 
  module.exports = router;

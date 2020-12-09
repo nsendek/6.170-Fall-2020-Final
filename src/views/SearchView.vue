@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container class="pa-4">
     <div class = "secondary-header" style="margin-bottom: 25px;"> 
       Search results for "<i>{{$route.query.search}}</i>"
     </div>
@@ -12,7 +12,7 @@
         >
         </BusinessFeedItem>
     </Feed>
-	</div>
+	</v-container>
 </template>
 <script>
 import axios from "axios";

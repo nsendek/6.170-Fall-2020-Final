@@ -26,8 +26,8 @@
 </template>
 <script>
 import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
-import {eventBus } from "../main";
+import { eventBus } from "../main";
+import vuetify from "../vuetify.js"
 import {gmapApi}from 'vue2-google-maps';
 import InfoWindow from "./InfoWindow"
 
@@ -49,6 +49,7 @@ export default {
   },
   mounted() {
     eventBus.$on('businesses', (businesses) => {
+      this.markerUnselected();
       this.businesses = businesses;
       if(this && this.$refs && this.$refs.map && this.$refs.map.$mapPromise){
           this.boundBox(businesses,10);
@@ -56,14 +57,14 @@ export default {
     })
   }, 
   created(){
-    this.mapId = this.$vuetify.theme.isDark ? this.darkId : this.ligthId;
+    this.mapId = this.$vuetify.theme.dark ? this.darkId : this.ligthId;
     eventBus.$on('clicked', (b,bview) => {
       this.clicked(b,bview);
     })
-    eventBus.$on('theme-change', (dark) => {
-      this.mapId = dark ? this.darkId : this.ligthId;
-      // this.lastBounds = this.$refs.map.$mapObject.getBounds();
-    })
+    // eventBus.$on('theme-change', (dark) => {
+    //   this.mapId = dark ? this.darkId : this.ligthId;
+    //   this.lastBounds = this.$refs.map.$mapObject.getBounds();
+    // })
   },
   updated() {
     this.boundBox(this.businesses, 0);
@@ -121,62 +122,7 @@ export default {
       let InfoWindowComponent = Vue.extend(InfoWindow);
       let instance = new InfoWindowComponent({
           router : this.$router,
-          vuetify : new Vuetify({
-  theme: {
-    options: {
-      customProperties: true
-    },
-    themes: {
-      light: {
-        nav : "#fff",
-        background : "#fff",
-        splitter : "#eee",
-        'splitter-hover' : "#ddd",
-        'splitter-handle' : "#424242",
-        'button-group' : "#eee"
-      },
-      dark : {
-        nav : "#121212",
-        background : "#121212",
-        splitter : "#323232",
-        'splitter-hover' : "#525252",
-        'splitter-handle' : "#aaa",
-        'button-group' : "#222"
-      }
-    }
-  },
-  icons : {
-    values: {
-      '6_ft_apart' : {
-        component: () => import("../assets/icons/6_ft_apart.vue")
-      },
-      'adequate_supplies' : {
-        component: () => import("../assets/icons/adequate_supplies.vue")
-      },
-      'curbside_pickup' : {
-        component: () => import("../assets/icons/curbside_pickup.vue")
-      },
-      'disinfection' : {
-        component: () => import("../assets/icons/disinfection.vue")
-      },
-      'indoor_dining' : {
-        component: () => import("../assets/icons/indoor_dining.vue")
-      },
-      'low_density' : {
-        component: () => import("../assets/icons/low_density.vue")
-      },
-      'masks_required' : {
-        component: () => import("../assets/icons/masks_required.vue")
-      },
-      'outdoor_dining' : {
-        component: () => import("../assets/icons/outdoor_dining.vue")
-      },
-      'trained_workers' : {
-        component: () => import("../assets/icons/trained_workers.vue")
-      },
-    }
-  }
-}),
+          vuetify,
           propsData: {
               business: b
           }
@@ -250,8 +196,11 @@ export default {
     }
   },
   watch : {
-    $vuetify : function() {
-      window.console.log("CHANGED");
+    '$vuetify' : {
+      handler(){
+       this.mapId = this.$vuetify.theme.dark ? this.darkId : this.ligthId;
+     },
+     deep: true
     }
   }
 }
@@ -260,6 +209,19 @@ export default {
 .g-map{
   /* DON'T delete below */
   height : calc(100vh - var(--navbar-height));
+}
+
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track, 
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
+.gm-style .gm-style-iw,
+.gm-style .gm-style-iw-t:after 
+{
+  background-color: var(--v-info-window-base) !important;
+}
+
+.gm-style .gm-style-iw-t:after  {
+  background: var(--v-info-window-base) !important;
+  box-shadow: none;
 }
 
 .map-container {

@@ -33,6 +33,7 @@ export default {
   }, 
 
   methods : {
+    hasHistory() { return window.history.length > 2 },
     UserLogin : function(){
       axios.post("/api/user/signin", {
         username : this.username, 
@@ -45,7 +46,8 @@ export default {
         this.$state.username = response.data.username; 
         this.$state.id = response.data.id;
         this.$state.isBusiness = this.isBusiness;
-        this.$router.push('/');
+        if (this.hasHistory()) this.$router.go(-1);
+        else this.$router.push('/');
       })
       .catch((error) => { 
         window.console.log("here i am"); 
@@ -68,7 +70,8 @@ export default {
         this.$state.username = response.data.username; 
         this.$state.id = response.data.id;
         this.$state.isBusiness = this.isBusiness;
-        this.$router.push('/');
+        if (this.hasHistory()) this.$router.go(-1);
+        else this.$router.push('/');
       })
       .catch((error) => { 
         eventBus.$emit("error-message", error.response.data.error); 

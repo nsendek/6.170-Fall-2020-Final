@@ -56,6 +56,26 @@ router.get('/author/:id?', async (req, res) => {
  });
 
  /**
+  * Get Review from a specific user for a specific business
+  * @name GET/api/review/:businessID/author
+  * @param {number} businessID - the id of the business
+  * @return {Review[]} - review made by user for business
+  * 
+  * @throws {404} - if user or business does not exist
+  * @throws {400} - user id or business id is invalid, NaN, or undefined
+  */
+ router.get('/:businessID/author', async (req, res) => {
+    // TODO this is not the best formatting
+    try {
+        let data = await Reviews.getByUserAndBusiness(req.session.user.id, req.params.businessID); 
+        res.status(200).send( data );
+    }
+    catch (error) {
+        res.status(503).json({ error: "could not get reviews" }).end();
+    }
+ })
+
+ /**
  * Create a Review
  * @name POST/api/reviews
  * @param {string} content - content of the Review 
@@ -111,7 +131,6 @@ router.patch('/:id?', async (req, res) => {
     try {
         let owner = await Reviews.authenticate(req.session.user.id, req.params.id);
         if (owner) {
-          console.log("GOT HERE");
             let updated = await Reviews.update(req.params.id, req.body.rating, req.body.content);
             res.status(200).send(updated);  
         } else {
@@ -124,7 +143,7 @@ router.patch('/:id?', async (req, res) => {
 
 /**
  * delete specified Review 
- * @name DELETE/api/review/:id
+ * @name DELETE/api/reviews/:id
  * @param {number} :id - id of the review
  * @return {Review} the updated Review
  * 
@@ -143,7 +162,6 @@ router.delete('/:id?', async (req, res, next) => {
      || !(await dataExists(res, req.params.id, Reviews))) return;
 
     try {
-      // console.log("GOT HERE");
         let owner = await Reviews.authenticate(req.session.user.id, req.params.id)
         if (owner) {
             let deleted = await Reviews.delete(req.params.id);

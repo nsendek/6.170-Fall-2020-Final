@@ -74,84 +74,81 @@ class Businesses {
     }
     let offset = (page - 1) * pageLength; 
 
-    // // I think this if-statement will be obsolete when we introduce sorting by overall metrics 
-    // if(userBadges.length == 0){
-    //   let business = await db.all(`
-    //     SELECT id,name,address,lat,lng 
-    //     FROM businesses 
-    //     ORDER BY name ASC 
-    //     limit $1 offset $2`, [pageLength, offset]);
-
-    //   db.close(); 
-    //   return {"results" : business, "page" : page, "totalPages" : totalPages};
-    // } 
-    // else{
-    let business = await db.all(`
-      SELECT id,name,address,lat,lng 
+    let badges;
+    let businesses;
+    // get relevant badges
+    const loadBadges = async () => {
+      badges = await db.all(`
+      SELECT id, label, businessId
+      FROM badges 
+      WHERE label IN ${SQL.list(userBadges.length)}
+      `,[...userBadges]);
+    }
+    const loadBusinesses = async () => {
+      businesses = await db.all(`
+      SELECT 
+      businesses.id,  name, address, lat, lng, 
+      ROUND(AVG(reviews.rating), 2) AS rating
       FROM businesses 
-      ORDER BY name ASC`); 
+      JOIN reviews ON reviews.businessId = businesses.id
+      GROUP BY businesses.id`);
+    }
+
+    await Promise.all([Promise.resolve(loadBadges()),Promise.resolve(loadBusinesses())]);
 
     let businessBadgeDictionary = {};
 
-    let processBusiness = async (b) => {
-      let subBadgeDictionary = {};
-      let badges = await db.all(`SELECT id,label FROM badges WHERE businessId = $1`, [b.id]);
-      let labelToID = {};
-      badges.forEach( badge => {labelToID[badge.label] = badge.id;})
-
-      await Promise.all(userBadges.map(async (badge) => { 
-        subBadgeDictionary[badge] = {};
-        subBadgeDictionary[badge].containsBadge = Boolean(labelToID[badge]);
-
-        if(subBadgeDictionary[badge].containsBadge){
-          let badgeId =  labelToID[badge];
-          let stats = await Badges.getStats(badgeId);
-          subBadgeDictionary[badge]["ratio"] = stats.ratio;
-        }
-      }))
-
-      businessBadgeDictionary[b.id] = subBadgeDictionary; 
+    let processBadge = async (b) => {
+      if (!businessBadgeDictionary[b.businessId]) {
+        businessBadgeDictionary[b.businessId] = {}
+      }
+      let stats = await Badges.getStats(b.id);
+      
+      businessBadgeDictionary[b.businessId][b.label] = {
+        containsBadge : true,
+        ratio : stats.ratio
+      };
     }
 
-    await Promise.all(business.map(b => Promise.resolve(processBusiness(b))));
-
-    business.sort(this.sortBusinesses(userBadges, businessBadgeDictionary)); 
-
+    await Promise.all(badges.map(b => Promise.resolve(processBadge(b))));
     db.close();
-    return {"results" : business.slice(offset, offset + pageLength), "page" : page, "totalPages" : totalPages};
+    businesses.sort(this.sortBusinesses(userBadges, businessBadgeDictionary)); 
+    return {results : businesses.slice(offset, offset + pageLength), page, totalPages};
   }
 
   static sortBusinesses(userBadges, businessBadgeDictionary){
     return function(a, b){
       // sort by badge importance 
-      // console.log("sorting"); 
       for (let idx = 0; idx < userBadges.length; idx++) {
         let badge = userBadges[idx];
 
-        let a_badge = businessBadgeDictionary[a.id][badge]["containsBadge"]; 
-        let b_badge = businessBadgeDictionary[b.id][badge]["containsBadge"]; 
+        let a_badge = businessBadgeDictionary[a.id]
+            ? businessBadgeDictionary[a.id][badge] 
+              ? businessBadgeDictionary[a.id][badge]["containsBadge"]
+              : false
+            : false;
+        let b_badge = businessBadgeDictionary[b.id]
+            ? businessBadgeDictionary[b.id][badge]
+              ? businessBadgeDictionary[b.id][badge]["containsBadge"]
+              : false
+            : false; 
 
         if (a_badge < b_badge) return 1; 
         if (a_badge > b_badge) return -1;
 
-        if(a_badge == 1 && b_badge == 1){ // if they both contain the badge sort by badge ratio
-          // console.log("i am comparing ratios"); 
+        if(a_badge && b_badge){ // if they both contain the badge sort by badge ratio 
           let a_ratio = businessBadgeDictionary[a.id][badge]["ratio"]; 
           let b_ratio = businessBadgeDictionary[b.id][badge]["ratio"]; 
-          // console.log(a_ratio);
-          // console.log(b_ratio); 
-          if (a_ratio < b_ratio) return 1; 
-          if (a_ratio > b_ratio) return -1;
+          if ((a_ratio - b_ratio) < -5) return 1; 
+          if ((a_ratio - b_ratio) > 5) return -1;
         }
       }
       // if neither of them contain any of the badges then compare overall business rating
-      // let a_rating = businessBadgeDictionary[a.id]["businessRating"]; 
-      // let b_rating = businessBadgeDictionary[b.id]["businessRating"]; 
-      // if (a_rating < b_rating) return 1; 
-      // if (a_rating > b_rating) return -1;
+      if (a.rating < b.rating) return 1; 
+      if (a.rating > b.rating) return -1;
 
       // sort the rest of the list randomly so that it's not always alphabetical
-      return 0; // Math.round(Math.random()) == 1 ? 1 : -1; 
+      return 0;
     }
   }
 
@@ -166,16 +163,16 @@ class Businesses {
     return out;
   }
 
-  /**
-   * Return the business ID assoicated with a user account
-   * @param {*} accountName 
-   */
-  static async getIDFromAccount(accountName) {
-    let db = await SQL.getDB();
-    let out = await db.get(`SELECT id FROM businesses WHERE accountName = $1`,[accountName]);
-    db.close();
-    return out;
-  }
+  // /**
+  //  * Return the business ID assoicated with a user account
+  //  * @param {*} accountName 
+  //  */
+  // static async getIDFromAccount(accountName) {
+  //   let db = await SQL.getDB();
+  //   let out = await db.get(`SELECT id FROM businesses WHERE accountName = $1`,[accountName]);
+  //   db.close();
+  //   return out;
+  // }
 
   /**
    * create a business account

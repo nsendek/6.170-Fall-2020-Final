@@ -1,8 +1,7 @@
 <template >
 
-  <v-container>
+  <v-container  class="pa-4 no-scroll">
     <div class = "business-col">
-      <v-btn v-if="this.$state.username && !this.$state.isBusiness" style="width:33%;" @click="openReview"> Submit Review </v-btn>
       <v-card  v-if="business" style = "padding: 50px; display:flex; flex-direction:column; align-items:center;">
         <div class = "secondary-header"> <b>{{business.name}}</b> </div>
         <div class = "quarternary-header"> {{business.address}} </div>
@@ -22,12 +21,27 @@
           </div>
         </div>
       </v-card>
+      <v-btn v-if="this.$state.username && !this.$state.isBusiness && !this.userReview" style="width:33%;" @click="openReview"> Submit Review </v-btn>
+    </div>
+
+    <div v-if="this.foundReview">
+      <div class = "primary-header" style="text-align: center;"> YOUR REVIEW </div>
+      <v-card class = "review-card" style="margin: 10px 0px;">
+        <div class="flex-row" style="display:flex; flex-direction:row; align-items:center;">
+          <span class = "tertiary-header" > <b>@{{userReview.author.username}}</b> </span>
+          <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="userReview.rating"></v-rating>
+        </div>
+        <div> {{userReview.content}} </div>
+        <div> <b> {{timeFormat(userReview.timestamp)}} </b> </div>
+      </v-card>
+
+      <v-btn style="width:33%;" @click="openReviewEditor"> Edit Review </v-btn>
     </div>
 
     <div class = "primary-header" style="text-align: center;"> REVIEWS </div>
     <Feed>
-      <v-card class = "review-card" :key="idx" v-for="(review,idx) in reviews">
-        <div class="flex-row" style="display:flex; flex-direction:row; align-items:center; ">
+      <v-card class = "review-card" :key="idx" v-for="(review,idx) in reviews" style="margin: 10px 0px;">
+        <div class="flex-row" style="display:flex; flex-direction:row; align-items:center;">
           <span class = "tertiary-header" > <b>@{{review.author.username}}</b> </span>
           <v-rating class = "review-rating" style="display:inline;" readonly size="24" :value="review.rating"></v-rating>
         </div>
@@ -80,7 +94,9 @@ export default {
       business : null,
       rating: 0,
       page : 1,
-      totalPages: 1
+      totalPages: 1, 
+      userReview : null, 
+      foundReview : false
 		}
   },
 
@@ -89,6 +105,7 @@ export default {
        this.loadBadges();
        this.loadReviews();  
        this.loadRating();
+       this.loadUserReview(); 
        eventBus.$emit("businesses", [this.business]);
     }
     eventBus.$emit("clicked", this.business, true); 
@@ -97,6 +114,7 @@ export default {
       this.loadBadges();
       this.loadReviews();  
       this.loadRating();
+      this.loadUserReview(); 
     });
     eventBus.$on(("edit-badge-success"), () => {
       this.loadBadges();
@@ -107,6 +125,10 @@ export default {
     openReview() {
       this.$router.push({ name: 'review', params: { business: this.business }})
     },
+
+    openReviewEditor() {
+      this.$router.push({ name: 'review', params: { business: this.business, review : this.userReview }})
+    }, 
 
     async loadRating() {
       axios.get(`/api/business/${this.business.id}/rating`)
@@ -142,6 +164,31 @@ export default {
       }
       else{
         this.reviews = []; 
+      }
+    },
+
+    async loadUserReview(){
+      if(this.$state.username && !this.$state.isBusiness){
+        let response = await axios.get(`/api/review/${this.$route.params.id}/author`)
+          .catch(err => err.response);
+          
+        if(response.status == 200){
+          if(response.data.length == 0){
+            this.foundReview = false;
+          }
+          else{
+            this.userReview = response.data[0];
+            this.foundReview = true; 
+          } 
+        }
+        else{
+          this.userReview = null; 
+          this.foundReview = false; 
+        }
+      }
+      else{
+        this.userReview = null; 
+        this.foundReview = false; 
       }
     },
 

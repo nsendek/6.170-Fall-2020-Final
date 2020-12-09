@@ -1,8 +1,13 @@
 <template>
-  <v-card  v-if="business" style = "padding: 5px; display:flex; flex-direction:column; align-items:center;">
+  <v-card 
+    color="info-window"
+    v-if="business"
+    :dark="this.$vuetify.theme.dark" 
+    :light="!this.$vuetify.theme.dark"  
+    style = "padding: 5px; display:flex; flex-direction:column; align-items:center;">
     <div class = "secondary-header"> 
-       <router-link :to="`/business/${business.id}`" >
-        {{business.name}}
+       <router-link color="primary" :to="`/business/${business.id}`" >
+        <b> {{business.name}} </b>
       </router-link> 
     </div>
     <div class = "quarternary-header">

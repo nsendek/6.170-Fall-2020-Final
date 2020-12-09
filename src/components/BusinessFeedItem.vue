@@ -1,6 +1,6 @@
 <template>
 
-<v-card style="padding:20px; margin: 10px;">
+<v-card style="padding:20px; margin: 10px 0px;">
   <div> <h2 class="business-count">{{1+idx}}</h2> </div>
   <router-link :to="`/business/${business.id}`">
     <h3>{{business.name}}</h3>
@@ -9,8 +9,8 @@
 
   <div class="badges-container" style="justify-content: left;">
     <div :key="idx" v-for="(badge,idx) in badges" style="margin: 2.5px 5px;"> 
-    <BadgeIcon :color="getBadgeTier(badge)" :badgeLabel="badge.label" :size="35" :border="7" />
-    {{isNaN(badge.ratio) ? null : `${Math.round(badge.ratio)}%`}}
+    <BadgeIcon :color="getBadgeTier(badge)" :badgeLabel="badge.label" :size="35" :border="8" />
+    {{badge.ratio === null ? "N/A" : `${badge.ratio}%`}}
     </div>
   </div>
 

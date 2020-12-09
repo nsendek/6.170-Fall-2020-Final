@@ -107,6 +107,26 @@ class Reviews {
   }
 
   /**
+   * Get review for particular business made by user
+   * @param {number} businessId 
+   * @param {number} userID 
+   * 
+   * @return {Review} - review 
+   */
+  static async getByUserAndBusiness(userId, businessID) {
+    let db = await SQL.getDB();
+    let data =  await db.all(`
+        SELECT reviews.id, users.username, userId, businessId, 
+        businesses.name AS businessName,rating, content, reviews.timestamp
+        FROM reviews 
+        JOIN users ON users.id=userId
+        JOIN businesses ON businesses.id=businessId 
+        WHERE userId = $1 AND businessId = $2`,[userId, businessID]);
+
+    return data.map(mapReview);
+  }
+
+  /**
    * Get a Reviews by businessId.
    * @param {number} businessId - id of business reviewed
    * @return {Review[]]} - found Reviews
@@ -241,22 +261,22 @@ class Reviews {
 
   // -----------------------------------------------------------
 
-  /**
-   * searches Review database by a query
-   * @param {string} query - search query
-   * @return {Review[]} all users whose username matches query.
-   */
-  static async search(query) {
-    let db = await SQL.getDB();
-    let data = await db.all(`
-        SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp 
-        FROM reviews 
-        JOIN users ON users.id=userId
-        WHERE content LIKE '%${query}%'
-        OR users.username LIKE '%${query}%'
-        ORDER BY reviews.timestamp DESC`);
-    return data.map(mapReview);
-  } 
+  // /**
+  //  * searches Review database by a query
+  //  * @param {string} query - search query
+  //  * @return {Review[]} all users whose username matches query.
+  //  */
+  // static async search(query) {
+  //   let db = await SQL.getDB();
+  //   let data = await db.all(`
+  //       SELECT reviews.id, users.username, userId, businessId, rating, content, reviews.timestamp 
+  //       FROM reviews 
+  //       JOIN users ON users.id=userId
+  //       WHERE content LIKE '%${query}%'
+  //       OR users.username LIKE '%${query}%'
+  //       ORDER BY reviews.timestamp DESC`);
+  //   return data.map(mapReview);
+  // } 
 }
 
 module.exports = Object.freeze(Reviews);

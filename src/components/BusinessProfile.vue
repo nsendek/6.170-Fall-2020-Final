@@ -1,37 +1,14 @@
 <template>
-  <div>
-    <div class="secondary-header">{{$state.username}} </div>
-
-    <div><center><v-btn v-on:click="signout" class="wide-button"> SIGN OUT </v-btn></center></div>
+  <div class="centered"> 
+    <div class="big-title more-top">{{this.business.name}} </div>
 
     <div class="account-options">
       <router-link :to="`/business/${$state.id}`">
         <h3>View Your Public Page</h3>
       </router-link>
-        <h1> Change Account Information </h1>
-        <div> 
-            <input type="text" v-model="username" placeholder="new username" />
-            <v-btn v-on:click="updateBusinessInfo('accountName')" >update username</v-btn>
-        </div>
 
-        <div> 
-            <input type="text" v-model="password" placeholder="new password" />
-            <v-btn v-on:click="updateBusinessInfo('password')">update password</v-btn>
-        </div>
-
-        <div>
-            <input  type="text" v-model="name" placeholder="new name" />
-            <v-btn v-on:click="updateBusinessInfo('name')">update name</v-btn>
-        </div>
-
-        <div>
-            <input type="text" v-model="address" placeholder="new address" />
-            <v-btn v-on:click="updateBusinessInfo('address')">update address</v-btn>
-        </div>
-
-
-        <h1> Your Safety Policies </h1>
-
+        <h1 class="smaller-margin"> Your Safety Policies </h1>
+        <br><br>
         <div class="badges">
 
           <div class="badges"
@@ -44,22 +21,19 @@
               <template v-slot:activator='{on: dialog, attrs}'>
                 <v-tooltip bottom>
                   <template v-slot:activator='{on:tooltip}'>
-                    <v-chip 
-                      style="margin: 5px;" 
-                      :key="idx"
-                      :class = 'getBadgeTier(badge)'
-                      v-on = "{...tooltip, ...dialog }"
-                      v-bind='attrs'
-                      input-value="active"
-                      filter
-                      filter-icon="mdi-minus"
-                      @click.stop="badgeIndex=idx">
-                      {{badge.label}}
-                    </v-chip>
+                    <v-icon color="red" > mdi-minus </v-icon>
+                    <div
+                     v-on="{...tooltip, ...dialog }"
+                     v-bind="attrs"
+                     style="margin: 5px 5px;">  
+                      <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" :color="getBadgeTier(badge)"/>
+                    </div>
                   </template>
                 <v-card
                 >
-                  <v-card-title class="headline">Badge Information</v-card-title>
+                  <v-card-title class="headline">Policy Stats</v-card-title>
+                  <v-card-subtitle> {{badge.label}} </v-card-subtitle>
+                  <v-card-subtitle> Total Reviews: {{badge.affirms + badge.denies}} </v-card-subtitle>
                   <v-card-subtitle> Affirms: {{ badge.affirms }} </v-card-subtitle>
                   <v-card-subtitle> Denies: {{  badge.denies }} </v-card-subtitle>
                   <v-card-subtitle> Affirm Percentage: {{ badge.ratio }}%</v-card-subtitle>
@@ -93,8 +67,9 @@
             </v-dialog>
           </div>
         </div>
-
+        <br><br>
         <h1> Add Safety Policies </h1>
+        <br>
         <div class="badges">
 
           <div class="badges" v-for="(badge,idx) in otherBadges" :key="idx">
@@ -107,19 +82,17 @@
               <template v-slot:activator='{on: dialog, attrs}'>
                 <v-tooltip bottom>
                   <template v-slot:activator='{on:tooltip}'>
-                    <v-chip 
-                      style="margin: 5px;" 
-                      :key="idx"
-                      v-on = "{...tooltip, ...dialog }"
-                      v-bind='attrs'
-                      input-value="active"
-                      filter
-                      filter-icon="mdi-plus"
-                      @click.stop="badgeIndex=idx">
-                      {{badge.label}}
-                    </v-chip>
+                    <v-icon color="green" > mdi-plus </v-icon>
+                    <div
+                     v-on="{...tooltip, ...dialog }"
+                     v-bind="attrs"
+                     style="margin: 5px 5px;">  
+                      <BadgeIcon button :badgeLabel=badge.label :size="50" :border="10" />
+                    </div>
+                    
                   </template>
-                <span>{{badge.description}}</span>
+                  <div style="text-align:center;"><b><u>{{badge.label}}</u></b></div>
+                  <div style="text-align:center;">{{badge.description}}</div>
                 </v-tooltip>
               </template>
               <v-card>
@@ -148,47 +121,10 @@
             </v-dialog>
           </div>
         </div>
-        <div>
-          <br><br><br><br>
-          <v-dialog
-              v-model="deleteAccountDialog"
-              max-width="290"
-              :retain-focus = "false"
-              persistent>
-          <template v-slot:activator='{ on, attrs }'>
-            <v-btn
-                color='red'
-                v-bind='attrs'
-                v-on='on'
-                >Delete Account </v-btn>
-          </template>
-            <v-card>
-              <v-card-title class="headline">
-                Are you sure you want delete your account?
-              </v-card-title>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn
-                  color="green darken-1"
-                  text
-                  @click.stop="deleteAccountDialog = false"
-                >
-                  No
-                </v-btn>
-                <v-btn
-                  color="green darken-1"
-                  text
-                  @click.stop="deleteAccountDialog = false"
-                  v-on:click="deleteAccount()"
-                >
-                  Yes
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </div>
       
     </div>
+    <div><center><v-btn v-on:click="goBusinessAccount" class="wide-button marginss more-margin"> change account information </v-btn></center></div>
+    <div><center><v-btn v-on:click="signout" class="wide-button marginss"> SIGN OUT </v-btn></center></div>
   </div>
   
 </template>
@@ -199,6 +135,10 @@ import { eventBus } from "../main";
 
 export default {
   name : "BusinessProfile", 
+
+  components: {
+    BadgeIcon: () => import("./BadgeIconAlt"),
+  },
 
   data: function(){
     return {
@@ -213,15 +153,28 @@ export default {
       addBadgeDialog:false,
       deleteBadgeDialog:false,
       deleteAccountDialog:false,
-      badgeIndex: 0
+      badgeIndex: 0,
+      business: {}
     }
   }, 
 
   created: function() {
     this.getBadges();
+    this.loadBusiness(); 
   },
 
   methods : {
+
+    async loadBusiness() {
+      let response = await axios.get(`/api/business/${this.$state.id}`);
+      if (response.status == 200) {
+        this.business = response.data;
+      }
+    }, 
+
+    goBusinessAccount : function(){
+      eventBus.$emit("show-business-account"); 
+    }, 
 
     getBadges: function() {
       axios.get(`/api/business/${this.$state.id}/badges`)
@@ -379,4 +332,46 @@ export default {
   justify-content: center;
 }
 
+  .why{ 
+    margin: 7px; 
+    display: flex; 
+    align-content: center;
+    justify-content: center;
+  }
+  .please{
+    background: transparent !important;
+    color: transparent; 
+  }
+
+  .v-btn-toggle {
+    /* border-radius: 100px; */
+    margin: 10px 0px; 
+    overflow: scroll;
+  }
+
+  .marginss{
+    margin: 10px; 
+  }
+
+  .more-margin{
+    margin-top: 30px; 
+  }
+
+  .smaller-margin{
+    margin-top: 30px; 
+    margin-bottom: -20px; 
+  }
+
+  .more-top{
+    text-align: center;
+    margin-top: 20px; 
+  }
+
+  .centered{
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
 </style>
+
